@@ -30,19 +30,20 @@ class Sidebar extends Component {
                 </span>
               </div>
             </li>
-
             <li>
               <a href="" onClick={(e) => { e.preventDefault(); history.push('/'); }} >
                 <i className="fa fa-dashboard fa-fw" /> &nbsp;Dashboard
               </a>
             </li>
             <li>
-              <a href="" onClick={(e) => { e.preventDefault(); history.push('/blank'); }} >
-                Blank
+              <a href="" onClick={(e) => { e.preventDefault(); history.push('/upload'); }} >
+                <i className="fa fa-upload fa-fw" /> &nbsp;Upload Data
               </a>
             </li>
             <li>
-              <a href="http://www.strapui.com/">Premium React Themes</a>
+              <a href="" onClick={(e) => { e.preventDefault(); history.push('/prediction'); }} >
+                <i className="fa fa-bar-chart fa-fw" /> &nbsp;Prediction Charting
+              </a>
             </li>
           </ul>
         </div>
