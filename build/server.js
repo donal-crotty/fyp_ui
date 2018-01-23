@@ -124,7 +124,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(168);
+  var _assets = __webpack_require__(173);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -1451,15 +1451,15 @@ module.exports =
   
   var _blank2 = _interopRequireDefault(_blank);
   
-  var _upload = __webpack_require__(169);
+  var _upload = __webpack_require__(167);
   
   var _upload2 = _interopRequireDefault(_upload);
   
-  var _prediction = __webpack_require__(171);
+  var _prediction = __webpack_require__(169);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _error = __webpack_require__(167);
+  var _error = __webpack_require__(172);
   
   var _error2 = _interopRequireDefault(_error);
   
@@ -1846,11 +1846,11 @@ module.exports =
   
   var _Navbar2 = _interopRequireDefault(_Navbar);
   
-  var _jquery = __webpack_require__(55);
+  var _jquery = __webpack_require__(51);
   
   var _jquery2 = _interopRequireDefault(_jquery);
   
-  var _Sidebar = __webpack_require__(56);
+  var _Sidebar = __webpack_require__(52);
   
   var _Sidebar2 = _interopRequireDefault(_Sidebar);
   
@@ -1917,123 +1917,6 @@ module.exports =
           _react2.default.createElement(
             _reactBootstrap.NavDropdown,
             {
-              bsClass: 'dropdown', title: _react2.default.createElement(
-                'span',
-                null,
-                _react2.default.createElement('i', { className: 'fa fa-envelope fa-fw' })
-              ), id: 'navDropdown1'
-            },
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { style: { width: 300 }, eventKey: '1' },
-              _react2.default.createElement(
-                'div',
-                null,
-                ' ',
-                _react2.default.createElement(
-                  'strong',
-                  null,
-                  'John Smith'
-                ),
-                ' ',
-                _react2.default.createElement(
-                  'span',
-                  { className: 'pull-right text-muted' },
-                  _react2.default.createElement(
-                    'em',
-                    null,
-                    'Yesterday'
-                  ),
-                  ' '
-                ),
-                ' '
-              ),
-              _react2.default.createElement(
-                'div',
-                null,
-                ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...'
-              )
-            ),
-            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '2' },
-              _react2.default.createElement(
-                'div',
-                null,
-                ' ',
-                _react2.default.createElement(
-                  'strong',
-                  null,
-                  'John Smith'
-                ),
-                ' ',
-                _react2.default.createElement(
-                  'span',
-                  { className: 'pull-right text-muted' },
-                  _react2.default.createElement(
-                    'em',
-                    null,
-                    'Yesterday'
-                  ),
-                  ' '
-                ),
-                ' '
-              ),
-              _react2.default.createElement(
-                'div',
-                null,
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...'
-              )
-            ),
-            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '3' },
-              _react2.default.createElement(
-                'div',
-                null,
-                ' ',
-                _react2.default.createElement(
-                  'strong',
-                  null,
-                  'John Smith'
-                ),
-                ' ',
-                _react2.default.createElement(
-                  'span',
-                  { className: 'pull-right text-muted' },
-                  _react2.default.createElement(
-                    'em',
-                    null,
-                    'Yesterday'
-                  ),
-                  ' '
-                ),
-                ' '
-              ),
-              _react2.default.createElement(
-                'div',
-                null,
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...'
-              )
-            ),
-            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '4', className: 'text-center' },
-              _react2.default.createElement(
-                'strong',
-                null,
-                'Read All Messages'
-              ),
-              ' ',
-              _react2.default.createElement('i', { className: 'fa fa-angle-right' })
-            )
-          ),
-          _react2.default.createElement(
-            _reactBootstrap.NavDropdown,
-            {
               title: _react2.default.createElement(
                 'span',
                 null,
@@ -2049,24 +1932,25 @@ module.exports =
                 _react2.default.createElement(
                   'p',
                   null,
-                  ' ',
                   _react2.default.createElement(
                     'strong',
                     null,
-                    'Task 1'
-                  ),
-                  ' ',
+                    'Prediction Chart 1'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                  'p',
+                  null,
                   _react2.default.createElement(
                     'span',
-                    { className: 'pull-right text-muted' },
-                    '40% Complete'
+                    { className: 'text-muted' },
+                    'Galway Bay, 09-11-16'
                   ),
                   ' '
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_reactBootstrap.ProgressBar, { bsStyle: 'success', now: 40 })
                 )
               )
             ),
@@ -2080,24 +1964,20 @@ module.exports =
                 _react2.default.createElement(
                   'p',
                   null,
-                  ' ',
                   _react2.default.createElement(
                     'strong',
                     null,
-                    'Task 2'
-                  ),
-                  ' ',
-                  _react2.default.createElement(
-                    'span',
-                    { className: 'pull-right text-muted' },
-                    '20% Complete'
-                  ),
-                  ' '
-                ),
+                    'Prediction Chart 3'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                null,
                 _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_reactBootstrap.ProgressBar, { bsStyle: 'info', now: 20 })
+                  'span',
+                  { className: 'text-muted' },
+                  'Kinsale Harbour, 12-11-16'
                 )
               )
             ),
@@ -2111,24 +1991,20 @@ module.exports =
                 _react2.default.createElement(
                   'p',
                   null,
-                  ' ',
                   _react2.default.createElement(
                     'strong',
                     null,
-                    'Task 3'
-                  ),
-                  ' ',
-                  _react2.default.createElement(
-                    'span',
-                    { className: 'pull-right text-muted' },
-                    '60% Complete'
-                  ),
-                  ' '
-                ),
+                    'Prediction Chart 3'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                null,
                 _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_reactBootstrap.ProgressBar, { bsStyle: 'warning', now: 60 })
+                  'span',
+                  { className: 'text-muted' },
+                  'Killybegs, 01-12-16'
                 )
               )
             ),
@@ -2142,143 +2018,22 @@ module.exports =
                 _react2.default.createElement(
                   'p',
                   null,
-                  ' ',
                   _react2.default.createElement(
                     'strong',
                     null,
-                    'Task 4'
-                  ),
-                  ' ',
-                  _react2.default.createElement(
-                    'span',
-                    { className: 'pull-right text-muted' },
-                    '80% Complete'
-                  ),
-                  ' '
-                ),
+                    'Prediction Chart 4'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                null,
                 _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_reactBootstrap.ProgressBar, { bsStyle: 'danger', now: 80 })
+                  'span',
+                  { className: 'text-muted' },
+                  'Galway Bay, 22-01-17'
                 )
               )
-            ),
-            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '5' },
-              _react2.default.createElement(
-                'strong',
-                null,
-                'See All Tasks'
-              ),
-              ' ',
-              _react2.default.createElement('i', { className: 'fa fa-angle-right' })
-            )
-          ),
-          _react2.default.createElement(
-            _reactBootstrap.NavDropdown,
-            { title: _react2.default.createElement('i', { className: 'fa fa-bell fa-fw' }), id: 'navDropdown3' },
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '1', style: { width: 300 } },
-              _react2.default.createElement(
-                'div',
-                null,
-                ' ',
-                _react2.default.createElement('i', { className: 'fa fa-comment fa-fw' }),
-                ' New Comment',
-                _react2.default.createElement(
-                  'span',
-                  { className: 'pull-right text-muted small' },
-                  '4 minutes ago'
-                ),
-                ' '
-              )
-            ),
-            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '2' },
-              _react2.default.createElement(
-                'div',
-                null,
-                ' ',
-                _react2.default.createElement('i', { className: 'fa fa-twitter fa-fw' }),
-                ' 3 New Followers',
-                _react2.default.createElement(
-                  'span',
-                  { className: 'pull-right text-muted small' },
-                  '12 minutes ago'
-                ),
-                ' '
-              )
-            ),
-            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '3' },
-              _react2.default.createElement(
-                'div',
-                null,
-                ' ',
-                _react2.default.createElement('i', { className: 'fa fa-envelope fa-fw' }),
-                ' Message Sent',
-                _react2.default.createElement(
-                  'span',
-                  { className: 'pull-right text-muted small' },
-                  '4 minutes ago'
-                ),
-                ' '
-              )
-            ),
-            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '4' },
-              _react2.default.createElement(
-                'div',
-                null,
-                ' ',
-                _react2.default.createElement('i', { className: 'fa fa-tasks fa-fw' }),
-                ' New Task',
-                _react2.default.createElement(
-                  'span',
-                  { className: 'pull-right text-muted small' },
-                  '4 minutes ago'
-                ),
-                ' '
-              )
-            ),
-            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '5' },
-              _react2.default.createElement(
-                'div',
-                null,
-                ' ',
-                _react2.default.createElement('i', { className: 'fa fa-upload fa-fw' }),
-                ' Server Rebooted',
-                _react2.default.createElement(
-                  'span',
-                  { className: 'pull-right text-muted small' },
-                  '4 minutes ago'
-                ),
-                ' '
-              )
-            ),
-            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '6' },
-              _react2.default.createElement(
-                'strong',
-                null,
-                'See All Alerts'
-              ),
-              ' ',
-              _react2.default.createElement('i', { className: 'fa fa-angle-right' })
             )
           ),
           _react2.default.createElement(
@@ -2303,18 +2058,6 @@ module.exports =
                 null,
                 _react2.default.createElement('i', { className: 'fa fa-gear fa-fw' }),
                 ' Settings '
-              )
-            ),
-            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '3', href: 'http://www.strapui.com' },
-              _react2.default.createElement(
-                'span',
-                null,
-                ' ',
-                _react2.default.createElement('i', { className: 'fa fa-eye fa-fw' }),
-                ' Premium React Themes '
               )
             ),
             _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
@@ -2352,65 +2095,12 @@ module.exports =
 
 /***/ }),
 /* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _createBrowserHistory = __webpack_require__(52);
-  
-  var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
-  
-  var _createMemoryHistory = __webpack_require__(53);
-  
-  var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
-  
-  var _useQueries = __webpack_require__(54);
-  
-  var _useQueries2 = _interopRequireDefault(_useQueries);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var history = (0, _useQueries2.default)( false ? _createBrowserHistory2.default : _createMemoryHistory2.default)(); /**
-                                                                                                                                    * React Starter Kit (https://www.reactstarterkit.com/)
-                                                                                                                                    *
-                                                                                                                                    * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-                                                                                                                                    *
-                                                                                                                                    * This source code is licensed under the MIT license found in the
-                                                                                                                                    * LICENSE.txt file in the root directory of this source tree.
-                                                                                                                                    */
-  
-  exports.default = history;
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports) {
-
-  module.exports = require("history/lib/createBrowserHistory");
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports) {
-
-  module.exports = require("history/lib/createMemoryHistory");
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports) {
-
-  module.exports = require("history/lib/useQueries");
-
-/***/ }),
-/* 55 */
 /***/ (function(module, exports) {
 
   module.exports = require("jquery");
 
 /***/ }),
-/* 56 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -2443,7 +2133,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _history = __webpack_require__(51);
+  var _history = __webpack_require__(53);
   
   var _history2 = _interopRequireDefault(_history);
   
@@ -2544,6 +2234,59 @@ module.exports =
   
   
   exports.default = Sidebar;
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _createBrowserHistory = __webpack_require__(54);
+  
+  var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
+  
+  var _createMemoryHistory = __webpack_require__(55);
+  
+  var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
+  
+  var _useQueries = __webpack_require__(56);
+  
+  var _useQueries2 = _interopRequireDefault(_useQueries);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var history = (0, _useQueries2.default)( false ? _createBrowserHistory2.default : _createMemoryHistory2.default)(); /**
+                                                                                                                                    * React Starter Kit (https://www.reactstarterkit.com/)
+                                                                                                                                    *
+                                                                                                                                    * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+                                                                                                                                    *
+                                                                                                                                    * This source code is licensed under the MIT license found in the
+                                                                                                                                    * LICENSE.txt file in the root directory of this source tree.
+                                                                                                                                    */
+  
+  exports.default = history;
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports) {
+
+  module.exports = require("history/lib/createBrowserHistory");
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports) {
+
+  module.exports = require("history/lib/createMemoryHistory");
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports) {
+
+  module.exports = require("history/lib/useQueries");
 
 /***/ }),
 /* 57 */
@@ -2650,7 +2393,7 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var title = 'Sb Admin React';
+  var title = 'Tidal Prediction App';
   
   var data = [{ name: 'Page A', uv: 4000, pv: 2400, amt: 2400, value: 600 }, { name: 'Page B', uv: 3000, pv: 1398, amt: 2210, value: 300 }, { name: 'Page C', uv: 2000, pv: 9800, amt: 2290, value: 500 }, { name: 'Page D', uv: 2780, pv: 3908, amt: 2000, value: 400 }, { name: 'Page E', uv: 1890, pv: 4800, amt: 2181, value: 200 }, { name: 'Page F', uv: 2390, pv: 3800, amt: 2500, value: 700 }, { name: 'Page G', uv: 3490, pv: 4300, amt: 2100, value: 100 }];
   
@@ -3405,7 +3148,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _history = __webpack_require__(51);
+  var _history = __webpack_require__(53);
   
   var _history2 = _interopRequireDefault(_history);
   
@@ -20992,7 +20735,7 @@ module.exports =
   
   var _Login2 = _interopRequireDefault(_Login);
   
-  var _history = __webpack_require__(51);
+  var _history = __webpack_require__(53);
   
   var _history2 = _interopRequireDefault(_history);
   
@@ -21252,62 +20995,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _App = __webpack_require__(39);
-  
-  var _App2 = _interopRequireDefault(_App);
-  
-  var _ErrorPage = __webpack_require__(18);
-  
-  var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  exports.default = {
-  
-    path: '/error',
-  
-    action: function action(_ref) {
-      var render = _ref.render,
-          context = _ref.context,
-          error = _ref.error;
-  
-      // console.log('error obj inside error index.js', error);
-      return render(_react2.default.createElement(
-        _App2.default,
-        { context: context, error: error },
-        _react2.default.createElement(_ErrorPage2.default, { error: error })
-      ), error.status || 500);
-    }
-  }; /**
-      * React Starter Kit (https://www.reactstarterkit.com/)
-      *
-      * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-      *
-      * This source code is licensed under the MIT license found in the
-      * LICENSE.txt file in the root directory of this source tree.
-      */
-
-/***/ }),
-/* 168 */
-/***/ (function(module, exports) {
-
-  module.exports = require("./assets");
-
-/***/ }),
-/* 169 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _upload = __webpack_require__(170);
+  var _upload = __webpack_require__(168);
   
   var _upload2 = _interopRequireDefault(_upload);
   
@@ -21322,7 +21010,7 @@ module.exports =
   };
 
 /***/ }),
-/* 170 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -21385,7 +21073,7 @@ module.exports =
   exports.default = displayUpload;
 
 /***/ }),
-/* 171 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -21398,11 +21086,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _prediction = __webpack_require__(172);
+  var _prediction = __webpack_require__(170);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _Chart = __webpack_require__(173);
+  var _Chart = __webpack_require__(171);
   
   var _Chart2 = _interopRequireDefault(_Chart);
   
@@ -21422,7 +21110,7 @@ module.exports =
   };
 
 /***/ }),
-/* 172 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -21466,7 +21154,7 @@ module.exports =
   exports.default = displayPrediction;
 
 /***/ }),
-/* 173 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -21549,6 +21237,61 @@ module.exports =
   }
   
   exports.default = Chart;
+
+/***/ }),
+/* 172 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(12);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _App = __webpack_require__(39);
+  
+  var _App2 = _interopRequireDefault(_App);
+  
+  var _ErrorPage = __webpack_require__(18);
+  
+  var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  exports.default = {
+  
+    path: '/error',
+  
+    action: function action(_ref) {
+      var render = _ref.render,
+          context = _ref.context,
+          error = _ref.error;
+  
+      // console.log('error obj inside error index.js', error);
+      return render(_react2.default.createElement(
+        _App2.default,
+        { context: context, error: error },
+        _react2.default.createElement(_ErrorPage2.default, { error: error })
+      ), error.status || 500);
+    }
+  }; /**
+      * React Starter Kit (https://www.reactstarterkit.com/)
+      *
+      * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+      *
+      * This source code is licensed under the MIT license found in the
+      * LICENSE.txt file in the root directory of this source tree.
+      */
+
+/***/ }),
+/* 173 */
+/***/ (function(module, exports) {
+
+  module.exports = require("./assets");
 
 /***/ })
 /******/ ]);

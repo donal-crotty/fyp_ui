@@ -12,7 +12,6 @@ import React from 'react';
 import {
   NavDropdown,
   MenuItem,
-  ProgressBar,
 } from 'react-bootstrap';
 import Navbar, { Brand } from 'react-bootstrap/lib/Navbar';
 import $ from 'jquery';
@@ -50,112 +49,47 @@ function Header() {
         <ul className="nav navbar-top-links navbar-right">
 
           <NavDropdown
-            bsClass="dropdown" title={<span><i className="fa fa-envelope fa-fw" />
-            </span>} id="navDropdown1"
-          >
-            <MenuItem style={{ width: 300 }} eventKey="1">
-              <div> <strong>John Smith</strong> <span className="pull-right text-muted">
-                <em>Yesterday</em> </span> </div>
-              <div> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-               Pellentesque eleifend...</div>
-            </MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey="2">
-              <div> <strong>John Smith</strong> <span className="pull-right text-muted">
-                <em>Yesterday</em> </span> </div>
-              <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-               Pellentesque eleifend...</div>
-            </MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey="3">
-              <div> <strong>John Smith</strong> <span className="pull-right text-muted">
-                <em>Yesterday</em> </span> </div>
-              <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Pellentesque eleifend...</div>
-            </MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey="4" className="text-center">
-              <strong>Read All Messages</strong> <i className="fa fa-angle-right" />
-            </MenuItem>
-          </NavDropdown>
-
-          <NavDropdown
             title={<span><i className="fa fa-tasks fa-fw" />
             </span>} id="navDropdown2222"
           >
             <MenuItem eventKey="1" style={{ width: 300 }}>
               <div>
-                <p> <strong>Task 1</strong> <span className="pull-right text-muted">
-                40% Complete</span> </p>
-                <div>
-                  <ProgressBar bsStyle="success" now={40} />
-                </div>
+                <p><strong>Prediction Chart 1</strong></p>
+              </div>
+              <div>
+                <p><span className="text-muted">
+                Galway Bay, 09-11-16</span> </p>
               </div>
             </MenuItem>
             <MenuItem divider />
             <MenuItem eventKey="2">
               <div>
-                <p> <strong>Task 2</strong> <span className="pull-right text-muted">
-                20% Complete</span> </p>
-                <div>
-                  <ProgressBar bsStyle="info" now={20} />
-                </div>
+                <p><strong>Prediction Chart 3</strong></p>
+              </div>
+              <div>
+                <span className="text-muted">
+                Kinsale Harbour, 12-11-16</span>
               </div>
             </MenuItem>
             <MenuItem divider />
             <MenuItem eventKey="3">
               <div>
-                <p> <strong>Task 3</strong> <span className="pull-right text-muted">
-                60% Complete</span> </p>
-                <div>
-                  <ProgressBar bsStyle="warning" now={60} />
-                </div>
+                <p><strong>Prediction Chart 3</strong></p>
+              </div>
+              <div>
+                <span className="text-muted">
+                Killybegs, 01-12-16</span>
               </div>
             </MenuItem>
             <MenuItem divider />
             <MenuItem eventKey="4">
               <div>
-                <p> <strong>Task 4</strong> <span className="pull-right text-muted">
-                80% Complete</span> </p>
-                <div>
-                  <ProgressBar bsStyle="danger" now={80} />
-                </div>
+                <p><strong>Prediction Chart 4</strong></p>
               </div>
-            </MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey="5">
-              <strong>See All Tasks</strong> <i className="fa fa-angle-right" />
-            </MenuItem>
-          </NavDropdown>
-
-          <NavDropdown title={<i className="fa fa-bell fa-fw" />} id="navDropdown3">
-            <MenuItem eventKey="1" style={{ width: 300 }}>
-              <div> <i className="fa fa-comment fa-fw" /> New Comment
-               <span className="pull-right text-muted small">4 minutes ago</span> </div>
-            </MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey="2">
-              <div> <i className="fa fa-twitter fa-fw" /> 3 New Followers
-               <span className="pull-right text-muted small">12 minutes ago</span> </div>
-            </MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey="3">
-              <div> <i className="fa fa-envelope fa-fw" /> Message Sent
-               <span className="pull-right text-muted small">4 minutes ago</span> </div>
-            </MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey="4">
-              <div> <i className="fa fa-tasks fa-fw" /> New Task
-               <span className="pull-right text-muted small">4 minutes ago</span> </div>
-            </MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey="5">
-              <div> <i className="fa fa-upload fa-fw" /> Server Rebooted
-               <span className="pull-right text-muted small">4 minutes ago</span> </div>
-            </MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey="6">
-              <strong>See All Alerts</strong> <i className="fa fa-angle-right" />
+              <div>
+                <span className="text-muted">
+                Galway Bay, 22-01-17</span>
+              </div>
             </MenuItem>
           </NavDropdown>
 
@@ -165,10 +99,6 @@ function Header() {
             </MenuItem>
             <MenuItem eventKey="2">
               <span><i className="fa fa-gear fa-fw" /> Settings </span>
-            </MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey="3" href="http://www.strapui.com" >
-              <span> <i className="fa fa-eye fa-fw" /> Premium React Themes </span>
             </MenuItem>
             <MenuItem divider />
             <MenuItem eventKey="4" >
@@ -182,6 +112,5 @@ function Header() {
     </div>
   );
 }
-
 
 export default Header;
