@@ -124,7 +124,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(173);
+  var _assets = __webpack_require__(180);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -1447,19 +1447,23 @@ module.exports =
   
   var _login2 = _interopRequireDefault(_login);
   
-  var _blank = __webpack_require__(165);
+  var _register = __webpack_require__(168);
+  
+  var _register2 = _interopRequireDefault(_register);
+  
+  var _blank = __webpack_require__(172);
   
   var _blank2 = _interopRequireDefault(_blank);
   
-  var _upload = __webpack_require__(167);
+  var _upload = __webpack_require__(174);
   
   var _upload2 = _interopRequireDefault(_upload);
   
-  var _prediction = __webpack_require__(169);
+  var _prediction = __webpack_require__(176);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _error = __webpack_require__(172);
+  var _error = __webpack_require__(179);
   
   var _error2 = _interopRequireDefault(_error);
   
@@ -1468,6 +1472,16 @@ module.exports =
   var _Header2 = _interopRequireDefault(_Header);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  // Child routes
+  /**
+   * React Starter Kit (https://www.reactstarterkit.com/)
+   *
+   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE.txt file in the root directory of this source tree.
+   */
   
   exports.default = [{
     path: '/login',
@@ -1513,14 +1527,8 @@ module.exports =
       }))();
     }
   }, {
-    path: '/',
-  
-    // keep in mind, routes are evaluated in order
-    children: [_home2.default, _blank2.default, _upload2.default, _prediction2.default,
-  
-    // place new routes before...
-    _error2.default],
-  
+    path: '/register',
+    children: [_register2.default],
     action: function action(_ref2) {
       var _this2 = this;
   
@@ -1548,18 +1556,9 @@ module.exports =
   
               case 5:
                 return _context2.abrupt('return', render(_react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_Header2.default, null),
-                  _react2.default.createElement(
-                    'div',
-                    { id: 'page-wrapper', className: 'page-wrapper' },
-                    _react2.default.createElement(
-                      _App2.default,
-                      { context: context },
-                      component
-                    )
-                  )
+                  _App2.default,
+                  { context: context },
+                  component
                 )));
   
               case 6:
@@ -1571,8 +1570,14 @@ module.exports =
       }))();
     }
   }, {
-    path: '/error',
-    children: [_error2.default],
+    path: '/',
+  
+    // keep in mind, routes are evaluated in order
+    children: [_home2.default, _blank2.default, _upload2.default, _prediction2.default,
+  
+    // place new routes before...
+    _error2.default],
+  
     action: function action(_ref3) {
       var _this3 = this;
   
@@ -1600,9 +1605,18 @@ module.exports =
   
               case 5:
                 return _context3.abrupt('return', render(_react2.default.createElement(
-                  _App2.default,
-                  { context: context },
-                  component
+                  'div',
+                  null,
+                  _react2.default.createElement(_Header2.default, null),
+                  _react2.default.createElement(
+                    'div',
+                    { id: 'page-wrapper', className: 'page-wrapper' },
+                    _react2.default.createElement(
+                      _App2.default,
+                      { context: context },
+                      component
+                    )
+                  )
                 )));
   
               case 6:
@@ -1613,17 +1627,50 @@ module.exports =
         }, _callee3, _this3);
       }))();
     }
-  }];
+  }, {
+    path: '/error',
+    children: [_error2.default],
+    action: function action(_ref4) {
+      var _this4 = this;
   
-  // Child routes
-  /**
-   * React Starter Kit (https://www.reactstarterkit.com/)
-   *
-   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE.txt file in the root directory of this source tree.
-   */
+      var next = _ref4.next,
+          render = _ref4.render,
+          context = _ref4.context;
+      return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4() {
+        var component;
+        return _regenerator2.default.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return next();
+  
+              case 2:
+                component = _context4.sent;
+  
+                if (!(component === undefined)) {
+                  _context4.next = 5;
+                  break;
+                }
+  
+                return _context4.abrupt('return', component);
+  
+              case 5:
+                return _context4.abrupt('return', render(_react2.default.createElement(
+                  _App2.default,
+                  { context: context },
+                  component
+                )));
+  
+              case 6:
+              case 'end':
+                return _context4.stop();
+            }
+          }
+        }, _callee4, _this4);
+      }))();
+    }
+  }];
 
 /***/ }),
 /* 39 */
@@ -1713,7 +1760,6 @@ module.exports =
     }, {
       key: 'componentWillUnmount',
       value: function componentWillUnmount() {
-  
         this.removeCss();
       }
     }, {
@@ -1836,6 +1882,26 @@ module.exports =
     value: true
   });
   
+  var _getPrototypeOf = __webpack_require__(40);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(41);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(42);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(43);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(44);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
   var _react = __webpack_require__(12);
   
   var _react2 = _interopRequireDefault(_react);
@@ -1854,16 +1920,20 @@ module.exports =
   
   var _Sidebar2 = _interopRequireDefault(_Sidebar);
   
+  var _firebase = __webpack_require__(166);
+  
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var logo = __webpack_require__(57); /**
-                                     * React Starter Kit (https://www.reactstarterkit.com/)
-                                     *
-                                     * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-                                     *
-                                     * This source code is licensed under the MIT license found in the
-                                     * LICENSE.txt file in the root directory of this source tree.
-                                     */
+  /**
+   * React Starter Kit (https://www.reactstarterkit.com/)
+   *
+   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE.txt file in the root directory of this source tree.
+   */
+  
+  var logo = __webpack_require__(57);
   
   function toggleMenu() {
     if ((0, _jquery2.default)('.navbar-collapse').hasClass('collapse')) {
@@ -1873,211 +1943,239 @@ module.exports =
     }
   }
   
-  function Header() {
-    return _react2.default.createElement(
-      'div',
-      { id: 'wrapper', className: 'content' },
-      _react2.default.createElement(
-        _Navbar2.default,
-        { fluid: true, style: { margin: 0 } },
-        _react2.default.createElement(
-          _Navbar.Brand,
-          null,
+  var Header = function (_Component) {
+    (0, _inherits3.default)(Header, _Component);
+  
+    function Header() {
+      (0, _classCallCheck3.default)(this, Header);
+      return (0, _possibleConstructorReturn3.default)(this, (Header.__proto__ || (0, _getPrototypeOf2.default)(Header)).apply(this, arguments));
+    }
+  
+    (0, _createClass3.default)(Header, [{
+      key: 'logOut',
+      value: function logOut() {
+        _firebase.fireBaseApp.auth().signOut();
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        var _this2 = this;
+  
+        return _react2.default.createElement(
+          'div',
+          { id: 'wrapper', className: 'content' },
           _react2.default.createElement(
-            'span',
-            null,
-            _react2.default.createElement('img', { src: logo, alt: 'Start React', title: 'Start React' }),
+            _Navbar2.default,
+            { className: 'navbar-inverse', fluid: true, style: { margin: 0 } },
             _react2.default.createElement(
-              'span',
+              _Navbar.Brand,
               null,
-              '\xA0Tidal Wave Prediction Online Tool '
-            ),
-            _react2.default.createElement(
-              'button',
-              {
-                type: 'button', className: 'navbar-toggle', onClick: function onClick() {
-                  toggleMenu();
-                },
-                style: { position: 'absolute', right: 0, top: 0 }
-              },
               _react2.default.createElement(
                 'span',
-                { className: 'sr-only' },
-                'Toggle navigation'
-              ),
-              _react2.default.createElement('span', { className: 'icon-bar' }),
-              _react2.default.createElement('span', { className: 'icon-bar' }),
-              _react2.default.createElement('span', { className: 'icon-bar' })
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'ul',
-          { className: 'nav navbar-top-links navbar-right' },
-          _react2.default.createElement(
-            _reactBootstrap.NavDropdown,
-            {
-              title: _react2.default.createElement(
-                'span',
                 null,
-                _react2.default.createElement('i', { className: 'fa fa-tasks fa-fw' })
-              ), id: 'navDropdown2222'
-            },
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '1', style: { width: 300 } },
-              _react2.default.createElement(
-                'div',
-                null,
+                _react2.default.createElement('img', {
+                  src: logo, alt: 'Tidal Wave Prediction Online Tool',
+                  title: 'Tidal Wave Prediction Online Tool'
+                }),
                 _react2.default.createElement(
-                  'p',
+                  'span',
                   null,
-                  _react2.default.createElement(
-                    'strong',
-                    null,
-                    'Prediction Chart 1'
-                  )
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                null,
+                  '\xA0Tidal Wave Prediction Online Tool '
+                ),
                 _react2.default.createElement(
-                  'p',
-                  null,
+                  'button',
+                  {
+                    type: 'button', className: 'navbar-toggle', onClick: function onClick() {
+                      toggleMenu();
+                    },
+                    style: { position: 'absolute', right: 0, top: 0 }
+                  },
                   _react2.default.createElement(
                     'span',
-                    { className: 'text-muted' },
-                    'Galway Bay, 09-11-16'
+                    { className: 'sr-only' },
+                    'Toggle navigation'
                   ),
-                  ' '
+                  _react2.default.createElement('span', { className: 'icon-bar' }),
+                  _react2.default.createElement('span', { className: 'icon-bar' }),
+                  _react2.default.createElement('span', { className: 'icon-bar' })
                 )
               )
             ),
-            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
             _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '2' },
+              'ul',
+              { className: 'nav navbar-top-links navbar-right' },
               _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  _react2.default.createElement(
-                    'strong',
+                _reactBootstrap.NavDropdown,
+                {
+                  title: _react2.default.createElement(
+                    'span',
                     null,
-                    'Prediction Chart 3'
+                    _react2.default.createElement('i', { className: 'fa fa-tasks fa-fw' })
+                  ), id: 'navDropdown2222'
+                },
+                _react2.default.createElement(
+                  _reactBootstrap.MenuItem,
+                  { eventKey: '1', style: { width: 300 } },
+                  _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      _react2.default.createElement(
+                        'strong',
+                        null,
+                        'Prediction Chart 1'
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      _react2.default.createElement(
+                        'span',
+                        { className: 'text-muted' },
+                        'Galway Bay, 09-11-16'
+                      ),
+                      ' '
+                    )
+                  )
+                ),
+                _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
+                _react2.default.createElement(
+                  _reactBootstrap.MenuItem,
+                  { eventKey: '2' },
+                  _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      _react2.default.createElement(
+                        'strong',
+                        null,
+                        'Prediction Chart 3'
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'text-muted' },
+                      'Kinsale Harbour, 12-11-16'
+                    )
+                  )
+                ),
+                _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
+                _react2.default.createElement(
+                  _reactBootstrap.MenuItem,
+                  { eventKey: '3' },
+                  _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      _react2.default.createElement(
+                        'strong',
+                        null,
+                        'Prediction Chart 3'
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'text-muted' },
+                      'Killybegs, 01-12-16'
+                    )
+                  )
+                ),
+                _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
+                _react2.default.createElement(
+                  _reactBootstrap.MenuItem,
+                  { eventKey: '4' },
+                  _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                      'p',
+                      null,
+                      _react2.default.createElement(
+                        'strong',
+                        null,
+                        'Prediction Chart 4'
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'text-muted' },
+                      'Galway Bay, 22-01-17'
+                    )
                   )
                 )
               ),
               _react2.default.createElement(
-                'div',
-                null,
+                _reactBootstrap.NavDropdown,
+                { title: _react2.default.createElement('i', { className: 'fa fa-user fa-fw' }), id: 'navDropdown4' },
                 _react2.default.createElement(
-                  'span',
-                  { className: 'text-muted' },
-                  'Kinsale Harbour, 12-11-16'
-                )
-              )
-            ),
-            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '3' },
-              _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                  'p',
-                  null,
+                  _reactBootstrap.MenuItem,
+                  { eventKey: '1' },
                   _react2.default.createElement(
-                    'strong',
+                    'span',
                     null,
-                    'Prediction Chart 3'
+                    ' ',
+                    _react2.default.createElement('i', { className: 'fa fa-user fa-fw' }),
+                    ' User Profile '
+                  )
+                ),
+                _react2.default.createElement(
+                  _reactBootstrap.MenuItem,
+                  { eventKey: '2' },
+                  _react2.default.createElement(
+                    'span',
+                    null,
+                    _react2.default.createElement('i', { className: 'fa fa-gear fa-fw' }),
+                    ' Settings '
+                  )
+                ),
+                _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
+                _react2.default.createElement(
+                  _reactBootstrap.MenuItem,
+                  { eventKey: '4' },
+                  _react2.default.createElement(
+                    'button',
+                    { className: 'btn btn-danger', onClick: function onClick() {
+                        return _this2.logOut();
+                      } },
+                    _react2.default.createElement(
+                      'span',
+                      null,
+                      _react2.default.createElement('i', { className: 'fa fa-sign-out fa-fw' }),
+                      ' Logout '
+                    )
                   )
                 )
-              ),
-              _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                  'span',
-                  { className: 'text-muted' },
-                  'Killybegs, 01-12-16'
-                )
               )
             ),
-            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '4' },
-              _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  _react2.default.createElement(
-                    'strong',
-                    null,
-                    'Prediction Chart 4'
-                  )
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                  'span',
-                  { className: 'text-muted' },
-                  'Galway Bay, 22-01-17'
-                )
-              )
-            )
-          ),
-          _react2.default.createElement(
-            _reactBootstrap.NavDropdown,
-            { title: _react2.default.createElement('i', { className: 'fa fa-user fa-fw' }), id: 'navDropdown4' },
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '1' },
-              _react2.default.createElement(
-                'span',
-                null,
-                ' ',
-                _react2.default.createElement('i', { className: 'fa fa-user fa-fw' }),
-                ' User Profile '
-              )
-            ),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '2' },
-              _react2.default.createElement(
-                'span',
-                null,
-                _react2.default.createElement('i', { className: 'fa fa-gear fa-fw' }),
-                ' Settings '
-              )
-            ),
-            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { eventKey: '4' },
-              _react2.default.createElement(
-                'span',
-                null,
-                ' ',
-                _react2.default.createElement('i', { className: 'fa fa-sign-out fa-fw' }),
-                ' Logout '
-              )
-            )
+            _react2.default.createElement(_Sidebar2.default, null)
           )
-        ),
-        _react2.default.createElement(_Sidebar2.default, null)
-      )
-    );
-  }
+        );
+      }
+    }]);
+    return Header;
+  }(_react.Component);
   
   exports.default = Header;
 
@@ -20713,6 +20811,26 @@ module.exports =
     value: true
   });
   
+  var _getPrototypeOf = __webpack_require__(40);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(41);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(42);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(43);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(44);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
   var _react = __webpack_require__(12);
   
   var _react2 = _interopRequireDefault(_react);
@@ -20725,112 +20843,163 @@ module.exports =
   
   var _Panel2 = _interopRequireDefault(_Panel);
   
-  var _reactBootstrap = __webpack_require__(49);
-  
   var _withStyles = __webpack_require__(19);
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Login = __webpack_require__(163);
+  var _Login = __webpack_require__(164);
   
   var _Login2 = _interopRequireDefault(_Login);
   
-  var _history = __webpack_require__(53);
+  var _firebase = __webpack_require__(166);
   
-  var _history2 = _interopRequireDefault(_history);
+  var _loginBackground = __webpack_require__(181);
+  
+  var _loginBackground2 = _interopRequireDefault(_loginBackground);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
+  //import browserHistory from 'react-router';
   // import { Panel, Input, Button } from 'react-bootstrap';
-  var title = 'Log In'; /**
-                         * React Starter Kit (https://www.reactstarterkit.com/)
-                         *
-                         * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-                         *
-                         * This source code is licensed under the MIT license found in the
-                         * LICENSE.txt file in the root directory of this source tree.
-                         */
+  var sectionStyle = {
+    width: '100%',
+    height: '900px',
+    backgroundImage: 'url(' + _loginBackground2.default + ')'
+  };
+  // import history from '../../core/history';
   
-  function submitHandler(e) {
-    e.preventDefault();
-    _history2.default.push('/');
-  }
+  var title = 'Login';
   
-  function Login(props, context) {
-    context.setTitle(title);
-    return _react2.default.createElement(
-      'div',
-      { className: 'col-md-4 col-md-offset-4' },
-      _react2.default.createElement(
-        'div',
-        { className: 'text-center' },
-        _react2.default.createElement(
-          'h1',
-          { className: 'login-brand-text' },
-          'SB Admin React'
-        ),
-        _react2.default.createElement(
-          'h3',
-          { className: 'text-muted' },
-          'Created by ',
+  _firebase.firebaseApp.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      console.log('user has logged in/ registered', user);
+      // browserHistory.push('../../routes/dashboardPages/upload');
+    } else {
+      console.log('user has logged out/ is not registered');
+      // browserHistory.replace('../login/index.js');
+    }
+  });
+  
+  var Login = function (_Component) {
+    (0, _inherits3.default)(Login, _Component);
+  
+    function Login(props, context) {
+      (0, _classCallCheck3.default)(this, Login);
+  
+      var _this = (0, _possibleConstructorReturn3.default)(this, (Login.__proto__ || (0, _getPrototypeOf2.default)(Login)).call(this, props));
+  
+      _this.state = {
+        email: '',
+        password: '',
+        error: {
+          message: ''
+        }
+      };
+      context.setTitle(title);
+      return _this;
+    }
+  
+    (0, _createClass3.default)(Login, [{
+      key: 'submitHandler',
+      value: function submitHandler() {
+        var _this2 = this;
+  
+        // e.preventDefault();
+        // history.push('/');
+        console.log('this.state', this.state);
+        var _state = this.state,
+            email = _state.email,
+            password = _state.password;
+  
+        _firebase.firebaseApp.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+          console.log('error', error);
+          _this2.setState({ error: error });
+        });
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        var _this3 = this;
+  
+        return _react2.default.createElement(
+          'section',
+          { style: sectionStyle },
           _react2.default.createElement(
-            'a',
-            { href: 'http://startreact.com' },
-            'StartReact.com'
-          ),
-          ' team'
-        )
-      ),
-      _react2.default.createElement(
-        _Panel2.default,
-        { header: _react2.default.createElement(
-            'h3',
-            null,
-            'Please Sign In'
-          ), className: 'login-panel' },
-        _react2.default.createElement(
-          'form',
-          { role: 'form', onSubmit: function onSubmit(e) {
-              submitHandler(e);
-            } },
-          _react2.default.createElement(
-            'fieldset',
-            null,
+            'div',
+            { className: 'col-md-4 col-md-offset-4' },
             _react2.default.createElement(
               'div',
-              { className: 'form-group' },
-              _react2.default.createElement(_reactBootstrap.FormControl, {
-                type: 'text',
-                className: 'form-control',
-                placeholder: 'Username',
-                name: 'name'
-              })
+              { className: 'text-center' },
+              _react2.default.createElement(
+                'h1',
+                { className: 'login-brand-text' },
+                'Tidal Wave Prediction Online Tool'
+              )
             ),
             _react2.default.createElement(
-              'div',
-              { className: 'form-group' },
-              _react2.default.createElement(_reactBootstrap.FormControl, {
-                className: 'form-control',
-                placeholder: 'Password',
-                type: 'password',
-                name: 'password'
-              })
-            ),
-            _react2.default.createElement(
-              _reactBootstrap.Checkbox,
-              { label: 'Remember Me' },
-              ' Remember Me '
-            ),
-            _react2.default.createElement(
-              _Button2.default,
-              { type: 'submit', bsSize: 'large', bsStyle: 'success', block: true },
-              'Login'
+              _Panel2.default,
+              { header: _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Please Login'
+                ), className: 'registration-panel' },
+              _react2.default.createElement(
+                'form',
+                { role: 'form' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'form-group' },
+                  _react2.default.createElement('input', {
+                    className: 'form-control',
+                    placeholder: 'email',
+                    name: 'email',
+                    onChange: function onChange(event) {
+                      return _this3.setState({ email: event.target.value });
+                    }
+                  })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement('input', {
+                    className: 'form-control',
+                    placeholder: 'Password',
+                    type: 'password',
+                    name: 'password',
+                    onChange: function onChange(event) {
+                      return _this3.setState({ password: event.target.value });
+                    }
+                  })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    _Button2.default,
+                    {
+                      type: 'button',
+                      bsSize: 'large',
+                      bsStyle: 'success',
+                      onClick: function onClick() {
+                        return _this3.submitHandler();
+                      }
+                    },
+                    'Login'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                null,
+                this.state.error.message
+              )
             )
           )
-        )
-      )
-    );
-  }
+        );
+      }
+    }]);
+    return Login;
+  }(_react.Component);
   
   Login.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
   
@@ -20849,11 +21018,12 @@ module.exports =
   module.exports = require("react-bootstrap/lib/Panel");
 
 /***/ }),
-/* 163 */
+/* 163 */,
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(164);
+      var content = __webpack_require__(165);
       var insertCss = __webpack_require__(23);
   
       if (typeof content === 'string') {
@@ -20883,7 +21053,7 @@ module.exports =
     
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(22)();
@@ -20910,7 +21080,41 @@ module.exports =
   };
 
 /***/ }),
-/* 165 */
+/* 166 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.firebaseApp = exports.config = undefined;
+  
+  var _firebase = __webpack_require__(167);
+  
+  var firebase = _interopRequireWildcard(_firebase);
+  
+  function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+  
+  var config = exports.config = {
+    apiKey: 'AIzaSyBKGga_JrNyty7uN8B-df9eQekcMVYXln0',
+    authDomain: 'tidal-wave-prediction-app.firebaseapp.com',
+    databaseURL: 'https://tidal-wave-prediction-app.firebaseio.com',
+    projectId: 'tidal-wave-prediction-app',
+    storageBucket: 'tidal-wave-prediction-app.appspot.com',
+    messagingSenderId: '300292188726'
+  };
+  
+  var firebaseApp = exports.firebaseApp = firebase.initializeApp(config);
+
+/***/ }),
+/* 167 */
+/***/ (function(module, exports) {
+
+  module.exports = require("firebase");
+
+/***/ }),
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -20923,7 +21127,301 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _blank = __webpack_require__(166);
+  var _Register = __webpack_require__(169);
+  
+  var _Register2 = _interopRequireDefault(_Register);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  /**
+   * React Starter Kit (https://www.reactstarterkit.com/)
+   *
+   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE.txt file in the root directory of this source tree.
+   */
+  
+  exports.default = {
+  
+    path: '/',
+  
+    action: function action() {
+      return _react2.default.createElement(_Register2.default, null);
+    }
+  };
+  // import App from '../../components/App';
+
+/***/ }),
+/* 169 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _getPrototypeOf = __webpack_require__(40);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(41);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(42);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(43);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(44);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
+  var _react = __webpack_require__(12);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Button = __webpack_require__(161);
+  
+  var _Button2 = _interopRequireDefault(_Button);
+  
+  var _Panel = __webpack_require__(162);
+  
+  var _Panel2 = _interopRequireDefault(_Panel);
+  
+  var _withStyles = __webpack_require__(19);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Register = __webpack_require__(170);
+  
+  var _Register2 = _interopRequireDefault(_Register);
+  
+  var _firebase = __webpack_require__(166);
+  
+  var _loginBackground = __webpack_require__(181);
+  
+  var _loginBackground2 = _interopRequireDefault(_loginBackground);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  // import { Panel, Input, Button } from 'react-bootstrap';
+  var sectionStyle = {
+    width: '100%',
+    height: '900px',
+    backgroundImage: 'url(' + _loginBackground2.default + ')'
+  };
+  // import history from '../../core/history';
+  
+  
+  var title = 'Register';
+  
+  var Register = function (_Component) {
+    (0, _inherits3.default)(Register, _Component);
+  
+    function Register(props, context) {
+      (0, _classCallCheck3.default)(this, Register);
+  
+      var _this = (0, _possibleConstructorReturn3.default)(this, (Register.__proto__ || (0, _getPrototypeOf2.default)(Register)).call(this, props));
+  
+      _this.state = {
+        email: '',
+        password: '',
+        error: {
+          message: ''
+        }
+      };
+      context.setTitle(title);
+      return _this;
+    }
+  
+    (0, _createClass3.default)(Register, [{
+      key: 'submitHandler',
+      value: function submitHandler() {
+        var _this2 = this;
+  
+        // e.preventDefault();
+        // history.push('/');
+        console.log('this.state', this.state);
+        var _state = this.state,
+            email = _state.email,
+            password = _state.password;
+  
+        _firebase.firebaseApp.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+          console.log('error', error);
+          _this2.setState({ error: error });
+        });
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        var _this3 = this;
+  
+        return _react2.default.createElement(
+          'section',
+          { style: sectionStyle },
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-4 col-md-offset-4' },
+            _react2.default.createElement(
+              'div',
+              { className: 'text-center' },
+              _react2.default.createElement(
+                'h1',
+                { className: 'login-brand-text' },
+                'Tidal Wave Prediction Online Tool'
+              )
+            ),
+            _react2.default.createElement(
+              _Panel2.default,
+              { header: _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Please Register'
+                ), className: 'registration-panel' },
+              _react2.default.createElement(
+                'form',
+                { role: 'form' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'form-group' },
+                  _react2.default.createElement('input', {
+                    className: 'form-control',
+                    placeholder: 'email',
+                    name: 'email',
+                    onChange: function onChange(event) {
+                      return _this3.setState({ email: event.target.value });
+                    }
+                  })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement('input', {
+                    className: 'form-control',
+                    placeholder: 'Password',
+                    type: 'password',
+                    name: 'password',
+                    onChange: function onChange(event) {
+                      return _this3.setState({ password: event.target.value });
+                    }
+                  })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    _Button2.default,
+                    {
+                      type: 'button',
+                      bsSize: 'large',
+                      bsStyle: 'success',
+                      onClick: function onClick() {
+                        return _this3.submitHandler();
+                      }
+                    },
+                    'Register'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                null,
+                this.state.error.message
+              )
+            )
+          )
+        );
+      }
+    }]);
+    return Register;
+  }(_react.Component);
+  
+  Register.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Register2.default)(Register);
+
+/***/ }),
+/* 170 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(171);
+      var insertCss = __webpack_require__(23);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Register.css", function() {
+          content = require("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Register.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ }),
+/* 171 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(22)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.Register_root_3RB {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.Register_container_1Lf {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.Register_lead_2sJ {\n  font-size: 1.25em;\n}\n.Register_formGroup_1Ge {\n  margin-bottom: 15px;\n}\n.Register_label_sr8 {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.Register_input_3So {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.Register_input_3So:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Register_button_3Si {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.Register_button_3Si:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.Register_button_3Si:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Register_facebook_3Fl {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.Register_facebook_3Fl:hover {\n  background: #2d4373;\n}\n.Register_google_3QP {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.Register_google_3QP:hover {\n  background: #c23321;\n}\n.Register_twitter_uxx {\n  border-color: #55acee;\n  background: #55acee;\n}\n.Register_twitter_uxx:hover {\n  background: #2795e9;\n}\n.Register_icon_3KC {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.Register_lineThrough_2IJ {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.Register_lineThrough_2IJ::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.Register_lineThrough_2IJ::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/register/Register.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACPH;;;;;;;GAOG;AAEH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Register.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 15px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Register_root_3RB",
+  	"container": "Register_container_1Lf",
+  	"lead": "Register_lead_2sJ",
+  	"formGroup": "Register_formGroup_1Ge",
+  	"label": "Register_label_sr8",
+  	"input": "Register_input_3So",
+  	"button": "Register_button_3Si",
+  	"facebook": "Register_facebook_3Fl Register_button_3Si",
+  	"google": "Register_google_3QP Register_button_3Si",
+  	"twitter": "Register_twitter_uxx Register_button_3Si",
+  	"icon": "Register_icon_3KC",
+  	"lineThrough": "Register_lineThrough_2IJ"
+  };
+
+/***/ }),
+/* 172 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(12);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _blank = __webpack_require__(173);
   
   var _blank2 = _interopRequireDefault(_blank);
   
@@ -20938,7 +21436,7 @@ module.exports =
   };
 
 /***/ }),
-/* 166 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -20982,7 +21480,7 @@ module.exports =
   exports.default = displayBlank;
 
 /***/ }),
-/* 167 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -20995,7 +21493,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _upload = __webpack_require__(168);
+  var _upload = __webpack_require__(175);
   
   var _upload2 = _interopRequireDefault(_upload);
   
@@ -21010,7 +21508,7 @@ module.exports =
   };
 
 /***/ }),
-/* 168 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -21073,7 +21571,7 @@ module.exports =
   exports.default = displayUpload;
 
 /***/ }),
-/* 169 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -21086,11 +21584,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _prediction = __webpack_require__(170);
+  var _prediction = __webpack_require__(177);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _Chart = __webpack_require__(171);
+  var _Chart = __webpack_require__(178);
   
   var _Chart2 = _interopRequireDefault(_Chart);
   
@@ -21110,7 +21608,7 @@ module.exports =
   };
 
 /***/ }),
-/* 170 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -21154,7 +21652,7 @@ module.exports =
   exports.default = displayPrediction;
 
 /***/ }),
-/* 171 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -21239,7 +21737,7 @@ module.exports =
   exports.default = Chart;
 
 /***/ }),
-/* 172 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -21288,10 +21786,16 @@ module.exports =
       */
 
 /***/ }),
-/* 173 */
+/* 180 */
 /***/ (function(module, exports) {
 
   module.exports = require("./assets");
+
+/***/ }),
+/* 181 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  module.exports = __webpack_require__.p + "routes/login/loginBackground.jpg?33084a126c418a141191803e8f6063e9";
 
 /***/ })
 /******/ ]);

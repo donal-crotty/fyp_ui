@@ -13,6 +13,7 @@ import App from '../components/App';
 // Child routes
 import home from './home';
 import login from './login';
+import register from './register';
 import blank from './dashboardPages/blank';
 import upload from './dashboardPages/upload';
 import prediction from './dashboardPages/prediction';
@@ -35,7 +36,19 @@ export default [
       );
     },
   },
-
+  {
+    path: '/register',
+    children: [
+      register,
+    ],
+    async action({ next, render, context }) {
+      const component = await next();
+      if (component === undefined) return component;
+      return render(
+        <App context={context}>{component}</App>
+      );
+    },
+  },
 
   {
     path: '/',
