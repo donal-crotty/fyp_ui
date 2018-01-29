@@ -14,9 +14,12 @@ import App from '../components/App';
 import home from './home';
 import login from './login';
 import register from './register';
-import blank from './dashboardPages/blank';
+// import blank from './dashboardPages/blank';
 import upload from './dashboardPages/upload';
 import prediction from './dashboardPages/prediction';
+import contact from './dashboardPages/contact';
+import about from './dashboardPages/about';
+import chartHistory from './dashboardPages/chartHistory';
 import error from './error';
 
 import Header from '../components/Header';
@@ -56,10 +59,11 @@ export default [
   // keep in mind, routes are evaluated in order
     children: [
       home,
-      blank,
       upload,
       prediction,
-
+      contact,
+      about,
+      chartHistory,
       // place new routes before...
       error,
     ],

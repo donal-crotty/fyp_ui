@@ -3,32 +3,10 @@ import React, { PropTypes, Component } from 'react';
 // import { Panel, Input, Button } from 'react-bootstrap';
 import Button from 'react-bootstrap/lib/Button';
 import Panel from 'react-bootstrap/lib/Panel';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Login.css';
-import { firebaseApp } from '../../components/firebase';
-// import history from '../../core/history';
 
-import Background from '../login/loginBackground.jpg';
+const title = 'Contact';
 
-const sectionStyle = {
-  width: '100%',
-  height: '900px',
-  backgroundImage: `url(${Background})`,
-};
-
-const title = 'Login';
-
-firebaseApp.auth().onAuthStateChanged(user => {
-  if (user) {
-    console.log('user has logged in/ registered', user);
-    // browserHistory.push('../../routes/dashboardPages/upload');
-  } else {
-    console.log('user has logged out/ is not registered');
-    // browserHistory.replace('../login/index.js');
-  }
-});
-
-class Login extends Component {
+class Contact extends Component {
   constructor(props, context) {
     super(props);
     this.state = {
@@ -40,23 +18,12 @@ class Login extends Component {
     };
     context.setTitle(title);
   }
-  submitHandler() {
-    // e.preventDefault();
-    // history.push('/');
-    console.log('this.state', this.state);
-    const { email, password } = this.state;
-    firebaseApp.auth().signInWithEmailAndPassword(email, password)
-    .catch(error => {
-      console.log('error', error);
-      this.setState({ error });
-    });
-  }
   render() {
     return (
-      <section style={sectionStyle}>
+      <section >
         <div className="col-md-4 col-md-offset-4" >
           <div className="text-center">
-            <h1 className="login-brand-text">Tidal Wave Prediction Online Tool</h1>
+            <h1 className="login-brand-text">Contact Us</h1>
           </div>
           <Panel header={<h3>Please Login</h3>} className="registration-panel">
             <form role="form">
@@ -95,6 +62,6 @@ class Login extends Component {
   }
  }
 
-Login.contextTypes = { setTitle: PropTypes.func.isRequired };
+Contact.contextTypes = { setTitle: PropTypes.func.isRequired };
 
-export default withStyles(s)(Login);
+export default Contact;

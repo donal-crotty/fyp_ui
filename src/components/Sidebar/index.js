@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import classNames from 'classnames';
 import history from '../../core/history';
 
 class Sidebar extends Component {
@@ -43,6 +42,16 @@ class Sidebar extends Component {
             <li>
               <a href="" onClick={(e) => { e.preventDefault(); history.push('/prediction'); }} >
                 <i className="fa fa-bar-chart fa-fw" /> &nbsp;Prediction Charting
+              </a>
+            </li>
+            <li>
+              <a href="" onClick={(e) => { e.preventDefault(); history.push('/contact'); }} >
+                <i className="fa fa-address-card-o fa-fw" /> &nbsp;Contact
+              </a>
+            </li>
+            <li>
+              <a href="" onClick={(e) => { e.preventDefault(); history.push('/about'); }} >
+                <i className="fa fa-info fa-fw" /> &nbsp;About
               </a>
             </li>
           </ul>
