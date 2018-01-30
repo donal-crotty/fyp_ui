@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/lib/Button';
 import Panel from 'react-bootstrap/lib/Panel';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Login.css';
-import { firebaseApp } from '../../components/firebase';
 // import history from '../../core/history';
 
 import Background from '../login/loginBackground.jpg';
@@ -17,16 +16,6 @@ const sectionStyle = {
 };
 
 const title = 'Login';
-
-firebaseApp.auth().onAuthStateChanged(user => {
-  if (user) {
-    console.log('user has logged in/ registered', user);
-    // browserHistory.push('../../routes/dashboardPages/upload');
-  } else {
-    console.log('user has logged out/ is not registered');
-    // browserHistory.replace('../login/index.js');
-  }
-});
 
 class Login extends Component {
   constructor(props, context) {
@@ -45,11 +34,8 @@ class Login extends Component {
     // history.push('/');
     console.log('this.state', this.state);
     const { email, password } = this.state;
-    firebaseApp.auth().signInWithEmailAndPassword(email, password)
-    .catch(error => {
-      console.log('error', error);
-      this.setState({ error });
-    });
+    console.log('Email:', email);
+    console.log('Password:', password);
   }
   render() {
     return (

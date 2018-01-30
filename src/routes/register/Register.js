@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/lib/Button';
 import Panel from 'react-bootstrap/lib/Panel';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Register.css';
-import { firebaseApp } from '../../components/firebase';
 // import history from '../../core/history';
 import Background from '../login/loginBackground.jpg';
 
@@ -28,18 +27,13 @@ class Register extends Component {
       },
     };
     context.setTitle(title);
-  }
-
-  submitHandler() {
+  }submitHandler() {
     // e.preventDefault();
     // history.push('/');
     console.log('this.state', this.state);
     const { email, password } = this.state;
-    firebaseApp.auth().createUserWithEmailAndPassword(email, password)
-    .catch(error => {
-      console.log('error', error);
-      this.setState({ error });
-    });
+    console.log('Email:', email);
+    console.log('Password:', password);
   }
   render() {
     return (
