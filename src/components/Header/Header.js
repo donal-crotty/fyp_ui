@@ -16,7 +16,6 @@ import {
 import Navbar, { Brand } from 'react-bootstrap/lib/Navbar';
 import $ from 'jquery';
 import Sidebar from '../Sidebar';
-import { fireBaseApp } from '../firebase';
 
 const logo = require('./logo.png');
 
@@ -29,9 +28,6 @@ function toggleMenu() {
 }
 
 class Header extends Component {
-  logOut() {
-    fireBaseApp.auth().signOut();
-  }
   render() {
     return (
       <div id="wrapper" className="content">
