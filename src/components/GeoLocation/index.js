@@ -1,5 +1,6 @@
 import React from 'react';
 import Geolocation from 'react-geolocation';
+import { Breadcrumb } from 'react-bootstrap';
 
 function geoLocation() {
   return (
@@ -11,22 +12,24 @@ function geoLocation() {
         error,
         getCurrentPosition,
       }) =>
-        <div>
-          <button className="btn btn-primary" onClick={getCurrentPosition}>Get Position</button>
+        <div onLoad={getCurrentPosition}>
           {error &&
             <div>
               {error.message}
             </div>}
-          <p>
+          <Breadcrumb>
             <b>latitude:</b> {latitude}
-          </p>
+          </Breadcrumb>
           <hr />
-          <p>
+          <Breadcrumb>
             <b>longitude:</b> {longitude}
-          </p>
+          </Breadcrumb>
         </div>}
     />
   );
 }
 
 export default geoLocation;
+
+
+// AIzaSyBxTFxWYofVC1OjCwxDlTUjTtdYh-EGzd0

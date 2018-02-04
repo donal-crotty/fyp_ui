@@ -15,6 +15,7 @@ function Html({ title, description, style, script, children }) {
         <link rel="stylesheet" href="/css/bootstrap-social.css" />
         <link rel="stylesheet" href="/css/font-awesome.min.css" />
         <link rel="stylesheet" href="/css/sb-admin.css" />
+        <script src="http://code.highcharts.com/modules/exporting.js" />
         <style id="css" dangerouslySetInnerHTML={{ __html: style }} />
       </head>
       <body>
