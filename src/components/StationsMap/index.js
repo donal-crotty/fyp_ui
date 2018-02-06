@@ -6,13 +6,13 @@ export class MapContainer extends Component {
     return (
       <Map
         google={this.props.google}
-        style={{ width: '100%', height: '100%', position: 'relative' }}
+        style={{ width: '92%', height: '300px', position: 'relative' }}
         className={'map'}
         initialCenter={{
-          lat: 53.989718599999996,
-          lng: -7.3633319,
+          lat: 53.4157082,
+          lng: -7.9064346,
         }}
-        zoom={6}
+        zoom={5}
       >
         <Marker
           title={'Achill_Island'}

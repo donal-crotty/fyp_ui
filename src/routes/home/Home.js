@@ -35,7 +35,7 @@ class Home extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-8">
+          <div className="col-lg-8 col-md-6">
             <Panel
               header={<span>
                 <i className="fa fa-location-arrow fa-fw" /> Your Current Location is:
@@ -50,9 +50,18 @@ class Home extends Component {
                 <i className="fa fa-location-arrow fa-fw" /> Your nearest Stations are:
                 </span>}
             >
-              <div>
-                <StationsMap />
-              </div>
+              <StationsMap />
+              (/* TEMPORARY WORK AROUND */)
+              <p>Gyfyegfygfy</p>
+              <p>Gyfyegfygfy</p>
+              <p>Gyfyegfygfy</p>
+              <p>Gyfyegfygfy</p>
+              <p>Gyfyegfygfy</p>
+              <p>Gyfyegfygfy</p>
+              <p>Gyfyegfygfy</p>
+              <p>Gyfyegfygfy</p>
+              <p>Gyfyegfygfy</p>
+              <p>Gyfyegfygfy</p>
             </Panel>
           </div>
           <div className="col-lg-4">

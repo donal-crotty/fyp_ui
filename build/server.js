@@ -124,7 +124,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(97);
+  var _assets = __webpack_require__(99);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -1444,35 +1444,35 @@ module.exports =
   
   var _home2 = _interopRequireDefault(_home);
   
-  var _login = __webpack_require__(65);
+  var _login = __webpack_require__(67);
   
   var _login2 = _interopRequireDefault(_login);
   
-  var _register = __webpack_require__(72);
+  var _register = __webpack_require__(74);
   
   var _register2 = _interopRequireDefault(_register);
   
-  var _upload = __webpack_require__(76);
+  var _upload = __webpack_require__(78);
   
   var _upload2 = _interopRequireDefault(_upload);
   
-  var _prediction = __webpack_require__(78);
+  var _prediction = __webpack_require__(80);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _contact = __webpack_require__(90);
+  var _contact = __webpack_require__(92);
   
   var _contact2 = _interopRequireDefault(_contact);
   
-  var _about = __webpack_require__(92);
+  var _about = __webpack_require__(94);
   
   var _about2 = _interopRequireDefault(_about);
   
-  var _chartHistory = __webpack_require__(94);
+  var _chartHistory = __webpack_require__(96);
   
   var _chartHistory2 = _interopRequireDefault(_chartHistory);
   
-  var _error = __webpack_require__(96);
+  var _error = __webpack_require__(98);
   
   var _error2 = _interopRequireDefault(_error);
   
@@ -2533,7 +2533,7 @@ module.exports =
   
   var _history2 = _interopRequireDefault(_history);
   
-  var _StationsMap = __webpack_require__(98);
+  var _StationsMap = __webpack_require__(65);
   
   var _StationsMap2 = _interopRequireDefault(_StationsMap);
   
@@ -2583,7 +2583,7 @@ module.exports =
             { className: 'row' },
             _react2.default.createElement(
               'div',
-              { className: 'col-lg-8' },
+              { className: 'col-lg-8 col-md-6' },
               _react2.default.createElement(
                 _reactBootstrap.Panel,
                 {
@@ -2610,10 +2610,57 @@ module.exports =
                     ' Your nearest Stations are:'
                   )
                 },
+                _react2.default.createElement(_StationsMap2.default, null),
+                '(/* TEMPORARY WORK AROUND */)',
                 _react2.default.createElement(
-                  'div',
+                  'p',
                   null,
-                  _react2.default.createElement(_StationsMap2.default, null)
+                  'Gyfyegfygfy'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Gyfyegfygfy'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Gyfyegfygfy'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Gyfyegfygfy'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Gyfyegfygfy'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Gyfyegfygfy'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Gyfyegfygfy'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Gyfyegfygfy'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Gyfyegfygfy'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Gyfyegfygfy'
                 )
               )
             ),
@@ -2983,12 +3030,115 @@ module.exports =
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  exports.MapContainer = undefined;
+  
+  var _getPrototypeOf = __webpack_require__(40);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(41);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(42);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(43);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(44);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
   
   var _react = __webpack_require__(12);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Login = __webpack_require__(66);
+  var _googleMapsReact = __webpack_require__(66);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var MapContainer = exports.MapContainer = function (_Component) {
+    (0, _inherits3.default)(MapContainer, _Component);
+  
+    function MapContainer() {
+      (0, _classCallCheck3.default)(this, MapContainer);
+      return (0, _possibleConstructorReturn3.default)(this, (MapContainer.__proto__ || (0, _getPrototypeOf2.default)(MapContainer)).apply(this, arguments));
+    }
+  
+    (0, _createClass3.default)(MapContainer, [{
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(
+          _googleMapsReact.Map,
+          {
+            google: this.props.google,
+            style: { width: '92%', height: '300px', position: 'relative' },
+            className: 'map',
+            initialCenter: {
+              lat: 53.4157082,
+              lng: -7.9064346
+            },
+            zoom: 5
+          },
+          _react2.default.createElement(_googleMapsReact.Marker, {
+            title: 'Achill_Island',
+            name: 'Achill_Island',
+            position: { lng: -10.101596, lat: 53.95219 }
+          }),
+          _react2.default.createElement(_googleMapsReact.Marker, {
+            title: 'Aranmore',
+            name: 'Aranmore',
+            position: { lng: -8.49562, lat: 54.9896 }
+          }),
+          _react2.default.createElement(_googleMapsReact.Marker, {
+            title: 'Arklow',
+            name: 'Arklow',
+            position: { lng: -6.1166053, lat: 52.779964 }
+          }),
+          _react2.default.createElement(_googleMapsReact.Marker, {
+            title: 'Ballycotton',
+            name: 'Ballycotton',
+            position: { lng: -8.0007, lat: 51.82776 }
+          }),
+          _react2.default.createElement(_googleMapsReact.Marker, {
+            title: 'Ballyglass',
+            name: 'Ballyglass',
+            position: { lng: -9.89, lat: 54.253 }
+          })
+        );
+      }
+    }]);
+    return MapContainer;
+  }(_react.Component);
+  
+  exports.default = (0, _googleMapsReact.GoogleApiWrapper)({
+    apiKey: 'AIzaSyBxTFxWYofVC1OjCwxDlTUjTtdYh-EGzd0'
+  })(MapContainer);
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports) {
+
+  module.exports = require("google-maps-react");
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(12);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Login = __webpack_require__(68);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -3014,7 +3164,7 @@ module.exports =
   // import App from '../../components/App';
 
 /***/ }),
-/* 66 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3047,11 +3197,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Button = __webpack_require__(67);
+  var _Button = __webpack_require__(69);
   
   var _Button2 = _interopRequireDefault(_Button);
   
-  var _Panel = __webpack_require__(68);
+  var _Panel = __webpack_require__(70);
   
   var _Panel2 = _interopRequireDefault(_Panel);
   
@@ -3059,11 +3209,11 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Login = __webpack_require__(69);
+  var _Login = __webpack_require__(71);
   
   var _Login2 = _interopRequireDefault(_Login);
   
-  var _loginBackground = __webpack_require__(71);
+  var _loginBackground = __webpack_require__(73);
   
   var _loginBackground2 = _interopRequireDefault(_loginBackground);
   
@@ -3204,23 +3354,23 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Login2.default)(Login);
 
 /***/ }),
-/* 67 */
+/* 69 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-bootstrap/lib/Button");
 
 /***/ }),
-/* 68 */
+/* 70 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-bootstrap/lib/Panel");
 
 /***/ }),
-/* 69 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(70);
+      var content = __webpack_require__(72);
       var insertCss = __webpack_require__(23);
   
       if (typeof content === 'string') {
@@ -3250,7 +3400,7 @@ module.exports =
     
 
 /***/ }),
-/* 70 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(22)();
@@ -3277,13 +3427,13 @@ module.exports =
   };
 
 /***/ }),
-/* 71 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "routes/login/loginBackground.jpg?33084a126c418a141191803e8f6063e9";
 
 /***/ }),
-/* 72 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3296,7 +3446,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Register = __webpack_require__(73);
+  var _Register = __webpack_require__(75);
   
   var _Register2 = _interopRequireDefault(_Register);
   
@@ -3322,7 +3472,7 @@ module.exports =
   // import App from '../../components/App';
 
 /***/ }),
-/* 73 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3355,11 +3505,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Button = __webpack_require__(67);
+  var _Button = __webpack_require__(69);
   
   var _Button2 = _interopRequireDefault(_Button);
   
-  var _Panel = __webpack_require__(68);
+  var _Panel = __webpack_require__(70);
   
   var _Panel2 = _interopRequireDefault(_Panel);
   
@@ -3367,11 +3517,11 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Register = __webpack_require__(74);
+  var _Register = __webpack_require__(76);
   
   var _Register2 = _interopRequireDefault(_Register);
   
-  var _loginBackground = __webpack_require__(71);
+  var _loginBackground = __webpack_require__(73);
   
   var _loginBackground2 = _interopRequireDefault(_loginBackground);
   
@@ -3511,11 +3661,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Register2.default)(Register);
 
 /***/ }),
-/* 74 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(75);
+      var content = __webpack_require__(77);
       var insertCss = __webpack_require__(23);
   
       if (typeof content === 'string') {
@@ -3545,7 +3695,7 @@ module.exports =
     
 
 /***/ }),
-/* 75 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(22)();
@@ -3572,7 +3722,7 @@ module.exports =
   };
 
 /***/ }),
-/* 76 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3585,7 +3735,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _upload = __webpack_require__(77);
+  var _upload = __webpack_require__(79);
   
   var _upload2 = _interopRequireDefault(_upload);
   
@@ -3600,7 +3750,7 @@ module.exports =
   };
 
 /***/ }),
-/* 77 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3663,7 +3813,7 @@ module.exports =
   exports.default = displayUpload;
 
 /***/ }),
-/* 78 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3676,11 +3826,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _prediction = __webpack_require__(79);
+  var _prediction = __webpack_require__(81);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _Chart = __webpack_require__(80);
+  var _Chart = __webpack_require__(82);
   
   var _Chart2 = _interopRequireDefault(_Chart);
   
@@ -3700,7 +3850,7 @@ module.exports =
   };
 
 /***/ }),
-/* 79 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3744,7 +3894,7 @@ module.exports =
   exports.default = displayPrediction;
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3779,11 +3929,11 @@ module.exports =
   
   var _reactBootstrap = __webpack_require__(49);
   
-  var _column = __webpack_require__(81);
+  var _column = __webpack_require__(83);
   
   var _column2 = _interopRequireDefault(_column);
   
-  var _DatePicker = __webpack_require__(83);
+  var _DatePicker = __webpack_require__(85);
   
   var _DatePicker2 = _interopRequireDefault(_DatePicker);
   
@@ -3834,7 +3984,7 @@ module.exports =
   exports.default = chartView;
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3867,7 +4017,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactHighcharts = __webpack_require__(82);
+  var _reactHighcharts = __webpack_require__(84);
   
   var _reactHighcharts2 = _interopRequireDefault(_reactHighcharts);
   
@@ -3997,13 +4147,13 @@ module.exports =
   exports.default = columnView;
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-highcharts");
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4036,17 +4186,17 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactDatepicker = __webpack_require__(84);
+  var _reactDatepicker = __webpack_require__(86);
   
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
   
-  var _moment = __webpack_require__(85);
+  var _moment = __webpack_require__(87);
   
   var _moment2 = _interopRequireDefault(_moment);
   
-  __webpack_require__(86);
-  
   __webpack_require__(88);
+  
+  __webpack_require__(90);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -4090,23 +4240,23 @@ module.exports =
   exports.default = DatePickerComponent;
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-datepicker");
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports) {
 
   module.exports = require("moment");
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(87);
+      var content = __webpack_require__(89);
       var insertCss = __webpack_require__(23);
   
       if (typeof content === 'string') {
@@ -4136,7 +4286,7 @@ module.exports =
     
 
 /***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(22)();
@@ -4152,11 +4302,11 @@ module.exports =
   };
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(89);
+      var content = __webpack_require__(91);
       var insertCss = __webpack_require__(23);
   
       if (typeof content === 'string') {
@@ -4186,7 +4336,7 @@ module.exports =
     
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(22)();
@@ -4274,7 +4424,7 @@ module.exports =
   };
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4287,7 +4437,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _contact = __webpack_require__(91);
+  var _contact = __webpack_require__(93);
   
   var _contact2 = _interopRequireDefault(_contact);
   
@@ -4302,7 +4452,7 @@ module.exports =
   };
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4469,7 +4619,7 @@ module.exports =
   exports.default = Contact;
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4482,7 +4632,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _about = __webpack_require__(93);
+  var _about = __webpack_require__(95);
   
   var _about2 = _interopRequireDefault(_about);
   
@@ -4497,7 +4647,7 @@ module.exports =
   };
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4570,7 +4720,7 @@ module.exports =
   exports.default = displayBlank;
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4583,7 +4733,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _chartHistory = __webpack_require__(95);
+  var _chartHistory = __webpack_require__(97);
   
   var _chartHistory2 = _interopRequireDefault(_chartHistory);
   
@@ -4598,7 +4748,7 @@ module.exports =
   };
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4908,7 +5058,7 @@ module.exports =
   exports.default = displayChartHistory;
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4957,113 +5107,10 @@ module.exports =
       */
 
 /***/ }),
-/* 97 */
-/***/ (function(module, exports) {
-
-  module.exports = require("./assets");
-
-/***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MapContainer = undefined;
-  
-  var _getPrototypeOf = __webpack_require__(40);
-  
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-  
-  var _classCallCheck2 = __webpack_require__(41);
-  
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-  
-  var _createClass2 = __webpack_require__(42);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(43);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(44);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _googleMapsReact = __webpack_require__(99);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var MapContainer = exports.MapContainer = function (_Component) {
-    (0, _inherits3.default)(MapContainer, _Component);
-  
-    function MapContainer() {
-      (0, _classCallCheck3.default)(this, MapContainer);
-      return (0, _possibleConstructorReturn3.default)(this, (MapContainer.__proto__ || (0, _getPrototypeOf2.default)(MapContainer)).apply(this, arguments));
-    }
-  
-    (0, _createClass3.default)(MapContainer, [{
-      key: 'render',
-      value: function render() {
-        return _react2.default.createElement(
-          _googleMapsReact.Map,
-          {
-            google: this.props.google,
-            style: { width: '100%', height: '100%', position: 'relative' },
-            className: 'map',
-            initialCenter: {
-              lat: 53.989718599999996,
-              lng: -7.3633319
-            },
-            zoom: 6
-          },
-          _react2.default.createElement(_googleMapsReact.Marker, {
-            title: 'Achill_Island',
-            name: 'Achill_Island',
-            position: { lng: -10.101596, lat: 53.95219 }
-          }),
-          _react2.default.createElement(_googleMapsReact.Marker, {
-            title: 'Aranmore',
-            name: 'Aranmore',
-            position: { lng: -8.49562, lat: 54.9896 }
-          }),
-          _react2.default.createElement(_googleMapsReact.Marker, {
-            title: 'Arklow',
-            name: 'Arklow',
-            position: { lng: -6.1166053, lat: 52.779964 }
-          }),
-          _react2.default.createElement(_googleMapsReact.Marker, {
-            title: 'Ballycotton',
-            name: 'Ballycotton',
-            position: { lng: -8.0007, lat: 51.82776 }
-          }),
-          _react2.default.createElement(_googleMapsReact.Marker, {
-            title: 'Ballyglass',
-            name: 'Ballyglass',
-            position: { lng: -9.89, lat: 54.253 }
-          })
-        );
-      }
-    }]);
-    return MapContainer;
-  }(_react.Component);
-  
-  exports.default = (0, _googleMapsReact.GoogleApiWrapper)({
-    apiKey: 'AIzaSyBxTFxWYofVC1OjCwxDlTUjTtdYh-EGzd0'
-  })(MapContainer);
-
-/***/ }),
 /* 99 */
 /***/ (function(module, exports) {
 
-  module.exports = require("google-maps-react");
+  module.exports = require("./assets");
 
 /***/ })
 /******/ ]);
