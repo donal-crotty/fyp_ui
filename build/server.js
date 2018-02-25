@@ -2611,57 +2611,21 @@ module.exports =
                   )
                 },
                 _react2.default.createElement(_StationsMap2.default, null),
-                '(/* TEMPORARY WORK AROUND */)',
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  'Gyfyegfygfy'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  'Gyfyegfygfy'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  'Gyfyegfygfy'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  'Gyfyegfygfy'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  'Gyfyegfygfy'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  'Gyfyegfygfy'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  'Gyfyegfygfy'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  'Gyfyegfygfy'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  'Gyfyegfygfy'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  'Gyfyegfygfy'
-                )
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null)
               )
             ),
             _react2.default.createElement(
@@ -2736,7 +2700,7 @@ module.exports =
                         _react2.default.createElement(
                           'strong',
                           null,
-                          'Prediction Chart 3'
+                          'Prediction Chart 2'
                         )
                       )
                     ),
@@ -2818,7 +2782,7 @@ module.exports =
                         _react2.default.createElement(
                           'strong',
                           null,
-                          'Prediction Chart 3'
+                          'Prediction Chart 4'
                         )
                       )
                     ),
@@ -2896,6 +2860,26 @@ module.exports =
     value: true
   });
   
+  var _getPrototypeOf = __webpack_require__(40);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(41);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(42);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(43);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(44);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
   var _react = __webpack_require__(12);
   
   var _react2 = _interopRequireDefault(_react);
@@ -2908,53 +2892,70 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  function geoLocation() {
-    return _react2.default.createElement(_reactGeolocation2.default, {
-      onSuccess: console.log,
-      render: function render(_ref) {
-        var _ref$position = _ref.position;
-        _ref$position = _ref$position === undefined ? {} : _ref$position;
-        var _ref$position$coords = _ref$position.coords;
-        _ref$position$coords = _ref$position$coords === undefined ? {} : _ref$position$coords;
-        var latitude = _ref$position$coords.latitude,
-            longitude = _ref$position$coords.longitude,
-            error = _ref.error,
-            getCurrentPosition = _ref.getCurrentPosition;
-        return _react2.default.createElement(
-          'div',
-          { onLoad: getCurrentPosition },
-          error && _react2.default.createElement(
-            'div',
-            null,
-            error.message
-          ),
-          _react2.default.createElement(
-            _reactBootstrap.Breadcrumb,
-            null,
-            _react2.default.createElement(
-              'b',
-              null,
-              'latitude:'
-            ),
-            ' ',
-            latitude
-          ),
-          _react2.default.createElement('hr', null),
-          _react2.default.createElement(
-            _reactBootstrap.Breadcrumb,
-            null,
-            _react2.default.createElement(
-              'b',
-              null,
-              'longitude:'
-            ),
-            ' ',
-            longitude
-          )
-        );
+  var geoLocation = function (_Component) {
+    (0, _inherits3.default)(geoLocation, _Component);
+  
+    function geoLocation() {
+      (0, _classCallCheck3.default)(this, geoLocation);
+  
+      var _this = (0, _possibleConstructorReturn3.default)(this, (geoLocation.__proto__ || (0, _getPrototypeOf2.default)(geoLocation)).call(this));
+  
+      _this.state = {};
+      return _this;
+    }
+  
+    (0, _createClass3.default)(geoLocation, [{
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(_reactGeolocation2.default, {
+          onSuccess: console.log,
+          render: function render(_ref) {
+            var _ref$position = _ref.position;
+            _ref$position = _ref$position === undefined ? {} : _ref$position;
+            var _ref$position$coords = _ref$position.coords;
+            _ref$position$coords = _ref$position$coords === undefined ? {} : _ref$position$coords;
+            var latitude = _ref$position$coords.latitude,
+                longitude = _ref$position$coords.longitude,
+                error = _ref.error,
+                getCurrentPosition = _ref.getCurrentPosition;
+            return _react2.default.createElement(
+              'div',
+              { onLoad: getCurrentPosition },
+              error && _react2.default.createElement(
+                'div',
+                null,
+                error.message
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.Breadcrumb,
+                null,
+                _react2.default.createElement(
+                  'b',
+                  null,
+                  'latitude:'
+                ),
+                ' ',
+                latitude
+              ),
+              _react2.default.createElement('hr', null),
+              _react2.default.createElement(
+                _reactBootstrap.Breadcrumb,
+                null,
+                _react2.default.createElement(
+                  'b',
+                  null,
+                  'longitude:'
+                ),
+                ' ',
+                longitude
+              )
+            );
+          }
+        });
       }
-    });
-  }
+    }]);
+    return geoLocation;
+  }(_react.Component);
   
   exports.default = geoLocation;
   
@@ -3083,6 +3084,11 @@ module.exports =
             },
             zoom: 5
           },
+          _react2.default.createElement(_googleMapsReact.Marker, {
+            title: 'Achill_Island',
+            name: 'Achill_Island',
+            position: { lng: -10.101596, lat: 53.95219 }
+          }),
           _react2.default.createElement(_googleMapsReact.Marker, {
             title: 'Achill_Island',
             name: 'Achill_Island',
@@ -3993,6 +3999,10 @@ module.exports =
     value: true
   });
   
+  var _stringify = __webpack_require__(25);
+  
+  var _stringify2 = _interopRequireDefault(_stringify);
+  
   var _getPrototypeOf = __webpack_require__(40);
   
   var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -4031,7 +4041,9 @@ module.exports =
   
       var _this = (0, _possibleConstructorReturn3.default)(this, (columnView.__proto__ || (0, _getPrototypeOf2.default)(columnView)).call(this, props));
   
-      _this.state = {};
+      _this.state = {
+        chartInfo: []
+      };
       return _this;
     }
     //   componentWillReceiveProps(nextProps) {
@@ -4054,6 +4066,43 @@ module.exports =
   
   
     (0, _createClass3.default)(columnView, [{
+      key: 'componentDidMount',
+      value: function componentDidMount() {
+        var _this2 = this;
+  
+        fetch('http://localhost:5000/api/tidalprediction/1').then(function (results) {
+          return results.json();
+        }).then(function (data) {
+          var chartData = data.results.map(function (pred) {
+            return _react2.default.createElement(
+              'div',
+              { key: pred.results },
+              _react2.default.createElement(
+                'div',
+                null,
+                pred.StationLocation
+              )
+            );
+          });
+          _this2.setState({ chartInfo: chartData });
+          console.log('state', _this2.state.chartData);
+        });
+      }
+    }, {
+      key: 'send',
+      value: function send() {
+        fetch('http://localhost:5000/api/tidalprediction/1', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'text/plain'
+          }
+        }).then(function (response) {
+          return response.json();
+        }).then(function (result) {
+          console.log((0, _stringify2.default)(result));
+        });
+      }
+    }, {
       key: 'renderChart',
       value: function renderChart() {
         return {
@@ -4128,7 +4177,12 @@ module.exports =
     }, {
       key: 'render',
       value: function render() {
-        return _react2.default.createElement(_reactHighcharts2.default, { config: this.renderChart() });
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_reactHighcharts2.default, { config: this.renderChart() }),
+          _react2.default.createElement('div', { config: this.send() })
+        );
       }
     }]);
     return columnView;

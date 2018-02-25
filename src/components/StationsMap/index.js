@@ -20,6 +20,11 @@ export class MapContainer extends Component {
           position={{ lng: -10.101596, lat: 53.95219 }}
         />
         <Marker
+          title={'Achill_Island'}
+          name={'Achill_Island'}
+          position={{ lng: -10.101596, lat: 53.95219 }}
+        />
+        <Marker
           title={'Aranmore'}
           name={'Aranmore'}
           position={{ lng: -8.49562, lat: 54.9896 }}

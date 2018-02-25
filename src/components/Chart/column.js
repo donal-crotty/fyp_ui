@@ -5,7 +5,9 @@ import ReactHighcharts from 'react-highcharts';
 class columnView extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      chartInfo: [],
+    };
   }
 //   componentWillReceiveProps(nextProps) {
 //     if (!isEmpty(nextProps.ModalSettingsState)) {
@@ -24,7 +26,29 @@ class columnView extends Component {
 //         this.setState({ chartType: nextProps.ModalSettingsState.selectedChartType })
 //     }
 //   }
+  componentDidMount() {
+    fetch('http://localhost:5000/api/tidalprediction/1')
+    .then(results => results.json()).then(data => {
+      const chartData = data.results.map((pred) => (
+        <div key={pred.results}>
+          <div>{ pred.StationLocation }</div>
+        </div>
+        ));
+      this.setState({ chartInfo: chartData });
+      console.log('state', this.state.chartData);
+    });
+  }
 
+  send() {
+    fetch('http://localhost:5000/api/tidalprediction/1', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+    }).then((response) => response.json()).then((result) => {
+      console.log(JSON.stringify(result));
+    });
+  }
 
   renderChart() {
     return {
@@ -104,7 +128,12 @@ class columnView extends Component {
     //   { stationId: 'Ballyglass', water_Level: 2.18 },
     // ];
   render() {
-    return <ReactHighcharts config={this.renderChart()} />;
+    return (
+      <div>
+        <ReactHighcharts config={this.renderChart()} />
+        <div config={this.send()} />
+      </div>
+    );
   }
 }
 

@@ -1,5 +1,4 @@
 
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
@@ -51,17 +50,21 @@ class Home extends Component {
                 </span>}
             >
               <StationsMap />
-              (/* TEMPORARY WORK AROUND */)
-              <p>Gyfyegfygfy</p>
-              <p>Gyfyegfygfy</p>
-              <p>Gyfyegfygfy</p>
-              <p>Gyfyegfygfy</p>
-              <p>Gyfyegfygfy</p>
-              <p>Gyfyegfygfy</p>
-              <p>Gyfyegfygfy</p>
-              <p>Gyfyegfygfy</p>
-              <p>Gyfyegfygfy</p>
-              <p>Gyfyegfygfy</p>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
             </Panel>
           </div>
           <div className="col-lg-4">
@@ -83,7 +86,7 @@ class Home extends Component {
                 </ListGroupItem>
                 <ListGroupItem href="" onClick={(e) => { e.preventDefault(); }}>
                   <div>
-                    <p><strong>Prediction Chart 3</strong></p>
+                    <p><strong>Prediction Chart 2</strong></p>
                   </div>
                   <div>
                     <p><span className="text-muted">
@@ -103,7 +106,7 @@ class Home extends Component {
                 </ListGroupItem>
                 <ListGroupItem href="" onClick={(e) => { e.preventDefault(); }}>
                   <div>
-                    <p><strong>Prediction Chart 3</strong></p>
+                    <p><strong>Prediction Chart 4</strong></p>
                   </div>
                   <div>
                     <p><span className="text-muted">
