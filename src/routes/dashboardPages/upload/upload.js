@@ -90,7 +90,7 @@ class Upload extends Component {
           <div className="col-lg-12 col-md-8 col-sm-4">
             <Panel
               header={<span>
-                <i className="fa fa-location-arrow fa-fw" /> Drag
+                <i className="fa fa-upload fa-fw" /> Drag
                       and drop your file here, or use the file browser:
                     </span>}
             >

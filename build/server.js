@@ -3944,7 +3944,7 @@ module.exports =
                   header: _react2.default.createElement(
                     'span',
                     null,
-                    _react2.default.createElement('i', { className: 'fa fa-location-arrow fa-fw' }),
+                    _react2.default.createElement('i', { className: 'fa fa-upload fa-fw' }),
                     ' Drag and drop your file here, or use the file browser:'
                   )
                 },
