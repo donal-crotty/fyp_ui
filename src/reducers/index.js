@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { CloseModal, OpenModal, CustomizeChart } from '../actions/const';
-import { ModalSettingsInitialState } from './const';
+import { LocationInitialState } from './const';
 
 const ModalInitialState = {
   showModal: false,
@@ -17,10 +17,10 @@ function ModalReducer(state = ModalInitialState, action) {
   }
 }
 
-function ModalSettingsReducer(state = ModalSettingsInitialState, action) {
+function LocationStateReducer(state = LocationInitialState, action) {
   switch (action.type) {
-    case CustomizeChart:
-      return { ...ModalSettingsInitialState, ...action.obj };
+    case Location:
+      return { ...LocationInitialState, ...action.obj };
     default:
       return state;
   }
@@ -28,7 +28,7 @@ function ModalSettingsReducer(state = ModalSettingsInitialState, action) {
 
 const reducers = {
   ModalState: ModalReducer,
-  ModalSettingsState: ModalSettingsReducer,
+  LocationState: LocationStateReducer,
 };
 
 export default combineReducers(reducers);

@@ -34,16 +34,7 @@ class Home extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-8 col-md-6">
-            <Panel
-              header={<span>
-                <i className="fa fa-location-arrow fa-fw" /> Your Current Location is:
-                  </span>}
-            >
-              <div>
-                <GeoLocation />
-              </div>
-            </Panel>
+          <div className="col-lg-8 col-md-6 col-sm-4">
             <Panel
               header={<span>
                 <i className="fa fa-location-arrow fa-fw" /> Your nearest Stations are:
@@ -65,6 +56,17 @@ class Home extends Component {
               <br />
               <br />
               <br />
+            </Panel>
+          </div>
+          <div className="col-lg-4 col-md-3 col-sm-2">
+            <Panel
+              header={<span>
+                <i className="fa fa-location-arrow fa-fw" /> Your Current Location is:
+                  </span>}
+            >
+              <div>
+                <GeoLocation />
+              </div>
             </Panel>
           </div>
           <div className="col-lg-4">

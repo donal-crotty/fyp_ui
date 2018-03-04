@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 import ReactHighcharts from 'react-highcharts';
 
+let chartInfo = [];
+
 class columnView extends Component {
   constructor(props) {
     super(props);
@@ -9,6 +11,7 @@ class columnView extends Component {
       chartInfo: [],
     };
   }
+
 //   componentWillReceiveProps(nextProps) {
 //     if (!isEmpty(nextProps.ModalSettingsState)) {
 //         this.setState({ title: nextProps.ModalSettingsState.title }),
@@ -26,27 +29,30 @@ class columnView extends Component {
 //         this.setState({ chartType: nextProps.ModalSettingsState.selectedChartType })
 //     }
 //   }
-  componentDidMount() {
-    fetch('http://localhost:5000/api/tidalprediction/1')
-    .then(results => results.json()).then(data => {
-      const chartData = data.results.map((pred) => (
-        <div key={pred.results}>
-          <div>{ pred.StationLocation }</div>
-        </div>
-        ));
-      this.setState({ chartInfo: chartData });
-      console.log('state', this.state.chartData);
-    });
-  }
+  // componentDidMount() {
+  //   fetch('http://localhost:5000/api/tidalprediction/')
+  //   .then(results => results.json()).then(data => {
+  //     const chartData = data.results.map((pred) => (
+  //       <div key={pred.results}>
+  //         <div>{ pred.StationLocation }</div>
+  //       </div>
+  //       ));
+  //     this.setState({ chartInfo: chartData });
+  //     console.log('state', this.state.chartData);
+  //     console.log(this.state.chartInfo);
+  //   });
+  // }
 
   send() {
-    fetch('http://localhost:5000/api/tidalprediction/1', {
+    fetch('http://localhost:5000/api/tidalprediction/', {
       method: 'GET',
       headers: {
         'Content-Type': 'text/plain',
       },
     }).then((response) => response.json()).then((result) => {
       console.log(JSON.stringify(result));
+      chartInfo = result;
+      console.log('chartInfo:', chartInfo);
     });
   }
 
@@ -89,44 +95,52 @@ class columnView extends Component {
           },
         },
       },
-      series: [{
-        name: 'Achill_Island',
-        data: [1.34, 1.56, 1.76,
-          1.245, 0.89, 2.13, 0.945],
-        color: this.state.chartColor,
-      }, {
-        name: 'Aranmore',
-        data: [1.12, 2.56, 1.496,
-          1.316, 1.89, 2.09, 0.78],
-        color: this.state.chartColor,
-      },
-      {
-        name: 'Arklow',
-        data: [1.56, 2.01, 1.13,
-          1.456, 1.74, 2.5, 0.45],
-        color: this.state.chartColor,
-      },
-      {
-        name: 'Ballycotton',
-        data: [1.145, 2.78, 1.156,
-          1.47, 1.785, 2.45, 0.71],
-        color: this.state.chartColor,
-      },
-      {
-        name: 'Ballyglass',
-        data: [2.12, 4.56, 2.496,
-          1.316, 2.89, 3.09, 1.78],
-        color: this.state.chartColor,
-      }],
+      // series: [{
+      //   name: 'Achill_Island',
+      //   data: [1.34, 1.56, 1.76,
+      //     1.245, 0.89, 2.13, 0.945],
+      //   color: this.state.chartColor,
+      // }, {
+      //   name: 'Aranmore',
+      //   data: [1.12, 2.56, 1.496,
+      //     1.316, 1.89, 2.09, 0.78],
+      //   color: this.state.chartColor,
+      // },
+      // {
+      //   name: 'Arklow',
+      //   data: [1.56, 2.01, 1.13,
+      //     1.456, 1.74, 2.5, 0.45],
+      //   color: this.state.chartColor,
+      // },
+      // {
+      //   name: 'Ballycotton',
+      //   data: [1.145, 2.78, 1.156,
+      //     1.47, 1.785, 2.45, 0.71],
+      //   color: this.state.chartColor,
+      // },
+      // {
+      //   name: 'Ballyglass',
+      //   data: [2.12, 4.56, 2.496,
+      //     1.316, 2.89, 3.09, 1.78],
+      //   color: this.state.chartColor,
+      // }],
+      series: [
+        {
+          name: 'Tide1',
+          data: chartInfo[0],
+        },
+        {
+          name: 'Tide2',
+          data: chartInfo[1],
+        },
+        {
+          name: 'Tide3',
+          data: chartInfo[2],
+        },
+      ],
     };
   }
-  // const tidalPred = [
-    //   { stationId: 'Achill_Island', water_Level: 1.34 },
-    //   { stationId: 'Aranmore', water_Level: 1.89 },
-    //   { stationId: 'Arklow', water_Level: 0.91 },
-    //   { stationId: 'Ballycotton', water_Level: 2.58 },
-    //   { stationId: 'Ballyglass', water_Level: 2.18 },
-    // ];
+
   render() {
     return (
       <div>

@@ -124,7 +124,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(99);
+  var _assets = __webpack_require__(106);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -1456,23 +1456,23 @@ module.exports =
   
   var _upload2 = _interopRequireDefault(_upload);
   
-  var _prediction = __webpack_require__(80);
+  var _prediction = __webpack_require__(87);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _contact = __webpack_require__(92);
+  var _contact = __webpack_require__(99);
   
   var _contact2 = _interopRequireDefault(_contact);
   
-  var _about = __webpack_require__(94);
+  var _about = __webpack_require__(101);
   
   var _about2 = _interopRequireDefault(_about);
   
-  var _chartHistory = __webpack_require__(96);
+  var _chartHistory = __webpack_require__(103);
   
   var _chartHistory2 = _interopRequireDefault(_chartHistory);
   
-  var _error = __webpack_require__(98);
+  var _error = __webpack_require__(105);
   
   var _error2 = _interopRequireDefault(_error);
   
@@ -2583,23 +2583,7 @@ module.exports =
             { className: 'row' },
             _react2.default.createElement(
               'div',
-              { className: 'col-lg-8 col-md-6' },
-              _react2.default.createElement(
-                _reactBootstrap.Panel,
-                {
-                  header: _react2.default.createElement(
-                    'span',
-                    null,
-                    _react2.default.createElement('i', { className: 'fa fa-location-arrow fa-fw' }),
-                    ' Your Current Location is:'
-                  )
-                },
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_GeoLocation2.default, null)
-                )
-              ),
+              { className: 'col-lg-8 col-md-6 col-sm-4' },
               _react2.default.createElement(
                 _reactBootstrap.Panel,
                 {
@@ -2626,6 +2610,26 @@ module.exports =
                 _react2.default.createElement('br', null),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement('br', null)
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'col-lg-4 col-md-3 col-sm-2' },
+              _react2.default.createElement(
+                _reactBootstrap.Panel,
+                {
+                  header: _react2.default.createElement(
+                    'span',
+                    null,
+                    _react2.default.createElement('i', { className: 'fa fa-location-arrow fa-fw' }),
+                    ' Your Current Location is:'
+                  )
+                },
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(_GeoLocation2.default, null)
+                )
               )
             ),
             _react2.default.createElement(
@@ -3076,8 +3080,8 @@ module.exports =
           _googleMapsReact.Map,
           {
             google: this.props.google,
-            style: { width: '92%', height: '300px', position: 'relative' },
-            className: 'map',
+            style: { width: '92%', height: '300px', position: 'fixed' },
+            className: 'map ',
             initialCenter: {
               lat: 53.4157082,
               lng: -7.9064346
@@ -3765,61 +3769,272 @@ module.exports =
     value: true
   });
   
+  var _keys = __webpack_require__(80);
+  
+  var _keys2 = _interopRequireDefault(_keys);
+  
+  var _getPrototypeOf = __webpack_require__(40);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(41);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(42);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(43);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(44);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
   var _react = __webpack_require__(12);
   
   var _react2 = _interopRequireDefault(_react);
+  
+  var _MuiThemeProvider = __webpack_require__(81);
+  
+  var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
+  
+  var _RaisedButton = __webpack_require__(82);
+  
+  var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+  
+  var _reactDropzone = __webpack_require__(83);
+  
+  var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
+  
+  var _FontIcon = __webpack_require__(84);
+  
+  var _FontIcon2 = _interopRequireDefault(_FontIcon);
+  
+  var _colors = __webpack_require__(85);
   
   var _reactBootstrap = __webpack_require__(49);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var title = 'Upload Data';
+  var request = __webpack_require__(86);
   
-  function displayUpload(props, context) {
-    context.setTitle(title);
-    return _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(
-        'div',
-        { className: 'row' },
-        _react2.default.createElement(
+  var apiBaseUrl = 'http://localhost:5000/api/tidalprediction/';
+  var style = {
+    margin: 15
+  };
+  var title = 'Upload';
+  
+  var Upload = function (_Component) {
+    (0, _inherits3.default)(Upload, _Component);
+  
+    function Upload(props, context) {
+      (0, _classCallCheck3.default)(this, Upload);
+  
+      var _this = (0, _possibleConstructorReturn3.default)(this, (Upload.__proto__ || (0, _getPrototypeOf2.default)(Upload)).call(this, props));
+  
+      _this.state = {
+        filesPreview: [],
+        filesToBeSent: [],
+        printcount: 10
+      };
+      context.setTitle(title);
+      return _this;
+    }
+  
+    (0, _createClass3.default)(Upload, [{
+      key: 'onDrop',
+      value: function onDrop(acceptedFiles) {
+        console.log('Accepted files: ', acceptedFiles[0].name);
+        var filesToBeSent = this.state.filesToBeSent;
+        if (filesToBeSent.length < this.state.printcount) {
+          filesToBeSent.push(acceptedFiles);
+          var filesPreview = [];
+          (0, _keys2.default)(filesToBeSent).forEach(function (key, i) {
+            filesPreview.push(_react2.default.createElement(
+              'div',
+              null,
+              filesToBeSent[i][0].name,
+              _react2.default.createElement(
+                _MuiThemeProvider2.default,
+                null,
+                _react2.default.createElement(
+                  'a',
+                  { href: '' },
+                  _react2.default.createElement(
+                    _FontIcon2.default,
+                    {
+                      className: 'material-icons customstyle',
+                      color: _colors.blue500,
+                      styles: { top: 10 }
+                    },
+                    'clear'
+                  )
+                )
+              )
+            ));
+          });
+          this.setState({ filesToBeSent: filesToBeSent, filesPreview: filesPreview });
+        } else {
+          alert('You have reached the limit of upload files at a time');
+        }
+      }
+    }, {
+      key: 'handleClick',
+      value: function handleClick(event) {
+        console.log('handleClick: ', event);
+        var self = this;
+        console.log('self: ', self);
+        if (this.state.filesToBeSent.length > 0) {
+          var filesArray = this.state.filesToBeSent;
+          var req = request.post(apiBaseUrl + 'fileupload');
+          (0, _keys2.default)(filesArray).forEach(function (key, i) {
+            console.log('files', filesArray[i][0]);
+            req.attach(filesArray[i][0].name, filesArray[i][0]);
+            req.end(function (err, res) {
+              if (err) {
+                console.log('error ocurred');
+              }
+              console.log('res', res);
+              alert('File upload completed');
+            });
+          });
+        } else {
+          alert('Please upload some files first');
+        }
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        var _this2 = this;
+  
+        // Debug Components
+        // console.log('Panel', Panel);
+        // console.log('MuiThemeProvider', MuiThemeProvider);
+        // console.log('PageHeader', PageHeader);
+        // console.log('Dropzone', Dropzone);
+        // console.log('RaisedButton', RaisedButton);
+        return _react2.default.createElement(
           'div',
-          { className: 'col-lg-12' },
-          _react2.default.createElement(
-            _reactBootstrap.PageHeader,
-            null,
-            'Upload Data'
-          )
-        )
-      ),
-      _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'form',
           null,
           _react2.default.createElement(
-            'h1',
-            null,
-            'File Upload'
+            'div',
+            { className: 'row' },
+            _react2.default.createElement(
+              'div',
+              { className: 'col-lg-12' },
+              _react2.default.createElement(
+                _reactBootstrap.PageHeader,
+                null,
+                'Upload Data'
+              )
+            )
           ),
-          _react2.default.createElement('input', { type: 'file' }),
           _react2.default.createElement(
-            'button',
-            { type: 'submit' },
-            'Upload'
+            'div',
+            { className: 'row' },
+            _react2.default.createElement(
+              'div',
+              { className: 'col-lg-12 col-md-8 col-sm-4' },
+              _react2.default.createElement(
+                _reactBootstrap.Panel,
+                {
+                  header: _react2.default.createElement(
+                    'span',
+                    null,
+                    _react2.default.createElement('i', { className: 'fa fa-location-arrow fa-fw' }),
+                    ' Drag and drop your file here, or use the file browser:'
+                  )
+                },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'App col-lg-6 col-md-4 col-sm-2' },
+                  _react2.default.createElement(
+                    _reactDropzone2.default,
+                    { onDrop: function onDrop(files) {
+                        return _this2.onDrop(files);
+                      } },
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      'Try dropping some files here, or click to select files to upload.'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-lg-6 col-md-4 col-sm-2' },
+                  'Files to be printed are:',
+                  this.state.filesPreview
+                ),
+                _react2.default.createElement(
+                  _MuiThemeProvider2.default,
+                  null,
+                  _react2.default.createElement(_RaisedButton2.default, {
+                    label: 'Upload Files', style: style,
+                    onClick: function onClick(event) {
+                      return _this2.handleClick(event);
+                    }
+                  })
+                )
+              )
+            )
           )
-        )
-      )
-    );
-  }
+        );
+      }
+    }]);
+    return Upload;
+  }(_react.Component);
   
-  displayUpload.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  exports.default = displayUpload;
+  Upload.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  exports.default = Upload;
 
 /***/ }),
 /* 80 */
+/***/ (function(module, exports) {
+
+  module.exports = require("babel-runtime/core-js/object/keys");
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports) {
+
+  module.exports = require("material-ui/styles/MuiThemeProvider");
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports) {
+
+  module.exports = require("material-ui/RaisedButton");
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports) {
+
+  module.exports = require("react-dropzone");
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports) {
+
+  module.exports = require("material-ui/FontIcon");
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports) {
+
+  module.exports = require("material-ui/styles/colors");
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports) {
+
+  module.exports = require("superagent");
+
+/***/ }),
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3832,11 +4047,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _prediction = __webpack_require__(81);
+  var _prediction = __webpack_require__(88);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _Chart = __webpack_require__(82);
+  var _Chart = __webpack_require__(89);
   
   var _Chart2 = _interopRequireDefault(_Chart);
   
@@ -3856,7 +4071,7 @@ module.exports =
   };
 
 /***/ }),
-/* 81 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3900,7 +4115,7 @@ module.exports =
   exports.default = displayPrediction;
 
 /***/ }),
-/* 82 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3935,11 +4150,11 @@ module.exports =
   
   var _reactBootstrap = __webpack_require__(49);
   
-  var _column = __webpack_require__(83);
+  var _column = __webpack_require__(90);
   
   var _column2 = _interopRequireDefault(_column);
   
-  var _DatePicker = __webpack_require__(85);
+  var _DatePicker = __webpack_require__(92);
   
   var _DatePicker2 = _interopRequireDefault(_DatePicker);
   
@@ -3990,7 +4205,7 @@ module.exports =
   exports.default = chartView;
 
 /***/ }),
-/* 83 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4027,11 +4242,14 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactHighcharts = __webpack_require__(84);
+  var _reactHighcharts = __webpack_require__(91);
   
   var _reactHighcharts2 = _interopRequireDefault(_reactHighcharts);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var chartInfo = [];
+  // import { connect } from 'react-redux';
   
   var columnView = function (_Component) {
     (0, _inherits3.default)(columnView, _Component);
@@ -4046,6 +4264,7 @@ module.exports =
       };
       return _this;
     }
+  
     //   componentWillReceiveProps(nextProps) {
     //     if (!isEmpty(nextProps.ModalSettingsState)) {
     //         this.setState({ title: nextProps.ModalSettingsState.title }),
@@ -4063,35 +4282,24 @@ module.exports =
     //         this.setState({ chartType: nextProps.ModalSettingsState.selectedChartType })
     //     }
     //   }
-  
+    // componentDidMount() {
+    //   fetch('http://localhost:5000/api/tidalprediction/')
+    //   .then(results => results.json()).then(data => {
+    //     const chartData = data.results.map((pred) => (
+    //       <div key={pred.results}>
+    //         <div>{ pred.StationLocation }</div>
+    //       </div>
+    //       ));
+    //     this.setState({ chartInfo: chartData });
+    //     console.log('state', this.state.chartData);
+    //     console.log(this.state.chartInfo);
+    //   });
+    // }
   
     (0, _createClass3.default)(columnView, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
-        var _this2 = this;
-  
-        fetch('http://localhost:5000/api/tidalprediction/1').then(function (results) {
-          return results.json();
-        }).then(function (data) {
-          var chartData = data.results.map(function (pred) {
-            return _react2.default.createElement(
-              'div',
-              { key: pred.results },
-              _react2.default.createElement(
-                'div',
-                null,
-                pred.StationLocation
-              )
-            );
-          });
-          _this2.setState({ chartInfo: chartData });
-          console.log('state', _this2.state.chartData);
-        });
-      }
-    }, {
       key: 'send',
       value: function send() {
-        fetch('http://localhost:5000/api/tidalprediction/1', {
+        fetch('http://localhost:5000/api/tidalprediction/', {
           method: 'GET',
           headers: {
             'Content-Type': 'text/plain'
@@ -4100,6 +4308,8 @@ module.exports =
           return response.json();
         }).then(function (result) {
           console.log((0, _stringify2.default)(result));
+          chartInfo = result;
+          console.log('chartInfo:', chartInfo);
         });
       }
     }, {
@@ -4143,37 +4353,47 @@ module.exports =
               }
             }
           },
+          // series: [{
+          //   name: 'Achill_Island',
+          //   data: [1.34, 1.56, 1.76,
+          //     1.245, 0.89, 2.13, 0.945],
+          //   color: this.state.chartColor,
+          // }, {
+          //   name: 'Aranmore',
+          //   data: [1.12, 2.56, 1.496,
+          //     1.316, 1.89, 2.09, 0.78],
+          //   color: this.state.chartColor,
+          // },
+          // {
+          //   name: 'Arklow',
+          //   data: [1.56, 2.01, 1.13,
+          //     1.456, 1.74, 2.5, 0.45],
+          //   color: this.state.chartColor,
+          // },
+          // {
+          //   name: 'Ballycotton',
+          //   data: [1.145, 2.78, 1.156,
+          //     1.47, 1.785, 2.45, 0.71],
+          //   color: this.state.chartColor,
+          // },
+          // {
+          //   name: 'Ballyglass',
+          //   data: [2.12, 4.56, 2.496,
+          //     1.316, 2.89, 3.09, 1.78],
+          //   color: this.state.chartColor,
+          // }],
           series: [{
-            name: 'Achill_Island',
-            data: [1.34, 1.56, 1.76, 1.245, 0.89, 2.13, 0.945],
-            color: this.state.chartColor
+            name: 'Tide1',
+            data: chartInfo[0]
           }, {
-            name: 'Aranmore',
-            data: [1.12, 2.56, 1.496, 1.316, 1.89, 2.09, 0.78],
-            color: this.state.chartColor
+            name: 'Tide2',
+            data: chartInfo[1]
           }, {
-            name: 'Arklow',
-            data: [1.56, 2.01, 1.13, 1.456, 1.74, 2.5, 0.45],
-            color: this.state.chartColor
-          }, {
-            name: 'Ballycotton',
-            data: [1.145, 2.78, 1.156, 1.47, 1.785, 2.45, 0.71],
-            color: this.state.chartColor
-          }, {
-            name: 'Ballyglass',
-            data: [2.12, 4.56, 2.496, 1.316, 2.89, 3.09, 1.78],
-            color: this.state.chartColor
+            name: 'Tide3',
+            data: chartInfo[2]
           }]
         };
       }
-      // const tidalPred = [
-      //   { stationId: 'Achill_Island', water_Level: 1.34 },
-      //   { stationId: 'Aranmore', water_Level: 1.89 },
-      //   { stationId: 'Arklow', water_Level: 0.91 },
-      //   { stationId: 'Ballycotton', water_Level: 2.58 },
-      //   { stationId: 'Ballyglass', water_Level: 2.18 },
-      // ];
-  
     }, {
       key: 'render',
       value: function render() {
@@ -4195,19 +4415,17 @@ module.exports =
   // }
   // export default connect(mapStateToProps, null)(columnView);
   
-  // import { connect } from 'react-redux';
-  
   
   exports.default = columnView;
 
 /***/ }),
-/* 84 */
+/* 91 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-highcharts");
 
 /***/ }),
-/* 85 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4240,17 +4458,17 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactDatepicker = __webpack_require__(86);
+  var _reactDatepicker = __webpack_require__(93);
   
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
   
-  var _moment = __webpack_require__(87);
+  var _moment = __webpack_require__(94);
   
   var _moment2 = _interopRequireDefault(_moment);
   
-  __webpack_require__(88);
+  __webpack_require__(95);
   
-  __webpack_require__(90);
+  __webpack_require__(97);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -4294,23 +4512,23 @@ module.exports =
   exports.default = DatePickerComponent;
 
 /***/ }),
-/* 86 */
+/* 93 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-datepicker");
 
 /***/ }),
-/* 87 */
+/* 94 */
 /***/ (function(module, exports) {
 
   module.exports = require("moment");
 
 /***/ }),
-/* 88 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(89);
+      var content = __webpack_require__(96);
       var insertCss = __webpack_require__(23);
   
       if (typeof content === 'string') {
@@ -4340,7 +4558,7 @@ module.exports =
     
 
 /***/ }),
-/* 89 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(22)();
@@ -4356,11 +4574,11 @@ module.exports =
   };
 
 /***/ }),
-/* 90 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(91);
+      var content = __webpack_require__(98);
       var insertCss = __webpack_require__(23);
   
       if (typeof content === 'string') {
@@ -4390,7 +4608,7 @@ module.exports =
     
 
 /***/ }),
-/* 91 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(22)();
@@ -4478,7 +4696,7 @@ module.exports =
   };
 
 /***/ }),
-/* 92 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4491,7 +4709,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _contact = __webpack_require__(93);
+  var _contact = __webpack_require__(100);
   
   var _contact2 = _interopRequireDefault(_contact);
   
@@ -4506,7 +4724,7 @@ module.exports =
   };
 
 /***/ }),
-/* 93 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4673,7 +4891,7 @@ module.exports =
   exports.default = Contact;
 
 /***/ }),
-/* 94 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4686,7 +4904,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _about = __webpack_require__(95);
+  var _about = __webpack_require__(102);
   
   var _about2 = _interopRequireDefault(_about);
   
@@ -4701,7 +4919,7 @@ module.exports =
   };
 
 /***/ }),
-/* 95 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4774,7 +4992,7 @@ module.exports =
   exports.default = displayBlank;
 
 /***/ }),
-/* 96 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4787,7 +5005,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _chartHistory = __webpack_require__(97);
+  var _chartHistory = __webpack_require__(104);
   
   var _chartHistory2 = _interopRequireDefault(_chartHistory);
   
@@ -4802,7 +5020,7 @@ module.exports =
   };
 
 /***/ }),
-/* 97 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5112,7 +5330,7 @@ module.exports =
   exports.default = displayChartHistory;
 
 /***/ }),
-/* 98 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5161,7 +5379,7 @@ module.exports =
       */
 
 /***/ }),
-/* 99 */
+/* 106 */
 /***/ (function(module, exports) {
 
   module.exports = require("./assets");
