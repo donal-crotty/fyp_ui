@@ -13,7 +13,10 @@ import s from './App.css';
 import Header from '../Header';
 // import Feedback from '../Feedback';
 // import Footer from '../Footer';
+// import Auth from '../../Auth/Auth';
 
+// const auth = new Auth();
+// auth.login();
 class App extends Component {
 
   static propTypes = {

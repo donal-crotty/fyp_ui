@@ -4,7 +4,7 @@ import {
   } from 'react-bootstrap';
 // import ReactHighcharts from 'react-highcharts';
 import ColumnView from './column';
-import DatePicker from '../DatePicker';
+import Dropdown from '../DropdownSelect';
 
 class chartView extends Component {
   constructor(props) {
@@ -13,18 +13,18 @@ class chartView extends Component {
   }
   render() {
     return (
-      <Panel
-        header={<span>
-          <i className="fa fa-bar-chart-o fa-fw" /> Tidal Wave Predictions
-                    <div className="pull-right">
-                      <DatePicker />
-                    </div>
-        </span>}
-      >
-        <div>
-          <ColumnView />
-        </div>
-      </Panel>
+      <div>
+        <Panel
+          header={<span>
+            <i className="fa fa-bar-chart-o fa-fw" /> Tidal Wave Predictions
+          </span>}
+        >
+          <div>
+            <ColumnView />
+          </div>
+        </Panel>
+        <Dropdown />
+      </div>
     );
   }
 }

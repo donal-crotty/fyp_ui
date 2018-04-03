@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 import ReactHighcharts from 'react-highcharts';
 
-let chartInfo = [];
+let chartData = [];
 
-class columnView extends Component {
+class chartView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chartInfo: [],
+      chartData,
     };
   }
 
@@ -29,21 +29,7 @@ class columnView extends Component {
 //         this.setState({ chartType: nextProps.ModalSettingsState.selectedChartType })
 //     }
 //   }
-  // componentDidMount() {
-  //   fetch('http://localhost:5000/api/tidalprediction/')
-  //   .then(results => results.json()).then(data => {
-  //     const chartData = data.results.map((pred) => (
-  //       <div key={pred.results}>
-  //         <div>{ pred.StationLocation }</div>
-  //       </div>
-  //       ));
-  //     this.setState({ chartInfo: chartData });
-  //     console.log('state', this.state.chartData);
-  //     console.log(this.state.chartInfo);
-  //   });
-  // }
-
-  send() {
+  componentDidMount() {
     fetch('http://localhost:5000/api/tidalprediction/', {
       method: 'GET',
       headers: {
@@ -51,50 +37,77 @@ class columnView extends Component {
       },
     }).then((response) => response.json()).then((result) => {
       console.log(JSON.stringify(result));
-      chartInfo = result;
-      console.log('chartInfo:', chartInfo);
+      chartData = result;
+      // console.log('chartData:', chartData);
     });
   }
+  // getChartPlotData(data) {
+  //   forEach (i = 0; i < data.length; i++) {
+  //     chartData.push([data[i].key, data[i].value]);
+  //   }
+  // }
 
   renderChart() {
     return {
-      title: {
-        text: this.state.title,
-        style: {
-          color: this.state.titleColor,
-          fontWeight: this.state.titleStyle,
-          fontSize: this.state.titleSize,
-        },
-      },
-      subtitle: {
-        text: this.state.subtitle,
-        style: {
-          color: this.state.subtitleColor,
-          fontWeight: this.state.subtitleStyle,
-          fontSize: this.state.subtitleSize,
-        },
-      },
       chart: {
-        type: this.state.chartType,
-        backgroundColor: this.state.backgroundColor,
+        type: 'column',
       },
-      xAxis: {
-        categories: ['1', '2', '3', '4', '5'],
-        title: {
-          text: this.state.xAxis,
-          style: {
-            color: this.state.titleColor,
-          },
-        },
+      title: {
+        text: 'Tidal Wave Predictions January 2018',
       },
+      // xAxis: {
+      //   categories: ['Achill Island', 'Aranmore', 'Arklow', 'Ballycotton', 'Ballyglass'],
+      // },
       yAxis: {
+        min: 0,
         title: {
-          text: this.state.yAxis,
-          style: {
-            color: this.state.subtitleColor,
-          },
+          text: 'Tidal Wave Height (m)',
         },
       },
+      series: [
+        {
+          data: chartData,
+        },
+      ],
+    };
+  }
+     // title: {
+     //   text: this.state.title,
+     //   style: {
+     //     color: this.state.titleColor,
+     //     fontWeight: this.state.titleStyle,
+     //     fontSize: this.state.titleSize,
+     //   },
+     // },
+     // subtitle: {
+     //   text: this.state.subtitle,
+     //   style: {
+     //     color: this.state.subtitleColor,
+     //     fontWeight: this.state.subtitleStyle,
+     //     fontSize: this.state.subtitleSize,
+     //   },
+     // },
+     // chart: {
+     //   type: this.state.chartType,
+     //   backgroundColor: this.state.backgroundColor,
+     // },
+     // xAxis: {
+     //   categories: ['1', '2', '3', '4', '5'],
+     //   title: {
+     //     text: this.state.xAxis,
+     //     style: {
+     //       color: this.state.titleColor,
+     //     },
+     //   },
+     // },
+     // yAxis: {
+     //   title: {
+     //     text: this.state.yAxis,
+     //     style: {
+     //       color: this.state.subtitleColor,
+     //     },
+     //   },
+     // },
       // series: [{
       //   name: 'Achill_Island',
       //   data: [1.34, 1.56, 1.76,
@@ -124,28 +137,26 @@ class columnView extends Component {
       //     1.316, 2.89, 3.09, 1.78],
       //   color: this.state.chartColor,
       // }],
-      series: [
-        {
-          name: 'Tide1',
-          data: chartInfo[0],
-        },
-        {
-          name: 'Tide2',
-          data: chartInfo[1],
-        },
-        {
-          name: 'Tide3',
-          data: chartInfo[2],
-        },
-      ],
-    };
-  }
+      // series: [
+      //   {
+      //     name: 'Tide1',
+      //     data: chartInfo[0],
+      //   },
+      //   {
+      //     name: 'Tide2',
+      //     data: chartInfo[1],
+      //   },
+      //   {
+      //     name: 'Tide3',
+      //     data: chartInfo[2],
+      //   },
+      // ],
+
 
   render() {
     return (
       <div>
         <ReactHighcharts config={this.renderChart()} />
-        <div config={this.send()} />
       </div>
     );
   }
@@ -157,4 +168,4 @@ class columnView extends Component {
 //   };
 // }
 // export default connect(mapStateToProps, null)(columnView);
-export default columnView;
+export default chartView;
