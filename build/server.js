@@ -4154,9 +4154,9 @@ module.exports =
   
   var _reactBootstrap = __webpack_require__(49);
   
-  var _column = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./column\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+  var _chart = __webpack_require__(102);
   
-  var _column2 = _interopRequireDefault(_column);
+  var _chart2 = _interopRequireDefault(_chart);
   
   var _DropdownSelect = __webpack_require__(92);
   
@@ -4196,7 +4196,7 @@ module.exports =
             _react2.default.createElement(
               'div',
               null,
-              _react2.default.createElement(_column2.default, null)
+              _react2.default.createElement(_chart2.default, null)
             )
           ),
           _react2.default.createElement(_DropdownSelect2.default, null)
@@ -4210,7 +4210,12 @@ module.exports =
 
 /***/ }),
 /* 90 */,
-/* 91 */,
+/* 91 */
+/***/ (function(module, exports) {
+
+  module.exports = require("react-highcharts");
+
+/***/ }),
 /* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4987,6 +4992,237 @@ module.exports =
 /***/ (function(module, exports) {
 
   module.exports = require("./assets");
+
+/***/ }),
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _stringify = __webpack_require__(25);
+  
+  var _stringify2 = _interopRequireDefault(_stringify);
+  
+  var _getPrototypeOf = __webpack_require__(40);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(41);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(42);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(43);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(44);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
+  var _react = __webpack_require__(12);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _reactHighcharts = __webpack_require__(91);
+  
+  var _reactHighcharts2 = _interopRequireDefault(_reactHighcharts);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var chartData = [];
+  // import { connect } from 'react-redux';
+  
+  var chartView = function (_Component) {
+    (0, _inherits3.default)(chartView, _Component);
+  
+    function chartView(props) {
+      (0, _classCallCheck3.default)(this, chartView);
+  
+      var _this = (0, _possibleConstructorReturn3.default)(this, (chartView.__proto__ || (0, _getPrototypeOf2.default)(chartView)).call(this, props));
+  
+      _this.state = {
+        chartData: chartData
+      };
+      return _this;
+    }
+  
+    //   componentWillReceiveProps(nextProps) {
+    //     if (!isEmpty(nextProps.ModalSettingsState)) {
+    //         this.setState({ title: nextProps.ModalSettingsState.title }),
+    //         this.setState({ titleColor: nextProps.ModalSettingsState.colorSelectedTitle }),
+    //         this.setState({ titleStyle: nextProps.ModalSettingsState.selectedTitleStyle }),
+    //         this.setState({ titleSize: nextProps.ModalSettingsState.selectedTitleSize }),
+    //         this.setState({ subtitle: nextProps.ModalSettingsState.subtitle }),
+    //         this.setState({ subtitleColor: nextProps.ModalSettingsState.colorSelectedSubtitle }),
+    //         this.setState({ subtitleStyle: nextProps.ModalSettingsState.selectedSubtitleStyle }),
+    //         this.setState({ subtitleSize: nextProps.ModalSettingsState.selectedsubTitleSize }),
+    //         this.setState({ xAxis: nextProps.ModalSettingsState.xAxis }),
+    //         this.setState({ yAxis: nextProps.ModalSettingsState.yAxis }),
+    //         this.setState({ chartColor: nextProps.ModalSettingsState.colorSelectedChart }),
+    //         this.setState({ backgroundColor: nextProps.ModalSettingsState.colorSelectedBackground }),
+    //         this.setState({ chartType: nextProps.ModalSettingsState.selectedChartType })
+    //     }
+    //   }
+  
+  
+    (0, _createClass3.default)(chartView, [{
+      key: 'componentDidMount',
+      value: function componentDidMount() {
+        fetch('http://localhost:5000/api/tidalprediction/', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'text/plain'
+          }
+        }).then(function (response) {
+          return response.json();
+        }).then(function (result) {
+          console.log((0, _stringify2.default)(result));
+          chartData = result;
+          // console.log('chartData:', chartData);
+        });
+      }
+      // getChartPlotData(data) {
+      //   forEach (i = 0; i < data.length; i++) {
+      //     chartData.push([data[i].key, data[i].value]);
+      //   }
+      // }
+  
+    }, {
+      key: 'renderChart',
+      value: function renderChart() {
+        return {
+          chart: {
+            type: 'column'
+          },
+          title: {
+            text: 'Tidal Wave Predictions January 2018'
+          },
+          // xAxis: {
+          //   categories: ['Achill Island', 'Aranmore', 'Arklow', 'Ballycotton', 'Ballyglass'],
+          // },
+          yAxis: {
+            min: 0,
+            title: {
+              text: 'Tidal Wave Height (m)'
+            }
+          },
+          series: [{
+            data: chartData
+          }]
+        };
+      }
+      // title: {
+      //   text: this.state.title,
+      //   style: {
+      //     color: this.state.titleColor,
+      //     fontWeight: this.state.titleStyle,
+      //     fontSize: this.state.titleSize,
+      //   },
+      // },
+      // subtitle: {
+      //   text: this.state.subtitle,
+      //   style: {
+      //     color: this.state.subtitleColor,
+      //     fontWeight: this.state.subtitleStyle,
+      //     fontSize: this.state.subtitleSize,
+      //   },
+      // },
+      // chart: {
+      //   type: this.state.chartType,
+      //   backgroundColor: this.state.backgroundColor,
+      // },
+      // xAxis: {
+      //   categories: ['1', '2', '3', '4', '5'],
+      //   title: {
+      //     text: this.state.xAxis,
+      //     style: {
+      //       color: this.state.titleColor,
+      //     },
+      //   },
+      // },
+      // yAxis: {
+      //   title: {
+      //     text: this.state.yAxis,
+      //     style: {
+      //       color: this.state.subtitleColor,
+      //     },
+      //   },
+      // },
+      // series: [{
+      //   name: 'Achill_Island',
+      //   data: [1.34, 1.56, 1.76,
+      //     1.245, 0.89, 2.13, 0.945],
+      //   color: this.state.chartColor,
+      // }, {
+      //   name: 'Aranmore',
+      //   data: [1.12, 2.56, 1.496,
+      //     1.316, 1.89, 2.09, 0.78],
+      //   color: this.state.chartColor,
+      // },
+      // {
+      //   name: 'Arklow',
+      //   data: [1.56, 2.01, 1.13,
+      //     1.456, 1.74, 2.5, 0.45],
+      //   color: this.state.chartColor,
+      // },
+      // {
+      //   name: 'Ballycotton',
+      //   data: [1.145, 2.78, 1.156,
+      //     1.47, 1.785, 2.45, 0.71],
+      //   color: this.state.chartColor,
+      // },
+      // {
+      //   name: 'Ballyglass',
+      //   data: [2.12, 4.56, 2.496,
+      //     1.316, 2.89, 3.09, 1.78],
+      //   color: this.state.chartColor,
+      // }],
+      // series: [
+      //   {
+      //     name: 'Tide1',
+      //     data: chartInfo[0],
+      //   },
+      //   {
+      //     name: 'Tide2',
+      //     data: chartInfo[1],
+      //   },
+      //   {
+      //     name: 'Tide3',
+      //     data: chartInfo[2],
+      //   },
+      // ],
+  
+  
+    }, {
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_reactHighcharts2.default, { config: this.renderChart() })
+        );
+      }
+    }]);
+    return chartView;
+  }(_react.Component);
+  
+  // function mapStateToProps({ ModalSettingsState }) {
+  //   return {
+  //     ModalSettingsState: ModalSettingsState,
+  //   };
+  // }
+  // export default connect(mapStateToProps, null)(columnView);
+  
+  
+  exports.default = chartView;
 
 /***/ })
 /******/ ]);

@@ -3,7 +3,7 @@ import {
     Panel,
   } from 'react-bootstrap';
 // import ReactHighcharts from 'react-highcharts';
-import ColumnView from './column';
+import ChartView from './chart';
 import Dropdown from '../DropdownSelect';
 
 class chartView extends Component {
@@ -20,7 +20,7 @@ class chartView extends Component {
           </span>}
         >
           <div>
-            <ColumnView />
+            <ChartView />
           </div>
         </Panel>
         <Dropdown />
