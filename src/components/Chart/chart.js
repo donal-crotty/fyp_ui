@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { compose, groupBy, prop, of, unnest, toPairs } from 'ramda';
 // import { connect } from 'react-redux';
 import ReactHighcharts from 'react-highcharts';
 
@@ -36,17 +37,19 @@ class chartView extends Component {
         'Content-Type': 'text/plain',
       },
     }).then((response) => response.json()).then((result) => {
+      debugger;
+      const test = compose(of, groupBy(prop('stationLocation')))(result);
       console.log(JSON.stringify(result));
       chartData = result;
       // console.log('chartData:', chartData);
+
+      // [{
+      //   date: dd-mm-yyy,
+      //   name: "Arklow",
+      //   data: [1,2,23,3]
+      // }]
     });
   }
-  // getChartPlotData(data) {
-  //   forEach (i = 0; i < data.length; i++) {
-  //     chartData.push([data[i].key, data[i].value]);
-  //   }
-  // }
-
   renderChart() {
     return {
       chart: {
@@ -55,13 +58,40 @@ class chartView extends Component {
       title: {
         text: 'Tidal Wave Predictions January 2018',
       },
-      // xAxis: {
-      //   categories: ['Achill Island', 'Aranmore', 'Arklow', 'Ballycotton', 'Ballyglass'],
-      // },
+      xAxis: {
+        categories: ['Achill Island', 'Aranmore', 'Arklow', 'Ballycotton', 'Ballyglass'],
+      },
       yAxis: {
         min: 0,
         title: {
           text: 'Tidal Wave Height (m)',
+        },
+        stackLabels: {
+          enabled: true,
+          style: {
+            fontWeight: 'bold',
+            color: (ReactHighcharts.theme && ReactHighcharts.theme.textColor) || 'gray',
+          },
+        },
+      },
+      legend: {
+        align: 'right',
+        x: -30,
+        verticalAlign: 'top',
+        y: 25,
+        floating: true,
+        backgroundColor: (ReactHighcharts.theme && ReactHighcharts.theme.background2) || 'white',
+        borderColor: '#CCC',
+        borderWidth: 1,
+        shadow: false,
+      },
+      plotOptions: {
+        column: {
+          stacking: 'normal',
+          dataLabels: {
+            enabled: true,
+            color: (ReactHighcharts.theme && ReactHighcharts.theme.dataLabelsColor) || 'white',
+          },
         },
       },
       series: [
@@ -71,87 +101,6 @@ class chartView extends Component {
       ],
     };
   }
-     // title: {
-     //   text: this.state.title,
-     //   style: {
-     //     color: this.state.titleColor,
-     //     fontWeight: this.state.titleStyle,
-     //     fontSize: this.state.titleSize,
-     //   },
-     // },
-     // subtitle: {
-     //   text: this.state.subtitle,
-     //   style: {
-     //     color: this.state.subtitleColor,
-     //     fontWeight: this.state.subtitleStyle,
-     //     fontSize: this.state.subtitleSize,
-     //   },
-     // },
-     // chart: {
-     //   type: this.state.chartType,
-     //   backgroundColor: this.state.backgroundColor,
-     // },
-     // xAxis: {
-     //   categories: ['1', '2', '3', '4', '5'],
-     //   title: {
-     //     text: this.state.xAxis,
-     //     style: {
-     //       color: this.state.titleColor,
-     //     },
-     //   },
-     // },
-     // yAxis: {
-     //   title: {
-     //     text: this.state.yAxis,
-     //     style: {
-     //       color: this.state.subtitleColor,
-     //     },
-     //   },
-     // },
-      // series: [{
-      //   name: 'Achill_Island',
-      //   data: [1.34, 1.56, 1.76,
-      //     1.245, 0.89, 2.13, 0.945],
-      //   color: this.state.chartColor,
-      // }, {
-      //   name: 'Aranmore',
-      //   data: [1.12, 2.56, 1.496,
-      //     1.316, 1.89, 2.09, 0.78],
-      //   color: this.state.chartColor,
-      // },
-      // {
-      //   name: 'Arklow',
-      //   data: [1.56, 2.01, 1.13,
-      //     1.456, 1.74, 2.5, 0.45],
-      //   color: this.state.chartColor,
-      // },
-      // {
-      //   name: 'Ballycotton',
-      //   data: [1.145, 2.78, 1.156,
-      //     1.47, 1.785, 2.45, 0.71],
-      //   color: this.state.chartColor,
-      // },
-      // {
-      //   name: 'Ballyglass',
-      //   data: [2.12, 4.56, 2.496,
-      //     1.316, 2.89, 3.09, 1.78],
-      //   color: this.state.chartColor,
-      // }],
-      // series: [
-      //   {
-      //     name: 'Tide1',
-      //     data: chartInfo[0],
-      //   },
-      //   {
-      //     name: 'Tide2',
-      //     data: chartInfo[1],
-      //   },
-      //   {
-      //     name: 'Tide3',
-      //     data: chartInfo[2],
-      //   },
-      // ],
-
 
   render() {
     return (
