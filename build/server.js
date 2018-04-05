@@ -124,7 +124,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(102);
+  var _assets = __webpack_require__(108);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -436,8 +436,6 @@ module.exports =
         _react2.default.createElement('link', { rel: 'stylesheet', href: '/css/bootstrap-social.css' }),
         _react2.default.createElement('link', { rel: 'stylesheet', href: '/css/font-awesome.min.css' }),
         _react2.default.createElement('link', { rel: 'stylesheet', href: '/css/sb-admin.css' }),
-        _react2.default.createElement('script', { src: 'http://code.highcharts.com/modules/exporting.js' }),
-        _react2.default.createElement('script', { type: 'text/javascript', src: 'node_modules/auth0-js/build/auth0.js' }),
         _react2.default.createElement('style', { id: 'css', dangerouslySetInnerHTML: { __html: style } })
       ),
       _react2.default.createElement(
@@ -1453,27 +1451,27 @@ module.exports =
   
   var _register2 = _interopRequireDefault(_register);
   
-  var _upload = __webpack_require__(78);
+  var _upload = __webpack_require__(84);
   
   var _upload2 = _interopRequireDefault(_upload);
   
-  var _prediction = __webpack_require__(87);
+  var _prediction = __webpack_require__(93);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _contact = __webpack_require__(95);
+  var _contact = __webpack_require__(101);
   
   var _contact2 = _interopRequireDefault(_contact);
   
-  var _about = __webpack_require__(97);
+  var _about = __webpack_require__(103);
   
   var _about2 = _interopRequireDefault(_about);
   
-  var _chartHistory = __webpack_require__(99);
+  var _chartHistory = __webpack_require__(105);
   
   var _chartHistory2 = _interopRequireDefault(_chartHistory);
   
-  var _error = __webpack_require__(101);
+  var _error = __webpack_require__(107);
   
   var _error2 = _interopRequireDefault(_error);
   
@@ -3531,7 +3529,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Register = __webpack_require__(76);
+  var _Register = __webpack_require__(78);
   
   var _Register2 = _interopRequireDefault(_Register);
   
@@ -3675,11 +3673,13 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Register2.default)(Register);
 
 /***/ }),
-/* 76 */
+/* 76 */,
+/* 77 */,
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(77);
+      var content = __webpack_require__(79);
       var insertCss = __webpack_require__(23);
   
       if (typeof content === 'string') {
@@ -3709,7 +3709,7 @@ module.exports =
     
 
 /***/ }),
-/* 77 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(22)();
@@ -3736,7 +3736,11 @@ module.exports =
   };
 
 /***/ }),
-/* 78 */
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3749,7 +3753,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _upload = __webpack_require__(79);
+  var _upload = __webpack_require__(85);
   
   var _upload2 = _interopRequireDefault(_upload);
   
@@ -3764,7 +3768,7 @@ module.exports =
   };
 
 /***/ }),
-/* 79 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3773,7 +3777,7 @@ module.exports =
     value: true
   });
   
-  var _keys = __webpack_require__(80);
+  var _keys = __webpack_require__(86);
   
   var _keys2 = _interopRequireDefault(_keys);
   
@@ -3801,29 +3805,29 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _MuiThemeProvider = __webpack_require__(81);
+  var _MuiThemeProvider = __webpack_require__(87);
   
   var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
   
-  var _RaisedButton = __webpack_require__(82);
+  var _RaisedButton = __webpack_require__(88);
   
   var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
   
-  var _reactDropzone = __webpack_require__(83);
+  var _reactDropzone = __webpack_require__(89);
   
   var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
   
-  var _FontIcon = __webpack_require__(84);
+  var _FontIcon = __webpack_require__(90);
   
   var _FontIcon2 = _interopRequireDefault(_FontIcon);
   
-  var _colors = __webpack_require__(85);
+  var _colors = __webpack_require__(91);
   
   var _reactBootstrap = __webpack_require__(49);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var request = __webpack_require__(86);
+  var request = __webpack_require__(92);
   
   var apiBaseUrl = 'http://localhost:5000/api/tidalprediction/';
   var style = {
@@ -3996,49 +4000,49 @@ module.exports =
   exports.default = Upload;
 
 /***/ }),
-/* 80 */
+/* 86 */
 /***/ (function(module, exports) {
 
   module.exports = require("babel-runtime/core-js/object/keys");
 
 /***/ }),
-/* 81 */
+/* 87 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/styles/MuiThemeProvider");
 
 /***/ }),
-/* 82 */
+/* 88 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/RaisedButton");
 
 /***/ }),
-/* 83 */
+/* 89 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-dropzone");
 
 /***/ }),
-/* 84 */
+/* 90 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/FontIcon");
 
 /***/ }),
-/* 85 */
+/* 91 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/styles/colors");
 
 /***/ }),
-/* 86 */
+/* 92 */
 /***/ (function(module, exports) {
 
   module.exports = require("superagent");
 
 /***/ }),
-/* 87 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4051,11 +4055,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _prediction = __webpack_require__(88);
+  var _prediction = __webpack_require__(94);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _Chart = __webpack_require__(89);
+  var _Chart = __webpack_require__(95);
   
   var _Chart2 = _interopRequireDefault(_Chart);
   
@@ -4075,7 +4079,7 @@ module.exports =
   };
 
 /***/ }),
-/* 88 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4119,7 +4123,7 @@ module.exports =
   exports.default = displayPrediction;
 
 /***/ }),
-/* 89 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4154,11 +4158,11 @@ module.exports =
   
   var _reactBootstrap = __webpack_require__(49);
   
-  var _chart = __webpack_require__(90);
+  var _chart = __webpack_require__(96);
   
   var _chart2 = _interopRequireDefault(_chart);
   
-  var _DropdownSelect = __webpack_require__(93);
+  var _DropdownSelect = __webpack_require__(99);
   
   var _DropdownSelect2 = _interopRequireDefault(_DropdownSelect);
   
@@ -4209,7 +4213,7 @@ module.exports =
   exports.default = chartView;
 
 /***/ }),
-/* 90 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4246,9 +4250,9 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _ramda = __webpack_require__(91);
+  var _ramda = __webpack_require__(97);
   
-  var _reactHighcharts = __webpack_require__(92);
+  var _reactHighcharts = __webpack_require__(98);
   
   var _reactHighcharts2 = _interopRequireDefault(_reactHighcharts);
   
@@ -4389,19 +4393,19 @@ module.exports =
   exports.default = chartView;
 
 /***/ }),
-/* 91 */
+/* 97 */
 /***/ (function(module, exports) {
 
   module.exports = require("ramda");
 
 /***/ }),
-/* 92 */
+/* 98 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-highcharts");
 
 /***/ }),
-/* 93 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4434,7 +4438,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactSelect = __webpack_require__(94);
+  var _reactSelect = __webpack_require__(100);
   
   var _reactSelect2 = _interopRequireDefault(_reactSelect);
   
@@ -4484,13 +4488,13 @@ module.exports =
   exports.default = Dropdown;
 
 /***/ }),
-/* 94 */
+/* 100 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-select");
 
 /***/ }),
-/* 95 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4503,7 +4507,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _contact = __webpack_require__(96);
+  var _contact = __webpack_require__(102);
   
   var _contact2 = _interopRequireDefault(_contact);
   
@@ -4518,7 +4522,7 @@ module.exports =
   };
 
 /***/ }),
-/* 96 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4685,7 +4689,7 @@ module.exports =
   exports.default = Contact;
 
 /***/ }),
-/* 97 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4698,7 +4702,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _about = __webpack_require__(98);
+  var _about = __webpack_require__(104);
   
   var _about2 = _interopRequireDefault(_about);
   
@@ -4713,7 +4717,7 @@ module.exports =
   };
 
 /***/ }),
-/* 98 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4786,7 +4790,7 @@ module.exports =
   exports.default = displayBlank;
 
 /***/ }),
-/* 99 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4799,7 +4803,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _chartHistory = __webpack_require__(100);
+  var _chartHistory = __webpack_require__(106);
   
   var _chartHistory2 = _interopRequireDefault(_chartHistory);
   
@@ -4814,7 +4818,7 @@ module.exports =
   };
 
 /***/ }),
-/* 100 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5124,7 +5128,7 @@ module.exports =
   exports.default = displayChartHistory;
 
 /***/ }),
-/* 101 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5173,7 +5177,7 @@ module.exports =
       */
 
 /***/ }),
-/* 102 */
+/* 108 */
 /***/ (function(module, exports) {
 
   module.exports = require("./assets");
