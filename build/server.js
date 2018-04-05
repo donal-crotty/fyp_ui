@@ -124,7 +124,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(102);
+  var _assets = __webpack_require__(108);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -1453,27 +1453,27 @@ module.exports =
   
   var _register2 = _interopRequireDefault(_register);
   
-  var _upload = __webpack_require__(78);
+  var _upload = __webpack_require__(84);
   
   var _upload2 = _interopRequireDefault(_upload);
   
-  var _prediction = __webpack_require__(87);
+  var _prediction = __webpack_require__(93);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _contact = __webpack_require__(95);
+  var _contact = __webpack_require__(101);
   
   var _contact2 = _interopRequireDefault(_contact);
   
-  var _about = __webpack_require__(97);
+  var _about = __webpack_require__(103);
   
   var _about2 = _interopRequireDefault(_about);
   
-  var _chartHistory = __webpack_require__(99);
+  var _chartHistory = __webpack_require__(105);
   
   var _chartHistory2 = _interopRequireDefault(_chartHistory);
   
-  var _error = __webpack_require__(101);
+  var _error = __webpack_require__(107);
   
   var _error2 = _interopRequireDefault(_error);
   
@@ -3495,6 +3495,10 @@ module.exports =
     value: true
   });
   
+  var _extends2 = __webpack_require__(76);
+  
+  var _extends3 = _interopRequireDefault(_extends2);
+  
   var _getPrototypeOf = __webpack_require__(40);
   
   var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -3515,6 +3519,10 @@ module.exports =
   
   var _inherits3 = _interopRequireDefault(_inherits2);
   
+  var _defineProperty2 = __webpack_require__(77);
+  
+  var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+  
   var _react = __webpack_require__(12);
   
   var _react2 = _interopRequireDefault(_react);
@@ -3527,13 +3535,19 @@ module.exports =
   
   var _Panel2 = _interopRequireDefault(_Panel);
   
+  var _firebase = __webpack_require__(83);
+  
   var _withStyles = __webpack_require__(19);
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Register = __webpack_require__(76);
+  var _Register = __webpack_require__(78);
   
   var _Register2 = _interopRequireDefault(_Register);
+  
+  var _history = __webpack_require__(53);
+  
+  var _history2 = _interopRequireDefault(_history);
   
   var _loginBackground = __webpack_require__(73);
   
@@ -3541,17 +3555,29 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
+  // import { auth } from '../../firebase';
+  
   var sectionStyle = {
     width: '100%',
     height: '900px',
     backgroundImage: 'url(' + _loginBackground2.default + ')'
   };
-  // import history from '../../core/history';
-  
-  // import { Panel, Input, Button } from 'react-bootstrap';
-  
   
   var title = 'Register';
+  
+  var INITIAL_STATE = {
+    username: '',
+    email: '',
+    passwordOne: '',
+    passwordTwo: '',
+    error: null
+  };
+  // the key value is used as dynamic key to allocate the actual value in the local state object.
+  var byPropKey = function byPropKey(propertyName, value) {
+    return function () {
+      return (0, _defineProperty3.default)({}, propertyName, value);
+    };
+  };
   
   var Register = function (_Component) {
     (0, _inherits3.default)(Register, _Component);
@@ -3561,35 +3587,45 @@ module.exports =
   
       var _this = (0, _possibleConstructorReturn3.default)(this, (Register.__proto__ || (0, _getPrototypeOf2.default)(Register)).call(this, props));
   
-      _this.state = {
-        email: '',
-        password: '',
-        error: {
-          message: ''
-        }
+      _this.onSubmit = function (event) {
+        var _this$state = _this.state,
+            username = _this$state.username,
+            email = _this$state.email,
+            passwordOne = _this$state.passwordOne;
+  
+  
+        (0, _firebase.auth)().createUserWithEmailAndPassword(email, passwordOne).then(function (authUser) {
+          // success: set state of fields to INITIAL_STATE (clear fields)
+          _this.setState(function () {
+            return (0, _extends3.default)({}, INITIAL_STATE);
+          });
+        }).catch(function (error) {
+          // failure: show error in form
+          _this.setState(byPropKey('error', error));
+        });
+        // prevent browser reload
+        event.preventDefault();
       };
+  
+      _this.state = (0, _extends3.default)({}, INITIAL_STATE);
       context.setTitle(title);
       return _this;
     }
   
     (0, _createClass3.default)(Register, [{
-      key: 'submitHandler',
-      value: function submitHandler() {
-        // e.preventDefault();
-        // history.push('/');
-        console.log('this.state', this.state);
-        var _state = this.state,
-            email = _state.email,
-            password = _state.password;
-  
-        console.log('Email:', email);
-        console.log('Password:', password);
-      }
-    }, {
       key: 'render',
       value: function render() {
         var _this2 = this;
   
+        var _state = this.state,
+            username = _state.username,
+            email = _state.email,
+            passwordOne = _state.passwordOne,
+            passwordTwo = _state.passwordTwo,
+            error = _state.error;
+        // validate fields for same passwords, empty fields etc.
+  
+        var isInvalid = passwordOne !== passwordTwo || passwordOne === '' || email === '' || username === '';
         return _react2.default.createElement(
           'section',
           { style: sectionStyle },
@@ -3614,53 +3650,78 @@ module.exports =
                 ), className: 'registration-panel' },
               _react2.default.createElement(
                 'form',
-                { role: 'form' },
+                { onSubmit: this.onSubmit },
                 _react2.default.createElement(
                   'div',
                   { className: 'form-group' },
                   _react2.default.createElement('input', {
                     className: 'form-control',
-                    placeholder: 'email',
-                    name: 'email',
+                    value: username,
                     onChange: function onChange(event) {
-                      return _this2.setState({ email: event.target.value });
-                    }
+                      return _this2.setState(byPropKey('username', event.target.value));
+                    },
+                    type: 'text',
+                    placeholder: 'Full Name'
                   })
                 ),
                 _react2.default.createElement(
                   'div',
-                  null,
+                  { className: 'form-group' },
                   _react2.default.createElement('input', {
                     className: 'form-control',
-                    placeholder: 'Password',
-                    type: 'password',
-                    name: 'password',
+                    value: email,
                     onChange: function onChange(event) {
-                      return _this2.setState({ password: event.target.value });
-                    }
+                      return _this2.setState(byPropKey('email', event.target.value));
+                    },
+                    type: 'text',
+                    placeholder: 'Email Address'
                   })
                 ),
                 _react2.default.createElement(
                   'div',
-                  null,
+                  { className: 'form-group' },
+                  _react2.default.createElement('input', {
+                    className: 'form-control',
+                    value: passwordOne,
+                    onChange: function onChange(event) {
+                      return _this2.setState(byPropKey('passwordOne', event.target.value));
+                    },
+                    type: 'password',
+                    placeholder: 'Password'
+                  })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'form-group' },
+                  _react2.default.createElement('input', {
+                    className: 'form-control',
+                    value: passwordTwo,
+                    onChange: function onChange(event) {
+                      return _this2.setState(byPropKey('passwordTwo', event.target.value));
+                    },
+                    type: 'password',
+                    placeholder: 'Confirm Password'
+                  })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'form-group' },
                   _react2.default.createElement(
                     _Button2.default,
-                    {
+                    (0, _defineProperty3.default)({
                       type: 'button',
-                      bsSize: 'large',
-                      bsStyle: 'success',
-                      onClick: function onClick() {
-                        return _this2.submitHandler();
-                      }
-                    },
-                    'Register'
+                      disabled: isInvalid,
+                      bsSize: 'sm',
+                      bsStyle: 'success'
+                    }, 'type', 'submit'),
+                    'Sign Up'
                   )
+                ),
+                error && _react2.default.createElement(
+                  'p',
+                  null,
+                  error.message
                 )
-              ),
-              _react2.default.createElement(
-                'div',
-                null,
-                this.state.error.message
               )
             )
           )
@@ -3676,10 +3737,22 @@ module.exports =
 
 /***/ }),
 /* 76 */
+/***/ (function(module, exports) {
+
+  module.exports = require("babel-runtime/helpers/extends");
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports) {
+
+  module.exports = require("babel-runtime/helpers/defineProperty");
+
+/***/ }),
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(77);
+      var content = __webpack_require__(79);
       var insertCss = __webpack_require__(23);
   
       if (typeof content === 'string') {
@@ -3709,7 +3782,7 @@ module.exports =
     
 
 /***/ }),
-/* 77 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(22)();
@@ -3736,7 +3809,16 @@ module.exports =
   };
 
 /***/ }),
-/* 78 */
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */
+/***/ (function(module, exports) {
+
+  module.exports = require("firebase");
+
+/***/ }),
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3749,7 +3831,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _upload = __webpack_require__(79);
+  var _upload = __webpack_require__(85);
   
   var _upload2 = _interopRequireDefault(_upload);
   
@@ -3764,7 +3846,7 @@ module.exports =
   };
 
 /***/ }),
-/* 79 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3773,7 +3855,7 @@ module.exports =
     value: true
   });
   
-  var _keys = __webpack_require__(80);
+  var _keys = __webpack_require__(86);
   
   var _keys2 = _interopRequireDefault(_keys);
   
@@ -3801,29 +3883,29 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _MuiThemeProvider = __webpack_require__(81);
+  var _MuiThemeProvider = __webpack_require__(87);
   
   var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
   
-  var _RaisedButton = __webpack_require__(82);
+  var _RaisedButton = __webpack_require__(88);
   
   var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
   
-  var _reactDropzone = __webpack_require__(83);
+  var _reactDropzone = __webpack_require__(89);
   
   var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
   
-  var _FontIcon = __webpack_require__(84);
+  var _FontIcon = __webpack_require__(90);
   
   var _FontIcon2 = _interopRequireDefault(_FontIcon);
   
-  var _colors = __webpack_require__(85);
+  var _colors = __webpack_require__(91);
   
   var _reactBootstrap = __webpack_require__(49);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var request = __webpack_require__(86);
+  var request = __webpack_require__(92);
   
   var apiBaseUrl = 'http://localhost:5000/api/tidalprediction/';
   var style = {
@@ -3996,49 +4078,49 @@ module.exports =
   exports.default = Upload;
 
 /***/ }),
-/* 80 */
+/* 86 */
 /***/ (function(module, exports) {
 
   module.exports = require("babel-runtime/core-js/object/keys");
 
 /***/ }),
-/* 81 */
+/* 87 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/styles/MuiThemeProvider");
 
 /***/ }),
-/* 82 */
+/* 88 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/RaisedButton");
 
 /***/ }),
-/* 83 */
+/* 89 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-dropzone");
 
 /***/ }),
-/* 84 */
+/* 90 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/FontIcon");
 
 /***/ }),
-/* 85 */
+/* 91 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/styles/colors");
 
 /***/ }),
-/* 86 */
+/* 92 */
 /***/ (function(module, exports) {
 
   module.exports = require("superagent");
 
 /***/ }),
-/* 87 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4051,11 +4133,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _prediction = __webpack_require__(88);
+  var _prediction = __webpack_require__(94);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _Chart = __webpack_require__(89);
+  var _Chart = __webpack_require__(95);
   
   var _Chart2 = _interopRequireDefault(_Chart);
   
@@ -4075,7 +4157,7 @@ module.exports =
   };
 
 /***/ }),
-/* 88 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4119,7 +4201,7 @@ module.exports =
   exports.default = displayPrediction;
 
 /***/ }),
-/* 89 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4154,11 +4236,11 @@ module.exports =
   
   var _reactBootstrap = __webpack_require__(49);
   
-  var _chart = __webpack_require__(90);
+  var _chart = __webpack_require__(96);
   
   var _chart2 = _interopRequireDefault(_chart);
   
-  var _DropdownSelect = __webpack_require__(93);
+  var _DropdownSelect = __webpack_require__(99);
   
   var _DropdownSelect2 = _interopRequireDefault(_DropdownSelect);
   
@@ -4209,7 +4291,7 @@ module.exports =
   exports.default = chartView;
 
 /***/ }),
-/* 90 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4246,9 +4328,9 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _ramda = __webpack_require__(91);
+  var _ramda = __webpack_require__(97);
   
-  var _reactHighcharts = __webpack_require__(92);
+  var _reactHighcharts = __webpack_require__(98);
   
   var _reactHighcharts2 = _interopRequireDefault(_reactHighcharts);
   
@@ -4389,19 +4471,19 @@ module.exports =
   exports.default = chartView;
 
 /***/ }),
-/* 91 */
+/* 97 */
 /***/ (function(module, exports) {
 
   module.exports = require("ramda");
 
 /***/ }),
-/* 92 */
+/* 98 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-highcharts");
 
 /***/ }),
-/* 93 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4434,7 +4516,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactSelect = __webpack_require__(94);
+  var _reactSelect = __webpack_require__(100);
   
   var _reactSelect2 = _interopRequireDefault(_reactSelect);
   
@@ -4484,13 +4566,13 @@ module.exports =
   exports.default = Dropdown;
 
 /***/ }),
-/* 94 */
+/* 100 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-select");
 
 /***/ }),
-/* 95 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4503,7 +4585,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _contact = __webpack_require__(96);
+  var _contact = __webpack_require__(102);
   
   var _contact2 = _interopRequireDefault(_contact);
   
@@ -4518,7 +4600,7 @@ module.exports =
   };
 
 /***/ }),
-/* 96 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4685,7 +4767,7 @@ module.exports =
   exports.default = Contact;
 
 /***/ }),
-/* 97 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4698,7 +4780,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _about = __webpack_require__(98);
+  var _about = __webpack_require__(104);
   
   var _about2 = _interopRequireDefault(_about);
   
@@ -4713,7 +4795,7 @@ module.exports =
   };
 
 /***/ }),
-/* 98 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4786,7 +4868,7 @@ module.exports =
   exports.default = displayBlank;
 
 /***/ }),
-/* 99 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4799,7 +4881,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _chartHistory = __webpack_require__(100);
+  var _chartHistory = __webpack_require__(106);
   
   var _chartHistory2 = _interopRequireDefault(_chartHistory);
   
@@ -4814,7 +4896,7 @@ module.exports =
   };
 
 /***/ }),
-/* 100 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5124,7 +5206,7 @@ module.exports =
   exports.default = displayChartHistory;
 
 /***/ }),
-/* 101 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5173,7 +5255,7 @@ module.exports =
       */
 
 /***/ }),
-/* 102 */
+/* 108 */
 /***/ (function(module, exports) {
 
   module.exports = require("./assets");

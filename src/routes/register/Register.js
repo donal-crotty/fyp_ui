@@ -1,12 +1,13 @@
 
 import React, { PropTypes, Component } from 'react';
-// import { Panel, Input, Button } from 'react-bootstrap';
 import Button from 'react-bootstrap/lib/Button';
 import Panel from 'react-bootstrap/lib/Panel';
+import { auth } from 'firebase';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Register.css';
-// import history from '../../core/history';
+import history from '../../core/history';
 import Background from '../login/loginBackground.jpg';
+// import { auth } from '../../firebase';
 
 const sectionStyle = {
   width: '100%',
@@ -16,26 +17,58 @@ const sectionStyle = {
 
 const title = 'Register';
 
+const INITIAL_STATE = {
+  username: '',
+  email: '',
+  passwordOne: '',
+  passwordTwo: '',
+  error: null,
+};
+// the key value is used as dynamic key to allocate the actual value in the local state object.
+const byPropKey = (propertyName, value) => () => ({
+  [propertyName]: value,
+});
+
 class Register extends Component {
   constructor(props, context) {
     super(props);
-    this.state = {
-      email: '',
-      password: '',
-      error: {
-        message: '',
-      },
-    };
+    this.state = { ...INITIAL_STATE };
     context.setTitle(title);
-  }submitHandler() {
-    // e.preventDefault();
-    // history.push('/');
-    console.log('this.state', this.state);
-    const { email, password } = this.state;
-    console.log('Email:', email);
-    console.log('Password:', password);
   }
+  onSubmit = (event) => {
+    const {
+      username,
+      email,
+      passwordOne,
+    } = this.state;
+
+    auth().createUserWithEmailAndPassword(email, passwordOne)
+      .then(authUser => {
+        // success: set state of fields to INITIAL_STATE (clear fields)
+        this.setState(() => ({ ...INITIAL_STATE }));
+      })
+      .catch(error => {
+        // failure: show error in form
+        this.setState(byPropKey('error', error));
+      });
+    // prevent browser reload
+    event.preventDefault();
+  };
+
   render() {
+    const {
+      username,
+      email,
+      passwordOne,
+      passwordTwo,
+      error,
+    } = this.state;
+    // validate fields for same passwords, empty fields etc.
+    const isInvalid =
+    passwordOne !== passwordTwo ||
+    passwordOne === '' ||
+    email === '' ||
+    username === '';
     return (
       <section style={sectionStyle}>
         <div className="col-md-4 col-md-offset-4">
@@ -43,35 +76,56 @@ class Register extends Component {
             <h1 className="login-brand-text">Tidal Wave Prediction Online Tool</h1>
           </div>
           <Panel header={<h3>Please Register</h3>} className="registration-panel">
-            <form role="form">
+            <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <input
                   className="form-control"
-                  placeholder="email"
-                  name="email"
-                  onChange={event => this.setState({ email: event.target.value })}
+                  value={username}
+                  onChange={event => this.setState(byPropKey('username', event.target.value))}
+                  type="text"
+                  placeholder="Full Name"
                 />
               </div>
-              <div>
+              <div className="form-group">
                 <input
                   className="form-control"
-                  placeholder="Password"
-                  type="password"
-                  name="password"
-                  onChange={event => this.setState({ password: event.target.value })}
+                  value={email}
+                  onChange={event => this.setState(byPropKey('email', event.target.value))}
+                  type="text"
+                  placeholder="Email Address"
                 />
               </div>
-              <div>
+              <div className="form-group">
+                <input
+                  className="form-control"
+                  value={passwordOne}
+                  onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
+                  type="password"
+                  placeholder="Password"
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  className="form-control"
+                  value={passwordTwo}
+                  onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
+                  type="password"
+                  placeholder="Confirm Password"
+                />
+              </div>
+              <div className="form-group">
                 <Button
                   type="button"
-                  bsSize="large"
+                  disabled={isInvalid}
+                  bsSize="sm"
                   bsStyle="success"
-                  onClick={() => this.submitHandler()}
+                  type="submit"
                 >
-                Register</Button>
+                  Sign Up
+                </Button>
               </div>
+              { error && <p>{error.message}</p> }
             </form>
-            <div>{this.state.error.message}</div>
           </Panel>
         </div>
       </section>
