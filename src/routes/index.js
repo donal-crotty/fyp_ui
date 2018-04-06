@@ -4,7 +4,6 @@ import App from '../components/App';
 import callback from './callback';
 import dashboard from './dashboard';
 import landing from './landing';
-import register from './register';
 import upload from './dashboardPages/upload';
 import prediction from './dashboardPages/prediction';
 import about from './dashboardPages/about';
@@ -41,20 +40,6 @@ export default [
       );
     },
   },
-  {
-    path: '/register',
-    children: [
-      register,
-    ],
-    async action({ next, render, context }) {
-      const component = await next();
-      if (component === undefined) return component;
-      return render(
-        <App context={context}>{component}</App>
-      );
-    },
-  },
-
   {
     path: '/',
 

@@ -90,41 +90,41 @@ module.exports =
   
   var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
   
-  var _jwksRsa = __webpack_require__(104);
+  var _jwksRsa = __webpack_require__(12);
   
   var _jwksRsa2 = _interopRequireDefault(_jwksRsa);
   
-  var _react = __webpack_require__(12);
+  var _react = __webpack_require__(13);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _server = __webpack_require__(13);
+  var _server = __webpack_require__(14);
   
   var _server2 = _interopRequireDefault(_server);
   
-  var _universalRouter = __webpack_require__(14);
+  var _universalRouter = __webpack_require__(15);
   
   var _universalRouter2 = _interopRequireDefault(_universalRouter);
   
-  var _prettyError = __webpack_require__(15);
+  var _prettyError = __webpack_require__(16);
   
   var _prettyError2 = _interopRequireDefault(_prettyError);
   
-  var _Html = __webpack_require__(16);
+  var _Html = __webpack_require__(17);
   
   var _Html2 = _interopRequireDefault(_Html);
   
-  var _ErrorPage = __webpack_require__(18);
+  var _ErrorPage = __webpack_require__(19);
   
-  var _ErrorPage2 = __webpack_require__(20);
+  var _ErrorPage2 = __webpack_require__(21);
   
   var _ErrorPage3 = _interopRequireDefault(_ErrorPage2);
   
-  var _passport = __webpack_require__(28);
+  var _passport = __webpack_require__(29);
   
   var _passport2 = _interopRequireDefault(_passport);
   
-  var _routes = __webpack_require__(38);
+  var _routes = __webpack_require__(39);
   
   var _routes2 = _interopRequireDefault(_routes);
   
@@ -132,7 +132,7 @@ module.exports =
   
   var _assets2 = _interopRequireDefault(_assets);
   
-  var _config = __webpack_require__(17);
+  var _config = __webpack_require__(18);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -386,28 +386,34 @@ module.exports =
 /* 12 */
 /***/ (function(module, exports) {
 
-  module.exports = require("react");
+  module.exports = require("jwks-rsa");
 
 /***/ }),
 /* 13 */
 /***/ (function(module, exports) {
 
-  module.exports = require("react-dom/server");
+  module.exports = require("react");
 
 /***/ }),
 /* 14 */
 /***/ (function(module, exports) {
 
-  module.exports = require("universal-router");
+  module.exports = require("react-dom/server");
 
 /***/ }),
 /* 15 */
 /***/ (function(module, exports) {
 
-  module.exports = require("pretty-error");
+  module.exports = require("universal-router");
 
 /***/ }),
 /* 16 */
+/***/ (function(module, exports) {
+
+  module.exports = require("pretty-error");
+
+/***/ }),
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -416,11 +422,11 @@ module.exports =
     value: true
   });
   
-  var _react = __webpack_require__(12);
+  var _react = __webpack_require__(13);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _config = __webpack_require__(17);
+  var _config = __webpack_require__(18);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -477,7 +483,7 @@ module.exports =
   exports.default = Html;
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
   'use strict';
@@ -535,7 +541,7 @@ module.exports =
   };
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -545,15 +551,15 @@ module.exports =
   });
   exports.ErrorPageWithoutStyle = undefined;
   
-  var _react = __webpack_require__(12);
+  var _react = __webpack_require__(13);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _withStyles = __webpack_require__(19);
+  var _withStyles = __webpack_require__(20);
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _ErrorPage = __webpack_require__(20);
+  var _ErrorPage = __webpack_require__(21);
   
   var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
   
@@ -612,18 +618,18 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_ErrorPage2.default)(ErrorPage);
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
   module.exports = require("isomorphic-style-loader/lib/withStyles");
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(21);
-      var insertCss = __webpack_require__(23);
+      var content = __webpack_require__(22);
+      var insertCss = __webpack_require__(24);
   
       if (typeof content === 'string') {
         content = [[module.id, content, '']];
@@ -652,10 +658,10 @@ module.exports =
     
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-  exports = module.exports = __webpack_require__(22)();
+  exports = module.exports = __webpack_require__(23)();
   // imports
   
   
@@ -666,7 +672,7 @@ module.exports =
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
   /*
@@ -722,24 +728,24 @@ module.exports =
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
   
-  var _assign = __webpack_require__(24);
+  var _assign = __webpack_require__(25);
   
   var _assign2 = _interopRequireDefault(_assign);
   
-  var _stringify = __webpack_require__(25);
+  var _stringify = __webpack_require__(26);
   
   var _stringify2 = _interopRequireDefault(_stringify);
   
-  var _slicedToArray2 = __webpack_require__(26);
+  var _slicedToArray2 = __webpack_require__(27);
   
   var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
   
-  var _getIterator2 = __webpack_require__(27);
+  var _getIterator2 = __webpack_require__(28);
   
   var _getIterator3 = _interopRequireDefault(_getIterator2);
   
@@ -883,31 +889,31 @@ module.exports =
   module.exports = insertCss;
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
   module.exports = require("babel-runtime/core-js/object/assign");
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports) {
 
   module.exports = require("babel-runtime/core-js/json/stringify");
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports) {
 
   module.exports = require("babel-runtime/helpers/slicedToArray");
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports) {
 
   module.exports = require("babel-runtime/core-js/get-iterator");
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -924,15 +930,15 @@ module.exports =
   
   var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
   
-  var _passport = __webpack_require__(29);
+  var _passport = __webpack_require__(30);
   
   var _passport2 = _interopRequireDefault(_passport);
   
-  var _passportFacebook = __webpack_require__(30);
+  var _passportFacebook = __webpack_require__(31);
   
-  var _models = __webpack_require__(31);
+  var _models = __webpack_require__(32);
   
-  var _config = __webpack_require__(17);
+  var _config = __webpack_require__(18);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -1111,19 +1117,19 @@ module.exports =
   exports.default = _passport2.default;
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports) {
 
   module.exports = require("passport");
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports) {
 
   module.exports = require("passport-facebook");
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -1133,23 +1139,23 @@ module.exports =
   });
   exports.UserProfile = exports.UserClaim = exports.UserLogin = exports.User = undefined;
   
-  var _sequelize = __webpack_require__(32);
+  var _sequelize = __webpack_require__(33);
   
   var _sequelize2 = _interopRequireDefault(_sequelize);
   
-  var _User = __webpack_require__(34);
+  var _User = __webpack_require__(35);
   
   var _User2 = _interopRequireDefault(_User);
   
-  var _UserLogin = __webpack_require__(35);
+  var _UserLogin = __webpack_require__(36);
   
   var _UserLogin2 = _interopRequireDefault(_UserLogin);
   
-  var _UserClaim = __webpack_require__(36);
+  var _UserClaim = __webpack_require__(37);
   
   var _UserClaim2 = _interopRequireDefault(_UserClaim);
   
-  var _UserProfile = __webpack_require__(37);
+  var _UserProfile = __webpack_require__(38);
   
   var _UserProfile2 = _interopRequireDefault(_UserProfile);
   
@@ -1194,7 +1200,7 @@ module.exports =
   exports.UserProfile = _UserProfile2.default;
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -1203,11 +1209,11 @@ module.exports =
     value: true
   });
   
-  var _sequelize = __webpack_require__(33);
+  var _sequelize = __webpack_require__(34);
   
   var _sequelize2 = _interopRequireDefault(_sequelize);
   
-  var _config = __webpack_require__(17);
+  var _config = __webpack_require__(18);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -1229,13 +1235,13 @@ module.exports =
   exports.default = sequelize;
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports) {
 
   module.exports = require("sequelize");
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -1244,11 +1250,11 @@ module.exports =
     value: true
   });
   
-  var _sequelize = __webpack_require__(33);
+  var _sequelize = __webpack_require__(34);
   
   var _sequelize2 = _interopRequireDefault(_sequelize);
   
-  var _sequelize3 = __webpack_require__(32);
+  var _sequelize3 = __webpack_require__(33);
   
   var _sequelize4 = _interopRequireDefault(_sequelize3);
   
@@ -1290,7 +1296,7 @@ module.exports =
   exports.default = User;
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -1299,11 +1305,11 @@ module.exports =
     value: true
   });
   
-  var _sequelize = __webpack_require__(33);
+  var _sequelize = __webpack_require__(34);
   
   var _sequelize2 = _interopRequireDefault(_sequelize);
   
-  var _sequelize3 = __webpack_require__(32);
+  var _sequelize3 = __webpack_require__(33);
   
   var _sequelize4 = _interopRequireDefault(_sequelize3);
   
@@ -1335,7 +1341,7 @@ module.exports =
   exports.default = UserLogin;
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -1344,11 +1350,11 @@ module.exports =
     value: true
   });
   
-  var _sequelize = __webpack_require__(33);
+  var _sequelize = __webpack_require__(34);
   
   var _sequelize2 = _interopRequireDefault(_sequelize);
   
-  var _sequelize3 = __webpack_require__(32);
+  var _sequelize3 = __webpack_require__(33);
   
   var _sequelize4 = _interopRequireDefault(_sequelize3);
   
@@ -1378,7 +1384,7 @@ module.exports =
   exports.default = UserClaim;
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -1387,11 +1393,11 @@ module.exports =
     value: true
   });
   
-  var _sequelize = __webpack_require__(33);
+  var _sequelize = __webpack_require__(34);
   
   var _sequelize2 = _interopRequireDefault(_sequelize);
   
-  var _sequelize3 = __webpack_require__(32);
+  var _sequelize3 = __webpack_require__(33);
   
   var _sequelize4 = _interopRequireDefault(_sequelize3);
   
@@ -1429,7 +1435,7 @@ module.exports =
   exports.default = UserProfile;
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -1446,35 +1452,31 @@ module.exports =
   
   var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
   
-  var _react = __webpack_require__(12);
+  var _react = __webpack_require__(13);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _App = __webpack_require__(39);
+  var _App = __webpack_require__(40);
   
   var _App2 = _interopRequireDefault(_App);
   
-  var _callback = __webpack_require__(111);
+  var _callback = __webpack_require__(61);
   
   var _callback2 = _interopRequireDefault(_callback);
   
-  var _dashboard = __webpack_require__(121);
+  var _dashboard = __webpack_require__(64);
   
   var _dashboard2 = _interopRequireDefault(_dashboard);
   
-  var _landing = __webpack_require__(116);
+  var _landing = __webpack_require__(74);
   
   var _landing2 = _interopRequireDefault(_landing);
   
-  var _register = __webpack_require__(74);
-  
-  var _register2 = _interopRequireDefault(_register);
-  
-  var _upload = __webpack_require__(78);
+  var _upload = __webpack_require__(80);
   
   var _upload2 = _interopRequireDefault(_upload);
   
-  var _prediction = __webpack_require__(87);
+  var _prediction = __webpack_require__(89);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
@@ -1490,13 +1492,12 @@ module.exports =
   
   var _error2 = _interopRequireDefault(_error);
   
-  var _Header = __webpack_require__(48);
+  var _Header = __webpack_require__(49);
   
   var _Header2 = _interopRequireDefault(_Header);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  // Child routes
   exports.default = [{
     path: '/landing',
     children: [_landing2.default],
@@ -1584,8 +1585,13 @@ module.exports =
       }))();
     }
   }, {
-    path: '/register',
-    children: [_register2.default],
+    path: '/',
+  
+    // keep in mind, routes are evaluated in order
+    children: [_dashboard2.default, _upload2.default, _prediction2.default, _about2.default, _chartHistory2.default,
+    // place new routes before...
+    _error2.default],
+  
     action: function action(_ref3) {
       var _this3 = this;
   
@@ -1613,9 +1619,18 @@ module.exports =
   
               case 5:
                 return _context3.abrupt('return', render(_react2.default.createElement(
-                  _App2.default,
-                  { context: context },
-                  component
+                  'div',
+                  null,
+                  _react2.default.createElement(_Header2.default, null),
+                  _react2.default.createElement(
+                    'div',
+                    { id: 'page-wrapper', className: 'page-wrapper' },
+                    _react2.default.createElement(
+                      _App2.default,
+                      { context: context },
+                      component
+                    )
+                  )
                 )));
   
               case 6:
@@ -1627,13 +1642,8 @@ module.exports =
       }))();
     }
   }, {
-    path: '/',
-  
-    // keep in mind, routes are evaluated in order
-    children: [_dashboard2.default, _upload2.default, _prediction2.default, _about2.default, _chartHistory2.default,
-    // place new routes before...
-    _error2.default],
-  
+    path: '/error',
+    children: [_error2.default],
     action: function action(_ref4) {
       var _this4 = this;
   
@@ -1661,18 +1671,9 @@ module.exports =
   
               case 5:
                 return _context4.abrupt('return', render(_react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_Header2.default, null),
-                  _react2.default.createElement(
-                    'div',
-                    { id: 'page-wrapper', className: 'page-wrapper' },
-                    _react2.default.createElement(
-                      _App2.default,
-                      { context: context },
-                      component
-                    )
-                  )
+                  _App2.default,
+                  { context: context },
+                  component
                 )));
   
               case 6:
@@ -1683,53 +1684,11 @@ module.exports =
         }, _callee4, _this4);
       }))();
     }
-  }, {
-    path: '/error',
-    children: [_error2.default],
-    action: function action(_ref5) {
-      var _this5 = this;
-  
-      var next = _ref5.next,
-          render = _ref5.render,
-          context = _ref5.context;
-      return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {
-        var component;
-        return _regenerator2.default.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                _context5.next = 2;
-                return next();
-  
-              case 2:
-                component = _context5.sent;
-  
-                if (!(component === undefined)) {
-                  _context5.next = 5;
-                  break;
-                }
-  
-                return _context5.abrupt('return', component);
-  
-              case 5:
-                return _context5.abrupt('return', render(_react2.default.createElement(
-                  _App2.default,
-                  { context: context },
-                  component
-                )));
-  
-              case 6:
-              case 'end':
-                return _context5.stop();
-            }
-          }
-        }, _callee5, _this5);
-      }))();
-    }
   }];
+  // Child routes
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -1738,39 +1697,39 @@ module.exports =
     value: true
   });
   
-  var _getPrototypeOf = __webpack_require__(40);
+  var _getPrototypeOf = __webpack_require__(41);
   
   var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
   
-  var _classCallCheck2 = __webpack_require__(41);
+  var _classCallCheck2 = __webpack_require__(42);
   
   var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
   
-  var _createClass2 = __webpack_require__(42);
+  var _createClass2 = __webpack_require__(43);
   
   var _createClass3 = _interopRequireDefault(_createClass2);
   
-  var _possibleConstructorReturn2 = __webpack_require__(43);
+  var _possibleConstructorReturn2 = __webpack_require__(44);
   
   var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
   
-  var _inherits2 = __webpack_require__(44);
+  var _inherits2 = __webpack_require__(45);
   
   var _inherits3 = _interopRequireDefault(_inherits2);
   
-  var _react = __webpack_require__(12);
+  var _react = __webpack_require__(13);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _emptyFunction = __webpack_require__(45);
+  var _emptyFunction = __webpack_require__(46);
   
   var _emptyFunction2 = _interopRequireDefault(_emptyFunction);
   
-  var _App = __webpack_require__(46);
+  var _App = __webpack_require__(47);
   
   var _App2 = _interopRequireDefault(_App);
   
-  var _Header = __webpack_require__(48);
+  var _Header = __webpack_require__(49);
   
   var _Header2 = _interopRequireDefault(_Header);
   
@@ -1839,48 +1798,48 @@ module.exports =
   exports.default = App;
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports) {
 
   module.exports = require("babel-runtime/core-js/object/get-prototype-of");
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports) {
 
   module.exports = require("babel-runtime/helpers/classCallCheck");
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports) {
 
   module.exports = require("babel-runtime/helpers/createClass");
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports) {
 
   module.exports = require("babel-runtime/helpers/possibleConstructorReturn");
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
   module.exports = require("babel-runtime/helpers/inherits");
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports) {
 
   module.exports = require("fbjs/lib/emptyFunction");
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(47);
-      var insertCss = __webpack_require__(23);
+      var content = __webpack_require__(48);
+      var insertCss = __webpack_require__(24);
   
       if (typeof content === 'string') {
         content = [[module.id, content, '']];
@@ -1909,10 +1868,10 @@ module.exports =
     
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
-  exports = module.exports = __webpack_require__(22)();
+  exports = module.exports = __webpack_require__(23)();
   // imports
   
   
@@ -1923,7 +1882,7 @@ module.exports =
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -1932,27 +1891,27 @@ module.exports =
     value: true
   });
   
-  var _getPrototypeOf = __webpack_require__(40);
+  var _getPrototypeOf = __webpack_require__(41);
   
   var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
   
-  var _classCallCheck2 = __webpack_require__(41);
+  var _classCallCheck2 = __webpack_require__(42);
   
   var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
   
-  var _createClass2 = __webpack_require__(42);
+  var _createClass2 = __webpack_require__(43);
   
   var _createClass3 = _interopRequireDefault(_createClass2);
   
-  var _possibleConstructorReturn2 = __webpack_require__(43);
+  var _possibleConstructorReturn2 = __webpack_require__(44);
   
   var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
   
-  var _inherits2 = __webpack_require__(44);
+  var _inherits2 = __webpack_require__(45);
   
   var _inherits3 = _interopRequireDefault(_inherits2);
   
-  var _react = __webpack_require__(12);
+  var _react = __webpack_require__(13);
   
   var _react2 = _interopRequireDefault(_react);
   
@@ -1964,15 +1923,15 @@ module.exports =
   
   var _jquery2 = _interopRequireDefault(_jquery);
   
-  var _AuthService = __webpack_require__(105);
+  var _AuthService = __webpack_require__(52);
   
-  var _Sidebar = __webpack_require__(52);
+  var _Sidebar = __webpack_require__(59);
   
   var _Sidebar2 = _interopRequireDefault(_Sidebar);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var logo = __webpack_require__(57);
+  var logo = __webpack_require__(60);
   
   function toggleMenu() {
     if ((0, _jquery2.default)('.navbar-collapse').hasClass('collapse')) {
@@ -2071,12 +2030,6 @@ module.exports =
   exports.default = Header;
 
 /***/ }),
-/* 49 */
-/***/ (function(module, exports) {
-
-  module.exports = require("react-bootstrap");
-
-/***/ }),
 /* 50 */
 /***/ (function(module, exports) {
 
@@ -2097,36 +2050,222 @@ module.exports =
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  exports.login = login;
+  exports.logout = logout;
+  exports.requireAuth = requireAuth;
+  exports.getIdToken = getIdToken;
+  exports.getAccessToken = getAccessToken;
+  exports.setAccessToken = setAccessToken;
+  exports.setIdToken = setIdToken;
+  exports.isLoggedIn = isLoggedIn;
   
-  var _getPrototypeOf = __webpack_require__(40);
+  var _jwtDecode = __webpack_require__(53);
   
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
   
-  var _classCallCheck2 = __webpack_require__(41);
+  var _auth0Js = __webpack_require__(54);
   
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  var _auth0Js2 = _interopRequireDefault(_auth0Js);
   
-  var _createClass2 = __webpack_require__(42);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(43);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(44);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _history = __webpack_require__(53);
+  var _history = __webpack_require__(55);
   
   var _history2 = _interopRequireDefault(_history);
   
-  var _AuthService = __webpack_require__(105);
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  // import { browserHistory } from 'react-router';
+  var ID_TOKEN_KEY = 'id_token';
+  var ACCESS_TOKEN_KEY = 'access_token';
+  
+  var CLIENT_ID = 'Wj9ZPGZWivGSJpx3sLYCmObGj1IUReR5';
+  var CLIENT_DOMAIN = 'tidalwavepredapp.eu.auth0.com';
+  var REDIRECT = 'http://localhost:3001/callback';
+  var AUDIENCE = 'https://tidalwavepredapp.eu.auth0.com/api/v2/';
+  
+  var auth = new _auth0Js2.default.WebAuth({
+    clientID: CLIENT_ID,
+    domain: CLIENT_DOMAIN
+  });
+  
+  function login() {
+    auth.authorize({
+      responseType: 'token id_token',
+      redirectUri: REDIRECT,
+      audience: AUDIENCE
+    });
+  }
+  function clearIdToken() {
+    localStorage.removeItem(ID_TOKEN_KEY);
+  }
+  
+  function clearAccessToken() {
+    localStorage.removeItem(ACCESS_TOKEN_KEY);
+  }
+  
+  function logout() {
+    clearIdToken();
+    clearAccessToken();
+    _history2.default.push('/landing');
+  }
+  
+  function requireAuth(nextState, replace) {
+    if (!isLoggedIn()) {
+      replace({ pathname: '/' });
+    }
+  }
+  
+  function getIdToken() {
+    return localStorage.getItem(ID_TOKEN_KEY);
+  }
+  
+  function getAccessToken() {
+    return localStorage.getItem(ACCESS_TOKEN_KEY);
+  }
+  
+  // Helper function that will allow us to extract the access_token and id_token
+  function getParameterByName(name) {
+    var match = RegExp('[#&]' + name + '=([^&]*)').exec(window.location.hash);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+  }
+  
+  // Get and store access_token in local storage
+  function setAccessToken() {
+    var accessToken = getParameterByName('access_token');
+    localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
+  }
+  
+  // Get and store id_token in local storage
+  function setIdToken() {
+    var idToken = getParameterByName('id_token');
+    localStorage.setItem(ID_TOKEN_KEY, idToken);
+  }
+  
+  function isLoggedIn() {
+    var idToken = getIdToken();
+    return !!idToken && !isTokenExpired(idToken);
+  }
+  
+  function getTokenExpirationDate(encodedToken) {
+    var token = (0, _jwtDecode2.default)(encodedToken);
+    if (!token.exp) {
+      return null;
+    }
+  
+    var date = new Date(0);
+    date.setUTCSeconds(token.exp);
+  
+    return date;
+  }
+  
+  function isTokenExpired(token) {
+    var expirationDate = getTokenExpirationDate(token);
+    return expirationDate < new Date();
+  }
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports) {
+
+  module.exports = require("jwt-decode");
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports) {
+
+  module.exports = require("auth0-js");
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _createBrowserHistory = __webpack_require__(56);
+  
+  var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
+  
+  var _createMemoryHistory = __webpack_require__(57);
+  
+  var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
+  
+  var _useQueries = __webpack_require__(58);
+  
+  var _useQueries2 = _interopRequireDefault(_useQueries);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var history = (0, _useQueries2.default)( false ? _createBrowserHistory2.default : _createMemoryHistory2.default)(); /**
+                                                                                                                                    * React Starter Kit (https://www.reactstarterkit.com/)
+                                                                                                                                    *
+                                                                                                                                    * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+                                                                                                                                    *
+                                                                                                                                    * This source code is licensed under the MIT license found in the
+                                                                                                                                    * LICENSE.txt file in the root directory of this source tree.
+                                                                                                                                    */
+  
+  exports.default = history;
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports) {
+
+  module.exports = require("history/lib/createBrowserHistory");
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports) {
+
+  module.exports = require("history/lib/createMemoryHistory");
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports) {
+
+  module.exports = require("history/lib/useQueries");
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _getPrototypeOf = __webpack_require__(41);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(42);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(43);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(44);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(45);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _history = __webpack_require__(55);
+  
+  var _history2 = _interopRequireDefault(_history);
+  
+  var _AuthService = __webpack_require__(52);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -2249,71 +2388,10 @@ module.exports =
   exports.default = Sidebar;
 
 /***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _createBrowserHistory = __webpack_require__(54);
-  
-  var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
-  
-  var _createMemoryHistory = __webpack_require__(55);
-  
-  var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
-  
-  var _useQueries = __webpack_require__(56);
-  
-  var _useQueries2 = _interopRequireDefault(_useQueries);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var history = (0, _useQueries2.default)( false ? _createBrowserHistory2.default : _createMemoryHistory2.default)(); /**
-                                                                                                                                    * React Starter Kit (https://www.reactstarterkit.com/)
-                                                                                                                                    *
-                                                                                                                                    * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-                                                                                                                                    *
-                                                                                                                                    * This source code is licensed under the MIT license found in the
-                                                                                                                                    * LICENSE.txt file in the root directory of this source tree.
-                                                                                                                                    */
-  
-  exports.default = history;
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports) {
-
-  module.exports = require("history/lib/createBrowserHistory");
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports) {
-
-  module.exports = require("history/lib/createMemoryHistory");
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports) {
-
-  module.exports = require("history/lib/useQueries");
-
-/***/ }),
-/* 57 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "components/Header/logo.png?0f37c478e0acdd156766bfb8c2dd6dd6";
-
-/***/ }),
-/* 58 */,
-/* 59 */,
-/* 60 */
-/***/ (function(module, exports) {
-
-  module.exports = require("prop-types");
 
 /***/ }),
 /* 61 */
@@ -2325,1942 +2403,11 @@ module.exports =
     value: true
   });
   
-  var _getPrototypeOf = __webpack_require__(40);
-  
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-  
-  var _classCallCheck2 = __webpack_require__(41);
-  
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-  
-  var _createClass2 = __webpack_require__(42);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(43);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(44);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
-  var _react = __webpack_require__(12);
+  var _react = __webpack_require__(13);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactGeolocation = __webpack_require__(62);
-  
-  var _reactGeolocation2 = _interopRequireDefault(_reactGeolocation);
-  
-  var _reactBootstrap = __webpack_require__(49);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var geoLocation = function (_Component) {
-    (0, _inherits3.default)(geoLocation, _Component);
-  
-    function geoLocation() {
-      (0, _classCallCheck3.default)(this, geoLocation);
-  
-      var _this = (0, _possibleConstructorReturn3.default)(this, (geoLocation.__proto__ || (0, _getPrototypeOf2.default)(geoLocation)).call(this));
-  
-      _this.state = {};
-      return _this;
-    }
-  
-    (0, _createClass3.default)(geoLocation, [{
-      key: 'render',
-      value: function render() {
-        return _react2.default.createElement(_reactGeolocation2.default, {
-          onSuccess: console.log,
-          render: function render(_ref) {
-            var _ref$position = _ref.position;
-            _ref$position = _ref$position === undefined ? {} : _ref$position;
-            var _ref$position$coords = _ref$position.coords;
-            _ref$position$coords = _ref$position$coords === undefined ? {} : _ref$position$coords;
-            var latitude = _ref$position$coords.latitude,
-                longitude = _ref$position$coords.longitude,
-                error = _ref.error,
-                getCurrentPosition = _ref.getCurrentPosition;
-            return _react2.default.createElement(
-              'div',
-              { onLoad: getCurrentPosition },
-              error && _react2.default.createElement(
-                'div',
-                null,
-                error.message
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.Breadcrumb,
-                null,
-                _react2.default.createElement(
-                  'b',
-                  null,
-                  'latitude:'
-                ),
-                ' ',
-                latitude
-              ),
-              _react2.default.createElement('hr', null),
-              _react2.default.createElement(
-                _reactBootstrap.Breadcrumb,
-                null,
-                _react2.default.createElement(
-                  'b',
-                  null,
-                  'longitude:'
-                ),
-                ' ',
-                longitude
-              )
-            );
-          }
-        });
-      }
-    }]);
-    return geoLocation;
-  }(_react.Component);
-  
-  exports.default = geoLocation;
-  
-  // AIzaSyBxTFxWYofVC1OjCwxDlTUjTtdYh-EGzd0
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports) {
-
-  module.exports = require("react-geolocation");
-
-/***/ }),
-/* 63 */,
-/* 64 */,
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MapContainer = undefined;
-  
-  var _getPrototypeOf = __webpack_require__(40);
-  
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-  
-  var _classCallCheck2 = __webpack_require__(41);
-  
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-  
-  var _createClass2 = __webpack_require__(42);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(43);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(44);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _googleMapsReact = __webpack_require__(66);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var MapContainer = exports.MapContainer = function (_Component) {
-    (0, _inherits3.default)(MapContainer, _Component);
-  
-    function MapContainer() {
-      (0, _classCallCheck3.default)(this, MapContainer);
-      return (0, _possibleConstructorReturn3.default)(this, (MapContainer.__proto__ || (0, _getPrototypeOf2.default)(MapContainer)).apply(this, arguments));
-    }
-  
-    (0, _createClass3.default)(MapContainer, [{
-      key: 'render',
-      value: function render() {
-        return _react2.default.createElement(
-          _googleMapsReact.Map,
-          {
-            google: this.props.google,
-            style: { width: '92%', height: '300px', position: 'fixed' },
-            className: 'map ',
-            initialCenter: {
-              lat: 53.4157082,
-              lng: -7.9064346
-            },
-            zoom: 5
-          },
-          _react2.default.createElement(_googleMapsReact.Marker, {
-            title: 'Achill_Island',
-            name: 'Achill_Island',
-            position: { lng: -10.101596, lat: 53.95219 }
-          }),
-          _react2.default.createElement(_googleMapsReact.Marker, {
-            title: 'Achill_Island',
-            name: 'Achill_Island',
-            position: { lng: -10.101596, lat: 53.95219 }
-          }),
-          _react2.default.createElement(_googleMapsReact.Marker, {
-            title: 'Aranmore',
-            name: 'Aranmore',
-            position: { lng: -8.49562, lat: 54.9896 }
-          }),
-          _react2.default.createElement(_googleMapsReact.Marker, {
-            title: 'Arklow',
-            name: 'Arklow',
-            position: { lng: -6.1166053, lat: 52.779964 }
-          }),
-          _react2.default.createElement(_googleMapsReact.Marker, {
-            title: 'Ballycotton',
-            name: 'Ballycotton',
-            position: { lng: -8.0007, lat: 51.82776 }
-          }),
-          _react2.default.createElement(_googleMapsReact.Marker, {
-            title: 'Ballyglass',
-            name: 'Ballyglass',
-            position: { lng: -9.89, lat: 54.253 }
-          })
-        );
-      }
-    }]);
-    return MapContainer;
-  }(_react.Component);
-  
-  exports.default = (0, _googleMapsReact.GoogleApiWrapper)({
-    apiKey: 'AIzaSyBxTFxWYofVC1OjCwxDlTUjTtdYh-EGzd0'
-  })(MapContainer);
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports) {
-
-  module.exports = require("google-maps-react");
-
-/***/ }),
-/* 67 */,
-/* 68 */,
-/* 69 */
-/***/ (function(module, exports) {
-
-  module.exports = require("react-bootstrap/lib/Button");
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports) {
-
-  module.exports = require("react-bootstrap/lib/Panel");
-
-/***/ }),
-/* 71 */,
-/* 72 */,
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  module.exports = __webpack_require__.p + "routes/login/loginBackground.jpg?33084a126c418a141191803e8f6063e9";
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _Register = __webpack_require__(75);
-  
-  var _Register2 = _interopRequireDefault(_Register);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  /**
-   * React Starter Kit (https://www.reactstarterkit.com/)
-   *
-   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE.txt file in the root directory of this source tree.
-   */
-  
-  exports.default = {
-  
-    path: '/',
-  
-    action: function action() {
-      return _react2.default.createElement(_Register2.default, null);
-    }
-  };
-  // import App from '../../components/App';
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _getPrototypeOf = __webpack_require__(40);
-  
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-  
-  var _classCallCheck2 = __webpack_require__(41);
-  
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-  
-  var _createClass2 = __webpack_require__(42);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(43);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(44);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _Button = __webpack_require__(69);
-  
-  var _Button2 = _interopRequireDefault(_Button);
-  
-  var _Panel = __webpack_require__(70);
-  
-  var _Panel2 = _interopRequireDefault(_Panel);
-  
-  var _withStyles = __webpack_require__(19);
-  
-  var _withStyles2 = _interopRequireDefault(_withStyles);
-  
-  var _Register = __webpack_require__(76);
-  
-  var _Register2 = _interopRequireDefault(_Register);
-  
-  var _loginBackground = __webpack_require__(73);
-  
-  var _loginBackground2 = _interopRequireDefault(_loginBackground);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var sectionStyle = {
-    width: '100%',
-    height: '900px',
-    backgroundImage: 'url(' + _loginBackground2.default + ')'
-  };
-  // import history from '../../core/history';
-  
-  // import { Panel, Input, Button } from 'react-bootstrap';
-  
-  
-  var title = 'Register';
-  
-  var Register = function (_Component) {
-    (0, _inherits3.default)(Register, _Component);
-  
-    function Register(props, context) {
-      (0, _classCallCheck3.default)(this, Register);
-  
-      var _this = (0, _possibleConstructorReturn3.default)(this, (Register.__proto__ || (0, _getPrototypeOf2.default)(Register)).call(this, props));
-  
-      _this.state = {
-        email: '',
-        password: '',
-        error: {
-          message: ''
-        }
-      };
-      context.setTitle(title);
-      return _this;
-    }
-  
-    (0, _createClass3.default)(Register, [{
-      key: 'submitHandler',
-      value: function submitHandler() {
-        // e.preventDefault();
-        // history.push('/');
-        console.log('this.state', this.state);
-        var _state = this.state,
-            email = _state.email,
-            password = _state.password;
-  
-        console.log('Email:', email);
-        console.log('Password:', password);
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        var _this2 = this;
-  
-        return _react2.default.createElement(
-          'section',
-          { style: sectionStyle },
-          _react2.default.createElement(
-            'div',
-            { className: 'col-md-4 col-md-offset-4' },
-            _react2.default.createElement(
-              'div',
-              { className: 'text-center' },
-              _react2.default.createElement(
-                'h1',
-                { className: 'login-brand-text' },
-                'Tidal Wave Prediction Online Tool'
-              )
-            ),
-            _react2.default.createElement(
-              _Panel2.default,
-              { header: _react2.default.createElement(
-                  'h3',
-                  null,
-                  'Please Register'
-                ), className: 'registration-panel' },
-              _react2.default.createElement(
-                'form',
-                { role: 'form' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'form-group' },
-                  _react2.default.createElement('input', {
-                    className: 'form-control',
-                    placeholder: 'email',
-                    name: 'email',
-                    onChange: function onChange(event) {
-                      return _this2.setState({ email: event.target.value });
-                    }
-                  })
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement('input', {
-                    className: 'form-control',
-                    placeholder: 'Password',
-                    type: 'password',
-                    name: 'password',
-                    onChange: function onChange(event) {
-                      return _this2.setState({ password: event.target.value });
-                    }
-                  })
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    _Button2.default,
-                    {
-                      type: 'button',
-                      bsSize: 'large',
-                      bsStyle: 'success',
-                      onClick: function onClick() {
-                        return _this2.submitHandler();
-                      }
-                    },
-                    'Register'
-                  )
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                null,
-                this.state.error.message
-              )
-            )
-          )
-        );
-      }
-    }]);
-    return Register;
-  }(_react.Component);
-  
-  Register.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  
-  exports.default = (0, _withStyles2.default)(_Register2.default)(Register);
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  
-      var content = __webpack_require__(77);
-      var insertCss = __webpack_require__(23);
-  
-      if (typeof content === 'string') {
-        content = [[module.id, content, '']];
-      }
-  
-      module.exports = content.locals || {};
-      module.exports._getCss = function() { return content.toString(); };
-      module.exports._insertCss = function(options) { return insertCss(content, options) };
-    
-      // Hot Module Replacement
-      // https://webpack.github.io/docs/hot-module-replacement
-      // Only activated in browser context
-      if (false) {
-        var removeCss = function() {};
-        module.hot.accept("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Register.css", function() {
-          content = require("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Register.css");
-  
-          if (typeof content === 'string') {
-            content = [[module.id, content, '']];
-          }
-  
-          removeCss = insertCss(content, { replace: true });
-        });
-        module.hot.dispose(function() { removeCss(); });
-      }
-    
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  exports = module.exports = __webpack_require__(22)();
-  // imports
-  
-  
-  // module
-  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.Register_root_3RB {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.Register_container_1Lf {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.Register_lead_2sJ {\n  font-size: 1.25em;\n}\n.Register_formGroup_1Ge {\n  margin-bottom: 15px;\n}\n.Register_label_sr8 {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.Register_input_3So {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.Register_input_3So:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Register_button_3Si {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.Register_button_3Si:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.Register_button_3Si:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Register_facebook_3Fl {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.Register_facebook_3Fl:hover {\n  background: #2d4373;\n}\n.Register_google_3QP {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.Register_google_3QP:hover {\n  background: #c23321;\n}\n.Register_twitter_uxx {\n  border-color: #55acee;\n  background: #55acee;\n}\n.Register_twitter_uxx:hover {\n  background: #2795e9;\n}\n.Register_icon_3KC {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.Register_lineThrough_2IJ {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.Register_lineThrough_2IJ::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.Register_lineThrough_2IJ::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/register/Register.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACPH;;;;;;;GAOG;AAEH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Register.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 15px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
-  
-  // exports
-  exports.locals = {
-  	"root": "Register_root_3RB",
-  	"container": "Register_container_1Lf",
-  	"lead": "Register_lead_2sJ",
-  	"formGroup": "Register_formGroup_1Ge",
-  	"label": "Register_label_sr8",
-  	"input": "Register_input_3So",
-  	"button": "Register_button_3Si",
-  	"facebook": "Register_facebook_3Fl Register_button_3Si",
-  	"google": "Register_google_3QP Register_button_3Si",
-  	"twitter": "Register_twitter_uxx Register_button_3Si",
-  	"icon": "Register_icon_3KC",
-  	"lineThrough": "Register_lineThrough_2IJ"
-  };
-
-/***/ }),
-/* 78 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _upload = __webpack_require__(79);
-  
-  var _upload2 = _interopRequireDefault(_upload);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  exports.default = {
-    path: '/upload',
-  
-    action: function action() {
-      return _react2.default.createElement(_upload2.default, null);
-    }
-  };
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _keys = __webpack_require__(80);
-  
-  var _keys2 = _interopRequireDefault(_keys);
-  
-  var _getPrototypeOf = __webpack_require__(40);
-  
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-  
-  var _classCallCheck2 = __webpack_require__(41);
-  
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-  
-  var _createClass2 = __webpack_require__(42);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(43);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(44);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _MuiThemeProvider = __webpack_require__(81);
-  
-  var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
-  
-  var _RaisedButton = __webpack_require__(82);
-  
-  var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-  
-  var _reactDropzone = __webpack_require__(83);
-  
-  var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
-  
-  var _FontIcon = __webpack_require__(84);
-  
-  var _FontIcon2 = _interopRequireDefault(_FontIcon);
-  
-  var _colors = __webpack_require__(85);
-  
-  var _reactBootstrap = __webpack_require__(49);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var request = __webpack_require__(86);
-  
-  var apiBaseUrl = 'http://localhost:5000/api/tidalprediction/';
-  var style = {
-    margin: 15
-  };
-  var title = 'Upload';
-  
-  var Upload = function (_Component) {
-    (0, _inherits3.default)(Upload, _Component);
-  
-    function Upload(props, context) {
-      (0, _classCallCheck3.default)(this, Upload);
-  
-      var _this = (0, _possibleConstructorReturn3.default)(this, (Upload.__proto__ || (0, _getPrototypeOf2.default)(Upload)).call(this, props));
-  
-      _this.state = {
-        filesPreview: [],
-        filesToBeSent: [],
-        printcount: 10
-      };
-      context.setTitle(title);
-      return _this;
-    }
-  
-    (0, _createClass3.default)(Upload, [{
-      key: 'onDrop',
-      value: function onDrop(acceptedFiles) {
-        console.log('Accepted files: ', acceptedFiles[0].name);
-        var filesToBeSent = this.state.filesToBeSent;
-        if (filesToBeSent.length < this.state.printcount) {
-          filesToBeSent.push(acceptedFiles);
-          var filesPreview = [];
-          (0, _keys2.default)(filesToBeSent).forEach(function (key, i) {
-            filesPreview.push(_react2.default.createElement(
-              'div',
-              null,
-              filesToBeSent[i][0].name,
-              _react2.default.createElement(
-                _MuiThemeProvider2.default,
-                null,
-                _react2.default.createElement(
-                  'a',
-                  { href: '' },
-                  _react2.default.createElement(
-                    _FontIcon2.default,
-                    {
-                      className: 'material-icons customstyle',
-                      color: _colors.blue500,
-                      styles: { top: 10 }
-                    },
-                    'clear'
-                  )
-                )
-              )
-            ));
-          });
-          this.setState({ filesToBeSent: filesToBeSent, filesPreview: filesPreview });
-        } else {
-          alert('You have reached the limit of upload files at a time');
-        }
-      }
-    }, {
-      key: 'handleClick',
-      value: function handleClick(event) {
-        console.log('handleClick: ', event);
-        var self = this;
-        console.log('self: ', self);
-        if (this.state.filesToBeSent.length > 0) {
-          var filesArray = this.state.filesToBeSent;
-          var req = request.post(apiBaseUrl + 'fileupload');
-          (0, _keys2.default)(filesArray).forEach(function (key, i) {
-            console.log('files', filesArray[i][0]);
-            req.attach(filesArray[i][0].name, filesArray[i][0]);
-            req.end(function (err, res) {
-              if (err) {
-                console.log('error ocurred');
-              }
-              console.log('res', res);
-              alert('File upload completed');
-            });
-          });
-        } else {
-          alert('Please upload some files first');
-        }
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        var _this2 = this;
-  
-        // Debug Components
-        // console.log('Panel', Panel);
-        // console.log('MuiThemeProvider', MuiThemeProvider);
-        // console.log('PageHeader', PageHeader);
-        // console.log('Dropzone', Dropzone);
-        // console.log('RaisedButton', RaisedButton);
-        return _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(
-            'div',
-            { className: 'row' },
-            _react2.default.createElement(
-              'div',
-              { className: 'col-lg-12' },
-              _react2.default.createElement(
-                _reactBootstrap.PageHeader,
-                null,
-                'Upload Data'
-              )
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'row' },
-            _react2.default.createElement(
-              'div',
-              { className: 'col-lg-12 col-md-8 col-sm-4' },
-              _react2.default.createElement(
-                _reactBootstrap.Panel,
-                {
-                  header: _react2.default.createElement(
-                    'span',
-                    null,
-                    _react2.default.createElement('i', { className: 'fa fa-upload fa-fw' }),
-                    ' Drag and drop your file here, or use the file browser:'
-                  )
-                },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'App col-lg-6 col-md-4 col-sm-2' },
-                  _react2.default.createElement(
-                    _reactDropzone2.default,
-                    { onDrop: function onDrop(files) {
-                        return _this2.onDrop(files);
-                      } },
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      'Try dropping some files here, or click to select files to upload.'
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-lg-6 col-md-4 col-sm-2' },
-                  'Files to be printed are:',
-                  this.state.filesPreview
-                ),
-                _react2.default.createElement(
-                  _MuiThemeProvider2.default,
-                  null,
-                  _react2.default.createElement(_RaisedButton2.default, {
-                    label: 'Upload Files', style: style,
-                    onClick: function onClick(event) {
-                      return _this2.handleClick(event);
-                    }
-                  })
-                )
-              )
-            )
-          )
-        );
-      }
-    }]);
-    return Upload;
-  }(_react.Component);
-  
-  Upload.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  exports.default = Upload;
-
-/***/ }),
-/* 80 */
-/***/ (function(module, exports) {
-
-  module.exports = require("babel-runtime/core-js/object/keys");
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports) {
-
-  module.exports = require("material-ui/styles/MuiThemeProvider");
-
-/***/ }),
-/* 82 */
-/***/ (function(module, exports) {
-
-  module.exports = require("material-ui/RaisedButton");
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports) {
-
-  module.exports = require("react-dropzone");
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports) {
-
-  module.exports = require("material-ui/FontIcon");
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports) {
-
-  module.exports = require("material-ui/styles/colors");
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports) {
-
-  module.exports = require("superagent");
-
-/***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _prediction = __webpack_require__(88);
-  
-  var _prediction2 = _interopRequireDefault(_prediction);
-  
-  var _Chart = __webpack_require__(89);
-  
-  var _Chart2 = _interopRequireDefault(_Chart);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  exports.default = {
-    path: '/prediction',
-  
-    action: function action() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_prediction2.default, null),
-        _react2.default.createElement(_Chart2.default, null)
-      );
-    }
-  };
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _reactBootstrap = __webpack_require__(49);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var title = 'Predictions';
-  
-  function displayPrediction(props, context) {
-    context.setTitle(title);
-    return _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(
-        'div',
-        { className: 'row' },
-        _react2.default.createElement(
-          'div',
-          { className: 'col-lg-12' },
-          _react2.default.createElement(
-            _reactBootstrap.PageHeader,
-            null,
-            'Chart Prediction Data'
-          )
-        )
-      )
-    );
-  }
-  
-  displayPrediction.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  exports.default = displayPrediction;
-
-/***/ }),
-/* 89 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _getPrototypeOf = __webpack_require__(40);
-  
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-  
-  var _classCallCheck2 = __webpack_require__(41);
-  
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-  
-  var _createClass2 = __webpack_require__(42);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(43);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(44);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _reactBootstrap = __webpack_require__(49);
-  
-  var _chart = __webpack_require__(90);
-  
-  var _chart2 = _interopRequireDefault(_chart);
-  
-  var _DropdownSelect = __webpack_require__(93);
-  
-  var _DropdownSelect2 = _interopRequireDefault(_DropdownSelect);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  // import ReactHighcharts from 'react-highcharts';
-  var chartView = function (_Component) {
-    (0, _inherits3.default)(chartView, _Component);
-  
-    function chartView(props) {
-      (0, _classCallCheck3.default)(this, chartView);
-  
-      var _this = (0, _possibleConstructorReturn3.default)(this, (chartView.__proto__ || (0, _getPrototypeOf2.default)(chartView)).call(this, props));
-  
-      _this.state = {};
-      return _this;
-    }
-  
-    (0, _createClass3.default)(chartView, [{
-      key: 'render',
-      value: function render() {
-        return _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(
-            _reactBootstrap.Panel,
-            {
-              header: _react2.default.createElement(
-                'span',
-                null,
-                _react2.default.createElement('i', { className: 'fa fa-bar-chart-o fa-fw' }),
-                ' Tidal Wave Predictions'
-              )
-            },
-            _react2.default.createElement(
-              'div',
-              null,
-              _react2.default.createElement(_chart2.default, null)
-            )
-          ),
-          _react2.default.createElement(_DropdownSelect2.default, null)
-        );
-      }
-    }]);
-    return chartView;
-  }(_react.Component);
-  
-  exports.default = chartView;
-
-/***/ }),
-/* 90 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _stringify = __webpack_require__(25);
-  
-  var _stringify2 = _interopRequireDefault(_stringify);
-  
-  var _getPrototypeOf = __webpack_require__(40);
-  
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-  
-  var _classCallCheck2 = __webpack_require__(41);
-  
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-  
-  var _createClass2 = __webpack_require__(42);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(43);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(44);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _ramda = __webpack_require__(91);
-  
-  var _reactHighcharts = __webpack_require__(92);
-  
-  var _reactHighcharts2 = _interopRequireDefault(_reactHighcharts);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var chartData = [];
-  // import { connect } from 'react-redux';
-  
-  var chartView = function (_Component) {
-    (0, _inherits3.default)(chartView, _Component);
-  
-    function chartView(props) {
-      (0, _classCallCheck3.default)(this, chartView);
-  
-      var _this = (0, _possibleConstructorReturn3.default)(this, (chartView.__proto__ || (0, _getPrototypeOf2.default)(chartView)).call(this, props));
-  
-      _this.state = {
-        chartData: chartData
-      };
-      return _this;
-    }
-  
-    //   componentWillReceiveProps(nextProps) {
-    //     if (!isEmpty(nextProps.ModalSettingsState)) {
-    //         this.setState({ title: nextProps.ModalSettingsState.title }),
-    //         this.setState({ titleColor: nextProps.ModalSettingsState.colorSelectedTitle }),
-    //         this.setState({ titleStyle: nextProps.ModalSettingsState.selectedTitleStyle }),
-    //         this.setState({ titleSize: nextProps.ModalSettingsState.selectedTitleSize }),
-    //         this.setState({ subtitle: nextProps.ModalSettingsState.subtitle }),
-    //         this.setState({ subtitleColor: nextProps.ModalSettingsState.colorSelectedSubtitle }),
-    //         this.setState({ subtitleStyle: nextProps.ModalSettingsState.selectedSubtitleStyle }),
-    //         this.setState({ subtitleSize: nextProps.ModalSettingsState.selectedsubTitleSize }),
-    //         this.setState({ xAxis: nextProps.ModalSettingsState.xAxis }),
-    //         this.setState({ yAxis: nextProps.ModalSettingsState.yAxis }),
-    //         this.setState({ chartColor: nextProps.ModalSettingsState.colorSelectedChart }),
-    //         this.setState({ backgroundColor: nextProps.ModalSettingsState.colorSelectedBackground }),
-    //         this.setState({ chartType: nextProps.ModalSettingsState.selectedChartType })
-    //     }
-    //   }
-  
-  
-    (0, _createClass3.default)(chartView, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
-        fetch('http://localhost:5000/api/tidalprediction/', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'text/plain'
-          }
-        }).then(function (response) {
-          return response.json();
-        }).then(function (result) {
-          debugger;
-          var test = (0, _ramda.compose)(_ramda.of, (0, _ramda.groupBy)((0, _ramda.prop)('stationLocation')))(result);
-          console.log((0, _stringify2.default)(result));
-          chartData = result;
-          // console.log('chartData:', chartData);
-  
-          // [{
-          //   date: dd-mm-yyy,
-          //   name: "Arklow",
-          //   data: [1,2,23,3]
-          // }]
-        });
-      }
-    }, {
-      key: 'renderChart',
-      value: function renderChart() {
-        return {
-          chart: {
-            type: 'column'
-          },
-          title: {
-            text: 'Tidal Wave Predictions January 2018'
-          },
-          xAxis: {
-            categories: ['Achill Island', 'Aranmore', 'Arklow', 'Ballycotton', 'Ballyglass']
-          },
-          yAxis: {
-            min: 0,
-            title: {
-              text: 'Tidal Wave Height (m)'
-            },
-            stackLabels: {
-              enabled: true,
-              style: {
-                fontWeight: 'bold',
-                color: _reactHighcharts2.default.theme && _reactHighcharts2.default.theme.textColor || 'gray'
-              }
-            }
-          },
-          legend: {
-            align: 'right',
-            x: -30,
-            verticalAlign: 'top',
-            y: 25,
-            floating: true,
-            backgroundColor: _reactHighcharts2.default.theme && _reactHighcharts2.default.theme.background2 || 'white',
-            borderColor: '#CCC',
-            borderWidth: 1,
-            shadow: false
-          },
-          plotOptions: {
-            column: {
-              stacking: 'normal',
-              dataLabels: {
-                enabled: true,
-                color: _reactHighcharts2.default.theme && _reactHighcharts2.default.theme.dataLabelsColor || 'white'
-              }
-            }
-          },
-          series: [{
-            data: chartData
-          }]
-        };
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        return _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_reactHighcharts2.default, { config: this.renderChart() })
-        );
-      }
-    }]);
-    return chartView;
-  }(_react.Component);
-  
-  // function mapStateToProps({ ModalSettingsState }) {
-  //   return {
-  //     ModalSettingsState: ModalSettingsState,
-  //   };
-  // }
-  // export default connect(mapStateToProps, null)(columnView);
-  
-  
-  exports.default = chartView;
-
-/***/ }),
-/* 91 */
-/***/ (function(module, exports) {
-
-  module.exports = require("ramda");
-
-/***/ }),
-/* 92 */
-/***/ (function(module, exports) {
-
-  module.exports = require("react-highcharts");
-
-/***/ }),
-/* 93 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _getPrototypeOf = __webpack_require__(40);
-  
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-  
-  var _classCallCheck2 = __webpack_require__(41);
-  
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-  
-  var _createClass2 = __webpack_require__(42);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(43);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(44);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _reactSelect = __webpack_require__(94);
-  
-  var _reactSelect2 = _interopRequireDefault(_reactSelect);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var Dropdown = function (_React$Component) {
-    (0, _inherits3.default)(Dropdown, _React$Component);
-  
-    function Dropdown() {
-      var _ref;
-  
-      var _temp, _this, _ret;
-  
-      (0, _classCallCheck3.default)(this, Dropdown);
-  
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-  
-      return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Dropdown.__proto__ || (0, _getPrototypeOf2.default)(Dropdown)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-        selectedOption: ''
-      }, _this.handleChange = function (selectedOption) {
-        _this.setState({ selectedOption: selectedOption });
-        console.log('Selected: ' + selectedOption.label);
-      }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
-    }
-  
-    (0, _createClass3.default)(Dropdown, [{
-      key: 'render',
-      value: function render() {
-        var selectedOption = this.state.selectedOption;
-  
-        var value = selectedOption && selectedOption.value;
-  
-        return _react2.default.createElement(_reactSelect2.default, {
-          className: 'pull-right',
-          name: 'form-field-name',
-          value: value,
-          onChange: this.handleChange,
-          options: [{ value: 'Achill Island', label: 'Achill Island' }, { value: 'Aranmore', label: 'Aranmore' }, { value: 'Arklow', label: 'Arklow' }, { value: 'Ballycotton', label: 'Ballycotton' }, { value: 'Ballyglass', label: 'Ballyglass' }]
-        });
-      }
-    }]);
-    return Dropdown;
-  }(_react2.default.Component);
-  
-  exports.default = Dropdown;
-
-/***/ }),
-/* 94 */
-/***/ (function(module, exports) {
-
-  module.exports = require("react-select");
-
-/***/ }),
-/* 95 */,
-/* 96 */,
-/* 97 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _about = __webpack_require__(98);
-  
-  var _about2 = _interopRequireDefault(_about);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  exports.default = {
-    path: '/about',
-  
-    action: function action() {
-      return _react2.default.createElement(_about2.default, null);
-    }
-  };
-
-/***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _reactBootstrap = __webpack_require__(49);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var title = 'About';
-  
-  function displayBlank(props, context) {
-    context.setTitle(title);
-    return _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(
-        'div',
-        { className: 'row' },
-        _react2.default.createElement(
-          'div',
-          { className: 'col-lg-12' },
-          _react2.default.createElement(
-            _reactBootstrap.PageHeader,
-            null,
-            'About'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'Tidal Wave Prediction Online Tool \xA9 2017,2018, All rights reserved.'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            _react2.default.createElement(
-              'b',
-              null,
-              'Beta version 1.0'
-            )
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'Designed and coded by Donal Crotty, Software Design 4, Athlone Institute of Technology'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'Data provided by ',
-            _react2.default.createElement(
-              'b',
-              null,
-              'Oceanographic Services, Marine Institute'
-            )
-          )
-        )
-      )
-    );
-  }
-  
-  displayBlank.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  exports.default = displayBlank;
-
-/***/ }),
-/* 99 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _chartHistory = __webpack_require__(100);
-  
-  var _chartHistory2 = _interopRequireDefault(_chartHistory);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  exports.default = {
-    path: '/chartHistory',
-  
-    action: function action() {
-      return _react2.default.createElement(_chartHistory2.default, null);
-    }
-  };
-
-/***/ }),
-/* 100 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _reactBootstrap = __webpack_require__(49);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var title = 'Chart History';
-  
-  function displayChartHistory(props, context) {
-    context.setTitle(title);
-    return _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(
-        'div',
-        { className: 'row' },
-        _react2.default.createElement(
-          'div',
-          { className: 'col-lg-12' },
-          _react2.default.createElement(
-            _reactBootstrap.PageHeader,
-            null,
-            'Prediction Chart History'
-          ),
-          _react2.default.createElement(
-            _reactBootstrap.Breadcrumb,
-            null,
-            'View some of your previously visualized Tidal Wave Height Predictions.'
-          ),
-          _react2.default.createElement(
-            _reactBootstrap.Panel,
-            {
-              header: _react2.default.createElement(
-                'span',
-                null,
-                _react2.default.createElement('i', { className: 'fa fa-bar-chart fa-fw' })
-              )
-            },
-            _react2.default.createElement(
-              _reactBootstrap.ListGroup,
-              null,
-              _react2.default.createElement(
-                _reactBootstrap.ListGroupItem,
-                { href: '', onClick: function onClick(e) {
-                    e.preventDefault();
-                  } },
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    _react2.default.createElement(
-                      'strong',
-                      null,
-                      'Prediction Chart 1'
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'text-muted' },
-                      'Galway Bay, 09-11-16'
-                    ),
-                    ' '
-                  )
-                ),
-                _react2.default.createElement(
-                  'span',
-                  { className: 'pull-right text-muted small' },
-                  _react2.default.createElement(
-                    'em',
-                    null,
-                    '43 minutes ago'
-                  )
-                )
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.ListGroupItem,
-                { href: '', onClick: function onClick(e) {
-                    e.preventDefault();
-                  } },
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    _react2.default.createElement(
-                      'strong',
-                      null,
-                      'Prediction Chart 2'
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'text-muted' },
-                      'Kinsale Harbour, 12-11-16'
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'span',
-                  { className: 'pull-right text-muted small' },
-                  _react2.default.createElement(
-                    'em',
-                    null,
-                    '11:32 AM'
-                  )
-                )
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.ListGroupItem,
-                { href: '', onClick: function onClick(e) {
-                    e.preventDefault();
-                  } },
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    _react2.default.createElement(
-                      'strong',
-                      null,
-                      'Prediction Chart 3'
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'text-muted' },
-                      'Kinsale Harbour, 12-11-16'
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'span',
-                  { className: 'pull-right text-muted small' },
-                  _react2.default.createElement(
-                    'em',
-                    null,
-                    '11:13 AM'
-                  )
-                )
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.ListGroupItem,
-                { href: '', onClick: function onClick(e) {
-                    e.preventDefault();
-                  } },
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    _react2.default.createElement(
-                      'strong',
-                      null,
-                      'Prediction Chart 4'
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'text-muted' },
-                      'Killybegs, 01-12-16'
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'span',
-                  { className: 'pull-right text-muted small' },
-                  _react2.default.createElement(
-                    'em',
-                    null,
-                    '10:57 AM'
-                  )
-                )
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.ListGroupItem,
-                { href: '', onClick: function onClick(e) {
-                    e.preventDefault();
-                  } },
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    _react2.default.createElement(
-                      'strong',
-                      null,
-                      'Prediction Chart 5'
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'text-muted' },
-                      'Killybegs, 01-12-16'
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'span',
-                  { className: 'pull-right text-muted small' },
-                  _react2.default.createElement(
-                    'em',
-                    null,
-                    '10:57 AM'
-                  )
-                )
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.ListGroupItem,
-                { href: '', onClick: function onClick(e) {
-                    e.preventDefault();
-                  } },
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    _react2.default.createElement(
-                      'strong',
-                      null,
-                      'Prediction Chart 6'
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'text-muted' },
-                      'Killybegs, 01-12-16'
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'span',
-                  { className: 'pull-right text-muted small' },
-                  _react2.default.createElement(
-                    'em',
-                    null,
-                    '10:57 AM'
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-  }
-  
-  displayChartHistory.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  exports.default = displayChartHistory;
-
-/***/ }),
-/* 101 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _App = __webpack_require__(39);
-  
-  var _App2 = _interopRequireDefault(_App);
-  
-  var _ErrorPage = __webpack_require__(18);
-  
-  var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  exports.default = {
-  
-    path: '/error',
-  
-    action: function action(_ref) {
-      var render = _ref.render,
-          context = _ref.context,
-          error = _ref.error;
-  
-      // console.log('error obj inside error index.js', error);
-      return render(_react2.default.createElement(
-        _App2.default,
-        { context: context, error: error },
-        _react2.default.createElement(_ErrorPage2.default, { error: error })
-      ), error.status || 500);
-    }
-  }; /**
-      * React Starter Kit (https://www.reactstarterkit.com/)
-      *
-      * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-      *
-      * This source code is licensed under the MIT license found in the
-      * LICENSE.txt file in the root directory of this source tree.
-      */
-
-/***/ }),
-/* 102 */
-/***/ (function(module, exports) {
-
-  module.exports = require("./assets");
-
-/***/ }),
-/* 103 */,
-/* 104 */
-/***/ (function(module, exports) {
-
-  module.exports = require("jwks-rsa");
-
-/***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.login = login;
-  exports.logout = logout;
-  exports.requireAuth = requireAuth;
-  exports.getIdToken = getIdToken;
-  exports.getAccessToken = getAccessToken;
-  exports.setAccessToken = setAccessToken;
-  exports.setIdToken = setIdToken;
-  exports.isLoggedIn = isLoggedIn;
-  
-  var _jwtDecode = __webpack_require__(106);
-  
-  var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
-  
-  var _auth0Js = __webpack_require__(107);
-  
-  var _auth0Js2 = _interopRequireDefault(_auth0Js);
-  
-  var _history = __webpack_require__(53);
-  
-  var _history2 = _interopRequireDefault(_history);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  // import { browserHistory } from 'react-router';
-  var ID_TOKEN_KEY = 'id_token';
-  var ACCESS_TOKEN_KEY = 'access_token';
-  
-  var CLIENT_ID = 'Wj9ZPGZWivGSJpx3sLYCmObGj1IUReR5';
-  var CLIENT_DOMAIN = 'tidalwavepredapp.eu.auth0.com';
-  var REDIRECT = 'http://localhost:3001/callback';
-  var AUDIENCE = 'https://tidalwavepredapp.eu.auth0.com/api/v2/';
-  
-  var auth = new _auth0Js2.default.WebAuth({
-    clientID: CLIENT_ID,
-    domain: CLIENT_DOMAIN
-  });
-  
-  function login() {
-    auth.authorize({
-      responseType: 'token id_token',
-      redirectUri: REDIRECT,
-      audience: AUDIENCE
-    });
-  }
-  function clearIdToken() {
-    localStorage.removeItem(ID_TOKEN_KEY);
-  }
-  
-  function clearAccessToken() {
-    localStorage.removeItem(ACCESS_TOKEN_KEY);
-  }
-  
-  function logout() {
-    clearIdToken();
-    clearAccessToken();
-    _history2.default.push('/landing');
-  }
-  
-  function requireAuth(nextState, replace) {
-    if (!isLoggedIn()) {
-      replace({ pathname: '/' });
-    }
-  }
-  
-  function getIdToken() {
-    return localStorage.getItem(ID_TOKEN_KEY);
-  }
-  
-  function getAccessToken() {
-    return localStorage.getItem(ACCESS_TOKEN_KEY);
-  }
-  
-  // Helper function that will allow us to extract the access_token and id_token
-  function getParameterByName(name) {
-    var match = RegExp('[#&]' + name + '=([^&]*)').exec(window.location.hash);
-    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-  }
-  
-  // Get and store access_token in local storage
-  function setAccessToken() {
-    var accessToken = getParameterByName('access_token');
-    localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
-  }
-  
-  // Get and store id_token in local storage
-  function setIdToken() {
-    var idToken = getParameterByName('id_token');
-    localStorage.setItem(ID_TOKEN_KEY, idToken);
-  }
-  
-  function isLoggedIn() {
-    var idToken = getIdToken();
-    return !!idToken && !isTokenExpired(idToken);
-  }
-  
-  function getTokenExpirationDate(encodedToken) {
-    var token = (0, _jwtDecode2.default)(encodedToken);
-    if (!token.exp) {
-      return null;
-    }
-  
-    var date = new Date(0);
-    date.setUTCSeconds(token.exp);
-  
-    return date;
-  }
-  
-  function isTokenExpired(token) {
-    var expirationDate = getTokenExpirationDate(token);
-    return expirationDate < new Date();
-  }
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports) {
-
-  module.exports = require("jwt-decode");
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports) {
-
-  module.exports = require("auth0-js");
-
-/***/ }),
-/* 108 */,
-/* 109 */,
-/* 110 */,
-/* 111 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _Callback = __webpack_require__(112);
+  var _Callback = __webpack_require__(62);
   
   var _Callback2 = _interopRequireDefault(_Callback);
   
@@ -4277,7 +2424,7 @@ module.exports =
   // import App from '../../components/App';
 
 /***/ }),
-/* 112 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4286,35 +2433,35 @@ module.exports =
     value: true
   });
   
-  var _getPrototypeOf = __webpack_require__(40);
+  var _getPrototypeOf = __webpack_require__(41);
   
   var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
   
-  var _classCallCheck2 = __webpack_require__(41);
+  var _classCallCheck2 = __webpack_require__(42);
   
   var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
   
-  var _createClass2 = __webpack_require__(42);
+  var _createClass2 = __webpack_require__(43);
   
   var _createClass3 = _interopRequireDefault(_createClass2);
   
-  var _possibleConstructorReturn2 = __webpack_require__(43);
+  var _possibleConstructorReturn2 = __webpack_require__(44);
   
   var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
   
-  var _inherits2 = __webpack_require__(44);
+  var _inherits2 = __webpack_require__(45);
   
   var _inherits3 = _interopRequireDefault(_inherits2);
   
-  var _react = __webpack_require__(12);
+  var _react = __webpack_require__(13);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _loading = __webpack_require__(114);
+  var _loading = __webpack_require__(63);
   
   var _loading2 = _interopRequireDefault(_loading);
   
-  var _AuthService = __webpack_require__(105);
+  var _AuthService = __webpack_require__(52);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -4358,293 +2505,13 @@ module.exports =
   exports.default = Callback;
 
 /***/ }),
-/* 113 */,
-/* 114 */
+/* 63 */
 /***/ (function(module, exports) {
 
   module.exports = "data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ibGRzLXNwaW5uZXIiIHdpZHRoPSIyMDBweCIgIGhlaWdodD0iMjAwcHgiICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiIHN0eWxlPSJiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDApIG5vbmUgcmVwZWF0IHNjcm9sbCAwJSAwJTsiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAgNTApIj4NCiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzE4NTBkZCI+DQogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC45MTY2NjY2NjY2NjY2NjY2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDMwIDUwIDUwKSI+DQogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMxODUwZGQiPg0KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuODMzMzMzMzMzMzMzMzMzNHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+DQogIDwvcmVjdD4NCjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSg2MCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjc1cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDUwIDUwKSI+DQogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMxODUwZGQiPg0KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuNjY2NjY2NjY2NjY2NjY2NnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+DQogIDwvcmVjdD4NCjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxMjAgNTAgNTApIj4NCiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzE4NTBkZCI+DQogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC41ODMzMzMzMzMzMzMzMzM0cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDE1MCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjVzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPg0KICA8L3JlY3Q+DQo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMTgwIDUwIDUwKSI+DQogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMxODUwZGQiPg0KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuNDE2NjY2NjY2NjY2NjY2N3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+DQogIDwvcmVjdD4NCjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgyMTAgNTAgNTApIj4NCiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzE4NTBkZCI+DQogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC4zMzMzMzMzMzMzMzMzMzMzcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDI0MCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjI1cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDI3MCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjE2NjY2NjY2NjY2NjY2NjY2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDMwMCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjA4MzMzMzMzMzMzMzMzMzMzcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49IjBzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPg0KICA8L3JlY3Q+DQo8L2c+PC9zdmc+"
 
 /***/ }),
-/* 115 */,
-/* 116 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _Landing = __webpack_require__(117);
-  
-  var _Landing2 = _interopRequireDefault(_Landing);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  /**
-   * React Starter Kit (https://www.reactstarterkit.com/)
-   *
-   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE.txt file in the root directory of this source tree.
-   */
-  
-  exports.default = {
-  
-    path: '/',
-  
-    action: function action() {
-      return _react2.default.createElement(_Landing2.default, null);
-    }
-  };
-  // import App from '../../components/App';
-
-/***/ }),
-/* 117 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _getPrototypeOf = __webpack_require__(40);
-  
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-  
-  var _classCallCheck2 = __webpack_require__(41);
-  
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-  
-  var _createClass2 = __webpack_require__(42);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(43);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(44);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _reactBootstrap = __webpack_require__(49);
-  
-  var _Panel = __webpack_require__(70);
-  
-  var _Panel2 = _interopRequireDefault(_Panel);
-  
-  var _withStyles = __webpack_require__(19);
-  
-  var _withStyles2 = _interopRequireDefault(_withStyles);
-  
-  var _AuthService = __webpack_require__(105);
-  
-  var _Landing = __webpack_require__(118);
-  
-  var _Landing2 = _interopRequireDefault(_Landing);
-  
-  var _loginBackground = __webpack_require__(120);
-  
-  var _loginBackground2 = _interopRequireDefault(_loginBackground);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var sectionStyle = {
-    width: '100%',
-    height: '900px',
-    backgroundImage: 'url(' + _loginBackground2.default + ')'
-  };
-  // import history from '../../core/history';
-  
-  var title = 'Landing';
-  
-  var Landing = function (_Component) {
-    (0, _inherits3.default)(Landing, _Component);
-  
-    function Landing(props, context) {
-      (0, _classCallCheck3.default)(this, Landing);
-  
-      var _this = (0, _possibleConstructorReturn3.default)(this, (Landing.__proto__ || (0, _getPrototypeOf2.default)(Landing)).call(this, props));
-  
-      _this.state = {
-        email: '',
-        password: '',
-        error: {
-          message: ''
-        }
-      };
-      context.setTitle(title);
-      return _this;
-    }
-  
-    (0, _createClass3.default)(Landing, [{
-      key: 'submitHandler',
-      value: function submitHandler() {
-        // e.preventDefault();
-        // history.push('/');
-        console.log('this.state', this.state);
-        var _state = this.state,
-            email = _state.email,
-            password = _state.password;
-  
-        console.log('Email:', email);
-        console.log('Password:', password);
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        return _react2.default.createElement(
-          'section',
-          { style: sectionStyle },
-          _react2.default.createElement(
-            'div',
-            { className: 'col-md-4 col-md-offset-4' },
-            _react2.default.createElement(
-              'div',
-              { className: 'text-center' },
-              _react2.default.createElement(
-                'h1',
-                { className: 'login-brand-text' },
-                'Tidal Wave Prediction Online Tool'
-              )
-            ),
-            _react2.default.createElement(
-              _Panel2.default,
-              { header: _react2.default.createElement(
-                  'h3',
-                  null,
-                  'Please Login'
-                ), className: 'registration-panel' },
-              (0, _AuthService.isLoggedIn)() ? _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                  _reactBootstrap.Breadcrumb,
-                  null,
-                  'You are already logged in, please logout or return to',
-                  _react2.default.createElement(
-                    'a',
-                    { href: '', onClick: function onClick(e) {
-                        e.preventDefault();history.push('/contact');
-                      } },
-                    'dashboard'
-                  )
-                ),
-                _react2.default.createElement(
-                  'button',
-                  { className: 'btn btn-danger log', onClick: function onClick() {
-                      return (0, _AuthService.logout)();
-                    } },
-                  'Log out '
-                )
-              ) : _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                  _reactBootstrap.Breadcrumb,
-                  null,
-                  'Successfully Logged out!'
-                ),
-                _react2.default.createElement(
-                  'button',
-                  { className: 'btn btn-info log', onClick: function onClick() {
-                      return (0, _AuthService.login)();
-                    } },
-                  'Log In'
-                )
-              )
-            )
-          )
-        );
-      }
-    }]);
-    return Landing;
-  }(_react.Component);
-  
-  Landing.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  
-  exports.default = (0, _withStyles2.default)(_Landing2.default)(Landing);
-
-/***/ }),
-/* 118 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  
-      var content = __webpack_require__(119);
-      var insertCss = __webpack_require__(23);
-  
-      if (typeof content === 'string') {
-        content = [[module.id, content, '']];
-      }
-  
-      module.exports = content.locals || {};
-      module.exports._getCss = function() { return content.toString(); };
-      module.exports._insertCss = function(options) { return insertCss(content, options) };
-    
-      // Hot Module Replacement
-      // https://webpack.github.io/docs/hot-module-replacement
-      // Only activated in browser context
-      if (false) {
-        var removeCss = function() {};
-        module.hot.accept("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Landing.css", function() {
-          content = require("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Landing.css");
-  
-          if (typeof content === 'string') {
-            content = [[module.id, content, '']];
-          }
-  
-          removeCss = insertCss(content, { replace: true });
-        });
-        module.hot.dispose(function() { removeCss(); });
-      }
-    
-
-/***/ }),
-/* 119 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  exports = module.exports = __webpack_require__(22)();
-  // imports
-  
-  
-  // module
-  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.Landing_root_11b {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.Landing_container_2k8 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.Landing_lead_218 {\n  font-size: 1.25em;\n}\n.Landing_formGroup_sdY {\n  margin-bottom: 15px;\n}\n.Landing_label_1ov {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.Landing_input_3Vb {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.Landing_input_3Vb:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Landing_button_2hK {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.Landing_button_2hK:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.Landing_button_2hK:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Landing_facebook_1Wl {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.Landing_facebook_1Wl:hover {\n  background: #2d4373;\n}\n.Landing_google_1yQ {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.Landing_google_1yQ:hover {\n  background: #c23321;\n}\n.Landing_twitter_1iv {\n  border-color: #55acee;\n  background: #55acee;\n}\n.Landing_twitter_1iv:hover {\n  background: #2795e9;\n}\n.Landing_icon_3_G {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.Landing_lineThrough_3aY {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.Landing_lineThrough_3aY::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.Landing_lineThrough_3aY::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/landing/Landing.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACPH;;;;;;;GAOG;AAEH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Landing.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 15px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
-  
-  // exports
-  exports.locals = {
-  	"root": "Landing_root_11b",
-  	"container": "Landing_container_2k8",
-  	"lead": "Landing_lead_218",
-  	"formGroup": "Landing_formGroup_sdY",
-  	"label": "Landing_label_1ov",
-  	"input": "Landing_input_3Vb",
-  	"button": "Landing_button_2hK",
-  	"facebook": "Landing_facebook_1Wl Landing_button_2hK",
-  	"google": "Landing_google_1yQ Landing_button_2hK",
-  	"twitter": "Landing_twitter_1iv Landing_button_2hK",
-  	"icon": "Landing_icon_3_G",
-  	"lineThrough": "Landing_lineThrough_3aY"
-  };
-
-/***/ }),
-/* 120 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  module.exports = __webpack_require__.p + "routes/landing/loginBackground.jpg?33084a126c418a141191803e8f6063e9";
-
-/***/ }),
-/* 121 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4661,11 +2528,11 @@ module.exports =
   
   var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
   
-  var _react = __webpack_require__(12);
+  var _react = __webpack_require__(13);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Dashboard = __webpack_require__(122);
+  var _Dashboard = __webpack_require__(65);
   
   var _Dashboard2 = _interopRequireDefault(_Dashboard);
   
@@ -4707,7 +2574,7 @@ module.exports =
   };
 
 /***/ }),
-/* 122 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4716,53 +2583,53 @@ module.exports =
     value: true
   });
   
-  var _getPrototypeOf = __webpack_require__(40);
+  var _getPrototypeOf = __webpack_require__(41);
   
   var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
   
-  var _classCallCheck2 = __webpack_require__(41);
+  var _classCallCheck2 = __webpack_require__(42);
   
   var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
   
-  var _createClass2 = __webpack_require__(42);
+  var _createClass2 = __webpack_require__(43);
   
   var _createClass3 = _interopRequireDefault(_createClass2);
   
-  var _possibleConstructorReturn2 = __webpack_require__(43);
+  var _possibleConstructorReturn2 = __webpack_require__(44);
   
   var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
   
-  var _inherits2 = __webpack_require__(44);
+  var _inherits2 = __webpack_require__(45);
   
   var _inherits3 = _interopRequireDefault(_inherits2);
   
-  var _react = __webpack_require__(12);
+  var _react = __webpack_require__(13);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _propTypes = __webpack_require__(60);
+  var _propTypes = __webpack_require__(66);
   
   var _propTypes2 = _interopRequireDefault(_propTypes);
   
-  var _withStyles = __webpack_require__(19);
+  var _withStyles = __webpack_require__(20);
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _reactBootstrap = __webpack_require__(49);
+  var _reactBootstrap = __webpack_require__(67);
   
-  var _GeoLocation = __webpack_require__(61);
+  var _GeoLocation = __webpack_require__(68);
   
   var _GeoLocation2 = _interopRequireDefault(_GeoLocation);
   
-  var _Dashboard = __webpack_require__(123);
+  var _Dashboard = __webpack_require__(70);
   
   var _Dashboard2 = _interopRequireDefault(_Dashboard);
   
-  var _history = __webpack_require__(53);
+  var _history = __webpack_require__(55);
   
   var _history2 = _interopRequireDefault(_history);
   
-  var _StationsMap = __webpack_require__(65);
+  var _StationsMap = __webpack_require__(72);
   
   var _StationsMap2 = _interopRequireDefault(_StationsMap);
   
@@ -5078,12 +2945,141 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Dashboard2.default)(Dashboard);
 
 /***/ }),
-/* 123 */
+/* 66 */
+/***/ (function(module, exports) {
+
+  module.exports = require("prop-types");
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports) {
+
+  module.exports = require("react-bootstrap");
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _getPrototypeOf = __webpack_require__(41);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(42);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(43);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(44);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(45);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _reactGeolocation = __webpack_require__(69);
+  
+  var _reactGeolocation2 = _interopRequireDefault(_reactGeolocation);
+  
+  var _reactBootstrap = __webpack_require__(67);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var geoLocation = function (_Component) {
+    (0, _inherits3.default)(geoLocation, _Component);
+  
+    function geoLocation() {
+      (0, _classCallCheck3.default)(this, geoLocation);
+  
+      var _this = (0, _possibleConstructorReturn3.default)(this, (geoLocation.__proto__ || (0, _getPrototypeOf2.default)(geoLocation)).call(this));
+  
+      _this.state = {};
+      return _this;
+    }
+  
+    (0, _createClass3.default)(geoLocation, [{
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(_reactGeolocation2.default, {
+          onSuccess: console.log,
+          render: function render(_ref) {
+            var _ref$position = _ref.position;
+            _ref$position = _ref$position === undefined ? {} : _ref$position;
+            var _ref$position$coords = _ref$position.coords;
+            _ref$position$coords = _ref$position$coords === undefined ? {} : _ref$position$coords;
+            var latitude = _ref$position$coords.latitude,
+                longitude = _ref$position$coords.longitude,
+                error = _ref.error,
+                getCurrentPosition = _ref.getCurrentPosition;
+            return _react2.default.createElement(
+              'div',
+              { onLoad: getCurrentPosition },
+              error && _react2.default.createElement(
+                'div',
+                null,
+                error.message
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.Breadcrumb,
+                null,
+                _react2.default.createElement(
+                  'b',
+                  null,
+                  'latitude:'
+                ),
+                ' ',
+                latitude
+              ),
+              _react2.default.createElement('hr', null),
+              _react2.default.createElement(
+                _reactBootstrap.Breadcrumb,
+                null,
+                _react2.default.createElement(
+                  'b',
+                  null,
+                  'longitude:'
+                ),
+                ' ',
+                longitude
+              )
+            );
+          }
+        });
+      }
+    }]);
+    return geoLocation;
+  }(_react.Component);
+  
+  exports.default = geoLocation;
+  
+  // AIzaSyBxTFxWYofVC1OjCwxDlTUjTtdYh-EGzd0
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports) {
+
+  module.exports = require("react-geolocation");
+
+/***/ }),
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(124);
-      var insertCss = __webpack_require__(23);
+      var content = __webpack_require__(71);
+      var insertCss = __webpack_require__(24);
   
       if (typeof content === 'string') {
         content = [[module.id, content, '']];
@@ -5112,10 +3108,10 @@ module.exports =
     
 
 /***/ }),
-/* 124 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
-  exports = module.exports = __webpack_require__(22)();
+  exports = module.exports = __webpack_require__(23)();
   // imports
   
   
@@ -5131,6 +3127,1646 @@ module.exports =
   	"newsTitle": "Dashboard_newsTitle_Cj5",
   	"newsDesc": "Dashboard_newsDesc_3jg"
   };
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MapContainer = undefined;
+  
+  var _getPrototypeOf = __webpack_require__(41);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(42);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(43);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(44);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(45);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _googleMapsReact = __webpack_require__(73);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var MapContainer = exports.MapContainer = function (_Component) {
+    (0, _inherits3.default)(MapContainer, _Component);
+  
+    function MapContainer() {
+      (0, _classCallCheck3.default)(this, MapContainer);
+      return (0, _possibleConstructorReturn3.default)(this, (MapContainer.__proto__ || (0, _getPrototypeOf2.default)(MapContainer)).apply(this, arguments));
+    }
+  
+    (0, _createClass3.default)(MapContainer, [{
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(
+          _googleMapsReact.Map,
+          {
+            google: this.props.google,
+            style: { width: '92%', height: '300px', position: 'fixed' },
+            className: 'map ',
+            initialCenter: {
+              lat: 53.4157082,
+              lng: -7.9064346
+            },
+            zoom: 5
+          },
+          _react2.default.createElement(_googleMapsReact.Marker, {
+            title: 'Achill_Island',
+            name: 'Achill_Island',
+            position: { lng: -10.101596, lat: 53.95219 }
+          }),
+          _react2.default.createElement(_googleMapsReact.Marker, {
+            title: 'Achill_Island',
+            name: 'Achill_Island',
+            position: { lng: -10.101596, lat: 53.95219 }
+          }),
+          _react2.default.createElement(_googleMapsReact.Marker, {
+            title: 'Aranmore',
+            name: 'Aranmore',
+            position: { lng: -8.49562, lat: 54.9896 }
+          }),
+          _react2.default.createElement(_googleMapsReact.Marker, {
+            title: 'Arklow',
+            name: 'Arklow',
+            position: { lng: -6.1166053, lat: 52.779964 }
+          }),
+          _react2.default.createElement(_googleMapsReact.Marker, {
+            title: 'Ballycotton',
+            name: 'Ballycotton',
+            position: { lng: -8.0007, lat: 51.82776 }
+          }),
+          _react2.default.createElement(_googleMapsReact.Marker, {
+            title: 'Ballyglass',
+            name: 'Ballyglass',
+            position: { lng: -9.89, lat: 54.253 }
+          })
+        );
+      }
+    }]);
+    return MapContainer;
+  }(_react.Component);
+  
+  exports.default = (0, _googleMapsReact.GoogleApiWrapper)({
+    apiKey: 'AIzaSyBxTFxWYofVC1OjCwxDlTUjTtdYh-EGzd0'
+  })(MapContainer);
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports) {
+
+  module.exports = require("google-maps-react");
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Landing = __webpack_require__(75);
+  
+  var _Landing2 = _interopRequireDefault(_Landing);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  /**
+   * React Starter Kit (https://www.reactstarterkit.com/)
+   *
+   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE.txt file in the root directory of this source tree.
+   */
+  
+  exports.default = {
+  
+    path: '/',
+  
+    action: function action() {
+      return _react2.default.createElement(_Landing2.default, null);
+    }
+  };
+  // import App from '../../components/App';
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _getPrototypeOf = __webpack_require__(41);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(42);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(43);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(44);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(45);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _reactBootstrap = __webpack_require__(67);
+  
+  var _Panel = __webpack_require__(76);
+  
+  var _Panel2 = _interopRequireDefault(_Panel);
+  
+  var _withStyles = __webpack_require__(20);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _AuthService = __webpack_require__(52);
+  
+  var _Landing = __webpack_require__(77);
+  
+  var _Landing2 = _interopRequireDefault(_Landing);
+  
+  var _loginBackground = __webpack_require__(79);
+  
+  var _loginBackground2 = _interopRequireDefault(_loginBackground);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var sectionStyle = {
+    width: '100%',
+    height: '900px',
+    backgroundImage: 'url(' + _loginBackground2.default + ')'
+  };
+  // import history from '../../core/history';
+  
+  var title = 'Landing';
+  
+  var Landing = function (_Component) {
+    (0, _inherits3.default)(Landing, _Component);
+  
+    function Landing(props, context) {
+      (0, _classCallCheck3.default)(this, Landing);
+  
+      var _this = (0, _possibleConstructorReturn3.default)(this, (Landing.__proto__ || (0, _getPrototypeOf2.default)(Landing)).call(this, props));
+  
+      _this.state = {
+        email: '',
+        password: '',
+        error: {
+          message: ''
+        }
+      };
+      context.setTitle(title);
+      return _this;
+    }
+  
+    (0, _createClass3.default)(Landing, [{
+      key: 'submitHandler',
+      value: function submitHandler() {
+        // e.preventDefault();
+        // history.push('/');
+        console.log('this.state', this.state);
+        var _state = this.state,
+            email = _state.email,
+            password = _state.password;
+  
+        console.log('Email:', email);
+        console.log('Password:', password);
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(
+          'section',
+          { style: sectionStyle },
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-4 col-md-offset-4' },
+            _react2.default.createElement(
+              'div',
+              { className: 'text-center' },
+              _react2.default.createElement(
+                'h1',
+                { className: 'login-brand-text' },
+                'Tidal Wave Prediction Online Tool'
+              )
+            ),
+            _react2.default.createElement(
+              _Panel2.default,
+              { header: _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Please Login'
+                ), className: 'registration-panel' },
+              (0, _AuthService.isLoggedIn)() ? _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                  _reactBootstrap.Breadcrumb,
+                  null,
+                  'You are already logged in, please logout or return to',
+                  _react2.default.createElement(
+                    'a',
+                    { href: '', onClick: function onClick(e) {
+                        e.preventDefault();history.push('/contact');
+                      } },
+                    'dashboard'
+                  )
+                ),
+                _react2.default.createElement(
+                  'button',
+                  { className: 'btn btn-danger log', onClick: function onClick() {
+                      return (0, _AuthService.logout)();
+                    } },
+                  'Log out '
+                )
+              ) : _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                  _reactBootstrap.Breadcrumb,
+                  null,
+                  'Successfully Logged out!'
+                ),
+                _react2.default.createElement(
+                  'button',
+                  { className: 'btn btn-info log', onClick: function onClick() {
+                      return (0, _AuthService.login)();
+                    } },
+                  'Log In'
+                )
+              )
+            )
+          )
+        );
+      }
+    }]);
+    return Landing;
+  }(_react.Component);
+  
+  Landing.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Landing2.default)(Landing);
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports) {
+
+  module.exports = require("react-bootstrap/lib/Panel");
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(78);
+      var insertCss = __webpack_require__(24);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Landing.css", function() {
+          content = require("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Landing.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(23)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.Landing_root_11b {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.Landing_container_2k8 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.Landing_lead_218 {\n  font-size: 1.25em;\n}\n.Landing_formGroup_sdY {\n  margin-bottom: 15px;\n}\n.Landing_label_1ov {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.Landing_input_3Vb {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.Landing_input_3Vb:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Landing_button_2hK {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.Landing_button_2hK:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.Landing_button_2hK:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Landing_facebook_1Wl {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.Landing_facebook_1Wl:hover {\n  background: #2d4373;\n}\n.Landing_google_1yQ {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.Landing_google_1yQ:hover {\n  background: #c23321;\n}\n.Landing_twitter_1iv {\n  border-color: #55acee;\n  background: #55acee;\n}\n.Landing_twitter_1iv:hover {\n  background: #2795e9;\n}\n.Landing_icon_3_G {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.Landing_lineThrough_3aY {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.Landing_lineThrough_3aY::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.Landing_lineThrough_3aY::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/landing/Landing.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACPH;;;;;;;GAOG;AAEH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Landing.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 15px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Landing_root_11b",
+  	"container": "Landing_container_2k8",
+  	"lead": "Landing_lead_218",
+  	"formGroup": "Landing_formGroup_sdY",
+  	"label": "Landing_label_1ov",
+  	"input": "Landing_input_3Vb",
+  	"button": "Landing_button_2hK",
+  	"facebook": "Landing_facebook_1Wl Landing_button_2hK",
+  	"google": "Landing_google_1yQ Landing_button_2hK",
+  	"twitter": "Landing_twitter_1iv Landing_button_2hK",
+  	"icon": "Landing_icon_3_G",
+  	"lineThrough": "Landing_lineThrough_3aY"
+  };
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  module.exports = __webpack_require__.p + "routes/landing/loginBackground.jpg?33084a126c418a141191803e8f6063e9";
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _upload = __webpack_require__(81);
+  
+  var _upload2 = _interopRequireDefault(_upload);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  exports.default = {
+    path: '/upload',
+  
+    action: function action() {
+      return _react2.default.createElement(_upload2.default, null);
+    }
+  };
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _keys = __webpack_require__(82);
+  
+  var _keys2 = _interopRequireDefault(_keys);
+  
+  var _getPrototypeOf = __webpack_require__(41);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(42);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(43);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(44);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(45);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _MuiThemeProvider = __webpack_require__(83);
+  
+  var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
+  
+  var _RaisedButton = __webpack_require__(84);
+  
+  var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+  
+  var _reactDropzone = __webpack_require__(85);
+  
+  var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
+  
+  var _FontIcon = __webpack_require__(86);
+  
+  var _FontIcon2 = _interopRequireDefault(_FontIcon);
+  
+  var _colors = __webpack_require__(87);
+  
+  var _reactBootstrap = __webpack_require__(67);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var request = __webpack_require__(88);
+  
+  var apiBaseUrl = 'http://localhost:5000/api/tidalprediction/';
+  var style = {
+    margin: 15
+  };
+  var title = 'Upload';
+  
+  var Upload = function (_Component) {
+    (0, _inherits3.default)(Upload, _Component);
+  
+    function Upload(props, context) {
+      (0, _classCallCheck3.default)(this, Upload);
+  
+      var _this = (0, _possibleConstructorReturn3.default)(this, (Upload.__proto__ || (0, _getPrototypeOf2.default)(Upload)).call(this, props));
+  
+      _this.state = {
+        filesPreview: [],
+        filesToBeSent: [],
+        printcount: 10
+      };
+      context.setTitle(title);
+      return _this;
+    }
+  
+    (0, _createClass3.default)(Upload, [{
+      key: 'onDrop',
+      value: function onDrop(acceptedFiles) {
+        console.log('Accepted files: ', acceptedFiles[0].name);
+        var filesToBeSent = this.state.filesToBeSent;
+        if (filesToBeSent.length < this.state.printcount) {
+          filesToBeSent.push(acceptedFiles);
+          var filesPreview = [];
+          (0, _keys2.default)(filesToBeSent).forEach(function (key, i) {
+            filesPreview.push(_react2.default.createElement(
+              'div',
+              null,
+              filesToBeSent[i][0].name,
+              _react2.default.createElement(
+                _MuiThemeProvider2.default,
+                null,
+                _react2.default.createElement(
+                  'a',
+                  { href: '' },
+                  _react2.default.createElement(
+                    _FontIcon2.default,
+                    {
+                      className: 'material-icons customstyle',
+                      color: _colors.blue500,
+                      styles: { top: 10 }
+                    },
+                    'clear'
+                  )
+                )
+              )
+            ));
+          });
+          this.setState({ filesToBeSent: filesToBeSent, filesPreview: filesPreview });
+        } else {
+          alert('You have reached the limit of upload files at a time');
+        }
+      }
+    }, {
+      key: 'handleClick',
+      value: function handleClick(event) {
+        console.log('handleClick: ', event);
+        var self = this;
+        console.log('self: ', self);
+        if (this.state.filesToBeSent.length > 0) {
+          var filesArray = this.state.filesToBeSent;
+          var req = request.post(apiBaseUrl + 'fileupload');
+          (0, _keys2.default)(filesArray).forEach(function (key, i) {
+            console.log('files', filesArray[i][0]);
+            req.attach(filesArray[i][0].name, filesArray[i][0]);
+            req.end(function (err, res) {
+              if (err) {
+                console.log('error ocurred');
+              }
+              console.log('res', res);
+              alert('File upload completed');
+            });
+          });
+        } else {
+          alert('Please upload some files first');
+        }
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        var _this2 = this;
+  
+        // Debug Components
+        // console.log('Panel', Panel);
+        // console.log('MuiThemeProvider', MuiThemeProvider);
+        // console.log('PageHeader', PageHeader);
+        // console.log('Dropzone', Dropzone);
+        // console.log('RaisedButton', RaisedButton);
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'div',
+            { className: 'row' },
+            _react2.default.createElement(
+              'div',
+              { className: 'col-lg-12' },
+              _react2.default.createElement(
+                _reactBootstrap.PageHeader,
+                null,
+                'Upload Data'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'row' },
+            _react2.default.createElement(
+              'div',
+              { className: 'col-lg-12 col-md-8 col-sm-4' },
+              _react2.default.createElement(
+                _reactBootstrap.Panel,
+                {
+                  header: _react2.default.createElement(
+                    'span',
+                    null,
+                    _react2.default.createElement('i', { className: 'fa fa-upload fa-fw' }),
+                    ' Drag and drop your file here, or use the file browser:'
+                  )
+                },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'App col-lg-6 col-md-4 col-sm-2' },
+                  _react2.default.createElement(
+                    _reactDropzone2.default,
+                    { onDrop: function onDrop(files) {
+                        return _this2.onDrop(files);
+                      } },
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      'Try dropping some files here, or click to select files to upload.'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-lg-6 col-md-4 col-sm-2' },
+                  'Files to be printed are:',
+                  this.state.filesPreview
+                ),
+                _react2.default.createElement(
+                  _MuiThemeProvider2.default,
+                  null,
+                  _react2.default.createElement(_RaisedButton2.default, {
+                    label: 'Upload Files', style: style,
+                    onClick: function onClick(event) {
+                      return _this2.handleClick(event);
+                    }
+                  })
+                )
+              )
+            )
+          )
+        );
+      }
+    }]);
+    return Upload;
+  }(_react.Component);
+  
+  Upload.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  exports.default = Upload;
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports) {
+
+  module.exports = require("babel-runtime/core-js/object/keys");
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports) {
+
+  module.exports = require("material-ui/styles/MuiThemeProvider");
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports) {
+
+  module.exports = require("material-ui/RaisedButton");
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports) {
+
+  module.exports = require("react-dropzone");
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports) {
+
+  module.exports = require("material-ui/FontIcon");
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports) {
+
+  module.exports = require("material-ui/styles/colors");
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports) {
+
+  module.exports = require("superagent");
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _prediction = __webpack_require__(90);
+  
+  var _prediction2 = _interopRequireDefault(_prediction);
+  
+  var _Chart = __webpack_require__(91);
+  
+  var _Chart2 = _interopRequireDefault(_Chart);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  exports.default = {
+    path: '/prediction',
+  
+    action: function action() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_prediction2.default, null),
+        _react2.default.createElement(_Chart2.default, null)
+      );
+    }
+  };
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _reactBootstrap = __webpack_require__(67);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Predictions';
+  
+  function displayPrediction(props, context) {
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'div',
+        { className: 'row' },
+        _react2.default.createElement(
+          'div',
+          { className: 'col-lg-12' },
+          _react2.default.createElement(
+            _reactBootstrap.PageHeader,
+            null,
+            'Chart Prediction Data'
+          )
+        )
+      )
+    );
+  }
+  
+  displayPrediction.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  exports.default = displayPrediction;
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _getPrototypeOf = __webpack_require__(41);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(42);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(43);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(44);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(45);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _reactBootstrap = __webpack_require__(67);
+  
+  var _chart = __webpack_require__(92);
+  
+  var _chart2 = _interopRequireDefault(_chart);
+  
+  var _DropdownSelect = __webpack_require__(95);
+  
+  var _DropdownSelect2 = _interopRequireDefault(_DropdownSelect);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  // import ReactHighcharts from 'react-highcharts';
+  var chartView = function (_Component) {
+    (0, _inherits3.default)(chartView, _Component);
+  
+    function chartView(props) {
+      (0, _classCallCheck3.default)(this, chartView);
+  
+      var _this = (0, _possibleConstructorReturn3.default)(this, (chartView.__proto__ || (0, _getPrototypeOf2.default)(chartView)).call(this, props));
+  
+      _this.state = {};
+      return _this;
+    }
+  
+    (0, _createClass3.default)(chartView, [{
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            _reactBootstrap.Panel,
+            {
+              header: _react2.default.createElement(
+                'span',
+                null,
+                _react2.default.createElement('i', { className: 'fa fa-bar-chart-o fa-fw' }),
+                ' Tidal Wave Predictions'
+              )
+            },
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(_chart2.default, null)
+            )
+          ),
+          _react2.default.createElement(_DropdownSelect2.default, null)
+        );
+      }
+    }]);
+    return chartView;
+  }(_react.Component);
+  
+  exports.default = chartView;
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _stringify = __webpack_require__(26);
+  
+  var _stringify2 = _interopRequireDefault(_stringify);
+  
+  var _getPrototypeOf = __webpack_require__(41);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(42);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(43);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(44);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(45);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _ramda = __webpack_require__(93);
+  
+  var _reactHighcharts = __webpack_require__(94);
+  
+  var _reactHighcharts2 = _interopRequireDefault(_reactHighcharts);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var chartData = [];
+  // import { connect } from 'react-redux';
+  
+  var chartView = function (_Component) {
+    (0, _inherits3.default)(chartView, _Component);
+  
+    function chartView(props) {
+      (0, _classCallCheck3.default)(this, chartView);
+  
+      var _this = (0, _possibleConstructorReturn3.default)(this, (chartView.__proto__ || (0, _getPrototypeOf2.default)(chartView)).call(this, props));
+  
+      _this.state = {
+        chartData: chartData
+      };
+      return _this;
+    }
+  
+    //   componentWillReceiveProps(nextProps) {
+    //     if (!isEmpty(nextProps.ModalSettingsState)) {
+    //         this.setState({ title: nextProps.ModalSettingsState.title }),
+    //         this.setState({ titleColor: nextProps.ModalSettingsState.colorSelectedTitle }),
+    //         this.setState({ titleStyle: nextProps.ModalSettingsState.selectedTitleStyle }),
+    //         this.setState({ titleSize: nextProps.ModalSettingsState.selectedTitleSize }),
+    //         this.setState({ subtitle: nextProps.ModalSettingsState.subtitle }),
+    //         this.setState({ subtitleColor: nextProps.ModalSettingsState.colorSelectedSubtitle }),
+    //         this.setState({ subtitleStyle: nextProps.ModalSettingsState.selectedSubtitleStyle }),
+    //         this.setState({ subtitleSize: nextProps.ModalSettingsState.selectedsubTitleSize }),
+    //         this.setState({ xAxis: nextProps.ModalSettingsState.xAxis }),
+    //         this.setState({ yAxis: nextProps.ModalSettingsState.yAxis }),
+    //         this.setState({ chartColor: nextProps.ModalSettingsState.colorSelectedChart }),
+    //         this.setState({ backgroundColor: nextProps.ModalSettingsState.colorSelectedBackground }),
+    //         this.setState({ chartType: nextProps.ModalSettingsState.selectedChartType })
+    //     }
+    //   }
+  
+  
+    (0, _createClass3.default)(chartView, [{
+      key: 'componentDidMount',
+      value: function componentDidMount() {
+        fetch('http://localhost:5000/api/tidalprediction/', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'text/plain'
+          }
+        }).then(function (response) {
+          return response.json();
+        }).then(function (result) {
+          debugger;
+          var test = (0, _ramda.compose)(_ramda.of, (0, _ramda.groupBy)((0, _ramda.prop)('stationLocation')))(result);
+          console.log((0, _stringify2.default)(result));
+          chartData = result;
+          // console.log('chartData:', chartData);
+  
+          // [{
+          //   date: dd-mm-yyy,
+          //   name: "Arklow",
+          //   data: [1,2,23,3]
+          // }]
+        });
+      }
+    }, {
+      key: 'renderChart',
+      value: function renderChart() {
+        return {
+          chart: {
+            type: 'column'
+          },
+          title: {
+            text: 'Tidal Wave Predictions January 2018'
+          },
+          xAxis: {
+            categories: ['Achill Island', 'Aranmore', 'Arklow', 'Ballycotton', 'Ballyglass']
+          },
+          yAxis: {
+            min: 0,
+            title: {
+              text: 'Tidal Wave Height (m)'
+            },
+            stackLabels: {
+              enabled: true,
+              style: {
+                fontWeight: 'bold',
+                color: _reactHighcharts2.default.theme && _reactHighcharts2.default.theme.textColor || 'gray'
+              }
+            }
+          },
+          legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 25,
+            floating: true,
+            backgroundColor: _reactHighcharts2.default.theme && _reactHighcharts2.default.theme.background2 || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+          },
+          plotOptions: {
+            column: {
+              stacking: 'normal',
+              dataLabels: {
+                enabled: true,
+                color: _reactHighcharts2.default.theme && _reactHighcharts2.default.theme.dataLabelsColor || 'white'
+              }
+            }
+          },
+          series: [{
+            data: chartData
+          }]
+        };
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_reactHighcharts2.default, { config: this.renderChart() })
+        );
+      }
+    }]);
+    return chartView;
+  }(_react.Component);
+  
+  // function mapStateToProps({ ModalSettingsState }) {
+  //   return {
+  //     ModalSettingsState: ModalSettingsState,
+  //   };
+  // }
+  // export default connect(mapStateToProps, null)(columnView);
+  
+  
+  exports.default = chartView;
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports) {
+
+  module.exports = require("ramda");
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports) {
+
+  module.exports = require("react-highcharts");
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _getPrototypeOf = __webpack_require__(41);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(42);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(43);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(44);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(45);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _reactSelect = __webpack_require__(96);
+  
+  var _reactSelect2 = _interopRequireDefault(_reactSelect);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var Dropdown = function (_React$Component) {
+    (0, _inherits3.default)(Dropdown, _React$Component);
+  
+    function Dropdown() {
+      var _ref;
+  
+      var _temp, _this, _ret;
+  
+      (0, _classCallCheck3.default)(this, Dropdown);
+  
+      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+  
+      return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Dropdown.__proto__ || (0, _getPrototypeOf2.default)(Dropdown)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+        selectedOption: ''
+      }, _this.handleChange = function (selectedOption) {
+        _this.setState({ selectedOption: selectedOption });
+        console.log('Selected: ' + selectedOption.label);
+      }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    }
+  
+    (0, _createClass3.default)(Dropdown, [{
+      key: 'render',
+      value: function render() {
+        var selectedOption = this.state.selectedOption;
+  
+        var value = selectedOption && selectedOption.value;
+  
+        return _react2.default.createElement(_reactSelect2.default, {
+          className: 'pull-right',
+          name: 'form-field-name',
+          value: value,
+          onChange: this.handleChange,
+          options: [{ value: 'Achill Island', label: 'Achill Island' }, { value: 'Aranmore', label: 'Aranmore' }, { value: 'Arklow', label: 'Arklow' }, { value: 'Ballycotton', label: 'Ballycotton' }, { value: 'Ballyglass', label: 'Ballyglass' }]
+        });
+      }
+    }]);
+    return Dropdown;
+  }(_react2.default.Component);
+  
+  exports.default = Dropdown;
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports) {
+
+  module.exports = require("react-select");
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _about = __webpack_require__(98);
+  
+  var _about2 = _interopRequireDefault(_about);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  exports.default = {
+    path: '/about',
+  
+    action: function action() {
+      return _react2.default.createElement(_about2.default, null);
+    }
+  };
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _reactBootstrap = __webpack_require__(67);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'About';
+  
+  function displayBlank(props, context) {
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'div',
+        { className: 'row' },
+        _react2.default.createElement(
+          'div',
+          { className: 'col-lg-12' },
+          _react2.default.createElement(
+            _reactBootstrap.PageHeader,
+            null,
+            'About'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'Tidal Wave Prediction Online Tool \xA9 2017,2018, All rights reserved.'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+              'b',
+              null,
+              'Beta version 1.0'
+            )
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'Designed and coded by Donal Crotty, Software Design 4, Athlone Institute of Technology'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'Data provided by ',
+            _react2.default.createElement(
+              'b',
+              null,
+              'Oceanographic Services, Marine Institute'
+            )
+          )
+        )
+      )
+    );
+  }
+  
+  displayBlank.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  exports.default = displayBlank;
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _chartHistory = __webpack_require__(100);
+  
+  var _chartHistory2 = _interopRequireDefault(_chartHistory);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  exports.default = {
+    path: '/chartHistory',
+  
+    action: function action() {
+      return _react2.default.createElement(_chartHistory2.default, null);
+    }
+  };
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _reactBootstrap = __webpack_require__(67);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Chart History';
+  
+  function displayChartHistory(props, context) {
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'div',
+        { className: 'row' },
+        _react2.default.createElement(
+          'div',
+          { className: 'col-lg-12' },
+          _react2.default.createElement(
+            _reactBootstrap.PageHeader,
+            null,
+            'Prediction Chart History'
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Breadcrumb,
+            null,
+            'View some of your previously visualized Tidal Wave Height Predictions.'
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Panel,
+            {
+              header: _react2.default.createElement(
+                'span',
+                null,
+                _react2.default.createElement('i', { className: 'fa fa-bar-chart fa-fw' })
+              )
+            },
+            _react2.default.createElement(
+              _reactBootstrap.ListGroup,
+              null,
+              _react2.default.createElement(
+                _reactBootstrap.ListGroupItem,
+                { href: '', onClick: function onClick(e) {
+                    e.preventDefault();
+                  } },
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'strong',
+                      null,
+                      'Prediction Chart 1'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'text-muted' },
+                      'Galway Bay, 09-11-16'
+                    ),
+                    ' '
+                  )
+                ),
+                _react2.default.createElement(
+                  'span',
+                  { className: 'pull-right text-muted small' },
+                  _react2.default.createElement(
+                    'em',
+                    null,
+                    '43 minutes ago'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.ListGroupItem,
+                { href: '', onClick: function onClick(e) {
+                    e.preventDefault();
+                  } },
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'strong',
+                      null,
+                      'Prediction Chart 2'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'text-muted' },
+                      'Kinsale Harbour, 12-11-16'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'span',
+                  { className: 'pull-right text-muted small' },
+                  _react2.default.createElement(
+                    'em',
+                    null,
+                    '11:32 AM'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.ListGroupItem,
+                { href: '', onClick: function onClick(e) {
+                    e.preventDefault();
+                  } },
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'strong',
+                      null,
+                      'Prediction Chart 3'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'text-muted' },
+                      'Kinsale Harbour, 12-11-16'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'span',
+                  { className: 'pull-right text-muted small' },
+                  _react2.default.createElement(
+                    'em',
+                    null,
+                    '11:13 AM'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.ListGroupItem,
+                { href: '', onClick: function onClick(e) {
+                    e.preventDefault();
+                  } },
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'strong',
+                      null,
+                      'Prediction Chart 4'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'text-muted' },
+                      'Killybegs, 01-12-16'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'span',
+                  { className: 'pull-right text-muted small' },
+                  _react2.default.createElement(
+                    'em',
+                    null,
+                    '10:57 AM'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.ListGroupItem,
+                { href: '', onClick: function onClick(e) {
+                    e.preventDefault();
+                  } },
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'strong',
+                      null,
+                      'Prediction Chart 5'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'text-muted' },
+                      'Killybegs, 01-12-16'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'span',
+                  { className: 'pull-right text-muted small' },
+                  _react2.default.createElement(
+                    'em',
+                    null,
+                    '10:57 AM'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.ListGroupItem,
+                { href: '', onClick: function onClick(e) {
+                    e.preventDefault();
+                  } },
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'strong',
+                      null,
+                      'Prediction Chart 6'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'text-muted' },
+                      'Killybegs, 01-12-16'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'span',
+                  { className: 'pull-right text-muted small' },
+                  _react2.default.createElement(
+                    'em',
+                    null,
+                    '10:57 AM'
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+  
+  displayChartHistory.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  exports.default = displayChartHistory;
+
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _App = __webpack_require__(40);
+  
+  var _App2 = _interopRequireDefault(_App);
+  
+  var _ErrorPage = __webpack_require__(19);
+  
+  var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  exports.default = {
+  
+    path: '/error',
+  
+    action: function action(_ref) {
+      var render = _ref.render,
+          context = _ref.context,
+          error = _ref.error;
+  
+      // console.log('error obj inside error index.js', error);
+      return render(_react2.default.createElement(
+        _App2.default,
+        { context: context, error: error },
+        _react2.default.createElement(_ErrorPage2.default, { error: error })
+      ), error.status || 500);
+    }
+  }; /**
+      * React Starter Kit (https://www.reactstarterkit.com/)
+      *
+      * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+      *
+      * This source code is licensed under the MIT license found in the
+      * LICENSE.txt file in the root directory of this source tree.
+      */
+
+/***/ }),
+/* 102 */
+/***/ (function(module, exports) {
+
+  module.exports = require("./assets");
 
 /***/ })
 /******/ ]);
