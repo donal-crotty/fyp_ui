@@ -9,14 +9,14 @@ import {
 // import { connect } from 'react-redux';
 // import { userActions } from '../../actions/user.actions';
 import GeoLocation from '../../components/GeoLocation';
-import s from './Home.css';
+import s from './Dashboard.css';
 import history from '../../core/history';
 import StationsMap from '../../components/StationsMap';
 
 
-const title = 'Tidal Prediction App';
+const title = 'Dashboard';
 
-class Home extends Component {
+class Dashboard extends Component {
   constructor(props, context) {
     super();
     context.setTitle(title);
@@ -134,13 +134,13 @@ class Home extends Component {
 }
 
 
-Home.propTypes = {
+Dashboard.propTypes = {
   // news: PropTypes.arrayOf(PropTypes.shape({
   //   title: PropTypes.string.isRequired,
   //   link: PropTypes.string.isRequired,
   //   contentSnippet: PropTypes.string,
   // })).isRequired,
 };
-Home.contextTypes = { setTitle: PropTypes.func.isRequired };
+Dashboard.contextTypes = { setTitle: PropTypes.func.isRequired };
 
-export default withStyles(s)(Home);
+export default withStyles(s)(Dashboard);

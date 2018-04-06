@@ -90,6 +90,10 @@ module.exports =
   
   var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
   
+  var _jwksRsa = __webpack_require__(104);
+  
+  var _jwksRsa2 = _interopRequireDefault(_jwksRsa);
+  
   var _react = __webpack_require__(12);
   
   var _react2 = _interopRequireDefault(_react);
@@ -124,7 +128,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(108);
+  var _assets = __webpack_require__(102);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -132,7 +136,6 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  // import expressGraphQL from 'express-graphql';
   var app = (0, _express2.default)();
   
   //
@@ -143,6 +146,8 @@ module.exports =
   
   // import models from './data/models';
   // import schema from './data/schema';
+  
+  // import expressGraphQL from 'express-graphql';
   global.navigator = global.navigator || {};
   global.navigator.userAgent = global.navigator.userAgent || 'all';
   
@@ -157,13 +162,23 @@ module.exports =
   //
   // Authentication
   // -----------------------------------------------------------------------------
-  app.use((0, _expressJwt2.default)({
-    secret: _config.auth.jwt.secret,
-    credentialsRequired: false,
+  var authCheck = (0, _expressJwt2.default)({
+    secret: _jwksRsa2.default.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequestsPerMinute: 5,
+      // YOUR-AUTH0-DOMAIN name e.g prosper.auth0.com
+      jwksUri: 'https://tidalwavepredapp.eu.auth0.com/.well-known/jwks.json'
+    }),
+    // This is the identifier we set when we created the API
+    audience: 'https://tidalwavepredapp.eu.auth0.com/api/v2/',
+    issuer: 'tidalwavepredapp.eu.auth0.com',
+    algorithms: ['RS256'],
     getToken: function getToken(req) {
       return req.cookies.id_token;
     }
-  }));
+  });
+  
   app.use(_passport2.default.initialize());
   
   app.get('/login/facebook', _passport2.default.authenticate('facebook', { scope: ['email', 'user_location'], session: false }));
@@ -1439,39 +1454,39 @@ module.exports =
   
   var _App2 = _interopRequireDefault(_App);
   
-  var _home = __webpack_require__(58);
+  var _callback = __webpack_require__(111);
   
-  var _home2 = _interopRequireDefault(_home);
+  var _callback2 = _interopRequireDefault(_callback);
   
-  var _login = __webpack_require__(67);
+  var _dashboard = __webpack_require__(121);
   
-  var _login2 = _interopRequireDefault(_login);
+  var _dashboard2 = _interopRequireDefault(_dashboard);
+  
+  var _landing = __webpack_require__(116);
+  
+  var _landing2 = _interopRequireDefault(_landing);
   
   var _register = __webpack_require__(74);
   
   var _register2 = _interopRequireDefault(_register);
   
-  var _upload = __webpack_require__(84);
+  var _upload = __webpack_require__(78);
   
   var _upload2 = _interopRequireDefault(_upload);
   
-  var _prediction = __webpack_require__(93);
+  var _prediction = __webpack_require__(87);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _contact = __webpack_require__(101);
-  
-  var _contact2 = _interopRequireDefault(_contact);
-  
-  var _about = __webpack_require__(103);
+  var _about = __webpack_require__(97);
   
   var _about2 = _interopRequireDefault(_about);
   
-  var _chartHistory = __webpack_require__(105);
+  var _chartHistory = __webpack_require__(99);
   
   var _chartHistory2 = _interopRequireDefault(_chartHistory);
   
-  var _error = __webpack_require__(107);
+  var _error = __webpack_require__(101);
   
   var _error2 = _interopRequireDefault(_error);
   
@@ -1482,18 +1497,9 @@ module.exports =
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
   // Child routes
-  /**
-   * React Starter Kit (https://www.reactstarterkit.com/)
-   *
-   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE.txt file in the root directory of this source tree.
-   */
-  
   exports.default = [{
-    path: '/login',
-    children: [_login2.default],
+    path: '/landing',
+    children: [_landing2.default],
     action: function action(_ref) {
       var _this = this;
   
@@ -1535,8 +1541,8 @@ module.exports =
       }))();
     }
   }, {
-    path: '/register',
-    children: [_register2.default],
+    path: '/callback',
+    children: [_callback2.default],
     action: function action(_ref2) {
       var _this2 = this;
   
@@ -1578,13 +1584,8 @@ module.exports =
       }))();
     }
   }, {
-    path: '/',
-  
-    // keep in mind, routes are evaluated in order
-    children: [_home2.default, _upload2.default, _prediction2.default, _contact2.default, _about2.default, _chartHistory2.default,
-    // place new routes before...
-    _error2.default],
-  
+    path: '/register',
+    children: [_register2.default],
     action: function action(_ref3) {
       var _this3 = this;
   
@@ -1612,18 +1613,9 @@ module.exports =
   
               case 5:
                 return _context3.abrupt('return', render(_react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_Header2.default, null),
-                  _react2.default.createElement(
-                    'div',
-                    { id: 'page-wrapper', className: 'page-wrapper' },
-                    _react2.default.createElement(
-                      _App2.default,
-                      { context: context },
-                      component
-                    )
-                  )
+                  _App2.default,
+                  { context: context },
+                  component
                 )));
   
               case 6:
@@ -1635,8 +1627,13 @@ module.exports =
       }))();
     }
   }, {
-    path: '/error',
-    children: [_error2.default],
+    path: '/',
+  
+    // keep in mind, routes are evaluated in order
+    children: [_dashboard2.default, _upload2.default, _prediction2.default, _about2.default, _chartHistory2.default,
+    // place new routes before...
+    _error2.default],
+  
     action: function action(_ref4) {
       var _this4 = this;
   
@@ -1664,9 +1661,18 @@ module.exports =
   
               case 5:
                 return _context4.abrupt('return', render(_react2.default.createElement(
-                  _App2.default,
-                  { context: context },
-                  component
+                  'div',
+                  null,
+                  _react2.default.createElement(_Header2.default, null),
+                  _react2.default.createElement(
+                    'div',
+                    { id: 'page-wrapper', className: 'page-wrapper' },
+                    _react2.default.createElement(
+                      _App2.default,
+                      { context: context },
+                      component
+                    )
+                  )
                 )));
   
               case 6:
@@ -1677,8 +1683,50 @@ module.exports =
         }, _callee4, _this4);
       }))();
     }
+  }, {
+    path: '/error',
+    children: [_error2.default],
+    action: function action(_ref5) {
+      var _this5 = this;
+  
+      var next = _ref5.next,
+          render = _ref5.render,
+          context = _ref5.context;
+      return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {
+        var component;
+        return _regenerator2.default.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return next();
+  
+              case 2:
+                component = _context5.sent;
+  
+                if (!(component === undefined)) {
+                  _context5.next = 5;
+                  break;
+                }
+  
+                return _context5.abrupt('return', component);
+  
+              case 5:
+                return _context5.abrupt('return', render(_react2.default.createElement(
+                  _App2.default,
+                  { context: context },
+                  component
+                )));
+  
+              case 6:
+              case 'end':
+                return _context5.stop();
+            }
+          }
+        }, _callee5, _this5);
+      }))();
+    }
   }];
-  // import blank from './dashboardPages/blank';
 
 /***/ }),
 /* 39 */
@@ -1734,15 +1782,6 @@ module.exports =
   
   // const auth = new Auth();
   // auth.login();
-  /**
-   * React Starter Kit (https://www.reactstarterkit.com/)
-   *
-   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE.txt file in the root directory of this source tree.
-   */
-  
   var App = function (_Component) {
     (0, _inherits3.default)(App, _Component);
   
@@ -1917,8 +1956,6 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactBootstrap = __webpack_require__(49);
-  
   var _Navbar = __webpack_require__(50);
   
   var _Navbar2 = _interopRequireDefault(_Navbar);
@@ -1927,20 +1964,15 @@ module.exports =
   
   var _jquery2 = _interopRequireDefault(_jquery);
   
+  var _AuthService = __webpack_require__(105);
+  
   var _Sidebar = __webpack_require__(52);
   
   var _Sidebar2 = _interopRequireDefault(_Sidebar);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var logo = __webpack_require__(57); /**
-                                     * React Starter Kit (https://www.reactstarterkit.com/)
-                                     *
-                                     * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-                                     *
-                                     * This source code is licensed under the MIT license found in the
-                                     * LICENSE.txt file in the root directory of this source tree.
-                                     */
+  var logo = __webpack_require__(57);
   
   function toggleMenu() {
     if ((0, _jquery2.default)('.navbar-collapse').hasClass('collapse')) {
@@ -1949,6 +1981,9 @@ module.exports =
       (0, _jquery2.default)('.navbar-collapse').addClass('collapse');
     }
   }
+  var style = {
+    verticleAlign: 'middle'
+  };
   
   var Header = function (_Component) {
     (0, _inherits3.default)(Header, _Component);
@@ -1961,8 +1996,6 @@ module.exports =
     (0, _createClass3.default)(Header, [{
       key: 'render',
       value: function render() {
-        var _this2 = this;
-  
         return _react2.default.createElement(
           'div',
           { id: 'wrapper', className: 'content' },
@@ -2007,167 +2040,23 @@ module.exports =
               'ul',
               { className: 'nav navbar-top-links navbar-right' },
               _react2.default.createElement(
-                _reactBootstrap.NavDropdown,
-                {
-                  title: _react2.default.createElement(
-                    'span',
-                    null,
-                    _react2.default.createElement('i', { className: 'fa fa-tasks fa-fw' })
-                  ), id: 'navDropdown2222'
-                },
-                _react2.default.createElement(
-                  _reactBootstrap.MenuItem,
-                  { eventKey: '1', style: { width: 300 } },
-                  _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                      'p',
-                      null,
-                      _react2.default.createElement(
-                        'strong',
-                        null,
-                        'Prediction Chart 1'
-                      )
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                      'p',
-                      null,
-                      _react2.default.createElement(
-                        'span',
-                        { className: 'text-muted' },
-                        'Galway Bay, 09-11-16'
-                      ),
-                      ' '
-                    )
-                  )
-                ),
-                _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-                _react2.default.createElement(
-                  _reactBootstrap.MenuItem,
-                  { eventKey: '2' },
-                  _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                      'p',
-                      null,
-                      _react2.default.createElement(
-                        'strong',
-                        null,
-                        'Prediction Chart 3'
-                      )
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'text-muted' },
-                      'Kinsale Harbour, 12-11-16'
-                    )
-                  )
-                ),
-                _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-                _react2.default.createElement(
-                  _reactBootstrap.MenuItem,
-                  { eventKey: '3' },
-                  _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                      'p',
-                      null,
-                      _react2.default.createElement(
-                        'strong',
-                        null,
-                        'Prediction Chart 3'
-                      )
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'text-muted' },
-                      'Killybegs, 01-12-16'
-                    )
-                  )
-                ),
-                _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-                _react2.default.createElement(
-                  _reactBootstrap.MenuItem,
-                  { eventKey: '4' },
-                  _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                      'p',
-                      null,
-                      _react2.default.createElement(
-                        'strong',
-                        null,
-                        'Prediction Chart 4'
-                      )
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'text-muted' },
-                      'Galway Bay, 22-01-17'
-                    )
-                  )
-                )
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.NavDropdown,
-                { title: _react2.default.createElement('i', { className: 'fa fa-user fa-fw' }), id: 'navDropdown4' },
-                _react2.default.createElement(
-                  _reactBootstrap.MenuItem,
-                  { eventKey: '1' },
-                  _react2.default.createElement(
-                    'span',
-                    null,
-                    ' ',
-                    _react2.default.createElement('i', { className: 'fa fa-user fa-fw' }),
-                    ' User Profile '
-                  )
-                ),
-                _react2.default.createElement(
-                  _reactBootstrap.MenuItem,
-                  { eventKey: '2' },
-                  _react2.default.createElement(
-                    'span',
-                    null,
-                    _react2.default.createElement('i', { className: 'fa fa-gear fa-fw' }),
-                    ' Settings '
-                  )
-                ),
-                _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-                _react2.default.createElement(
-                  _reactBootstrap.MenuItem,
-                  { eventKey: '4' },
-                  _react2.default.createElement(
-                    'button',
-                    { className: 'btn btn-danger', onClick: function onClick() {
-                        return _this2.logOut();
-                      } },
-                    _react2.default.createElement(
-                      'span',
-                      null,
-                      _react2.default.createElement('i', { className: 'fa fa-sign-out fa-fw' }),
-                      ' Logout '
-                    )
-                  )
+                'li',
+                { style: style },
+                (0, _AuthService.isLoggedIn)() ? _react2.default.createElement(
+                  'button',
+                  {
+                    className: 'btn btn-danger log',
+                    onClick: function onClick() {
+                      return (0, _AuthService.logout)();
+                    }
+                  },
+                  'Log out '
+                ) : _react2.default.createElement(
+                  'button',
+                  { className: 'btn btn-info log', onClick: function onClick() {
+                      return (0, _AuthService.login)();
+                    } },
+                  'Log In'
                 )
               )
             ),
@@ -2237,6 +2126,8 @@ module.exports =
   
   var _history2 = _interopRequireDefault(_history);
   
+  var _AuthService = __webpack_require__(105);
+  
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
   var Sidebar = function (_Component) {
@@ -2299,7 +2190,7 @@ module.exports =
                   ' \xA0Dashboard'
                 )
               ),
-              _react2.default.createElement(
+              (0, _AuthService.isLoggedIn)() ? _react2.default.createElement(
                 'li',
                 null,
                 _react2.default.createElement(
@@ -2310,7 +2201,7 @@ module.exports =
                   _react2.default.createElement('i', { className: 'fa fa-upload fa-fw' }),
                   ' \xA0Upload Data'
                 )
-              ),
+              ) : null,
               _react2.default.createElement(
                 'li',
                 null,
@@ -2417,440 +2308,8 @@ module.exports =
   module.exports = __webpack_require__.p + "components/Header/logo.png?0f37c478e0acdd156766bfb8c2dd6dd6";
 
 /***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _regenerator = __webpack_require__(1);
-  
-  var _regenerator2 = _interopRequireDefault(_regenerator);
-  
-  var _asyncToGenerator2 = __webpack_require__(4);
-  
-  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _Home = __webpack_require__(59);
-  
-  var _Home2 = _interopRequireDefault(_Home);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  // import fetch from '../../core/fetch';
-  
-  /**
-   * React Starter Kit (https://www.reactstarterkit.com/)
-   *
-   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE.txt file in the root directory of this source tree.
-   */
-  
-  exports.default = {
-  
-    path: '/',
-  
-    action: function action() {
-      var _this = this;
-  
-      return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-        return _regenerator2.default.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                return _context.abrupt('return', _react2.default.createElement(_Home2.default, null));
-  
-              case 1:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, _this);
-      }))();
-    }
-  };
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _getPrototypeOf = __webpack_require__(40);
-  
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-  
-  var _classCallCheck2 = __webpack_require__(41);
-  
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-  
-  var _createClass2 = __webpack_require__(42);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(43);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(44);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _propTypes = __webpack_require__(60);
-  
-  var _propTypes2 = _interopRequireDefault(_propTypes);
-  
-  var _withStyles = __webpack_require__(19);
-  
-  var _withStyles2 = _interopRequireDefault(_withStyles);
-  
-  var _reactBootstrap = __webpack_require__(49);
-  
-  var _GeoLocation = __webpack_require__(61);
-  
-  var _GeoLocation2 = _interopRequireDefault(_GeoLocation);
-  
-  var _Home = __webpack_require__(63);
-  
-  var _Home2 = _interopRequireDefault(_Home);
-  
-  var _history = __webpack_require__(53);
-  
-  var _history2 = _interopRequireDefault(_history);
-  
-  var _StationsMap = __webpack_require__(65);
-  
-  var _StationsMap2 = _interopRequireDefault(_StationsMap);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  // import { Link } from 'react-router-dom';
-  // import { connect } from 'react-redux';
-  // import { userActions } from '../../actions/user.actions';
-  var title = 'Tidal Prediction App';
-  
-  var Home = function (_Component) {
-    (0, _inherits3.default)(Home, _Component);
-  
-    function Home(props, context) {
-      (0, _classCallCheck3.default)(this, Home);
-  
-      var _this = (0, _possibleConstructorReturn3.default)(this, (Home.__proto__ || (0, _getPrototypeOf2.default)(Home)).call(this));
-  
-      context.setTitle(title);
-      return _this;
-    }
-    // componentDidMount() {
-    //   this.props.dispatch(userActions.getAll());
-    // }
-  
-    (0, _createClass3.default)(Home, [{
-      key: 'render',
-      value: function render() {
-        return _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(
-            'div',
-            { className: 'row' },
-            _react2.default.createElement(
-              'div',
-              { className: 'col-lg-12' },
-              _react2.default.createElement(
-                _reactBootstrap.PageHeader,
-                null,
-                'Dashboard'
-              )
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'row' },
-            _react2.default.createElement(
-              'div',
-              { className: 'col-lg-8 col-md-6 col-sm-4' },
-              _react2.default.createElement(
-                _reactBootstrap.Panel,
-                {
-                  header: _react2.default.createElement(
-                    'span',
-                    null,
-                    _react2.default.createElement('i', { className: 'fa fa-location-arrow fa-fw' }),
-                    ' Your nearest Stations are:'
-                  )
-                },
-                _react2.default.createElement(_StationsMap2.default, null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null)
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'col-lg-4 col-md-3 col-sm-2' },
-              _react2.default.createElement(
-                _reactBootstrap.Panel,
-                {
-                  header: _react2.default.createElement(
-                    'span',
-                    null,
-                    _react2.default.createElement('i', { className: 'fa fa-location-arrow fa-fw' }),
-                    ' Your Current Location is:'
-                  )
-                },
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_GeoLocation2.default, null)
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'col-lg-4' },
-              _react2.default.createElement(
-                _reactBootstrap.Panel,
-                {
-                  header: _react2.default.createElement(
-                    'span',
-                    null,
-                    _react2.default.createElement('i', { className: 'fa fa-bar-chart fa-fw' }),
-                    ' Prediction Chart History'
-                  )
-                },
-                _react2.default.createElement(
-                  _reactBootstrap.ListGroup,
-                  null,
-                  _react2.default.createElement(
-                    _reactBootstrap.ListGroupItem,
-                    { href: '', onClick: function onClick(e) {
-                        e.preventDefault();
-                      } },
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'strong',
-                          null,
-                          'Prediction Chart 1'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'text-muted' },
-                          'Galway Bay, 09-11-16'
-                        ),
-                        ' '
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'pull-right text-muted small' },
-                      _react2.default.createElement(
-                        'em',
-                        null,
-                        '43 minutes ago'
-                      )
-                    )
-                  ),
-                  _react2.default.createElement(
-                    _reactBootstrap.ListGroupItem,
-                    { href: '', onClick: function onClick(e) {
-                        e.preventDefault();
-                      } },
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'strong',
-                          null,
-                          'Prediction Chart 2'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'text-muted' },
-                          'Kinsale Harbour, 12-11-16'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'pull-right text-muted small' },
-                      _react2.default.createElement(
-                        'em',
-                        null,
-                        '11:32 AM'
-                      )
-                    )
-                  ),
-                  _react2.default.createElement(
-                    _reactBootstrap.ListGroupItem,
-                    { href: '', onClick: function onClick(e) {
-                        e.preventDefault();
-                      } },
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'strong',
-                          null,
-                          'Prediction Chart 3'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'text-muted' },
-                          'Kinsale Harbour, 12-11-16'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'pull-right text-muted small' },
-                      _react2.default.createElement(
-                        'em',
-                        null,
-                        '11:13 AM'
-                      )
-                    )
-                  ),
-                  _react2.default.createElement(
-                    _reactBootstrap.ListGroupItem,
-                    { href: '', onClick: function onClick(e) {
-                        e.preventDefault();
-                      } },
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'strong',
-                          null,
-                          'Prediction Chart 4'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'text-muted' },
-                          'Killybegs, 01-12-16'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'pull-right text-muted small' },
-                      _react2.default.createElement(
-                        'em',
-                        null,
-                        '10:57 AM'
-                      )
-                    )
-                  ),
-                  _react2.default.createElement(
-                    _reactBootstrap.ListGroupItem,
-                    null,
-                    _react2.default.createElement(
-                      'a',
-                      {
-                        href: '',
-                        onClick: function onClick(e) {
-                          e.preventDefault();_history2.default.push('/chartHistory');
-                        }
-                      },
-                      '\xA0View All Charts'
-                    )
-                  )
-                )
-              )
-            )
-          )
-        );
-      }
-    }]);
-    return Home;
-  }(_react.Component);
-  
-  Home.propTypes = {
-    // news: PropTypes.arrayOf(PropTypes.shape({
-    //   title: PropTypes.string.isRequired,
-    //   link: PropTypes.string.isRequired,
-    //   contentSnippet: PropTypes.string,
-    // })).isRequired,
-  };
-  Home.contextTypes = { setTitle: _propTypes2.default.func.isRequired };
-  
-  exports.default = (0, _withStyles2.default)(_Home2.default)(Home);
-
-/***/ }),
+/* 58 */,
+/* 59 */,
 /* 60 */
 /***/ (function(module, exports) {
 
@@ -2974,61 +2433,8 @@ module.exports =
   module.exports = require("react-geolocation");
 
 /***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  
-      var content = __webpack_require__(64);
-      var insertCss = __webpack_require__(23);
-  
-      if (typeof content === 'string') {
-        content = [[module.id, content, '']];
-      }
-  
-      module.exports = content.locals || {};
-      module.exports._getCss = function() { return content.toString(); };
-      module.exports._insertCss = function(options) { return insertCss(content, options) };
-    
-      // Hot Module Replacement
-      // https://webpack.github.io/docs/hot-module-replacement
-      // Only activated in browser context
-      if (false) {
-        var removeCss = function() {};
-        module.hot.accept("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Home.css", function() {
-          content = require("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Home.css");
-  
-          if (typeof content === 'string') {
-            content = [[module.id, content, '']];
-          }
-  
-          removeCss = insertCss(content, { replace: true });
-        });
-        module.hot.dispose(function() { removeCss(); });
-      }
-    
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  exports = module.exports = __webpack_require__(22)();
-  // imports
-  
-  
-  // module
-  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Home_root_3mf {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Home_container_2ac {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 1000px;\n}\n\n.Home_news_1G- {\n  padding: 0;\n}\n\n.Home_newsItem_3n- {\n  list-style-type: none;\n  padding-bottom: 6px;\n}\n\n.Home_newsTitle_Pdo {\n  font-size: 1.125em;\n}\n\n.Home_newsTitle_Pdo,\n.Home_newsDesc_1JF {\n  display: block;\n}\n", "", {"version":3,"sources":["/./routes/home/Home.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;;ACPH;;;;;;;GAOG;;AAEH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ADnBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,kBAAoC;CACrC;;AAED;EACE,WAAW;CACZ;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CACrB;;AAED;EACE,mBAAmB;CACpB;;AAED;;EAEE,eAAe;CAChB","file":"Home.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: var(--max-content-width);\n}\n\n.news {\n  padding: 0;\n}\n\n.newsItem {\n  list-style-type: none;\n  padding-bottom: 6px;\n}\n\n.newsTitle {\n  font-size: 1.125em;\n}\n\n.newsTitle,\n.newsDesc {\n  display: block;\n}\n","/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
-  
-  // exports
-  exports.locals = {
-  	"root": "Home_root_3mf",
-  	"container": "Home_container_2ac",
-  	"news": "Home_news_1G-",
-  	"newsItem": "Home_newsItem_3n-",
-  	"newsTitle": "Home_newsTitle_Pdo",
-  	"newsDesc": "Home_newsDesc_1JF"
-  };
-
-/***/ }),
+/* 63 */,
+/* 64 */,
 /* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3137,235 +2543,8 @@ module.exports =
   module.exports = require("google-maps-react");
 
 /***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _Login = __webpack_require__(68);
-  
-  var _Login2 = _interopRequireDefault(_Login);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  /**
-   * React Starter Kit (https://www.reactstarterkit.com/)
-   *
-   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE.txt file in the root directory of this source tree.
-   */
-  
-  exports.default = {
-  
-    path: '/',
-  
-    action: function action() {
-      return _react2.default.createElement(_Login2.default, null);
-    }
-  };
-  // import App from '../../components/App';
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _getPrototypeOf = __webpack_require__(40);
-  
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-  
-  var _classCallCheck2 = __webpack_require__(41);
-  
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-  
-  var _createClass2 = __webpack_require__(42);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(43);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(44);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _Button = __webpack_require__(69);
-  
-  var _Button2 = _interopRequireDefault(_Button);
-  
-  var _Panel = __webpack_require__(70);
-  
-  var _Panel2 = _interopRequireDefault(_Panel);
-  
-  var _withStyles = __webpack_require__(19);
-  
-  var _withStyles2 = _interopRequireDefault(_withStyles);
-  
-  var _Login = __webpack_require__(71);
-  
-  var _Login2 = _interopRequireDefault(_Login);
-  
-  var _loginBackground = __webpack_require__(73);
-  
-  var _loginBackground2 = _interopRequireDefault(_loginBackground);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var sectionStyle = {
-    width: '100%',
-    height: '900px',
-    backgroundImage: 'url(' + _loginBackground2.default + ')'
-  };
-  // import history from '../../core/history';
-  
-  // import browserHistory from 'react-router';
-  // import { Panel, Input, Button } from 'react-bootstrap';
-  
-  
-  var title = 'Login';
-  
-  var Login = function (_Component) {
-    (0, _inherits3.default)(Login, _Component);
-  
-    function Login(props, context) {
-      (0, _classCallCheck3.default)(this, Login);
-  
-      var _this = (0, _possibleConstructorReturn3.default)(this, (Login.__proto__ || (0, _getPrototypeOf2.default)(Login)).call(this, props));
-  
-      _this.state = {
-        email: '',
-        password: '',
-        error: {
-          message: ''
-        }
-      };
-      context.setTitle(title);
-      return _this;
-    }
-  
-    (0, _createClass3.default)(Login, [{
-      key: 'submitHandler',
-      value: function submitHandler() {
-        // e.preventDefault();
-        // history.push('/');
-        console.log('this.state', this.state);
-        var _state = this.state,
-            email = _state.email,
-            password = _state.password;
-  
-        console.log('Email:', email);
-        console.log('Password:', password);
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        var _this2 = this;
-  
-        return _react2.default.createElement(
-          'section',
-          { style: sectionStyle },
-          _react2.default.createElement(
-            'div',
-            { className: 'col-md-4 col-md-offset-4' },
-            _react2.default.createElement(
-              'div',
-              { className: 'text-center' },
-              _react2.default.createElement(
-                'h1',
-                { className: 'login-brand-text' },
-                'Tidal Wave Prediction Online Tool'
-              )
-            ),
-            _react2.default.createElement(
-              _Panel2.default,
-              { header: _react2.default.createElement(
-                  'h3',
-                  null,
-                  'Please Login'
-                ), className: 'registration-panel' },
-              _react2.default.createElement(
-                'form',
-                { role: 'form' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'form-group' },
-                  _react2.default.createElement('input', {
-                    className: 'form-control',
-                    placeholder: 'email',
-                    name: 'email',
-                    onChange: function onChange(event) {
-                      return _this2.setState({ email: event.target.value });
-                    }
-                  })
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement('input', {
-                    className: 'form-control',
-                    placeholder: 'Password',
-                    type: 'password',
-                    name: 'password',
-                    onChange: function onChange(event) {
-                      return _this2.setState({ password: event.target.value });
-                    }
-                  })
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    _Button2.default,
-                    {
-                      type: 'button',
-                      bsSize: 'large',
-                      bsStyle: 'success',
-                      onClick: function onClick() {
-                        return _this2.submitHandler();
-                      }
-                    },
-                    'Login'
-                  )
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                null,
-                this.state.error.message
-              )
-            )
-          )
-        );
-      }
-    }]);
-    return Login;
-  }(_react.Component);
-  
-  Login.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  
-  exports.default = (0, _withStyles2.default)(_Login2.default)(Login);
-
-/***/ }),
+/* 67 */,
+/* 68 */,
 /* 69 */
 /***/ (function(module, exports) {
 
@@ -3378,67 +2557,8 @@ module.exports =
   module.exports = require("react-bootstrap/lib/Panel");
 
 /***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  
-      var content = __webpack_require__(72);
-      var insertCss = __webpack_require__(23);
-  
-      if (typeof content === 'string') {
-        content = [[module.id, content, '']];
-      }
-  
-      module.exports = content.locals || {};
-      module.exports._getCss = function() { return content.toString(); };
-      module.exports._insertCss = function(options) { return insertCss(content, options) };
-    
-      // Hot Module Replacement
-      // https://webpack.github.io/docs/hot-module-replacement
-      // Only activated in browser context
-      if (false) {
-        var removeCss = function() {};
-        module.hot.accept("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Login.css", function() {
-          content = require("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Login.css");
-  
-          if (typeof content === 'string') {
-            content = [[module.id, content, '']];
-          }
-  
-          removeCss = insertCss(content, { replace: true });
-        });
-        module.hot.dispose(function() { removeCss(); });
-      }
-    
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  exports = module.exports = __webpack_require__(22)();
-  // imports
-  
-  
-  // module
-  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.Login_root_AfB {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.Login_container_2g2 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.Login_lead_ri6 {\n  font-size: 1.25em;\n}\n.Login_formGroup_3_X {\n  margin-bottom: 15px;\n}\n.Login_label_2Z7 {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.Login_input_PvY {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.Login_input_PvY:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Login_button_10W {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.Login_button_10W:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.Login_button_10W:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Login_facebook_3CI {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.Login_facebook_3CI:hover {\n  background: #2d4373;\n}\n.Login_google_1Ig {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.Login_google_1Ig:hover {\n  background: #c23321;\n}\n.Login_twitter_3Vq {\n  border-color: #55acee;\n  background: #55acee;\n}\n.Login_twitter_3Vq:hover {\n  background: #2795e9;\n}\n.Login_icon_97U {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.Login_lineThrough_3eY {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.Login_lineThrough_3eY::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.Login_lineThrough_3eY::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/login/Login.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACPH;;;;;;;GAOG;AAEH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Login.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 15px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
-  
-  // exports
-  exports.locals = {
-  	"root": "Login_root_AfB",
-  	"container": "Login_container_2g2",
-  	"lead": "Login_lead_ri6",
-  	"formGroup": "Login_formGroup_3_X",
-  	"label": "Login_label_2Z7",
-  	"input": "Login_input_PvY",
-  	"button": "Login_button_10W",
-  	"facebook": "Login_facebook_3CI Login_button_10W",
-  	"google": "Login_google_1Ig Login_button_10W",
-  	"twitter": "Login_twitter_3Vq Login_button_10W",
-  	"icon": "Login_icon_97U",
-  	"lineThrough": "Login_lineThrough_3eY"
-  };
-
-/***/ }),
+/* 71 */,
+/* 72 */,
 /* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3529,7 +2649,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Register = __webpack_require__(78);
+  var _Register = __webpack_require__(76);
   
   var _Register2 = _interopRequireDefault(_Register);
   
@@ -3673,13 +2793,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Register2.default)(Register);
 
 /***/ }),
-/* 76 */,
-/* 77 */,
-/* 78 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(79);
+      var content = __webpack_require__(77);
       var insertCss = __webpack_require__(23);
   
       if (typeof content === 'string') {
@@ -3709,7 +2827,7 @@ module.exports =
     
 
 /***/ }),
-/* 79 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(22)();
@@ -3736,11 +2854,7 @@ module.exports =
   };
 
 /***/ }),
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */,
-/* 84 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3753,7 +2867,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _upload = __webpack_require__(85);
+  var _upload = __webpack_require__(79);
   
   var _upload2 = _interopRequireDefault(_upload);
   
@@ -3768,7 +2882,7 @@ module.exports =
   };
 
 /***/ }),
-/* 85 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3777,7 +2891,7 @@ module.exports =
     value: true
   });
   
-  var _keys = __webpack_require__(86);
+  var _keys = __webpack_require__(80);
   
   var _keys2 = _interopRequireDefault(_keys);
   
@@ -3805,29 +2919,29 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _MuiThemeProvider = __webpack_require__(87);
+  var _MuiThemeProvider = __webpack_require__(81);
   
   var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
   
-  var _RaisedButton = __webpack_require__(88);
+  var _RaisedButton = __webpack_require__(82);
   
   var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
   
-  var _reactDropzone = __webpack_require__(89);
+  var _reactDropzone = __webpack_require__(83);
   
   var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
   
-  var _FontIcon = __webpack_require__(90);
+  var _FontIcon = __webpack_require__(84);
   
   var _FontIcon2 = _interopRequireDefault(_FontIcon);
   
-  var _colors = __webpack_require__(91);
+  var _colors = __webpack_require__(85);
   
   var _reactBootstrap = __webpack_require__(49);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var request = __webpack_require__(92);
+  var request = __webpack_require__(86);
   
   var apiBaseUrl = 'http://localhost:5000/api/tidalprediction/';
   var style = {
@@ -4000,49 +3114,49 @@ module.exports =
   exports.default = Upload;
 
 /***/ }),
-/* 86 */
+/* 80 */
 /***/ (function(module, exports) {
 
   module.exports = require("babel-runtime/core-js/object/keys");
 
 /***/ }),
-/* 87 */
+/* 81 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/styles/MuiThemeProvider");
 
 /***/ }),
-/* 88 */
+/* 82 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/RaisedButton");
 
 /***/ }),
-/* 89 */
+/* 83 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-dropzone");
 
 /***/ }),
-/* 90 */
+/* 84 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/FontIcon");
 
 /***/ }),
-/* 91 */
+/* 85 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/styles/colors");
 
 /***/ }),
-/* 92 */
+/* 86 */
 /***/ (function(module, exports) {
 
   module.exports = require("superagent");
 
 /***/ }),
-/* 93 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4055,11 +3169,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _prediction = __webpack_require__(94);
+  var _prediction = __webpack_require__(88);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _Chart = __webpack_require__(95);
+  var _Chart = __webpack_require__(89);
   
   var _Chart2 = _interopRequireDefault(_Chart);
   
@@ -4079,7 +3193,7 @@ module.exports =
   };
 
 /***/ }),
-/* 94 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4123,7 +3237,7 @@ module.exports =
   exports.default = displayPrediction;
 
 /***/ }),
-/* 95 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4158,11 +3272,11 @@ module.exports =
   
   var _reactBootstrap = __webpack_require__(49);
   
-  var _chart = __webpack_require__(96);
+  var _chart = __webpack_require__(90);
   
   var _chart2 = _interopRequireDefault(_chart);
   
-  var _DropdownSelect = __webpack_require__(99);
+  var _DropdownSelect = __webpack_require__(93);
   
   var _DropdownSelect2 = _interopRequireDefault(_DropdownSelect);
   
@@ -4213,7 +3327,7 @@ module.exports =
   exports.default = chartView;
 
 /***/ }),
-/* 96 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4250,9 +3364,9 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _ramda = __webpack_require__(97);
+  var _ramda = __webpack_require__(91);
   
-  var _reactHighcharts = __webpack_require__(98);
+  var _reactHighcharts = __webpack_require__(92);
   
   var _reactHighcharts2 = _interopRequireDefault(_reactHighcharts);
   
@@ -4393,19 +3507,19 @@ module.exports =
   exports.default = chartView;
 
 /***/ }),
-/* 97 */
+/* 91 */
 /***/ (function(module, exports) {
 
   module.exports = require("ramda");
 
 /***/ }),
-/* 98 */
+/* 92 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-highcharts");
 
 /***/ }),
-/* 99 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4438,7 +3552,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactSelect = __webpack_require__(100);
+  var _reactSelect = __webpack_require__(94);
   
   var _reactSelect2 = _interopRequireDefault(_reactSelect);
   
@@ -4488,13 +3602,15 @@ module.exports =
   exports.default = Dropdown;
 
 /***/ }),
-/* 100 */
+/* 94 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-select");
 
 /***/ }),
-/* 101 */
+/* 95 */,
+/* 96 */,
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4507,202 +3623,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _contact = __webpack_require__(102);
-  
-  var _contact2 = _interopRequireDefault(_contact);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  exports.default = {
-    path: '/contact',
-  
-    action: function action() {
-      return _react2.default.createElement(_contact2.default, null);
-    }
-  };
-
-/***/ }),
-/* 102 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _getPrototypeOf = __webpack_require__(40);
-  
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-  
-  var _classCallCheck2 = __webpack_require__(41);
-  
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-  
-  var _createClass2 = __webpack_require__(42);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(43);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(44);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _reactBootstrap = __webpack_require__(49);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var title = 'Contact';
-  // import browserHistory from 'react-router';
-  // import { Panel, Input, Button } from 'react-bootstrap';
-  // import Button from 'react-bootstrap/lib/Button';
-  
-  var Contact = function (_Component) {
-    (0, _inherits3.default)(Contact, _Component);
-  
-    function Contact(props, context) {
-      (0, _classCallCheck3.default)(this, Contact);
-  
-      var _this = (0, _possibleConstructorReturn3.default)(this, (Contact.__proto__ || (0, _getPrototypeOf2.default)(Contact)).call(this, props));
-  
-      _this.state = {
-        subject: '',
-        email: '',
-        query: '',
-        error: {
-          message: ''
-        }
-      };
-      context.setTitle(title);
-      return _this;
-    }
-  
-    (0, _createClass3.default)(Contact, [{
-      key: 'getValidationState',
-      value: function getValidationState() {}
-      //   const length = this.state.value.length;
-      //   if (length > 10) return 'success';
-      //   else if (length > 5) return 'warning';
-      //   else if (length > 0) return 'error';
-      //   return null;
-  
-  
-      // handleChange(e) {
-      //   this.setState({ value: e.target.value });
-      // }
-  
-    }, {
-      key: 'render',
-      value: function render() {
-        var _this2 = this;
-  
-        return _react2.default.createElement(
-          'section',
-          null,
-          _react2.default.createElement(
-            'div',
-            { className: 'col-md-4 col-md-offset-4' },
-            _react2.default.createElement(
-              'div',
-              null,
-              _react2.default.createElement(
-                'h1',
-                { className: 'login-brand-text' },
-                'Contact Us'
-              )
-            ),
-            _react2.default.createElement(
-              _reactBootstrap.Breadcrumb,
-              null,
-              'Contact the Support Desk for help or to report a bug.'
-            ),
-            _react2.default.createElement(
-              'form',
-              { role: 'form' },
-              _react2.default.createElement(
-                'div',
-                { className: 'form-group' },
-                _react2.default.createElement('input', {
-                  className: 'form-control',
-                  placeholder: 'Query Subject',
-                  name: 'title',
-                  onChange: function onChange(event) {
-                    return _this2.setState({ subject: event.target.value });
-                  }
-                }),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('input', {
-                  className: 'form-control',
-                  placeholder: 'Email',
-                  type: 'email',
-                  name: 'email',
-                  onChange: function onChange(event) {
-                    return _this2.setState({ email: event.target.value });
-                  }
-                }),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('input', {
-                  className: 'form-control',
-                  placeholder: 'Query',
-                  type: 'textarea',
-                  name: 'query',
-                  onChange: function onChange(event) {
-                    return _this2.setState({ query: event.target.value });
-                  }
-                }),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement(
-                  _reactBootstrap.Button,
-                  {
-                    type: 'button',
-                    bsSize: 'large',
-                    bsStyle: 'success',
-                    onClick: function onClick() {
-                      return _this2.submitHandler();
-                    }
-                  },
-                  'Submit'
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              null,
-              this.state.error.message
-            )
-          )
-        );
-      }
-    }]);
-    return Contact;
-  }(_react.Component);
-  
-  Contact.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  
-  exports.default = Contact;
-
-/***/ }),
-/* 103 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(12);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _about = __webpack_require__(104);
+  var _about = __webpack_require__(98);
   
   var _about2 = _interopRequireDefault(_about);
   
@@ -4717,7 +3638,7 @@ module.exports =
   };
 
 /***/ }),
-/* 104 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4790,7 +3711,7 @@ module.exports =
   exports.default = displayBlank;
 
 /***/ }),
-/* 105 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4803,7 +3724,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _chartHistory = __webpack_require__(106);
+  var _chartHistory = __webpack_require__(100);
   
   var _chartHistory2 = _interopRequireDefault(_chartHistory);
   
@@ -4818,7 +3739,7 @@ module.exports =
   };
 
 /***/ }),
-/* 106 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5128,7 +4049,7 @@ module.exports =
   exports.default = displayChartHistory;
 
 /***/ }),
-/* 107 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5177,10 +4098,1039 @@ module.exports =
       */
 
 /***/ }),
-/* 108 */
+/* 102 */
 /***/ (function(module, exports) {
 
   module.exports = require("./assets");
+
+/***/ }),
+/* 103 */,
+/* 104 */
+/***/ (function(module, exports) {
+
+  module.exports = require("jwks-rsa");
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.login = login;
+  exports.logout = logout;
+  exports.requireAuth = requireAuth;
+  exports.getIdToken = getIdToken;
+  exports.getAccessToken = getAccessToken;
+  exports.setAccessToken = setAccessToken;
+  exports.setIdToken = setIdToken;
+  exports.isLoggedIn = isLoggedIn;
+  
+  var _jwtDecode = __webpack_require__(106);
+  
+  var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
+  
+  var _auth0Js = __webpack_require__(107);
+  
+  var _auth0Js2 = _interopRequireDefault(_auth0Js);
+  
+  var _history = __webpack_require__(53);
+  
+  var _history2 = _interopRequireDefault(_history);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  // import { browserHistory } from 'react-router';
+  var ID_TOKEN_KEY = 'id_token';
+  var ACCESS_TOKEN_KEY = 'access_token';
+  
+  var CLIENT_ID = 'Wj9ZPGZWivGSJpx3sLYCmObGj1IUReR5';
+  var CLIENT_DOMAIN = 'tidalwavepredapp.eu.auth0.com';
+  var REDIRECT = 'http://localhost:3001/callback';
+  var AUDIENCE = 'https://tidalwavepredapp.eu.auth0.com/api/v2/';
+  
+  var auth = new _auth0Js2.default.WebAuth({
+    clientID: CLIENT_ID,
+    domain: CLIENT_DOMAIN
+  });
+  
+  function login() {
+    auth.authorize({
+      responseType: 'token id_token',
+      redirectUri: REDIRECT,
+      audience: AUDIENCE
+    });
+  }
+  function clearIdToken() {
+    localStorage.removeItem(ID_TOKEN_KEY);
+  }
+  
+  function clearAccessToken() {
+    localStorage.removeItem(ACCESS_TOKEN_KEY);
+  }
+  
+  function logout() {
+    clearIdToken();
+    clearAccessToken();
+    _history2.default.push('/landing');
+  }
+  
+  function requireAuth(nextState, replace) {
+    if (!isLoggedIn()) {
+      replace({ pathname: '/' });
+    }
+  }
+  
+  function getIdToken() {
+    return localStorage.getItem(ID_TOKEN_KEY);
+  }
+  
+  function getAccessToken() {
+    return localStorage.getItem(ACCESS_TOKEN_KEY);
+  }
+  
+  // Helper function that will allow us to extract the access_token and id_token
+  function getParameterByName(name) {
+    var match = RegExp('[#&]' + name + '=([^&]*)').exec(window.location.hash);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+  }
+  
+  // Get and store access_token in local storage
+  function setAccessToken() {
+    var accessToken = getParameterByName('access_token');
+    localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
+  }
+  
+  // Get and store id_token in local storage
+  function setIdToken() {
+    var idToken = getParameterByName('id_token');
+    localStorage.setItem(ID_TOKEN_KEY, idToken);
+  }
+  
+  function isLoggedIn() {
+    var idToken = getIdToken();
+    return !!idToken && !isTokenExpired(idToken);
+  }
+  
+  function getTokenExpirationDate(encodedToken) {
+    var token = (0, _jwtDecode2.default)(encodedToken);
+    if (!token.exp) {
+      return null;
+    }
+  
+    var date = new Date(0);
+    date.setUTCSeconds(token.exp);
+  
+    return date;
+  }
+  
+  function isTokenExpired(token) {
+    var expirationDate = getTokenExpirationDate(token);
+    return expirationDate < new Date();
+  }
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports) {
+
+  module.exports = require("jwt-decode");
+
+/***/ }),
+/* 107 */
+/***/ (function(module, exports) {
+
+  module.exports = require("auth0-js");
+
+/***/ }),
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(12);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Callback = __webpack_require__(112);
+  
+  var _Callback2 = _interopRequireDefault(_Callback);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  exports.default = {
+  
+    path: '/',
+  
+    action: function action() {
+      return _react2.default.createElement(_Callback2.default, null);
+    }
+  };
+  // import App from '../../components/App';
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _getPrototypeOf = __webpack_require__(40);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(41);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(42);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(43);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(44);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
+  var _react = __webpack_require__(12);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _loading = __webpack_require__(114);
+  
+  var _loading2 = _interopRequireDefault(_loading);
+  
+  var _AuthService = __webpack_require__(105);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var style = {
+    background: 'radial-gradient(black,gray, white)',
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    marginTop: '-50px',
+    marginLeft: '-100px'
+  };
+  
+  var Callback = function (_Component) {
+    (0, _inherits3.default)(Callback, _Component);
+  
+    function Callback() {
+      (0, _classCallCheck3.default)(this, Callback);
+      return (0, _possibleConstructorReturn3.default)(this, (Callback.__proto__ || (0, _getPrototypeOf2.default)(Callback)).apply(this, arguments));
+    }
+  
+    (0, _createClass3.default)(Callback, [{
+      key: 'componentDidMount',
+      value: function componentDidMount() {
+        (0, _AuthService.setAccessToken)();
+        (0, _AuthService.setIdToken)();
+        window.location.href = '/';
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement('img', { style: style, src: _loading2.default, alt: 'loading' })
+        );
+      }
+    }]);
+    return Callback;
+  }(_react.Component);
+  
+  exports.default = Callback;
+
+/***/ }),
+/* 113 */,
+/* 114 */
+/***/ (function(module, exports) {
+
+  module.exports = "data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ibGRzLXNwaW5uZXIiIHdpZHRoPSIyMDBweCIgIGhlaWdodD0iMjAwcHgiICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiIHN0eWxlPSJiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDApIG5vbmUgcmVwZWF0IHNjcm9sbCAwJSAwJTsiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAgNTApIj4NCiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzE4NTBkZCI+DQogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC45MTY2NjY2NjY2NjY2NjY2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDMwIDUwIDUwKSI+DQogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMxODUwZGQiPg0KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuODMzMzMzMzMzMzMzMzMzNHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+DQogIDwvcmVjdD4NCjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSg2MCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjc1cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDUwIDUwKSI+DQogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMxODUwZGQiPg0KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuNjY2NjY2NjY2NjY2NjY2NnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+DQogIDwvcmVjdD4NCjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxMjAgNTAgNTApIj4NCiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzE4NTBkZCI+DQogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC41ODMzMzMzMzMzMzMzMzM0cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDE1MCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjVzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPg0KICA8L3JlY3Q+DQo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMTgwIDUwIDUwKSI+DQogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMxODUwZGQiPg0KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuNDE2NjY2NjY2NjY2NjY2N3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+DQogIDwvcmVjdD4NCjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgyMTAgNTAgNTApIj4NCiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzE4NTBkZCI+DQogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC4zMzMzMzMzMzMzMzMzMzMzcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDI0MCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjI1cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDI3MCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjE2NjY2NjY2NjY2NjY2NjY2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDMwMCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjA4MzMzMzMzMzMzMzMzMzMzcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49IjBzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPg0KICA8L3JlY3Q+DQo8L2c+PC9zdmc+"
+
+/***/ }),
+/* 115 */,
+/* 116 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(12);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Landing = __webpack_require__(117);
+  
+  var _Landing2 = _interopRequireDefault(_Landing);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  /**
+   * React Starter Kit (https://www.reactstarterkit.com/)
+   *
+   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE.txt file in the root directory of this source tree.
+   */
+  
+  exports.default = {
+  
+    path: '/',
+  
+    action: function action() {
+      return _react2.default.createElement(_Landing2.default, null);
+    }
+  };
+  // import App from '../../components/App';
+
+/***/ }),
+/* 117 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _getPrototypeOf = __webpack_require__(40);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(41);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(42);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(43);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(44);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
+  var _react = __webpack_require__(12);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _reactBootstrap = __webpack_require__(49);
+  
+  var _Panel = __webpack_require__(70);
+  
+  var _Panel2 = _interopRequireDefault(_Panel);
+  
+  var _withStyles = __webpack_require__(19);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _AuthService = __webpack_require__(105);
+  
+  var _Landing = __webpack_require__(118);
+  
+  var _Landing2 = _interopRequireDefault(_Landing);
+  
+  var _loginBackground = __webpack_require__(120);
+  
+  var _loginBackground2 = _interopRequireDefault(_loginBackground);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var sectionStyle = {
+    width: '100%',
+    height: '900px',
+    backgroundImage: 'url(' + _loginBackground2.default + ')'
+  };
+  // import history from '../../core/history';
+  
+  var title = 'Landing';
+  
+  var Landing = function (_Component) {
+    (0, _inherits3.default)(Landing, _Component);
+  
+    function Landing(props, context) {
+      (0, _classCallCheck3.default)(this, Landing);
+  
+      var _this = (0, _possibleConstructorReturn3.default)(this, (Landing.__proto__ || (0, _getPrototypeOf2.default)(Landing)).call(this, props));
+  
+      _this.state = {
+        email: '',
+        password: '',
+        error: {
+          message: ''
+        }
+      };
+      context.setTitle(title);
+      return _this;
+    }
+  
+    (0, _createClass3.default)(Landing, [{
+      key: 'submitHandler',
+      value: function submitHandler() {
+        // e.preventDefault();
+        // history.push('/');
+        console.log('this.state', this.state);
+        var _state = this.state,
+            email = _state.email,
+            password = _state.password;
+  
+        console.log('Email:', email);
+        console.log('Password:', password);
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(
+          'section',
+          { style: sectionStyle },
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-4 col-md-offset-4' },
+            _react2.default.createElement(
+              'div',
+              { className: 'text-center' },
+              _react2.default.createElement(
+                'h1',
+                { className: 'login-brand-text' },
+                'Tidal Wave Prediction Online Tool'
+              )
+            ),
+            _react2.default.createElement(
+              _Panel2.default,
+              { header: _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Please Login'
+                ), className: 'registration-panel' },
+              (0, _AuthService.isLoggedIn)() ? _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                  _reactBootstrap.Breadcrumb,
+                  null,
+                  'You are already logged in, please logout or return to',
+                  _react2.default.createElement(
+                    'a',
+                    { href: '', onClick: function onClick(e) {
+                        e.preventDefault();history.push('/contact');
+                      } },
+                    'dashboard'
+                  )
+                ),
+                _react2.default.createElement(
+                  'button',
+                  { className: 'btn btn-danger log', onClick: function onClick() {
+                      return (0, _AuthService.logout)();
+                    } },
+                  'Log out '
+                )
+              ) : _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                  _reactBootstrap.Breadcrumb,
+                  null,
+                  'Successfully Logged out!'
+                ),
+                _react2.default.createElement(
+                  'button',
+                  { className: 'btn btn-info log', onClick: function onClick() {
+                      return (0, _AuthService.login)();
+                    } },
+                  'Log In'
+                )
+              )
+            )
+          )
+        );
+      }
+    }]);
+    return Landing;
+  }(_react.Component);
+  
+  Landing.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Landing2.default)(Landing);
+
+/***/ }),
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(119);
+      var insertCss = __webpack_require__(23);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Landing.css", function() {
+          content = require("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Landing.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ }),
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(22)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.Landing_root_11b {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.Landing_container_2k8 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.Landing_lead_218 {\n  font-size: 1.25em;\n}\n.Landing_formGroup_sdY {\n  margin-bottom: 15px;\n}\n.Landing_label_1ov {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.Landing_input_3Vb {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.Landing_input_3Vb:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Landing_button_2hK {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.Landing_button_2hK:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.Landing_button_2hK:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Landing_facebook_1Wl {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.Landing_facebook_1Wl:hover {\n  background: #2d4373;\n}\n.Landing_google_1yQ {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.Landing_google_1yQ:hover {\n  background: #c23321;\n}\n.Landing_twitter_1iv {\n  border-color: #55acee;\n  background: #55acee;\n}\n.Landing_twitter_1iv:hover {\n  background: #2795e9;\n}\n.Landing_icon_3_G {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.Landing_lineThrough_3aY {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.Landing_lineThrough_3aY::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.Landing_lineThrough_3aY::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/landing/Landing.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACPH;;;;;;;GAOG;AAEH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Landing.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 15px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Landing_root_11b",
+  	"container": "Landing_container_2k8",
+  	"lead": "Landing_lead_218",
+  	"formGroup": "Landing_formGroup_sdY",
+  	"label": "Landing_label_1ov",
+  	"input": "Landing_input_3Vb",
+  	"button": "Landing_button_2hK",
+  	"facebook": "Landing_facebook_1Wl Landing_button_2hK",
+  	"google": "Landing_google_1yQ Landing_button_2hK",
+  	"twitter": "Landing_twitter_1iv Landing_button_2hK",
+  	"icon": "Landing_icon_3_G",
+  	"lineThrough": "Landing_lineThrough_3aY"
+  };
+
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  module.exports = __webpack_require__.p + "routes/landing/loginBackground.jpg?33084a126c418a141191803e8f6063e9";
+
+/***/ }),
+/* 121 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(4);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(12);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Dashboard = __webpack_require__(122);
+  
+  var _Dashboard2 = _interopRequireDefault(_Dashboard);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  // import fetch from '../../core/fetch';
+  
+  /**
+   * React Starter Kit (https://www.reactstarterkit.com/)
+   *
+   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE.txt file in the root directory of this source tree.
+   */
+  
+  exports.default = {
+  
+    path: '/',
+  
+    action: function action() {
+      var _this = this;
+  
+      return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                return _context.abrupt('return', _react2.default.createElement(_Dashboard2.default, null));
+  
+              case 1:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+
+/***/ }),
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _getPrototypeOf = __webpack_require__(40);
+  
+  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+  
+  var _classCallCheck2 = __webpack_require__(41);
+  
+  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+  
+  var _createClass2 = __webpack_require__(42);
+  
+  var _createClass3 = _interopRequireDefault(_createClass2);
+  
+  var _possibleConstructorReturn2 = __webpack_require__(43);
+  
+  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  
+  var _inherits2 = __webpack_require__(44);
+  
+  var _inherits3 = _interopRequireDefault(_inherits2);
+  
+  var _react = __webpack_require__(12);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _propTypes = __webpack_require__(60);
+  
+  var _propTypes2 = _interopRequireDefault(_propTypes);
+  
+  var _withStyles = __webpack_require__(19);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _reactBootstrap = __webpack_require__(49);
+  
+  var _GeoLocation = __webpack_require__(61);
+  
+  var _GeoLocation2 = _interopRequireDefault(_GeoLocation);
+  
+  var _Dashboard = __webpack_require__(123);
+  
+  var _Dashboard2 = _interopRequireDefault(_Dashboard);
+  
+  var _history = __webpack_require__(53);
+  
+  var _history2 = _interopRequireDefault(_history);
+  
+  var _StationsMap = __webpack_require__(65);
+  
+  var _StationsMap2 = _interopRequireDefault(_StationsMap);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  // import { Link } from 'react-router-dom';
+  // import { connect } from 'react-redux';
+  // import { userActions } from '../../actions/user.actions';
+  var title = 'Dashboard';
+  
+  var Dashboard = function (_Component) {
+    (0, _inherits3.default)(Dashboard, _Component);
+  
+    function Dashboard(props, context) {
+      (0, _classCallCheck3.default)(this, Dashboard);
+  
+      var _this = (0, _possibleConstructorReturn3.default)(this, (Dashboard.__proto__ || (0, _getPrototypeOf2.default)(Dashboard)).call(this));
+  
+      context.setTitle(title);
+      return _this;
+    }
+    // componentDidMount() {
+    //   this.props.dispatch(userActions.getAll());
+    // }
+  
+    (0, _createClass3.default)(Dashboard, [{
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'div',
+            { className: 'row' },
+            _react2.default.createElement(
+              'div',
+              { className: 'col-lg-12' },
+              _react2.default.createElement(
+                _reactBootstrap.PageHeader,
+                null,
+                'Dashboard'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'row' },
+            _react2.default.createElement(
+              'div',
+              { className: 'col-lg-8 col-md-6 col-sm-4' },
+              _react2.default.createElement(
+                _reactBootstrap.Panel,
+                {
+                  header: _react2.default.createElement(
+                    'span',
+                    null,
+                    _react2.default.createElement('i', { className: 'fa fa-location-arrow fa-fw' }),
+                    ' Your nearest Stations are:'
+                  )
+                },
+                _react2.default.createElement(_StationsMap2.default, null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null)
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'col-lg-4 col-md-3 col-sm-2' },
+              _react2.default.createElement(
+                _reactBootstrap.Panel,
+                {
+                  header: _react2.default.createElement(
+                    'span',
+                    null,
+                    _react2.default.createElement('i', { className: 'fa fa-location-arrow fa-fw' }),
+                    ' Your Current Location is:'
+                  )
+                },
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(_GeoLocation2.default, null)
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'col-lg-4' },
+              _react2.default.createElement(
+                _reactBootstrap.Panel,
+                {
+                  header: _react2.default.createElement(
+                    'span',
+                    null,
+                    _react2.default.createElement('i', { className: 'fa fa-bar-chart fa-fw' }),
+                    ' Prediction Chart History'
+                  )
+                },
+                _react2.default.createElement(
+                  _reactBootstrap.ListGroup,
+                  null,
+                  _react2.default.createElement(
+                    _reactBootstrap.ListGroupItem,
+                    { href: '', onClick: function onClick(e) {
+                        e.preventDefault();
+                      } },
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        _react2.default.createElement(
+                          'strong',
+                          null,
+                          'Prediction Chart 1'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'text-muted' },
+                          'Galway Bay, 09-11-16'
+                        ),
+                        ' '
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'pull-right text-muted small' },
+                      _react2.default.createElement(
+                        'em',
+                        null,
+                        '43 minutes ago'
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    _reactBootstrap.ListGroupItem,
+                    { href: '', onClick: function onClick(e) {
+                        e.preventDefault();
+                      } },
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        _react2.default.createElement(
+                          'strong',
+                          null,
+                          'Prediction Chart 2'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'text-muted' },
+                          'Kinsale Harbour, 12-11-16'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'pull-right text-muted small' },
+                      _react2.default.createElement(
+                        'em',
+                        null,
+                        '11:32 AM'
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    _reactBootstrap.ListGroupItem,
+                    { href: '', onClick: function onClick(e) {
+                        e.preventDefault();
+                      } },
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        _react2.default.createElement(
+                          'strong',
+                          null,
+                          'Prediction Chart 3'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'text-muted' },
+                          'Kinsale Harbour, 12-11-16'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'pull-right text-muted small' },
+                      _react2.default.createElement(
+                        'em',
+                        null,
+                        '11:13 AM'
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    _reactBootstrap.ListGroupItem,
+                    { href: '', onClick: function onClick(e) {
+                        e.preventDefault();
+                      } },
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        _react2.default.createElement(
+                          'strong',
+                          null,
+                          'Prediction Chart 4'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'text-muted' },
+                          'Killybegs, 01-12-16'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'pull-right text-muted small' },
+                      _react2.default.createElement(
+                        'em',
+                        null,
+                        '10:57 AM'
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    _reactBootstrap.ListGroupItem,
+                    null,
+                    _react2.default.createElement(
+                      'a',
+                      {
+                        href: '',
+                        onClick: function onClick(e) {
+                          e.preventDefault();_history2.default.push('/chartHistory');
+                        }
+                      },
+                      '\xA0View All Charts'
+                    )
+                  )
+                )
+              )
+            )
+          )
+        );
+      }
+    }]);
+    return Dashboard;
+  }(_react.Component);
+  
+  Dashboard.propTypes = {
+    // news: PropTypes.arrayOf(PropTypes.shape({
+    //   title: PropTypes.string.isRequired,
+    //   link: PropTypes.string.isRequired,
+    //   contentSnippet: PropTypes.string,
+    // })).isRequired,
+  };
+  Dashboard.contextTypes = { setTitle: _propTypes2.default.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Dashboard2.default)(Dashboard);
+
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(124);
+      var insertCss = __webpack_require__(23);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Dashboard.css", function() {
+          content = require("!!../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!../../../node_modules/postcss-loader/index.js?pack=default!./Dashboard.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ }),
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(22)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Dashboard_root_3_5 {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Dashboard_container_1N4 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 1000px;\n}\n\n.Dashboard_news_2yD {\n  padding: 0;\n}\n\n.Dashboard_newsItem_1q0 {\n  list-style-type: none;\n  padding-bottom: 6px;\n}\n\n.Dashboard_newsTitle_Cj5 {\n  font-size: 1.125em;\n}\n\n.Dashboard_newsTitle_Cj5,\n.Dashboard_newsDesc_3jg {\n  display: block;\n}\n", "", {"version":3,"sources":["/./routes/dashboard/Dashboard.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;;ACPH;;;;;;;GAOG;;AAEH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ADnBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,kBAAoC;CACrC;;AAED;EACE,WAAW;CACZ;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CACrB;;AAED;EACE,mBAAmB;CACpB;;AAED;;EAEE,eAAe;CAChB","file":"Dashboard.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: var(--max-content-width);\n}\n\n.news {\n  padding: 0;\n}\n\n.newsItem {\n  list-style-type: none;\n  padding-bottom: 6px;\n}\n\n.newsTitle {\n  font-size: 1.125em;\n}\n\n.newsTitle,\n.newsDesc {\n  display: block;\n}\n","/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Dashboard_root_3_5",
+  	"container": "Dashboard_container_1N4",
+  	"news": "Dashboard_news_2yD",
+  	"newsItem": "Dashboard_newsItem_1q0",
+  	"newsTitle": "Dashboard_newsTitle_Cj5",
+  	"newsDesc": "Dashboard_newsDesc_3jg"
+  };
 
 /***/ })
 /******/ ]);

@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import expressJwt from 'express-jwt';
 // import expressGraphQL from 'express-graphql';
 import jwt from 'jsonwebtoken';
+import jwks from 'jwks-rsa';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import UniversalRouter from 'universal-router';
@@ -40,11 +41,23 @@ app.use(bodyParser.json());
 //
 // Authentication
 // -----------------------------------------------------------------------------
-app.use(expressJwt({
-  secret: auth.jwt.secret,
-  credentialsRequired: false,
-  getToken: req => req.cookies.id_token,
-}));
+const authCheck = expressJwt({
+  secret: jwks.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    // YOUR-AUTH0-DOMAIN name e.g prosper.auth0.com
+    jwksUri: 'https://tidalwavepredapp.eu.auth0.com/.well-known/jwks.json',
+  }),
+    // This is the identifier we set when we created the API
+  audience: 'https://tidalwavepredapp.eu.auth0.com/api/v2/',
+  issuer: 'tidalwavepredapp.eu.auth0.com',
+  algorithms: ['RS256'],
+  getToken: function getToken(req) {
+    return req.cookies.id_token;
+  },
+});
+
 app.use(passport.initialize());
 
 app.get('/login/facebook',
@@ -73,7 +86,7 @@ app.get('/login/facebook/return',
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
-app.get('*', async (req, res, next) => {
+app.get('*', async (req, res, next) => { // authCheck
   try {
     let css = new Set();
     let statusCode = 200;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import history from '../../core/history';
+import { isLoggedIn } from '../../utils/AuthService';
 
 class Sidebar extends Component {
 
@@ -34,11 +35,14 @@ class Sidebar extends Component {
                 <i className="fa fa-dashboard fa-fw" /> &nbsp;Dashboard
               </a>
             </li>
-            <li>
-              <a href="" onClick={(e) => { e.preventDefault(); history.push('/upload'); }} >
-                <i className="fa fa-upload fa-fw" /> &nbsp;Upload Data
-              </a>
-            </li>
+            {
+              (isLoggedIn()) ? (<li>
+                <a href="" onClick={(e) => { e.preventDefault(); history.push('/upload'); }} >
+                  <i className="fa fa-upload fa-fw" /> &nbsp;Upload Data
+                </a>
+              </li>)
+              : null
+            }
             <li>
               <a href="" onClick={(e) => { e.preventDefault(); history.push('/prediction'); }} >
                 <i className="fa fa-bar-chart fa-fw" /> &nbsp;Prediction Charting

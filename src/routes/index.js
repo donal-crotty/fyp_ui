@@ -1,23 +1,12 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import React from 'react';
 import App from '../components/App';
-
 // Child routes
-import home from './home';
-import login from './login';
+import callback from './callback';
+import dashboard from './dashboard';
+import landing from './landing';
 import register from './register';
-// import blank from './dashboardPages/blank';
 import upload from './dashboardPages/upload';
 import prediction from './dashboardPages/prediction';
-import contact from './dashboardPages/contact';
 import about from './dashboardPages/about';
 import chartHistory from './dashboardPages/chartHistory';
 import error from './error';
@@ -27,9 +16,22 @@ import Header from '../components/Header';
 export default [
 
   {
-    path: '/login',
+    path: '/landing',
     children: [
-      login,
+      landing,
+    ],
+    async action({ next, render, context }) {
+      const component = await next();
+      if (component === undefined) return component;
+      return render(
+        <App context={context}>{component}</App>
+      );
+    },
+  },
+  {
+    path: '/callback',
+    children: [
+      callback,
     ],
     async action({ next, render, context }) {
       const component = await next();
@@ -58,10 +60,9 @@ export default [
 
   // keep in mind, routes are evaluated in order
     children: [
-      home,
+      dashboard,
       upload,
       prediction,
-      contact,
       about,
       chartHistory,
       // place new routes before...

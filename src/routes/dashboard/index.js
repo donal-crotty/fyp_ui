@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import Home from './Home';
+import Dashboard from './Dashboard';
 // import fetch from '../../core/fetch';
 
 export default {
@@ -16,7 +16,7 @@ export default {
   path: '/',
 
   async action() {
-    return <Home />;
+    return <Dashboard />;
     // const resp = await fetch('/graphql', {
     //   method: 'post',
     //   headers: {
