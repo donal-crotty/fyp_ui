@@ -23,7 +23,12 @@ export default [
       const component = await next();
       if (component === undefined) return component;
       return render(
-        <App context={context}>{component}</App>
+        <div>
+          <Header />
+          <div id="page-wrapper" className="page-wrapper">
+            <App context={context}>{component}</App>
+          </div>
+        </div>
       );
     },
   },

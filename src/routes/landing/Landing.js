@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import { Breadcrumb } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import Panel from 'react-bootstrap/lib/Panel';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { login, logout, isLoggedIn } from '../../utils/AuthService';
@@ -9,8 +9,10 @@ import s from './Landing.css';
 import Background from '../landing/loginBackground.jpg';
 
 const sectionStyle = {
-  width: '100%',
-  height: '900px',
+  height: '100%',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover',
   backgroundImage: `url(${Background})`,
 };
 
@@ -19,13 +21,6 @@ const title = 'Landing';
 class Landing extends Component {
   constructor(props, context) {
     super(props);
-    this.state = {
-      email: '',
-      password: '',
-      error: {
-        message: '',
-      },
-    };
     context.setTitle(title);
   }
   submitHandler() {
@@ -43,21 +38,22 @@ class Landing extends Component {
           <div className="text-center">
             <h1 className="login-brand-text">Tidal Wave Prediction Online Tool</h1>
           </div>
-          <Panel header={<h3>Please Login</h3>} className="registration-panel">
+          <Panel header={<h3>Welcome.</h3>} className="registration-panel">
             {
             (isLoggedIn()) ? (
               <div>
-                <Breadcrumb>You are already logged in, please logout or return to
-                 <a href="" onClick={(e) => { e.preventDefault(); history.push('/contact'); }} >
-                 dashboard</a>
-                </Breadcrumb>
+                <Alert bsStyle="warning">You are already logged in, please logout or return to
+                  <a href="" onClick={(e) => { e.preventDefault(); history.push('/'); }} >
+                  &nbsp;dashboard</a>
+                </Alert>
                 <button className="btn btn-danger log" onClick={() => logout()} >Log out </button>
               </div>
             ) :
              (
                <div>
-                 <Breadcrumb>Successfully Logged out!</Breadcrumb>
-                 <button className="btn btn-info log" onClick={() => login()}>Log In</button>
+                 <Alert bsStyle="success">
+                 Successfully Logged out!
+                 </Alert>
                </div>)
           }
           </Panel>

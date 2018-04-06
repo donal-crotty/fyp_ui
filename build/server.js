@@ -143,11 +143,6 @@ module.exports =
   // user agent is not known.
   // -----------------------------------------------------------------------------
   // eslint-disable-line import/no-unresolved
-  
-  // import models from './data/models';
-  // import schema from './data/schema';
-  
-  // import expressGraphQL from 'express-graphql';
   global.navigator = global.navigator || {};
   global.navigator.userAgent = global.navigator.userAgent || 'all';
   
@@ -188,16 +183,6 @@ module.exports =
     res.cookie('id_token', token, { maxAge: 1000 * expiresIn, httpOnly: true });
     res.redirect('/');
   });
-  
-  //
-  // Register API middleware
-  // -----------------------------------------------------------------------------
-  // app.use('/graphql', expressGraphQL(req => ({
-  //   schema,
-  //   graphiql: true,
-  //   rootValue: { request: req },
-  //   pretty: process.env.NODE_ENV !== 'production',
-  // })));
   
   //
   // Register server-side rendering middleware
@@ -1528,9 +1513,18 @@ module.exports =
   
               case 5:
                 return _context.abrupt('return', render(_react2.default.createElement(
-                  _App2.default,
-                  { context: context },
-                  component
+                  'div',
+                  null,
+                  _react2.default.createElement(_Header2.default, null),
+                  _react2.default.createElement(
+                    'div',
+                    { id: 'page-wrapper', className: 'page-wrapper' },
+                    _react2.default.createElement(
+                      _App2.default,
+                      { context: context },
+                      component
+                    )
+                  )
                 )));
   
               case 6:
@@ -1891,26 +1885,6 @@ module.exports =
     value: true
   });
   
-  var _getPrototypeOf = __webpack_require__(41);
-  
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-  
-  var _classCallCheck2 = __webpack_require__(42);
-  
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-  
-  var _createClass2 = __webpack_require__(43);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(44);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(45);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
   var _react = __webpack_require__(13);
   
   var _react2 = _interopRequireDefault(_react);
@@ -1922,6 +1896,10 @@ module.exports =
   var _jquery = __webpack_require__(51);
   
   var _jquery2 = _interopRequireDefault(_jquery);
+  
+  var _history = __webpack_require__(55);
+  
+  var _history2 = _interopRequireDefault(_history);
   
   var _AuthService = __webpack_require__(52);
   
@@ -1944,88 +1922,79 @@ module.exports =
     verticleAlign: 'middle'
   };
   
-  var Header = function (_Component) {
-    (0, _inherits3.default)(Header, _Component);
-  
-    function Header() {
-      (0, _classCallCheck3.default)(this, Header);
-      return (0, _possibleConstructorReturn3.default)(this, (Header.__proto__ || (0, _getPrototypeOf2.default)(Header)).apply(this, arguments));
-    }
-  
-    (0, _createClass3.default)(Header, [{
-      key: 'render',
-      value: function render() {
-        return _react2.default.createElement(
-          'div',
-          { id: 'wrapper', className: 'content' },
+  function Header() {
+    // render() {
+    return _react2.default.createElement(
+      'div',
+      { id: 'wrapper', className: 'content' },
+      _react2.default.createElement(
+        _Navbar2.default,
+        { className: 'navbar-inverse', fluid: true, style: { margin: 0 } },
+        _react2.default.createElement(
+          _Navbar.Brand,
+          null,
           _react2.default.createElement(
-            _Navbar2.default,
-            { className: 'navbar-inverse', fluid: true, style: { margin: 0 } },
+            'span',
+            null,
+            _react2.default.createElement('img', {
+              src: logo, alt: 'Tidal Wave Prediction Online Tool',
+              title: 'Tidal Wave Prediction Online Tool'
+            }),
             _react2.default.createElement(
-              _Navbar.Brand,
-              null,
+              'a',
+              { href: '', onClick: function onClick(e) {
+                  e.preventDefault();_history2.default.push('/landing');
+                } },
+              '\xA0Tidal Wave Prediction Online Tool '
+            ),
+            _react2.default.createElement(
+              'button',
+              {
+                type: 'button', className: 'navbar-toggle', onClick: function onClick() {
+                  toggleMenu();
+                },
+                style: { position: 'absolute', right: 0, top: 0 }
+              },
               _react2.default.createElement(
                 'span',
-                null,
-                _react2.default.createElement('img', {
-                  src: logo, alt: 'Tidal Wave Prediction Online Tool',
-                  title: 'Tidal Wave Prediction Online Tool'
-                }),
-                _react2.default.createElement(
-                  'span',
-                  null,
-                  '\xA0Tidal Wave Prediction Online Tool '
-                ),
-                _react2.default.createElement(
-                  'button',
-                  {
-                    type: 'button', className: 'navbar-toggle', onClick: function onClick() {
-                      toggleMenu();
-                    },
-                    style: { position: 'absolute', right: 0, top: 0 }
-                  },
-                  _react2.default.createElement(
-                    'span',
-                    { className: 'sr-only' },
-                    'Toggle navigation'
-                  ),
-                  _react2.default.createElement('span', { className: 'icon-bar' }),
-                  _react2.default.createElement('span', { className: 'icon-bar' }),
-                  _react2.default.createElement('span', { className: 'icon-bar' })
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'ul',
-              { className: 'nav navbar-top-links navbar-right' },
-              _react2.default.createElement(
-                'li',
-                { style: style },
-                (0, _AuthService.isLoggedIn)() ? _react2.default.createElement(
-                  'button',
-                  {
-                    className: 'btn btn-danger log',
-                    onClick: function onClick() {
-                      return (0, _AuthService.logout)();
-                    }
-                  },
-                  'Log out '
-                ) : _react2.default.createElement(
-                  'button',
-                  { className: 'btn btn-info log', onClick: function onClick() {
-                      return (0, _AuthService.login)();
-                    } },
-                  'Log In'
-                )
-              )
-            ),
-            _react2.default.createElement(_Sidebar2.default, null)
+                { className: 'sr-only' },
+                'Toggle navigation'
+              ),
+              _react2.default.createElement('span', { className: 'icon-bar' }),
+              _react2.default.createElement('span', { className: 'icon-bar' }),
+              _react2.default.createElement('span', { className: 'icon-bar' })
+            )
           )
-        );
-      }
-    }]);
-    return Header;
-  }(_react.Component);
+        ),
+        _react2.default.createElement(
+          'ul',
+          { className: 'nav  navbar-right' },
+          _react2.default.createElement(
+            'li',
+            { style: style },
+            (0, _AuthService.isLoggedIn)() ? _react2.default.createElement(
+              'button',
+              {
+                className: 'btn btn-danger log',
+                onClick: function onClick() {
+                  return (0, _AuthService.logout)();
+                }
+              },
+              'Log out '
+            ) : _react2.default.createElement(
+              'button',
+              { className: 'btn btn-info log', onClick: function onClick() {
+                  return (0, _AuthService.login)();
+                } },
+              'Log In'
+            )
+          )
+        ),
+        _react2.default.createElement(_Sidebar2.default, null)
+      )
+    );
+    // }
+  }
   
   exports.default = Header;
 
@@ -2052,12 +2021,12 @@ module.exports =
   });
   exports.login = login;
   exports.logout = logout;
-  exports.requireAuth = requireAuth;
   exports.getIdToken = getIdToken;
   exports.getAccessToken = getAccessToken;
   exports.setAccessToken = setAccessToken;
   exports.setIdToken = setIdToken;
   exports.isLoggedIn = isLoggedIn;
+  exports.requireAuth = requireAuth;
   
   var _jwtDecode = __webpack_require__(53);
   
@@ -2073,7 +2042,6 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  // import { browserHistory } from 'react-router';
   var ID_TOKEN_KEY = 'id_token';
   var ACCESS_TOKEN_KEY = 'access_token';
   
@@ -2108,12 +2076,6 @@ module.exports =
     _history2.default.push('/landing');
   }
   
-  function requireAuth(nextState, replace) {
-    if (!isLoggedIn()) {
-      replace({ pathname: '/' });
-    }
-  }
-  
   function getIdToken() {
     return localStorage.getItem(ID_TOKEN_KEY);
   }
@@ -2140,11 +2102,6 @@ module.exports =
     localStorage.setItem(ID_TOKEN_KEY, idToken);
   }
   
-  function isLoggedIn() {
-    var idToken = getIdToken();
-    return !!idToken && !isTokenExpired(idToken);
-  }
-  
   function getTokenExpirationDate(encodedToken) {
     var token = (0, _jwtDecode2.default)(encodedToken);
     if (!token.exp) {
@@ -2160,6 +2117,17 @@ module.exports =
   function isTokenExpired(token) {
     var expirationDate = getTokenExpirationDate(token);
     return expirationDate < new Date();
+  }
+  
+  function isLoggedIn() {
+    var idToken = getIdToken();
+    return !!idToken && !isTokenExpired(idToken);
+  }
+  
+  function requireAuth(nextState, replace) {
+    if (!isLoggedIn()) {
+      replace({ pathname: '/' });
+    }
   }
 
 /***/ }),
@@ -2261,6 +2229,8 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
+  var _reactBootstrap = __webpack_require__(67);
+  
   var _history = __webpack_require__(55);
   
   var _history2 = _interopRequireDefault(_history);
@@ -2268,6 +2238,13 @@ module.exports =
   var _AuthService = __webpack_require__(52);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var isDisabled = {
+    color: 'currentColor',
+    cursor: 'not-allowed',
+    opacity: 0.5,
+    textDecoration: 'none'
+  };
   
   var Sidebar = function (_Component) {
     (0, _inherits3.default)(Sidebar, _Component);
@@ -2296,27 +2273,9 @@ module.exports =
           _react2.default.createElement(
             'div',
             { className: 'sidebar-nav navbar-collapse collapse' },
-            _react2.default.createElement(
+            (0, _AuthService.isLoggedIn)() ? _react2.default.createElement(
               'ul',
               { className: 'nav in', id: 'side-menu' },
-              _react2.default.createElement(
-                'li',
-                { className: 'sidebar-search' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'input-group custom-search-form' },
-                  _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Search...' }),
-                  _react2.default.createElement(
-                    'span',
-                    { className: 'input-group-btn' },
-                    _react2.default.createElement(
-                      'button',
-                      { className: 'btn btn-default', type: 'button' },
-                      _react2.default.createElement('i', { className: 'fa fa-search' })
-                    )
-                  )
-                )
-              ),
               _react2.default.createElement(
                 'li',
                 null,
@@ -2329,7 +2288,7 @@ module.exports =
                   ' \xA0Dashboard'
                 )
               ),
-              (0, _AuthService.isLoggedIn)() ? _react2.default.createElement(
+              _react2.default.createElement(
                 'li',
                 null,
                 _react2.default.createElement(
@@ -2340,7 +2299,7 @@ module.exports =
                   _react2.default.createElement('i', { className: 'fa fa-upload fa-fw' }),
                   ' \xA0Upload Data'
                 )
-              ) : null,
+              ),
               _react2.default.createElement(
                 'li',
                 null,
@@ -2359,10 +2318,45 @@ module.exports =
                 _react2.default.createElement(
                   'a',
                   { href: '', onClick: function onClick(e) {
-                      e.preventDefault();_history2.default.push('/contact');
+                      e.preventDefault();_history2.default.push('/about');
                     } },
-                  _react2.default.createElement('i', { className: 'fa fa-address-card-o fa-fw' }),
-                  ' \xA0Contact'
+                  _react2.default.createElement('i', { className: 'fa fa-info fa-fw' }),
+                  ' \xA0About'
+                )
+              )
+            ) : _react2.default.createElement(
+              'ul',
+              { className: 'nav in', id: 'side-menu' },
+              _react2.default.createElement(
+                'li',
+                null,
+                _react2.default.createElement(
+                  'a',
+                  { href: '', onClick: function onClick(e) {
+                      e.preventDefault();_history2.default.push('/');
+                    } },
+                  _react2.default.createElement('i', { className: 'fa fa-dashboard fa-fw' }),
+                  ' \xA0Dashboard'
+                )
+              ),
+              _react2.default.createElement(
+                'li',
+                { style: isDisabled },
+                _react2.default.createElement(
+                  'a',
+                  null,
+                  _react2.default.createElement('i', { className: 'fa fa-upload fa-fw' }),
+                  ' \xA0Upload Data'
+                )
+              ),
+              _react2.default.createElement(
+                'li',
+                { style: isDisabled },
+                _react2.default.createElement(
+                  'a',
+                  null,
+                  _react2.default.createElement('i', { className: 'fa fa-bar-chart fa-fw' }),
+                  ' \xA0Prediction Charting'
                 )
               ),
               _react2.default.createElement(
@@ -2375,6 +2369,15 @@ module.exports =
                     } },
                   _react2.default.createElement('i', { className: 'fa fa-info fa-fw' }),
                   ' \xA0About'
+                )
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                _react2.default.createElement(
+                  _reactBootstrap.Alert,
+                  { bsStyle: 'danger' },
+                  'Please Login to Access all Features'
                 )
               )
             )
@@ -2466,7 +2469,6 @@ module.exports =
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
   var style = {
-    background: 'radial-gradient(black,gray, white)',
     position: 'fixed',
     top: '50%',
     left: '50%',
@@ -3332,8 +3334,10 @@ module.exports =
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
   var sectionStyle = {
-    width: '100%',
-    height: '900px',
+    height: '100%',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
     backgroundImage: 'url(' + _loginBackground2.default + ')'
   };
   // import history from '../../core/history';
@@ -3348,13 +3352,6 @@ module.exports =
   
       var _this = (0, _possibleConstructorReturn3.default)(this, (Landing.__proto__ || (0, _getPrototypeOf2.default)(Landing)).call(this, props));
   
-      _this.state = {
-        email: '',
-        password: '',
-        error: {
-          message: ''
-        }
-      };
       context.setTitle(title);
       return _this;
     }
@@ -3395,21 +3392,21 @@ module.exports =
               { header: _react2.default.createElement(
                   'h3',
                   null,
-                  'Please Login'
+                  'Welcome.'
                 ), className: 'registration-panel' },
               (0, _AuthService.isLoggedIn)() ? _react2.default.createElement(
                 'div',
                 null,
                 _react2.default.createElement(
-                  _reactBootstrap.Breadcrumb,
-                  null,
+                  _reactBootstrap.Alert,
+                  { bsStyle: 'warning' },
                   'You are already logged in, please logout or return to',
                   _react2.default.createElement(
                     'a',
                     { href: '', onClick: function onClick(e) {
-                        e.preventDefault();history.push('/contact');
+                        e.preventDefault();history.push('/');
                       } },
-                    'dashboard'
+                    '\xA0dashboard'
                   )
                 ),
                 _react2.default.createElement(
@@ -3423,16 +3420,9 @@ module.exports =
                 'div',
                 null,
                 _react2.default.createElement(
-                  _reactBootstrap.Breadcrumb,
-                  null,
+                  _reactBootstrap.Alert,
+                  { bsStyle: 'success' },
                   'Successfully Logged out!'
-                ),
-                _react2.default.createElement(
-                  'button',
-                  { className: 'btn btn-info log', onClick: function onClick() {
-                      return (0, _AuthService.login)();
-                    } },
-                  'Log In'
                 )
               )
             )
@@ -3943,13 +3933,8 @@ module.exports =
   
   var _chart2 = _interopRequireDefault(_chart);
   
-  var _DropdownSelect = __webpack_require__(95);
-  
-  var _DropdownSelect2 = _interopRequireDefault(_DropdownSelect);
-  
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  // import ReactHighcharts from 'react-highcharts';
   var chartView = function (_Component) {
     (0, _inherits3.default)(chartView, _Component);
   
@@ -3983,13 +3968,14 @@ module.exports =
               null,
               _react2.default.createElement(_chart2.default, null)
             )
-          ),
-          _react2.default.createElement(_DropdownSelect2.default, null)
+          )
         );
       }
     }]);
     return chartView;
   }(_react.Component);
+  // import ReactHighcharts from 'react-highcharts';
+  
   
   exports.default = chartView;
 
@@ -4186,95 +4172,8 @@ module.exports =
   module.exports = require("react-highcharts");
 
 /***/ }),
-/* 95 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _getPrototypeOf = __webpack_require__(41);
-  
-  var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-  
-  var _classCallCheck2 = __webpack_require__(42);
-  
-  var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-  
-  var _createClass2 = __webpack_require__(43);
-  
-  var _createClass3 = _interopRequireDefault(_createClass2);
-  
-  var _possibleConstructorReturn2 = __webpack_require__(44);
-  
-  var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-  
-  var _inherits2 = __webpack_require__(45);
-  
-  var _inherits3 = _interopRequireDefault(_inherits2);
-  
-  var _react = __webpack_require__(13);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _reactSelect = __webpack_require__(96);
-  
-  var _reactSelect2 = _interopRequireDefault(_reactSelect);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var Dropdown = function (_React$Component) {
-    (0, _inherits3.default)(Dropdown, _React$Component);
-  
-    function Dropdown() {
-      var _ref;
-  
-      var _temp, _this, _ret;
-  
-      (0, _classCallCheck3.default)(this, Dropdown);
-  
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-  
-      return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Dropdown.__proto__ || (0, _getPrototypeOf2.default)(Dropdown)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-        selectedOption: ''
-      }, _this.handleChange = function (selectedOption) {
-        _this.setState({ selectedOption: selectedOption });
-        console.log('Selected: ' + selectedOption.label);
-      }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
-    }
-  
-    (0, _createClass3.default)(Dropdown, [{
-      key: 'render',
-      value: function render() {
-        var selectedOption = this.state.selectedOption;
-  
-        var value = selectedOption && selectedOption.value;
-  
-        return _react2.default.createElement(_reactSelect2.default, {
-          className: 'pull-right',
-          name: 'form-field-name',
-          value: value,
-          onChange: this.handleChange,
-          options: [{ value: 'Achill Island', label: 'Achill Island' }, { value: 'Aranmore', label: 'Aranmore' }, { value: 'Arklow', label: 'Arklow' }, { value: 'Ballycotton', label: 'Ballycotton' }, { value: 'Ballyglass', label: 'Ballyglass' }]
-        });
-      }
-    }]);
-    return Dropdown;
-  }(_react2.default.Component);
-  
-  exports.default = Dropdown;
-
-/***/ }),
-/* 96 */
-/***/ (function(module, exports) {
-
-  module.exports = require("react-select");
-
-/***/ }),
+/* 95 */,
+/* 96 */,
 /* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 

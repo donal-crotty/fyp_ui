@@ -1,5 +1,4 @@
 import decode from 'jwt-decode';
-// import { browserHistory } from 'react-router';
 import auth0 from 'auth0-js';
 import history from '../core/history';
 
@@ -37,12 +36,6 @@ export function logout() {
   history.push('/landing');
 }
 
-export function requireAuth(nextState, replace) {
-  if (!isLoggedIn()) {
-    replace({ pathname: '/' });
-  }
-}
-
 export function getIdToken() {
   return localStorage.getItem(ID_TOKEN_KEY);
 }
@@ -69,11 +62,6 @@ export function setIdToken() {
   localStorage.setItem(ID_TOKEN_KEY, idToken);
 }
 
-export function isLoggedIn() {
-  const idToken = getIdToken();
-  return !!idToken && !isTokenExpired(idToken);
-}
-
 function getTokenExpirationDate(encodedToken) {
   const token = decode(encodedToken);
   if (!token.exp) { return null; }
@@ -87,4 +75,15 @@ function getTokenExpirationDate(encodedToken) {
 function isTokenExpired(token) {
   const expirationDate = getTokenExpirationDate(token);
   return expirationDate < new Date();
+}
+
+export function isLoggedIn() {
+  const idToken = getIdToken();
+  return !!idToken && !isTokenExpired(idToken);
+}
+
+export function requireAuth(nextState, replace) {
+  if (!isLoggedIn()) {
+    replace({ pathname: '/' });
+  }
 }

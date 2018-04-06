@@ -4,7 +4,6 @@ import {
   } from 'react-bootstrap';
 // import ReactHighcharts from 'react-highcharts';
 import ChartView from './chart';
-import Dropdown from '../DropdownSelect';
 
 class chartView extends Component {
   constructor(props) {
@@ -23,7 +22,6 @@ class chartView extends Component {
             <ChartView />
           </div>
         </Panel>
-        <Dropdown />
       </div>
     );
   }

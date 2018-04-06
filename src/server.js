@@ -4,7 +4,6 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import expressJwt from 'express-jwt';
-// import expressGraphQL from 'express-graphql';
 import jwt from 'jsonwebtoken';
 import jwks from 'jwks-rsa';
 import React from 'react';
@@ -15,8 +14,6 @@ import Html from './components/Html';
 import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
 import errorPageStyle from './routes/error/ErrorPage.css';
 import passport from './core/passport';
-// import models from './data/models';
-// import schema from './data/schema';
 import routes from './routes';
 import assets from './assets'; // eslint-disable-line import/no-unresolved
 import { port, auth } from './config';
@@ -72,16 +69,6 @@ app.get('/login/facebook/return',
     res.redirect('/');
   }
 );
-
-//
-// Register API middleware
-// -----------------------------------------------------------------------------
-// app.use('/graphql', expressGraphQL(req => ({
-//   schema,
-//   graphiql: true,
-//   rootValue: { request: req },
-//   pretty: process.env.NODE_ENV !== 'production',
-// })));
 
 //
 // Register server-side rendering middleware

@@ -3,7 +3,6 @@
  import { setIdToken, setAccessToken } from '../../utils/AuthService';
 
  const style = {
-   background: 'radial-gradient(black,gray, white)',
    position: 'fixed',
    top: '50%',
    left: '50%',
