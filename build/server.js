@@ -442,7 +442,8 @@ module.exports =
         _react2.default.createElement('link', { rel: 'stylesheet', href: '/css/bootstrap-social.css' }),
         _react2.default.createElement('link', { rel: 'stylesheet', href: '/css/font-awesome.min.css' }),
         _react2.default.createElement('link', { rel: 'stylesheet', href: '/css/sb-admin.css' }),
-        _react2.default.createElement('style', { id: 'css', dangerouslySetInnerHTML: { __html: style } })
+        _react2.default.createElement('style', { id: 'css', dangerouslySetInnerHTML: { __html: style } }),
+        _react2.default.createElement('script', { async: true, src: 'https://platform.twitter.com/widgets.js', charSet: 'utf-8' })
       ),
       _react2.default.createElement(
         'body',
@@ -1445,23 +1446,23 @@ module.exports =
   
   var _App2 = _interopRequireDefault(_App);
   
-  var _callback = __webpack_require__(61);
+  var _callback = __webpack_require__(62);
   
   var _callback2 = _interopRequireDefault(_callback);
   
-  var _dashboard = __webpack_require__(64);
+  var _dashboard = __webpack_require__(65);
   
   var _dashboard2 = _interopRequireDefault(_dashboard);
   
-  var _landing = __webpack_require__(74);
+  var _landing = __webpack_require__(76);
   
   var _landing2 = _interopRequireDefault(_landing);
   
-  var _upload = __webpack_require__(80);
+  var _upload = __webpack_require__(82);
   
   var _upload2 = _interopRequireDefault(_upload);
   
-  var _prediction = __webpack_require__(89);
+  var _prediction = __webpack_require__(91);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
@@ -1897,11 +1898,11 @@ module.exports =
   
   var _jquery2 = _interopRequireDefault(_jquery);
   
-  var _history = __webpack_require__(55);
+  var _history = __webpack_require__(52);
   
   var _history2 = _interopRequireDefault(_history);
   
-  var _AuthService = __webpack_require__(52);
+  var _AuthService = __webpack_require__(56);
   
   var _Sidebar = __webpack_require__(59);
   
@@ -1909,7 +1910,7 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var logo = __webpack_require__(60);
+  var logo = __webpack_require__(61);
   
   function toggleMenu() {
     if ((0, _jquery2.default)('.navbar-collapse').hasClass('collapse')) {
@@ -2019,6 +2020,59 @@ module.exports =
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  
+  var _createBrowserHistory = __webpack_require__(53);
+  
+  var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
+  
+  var _createMemoryHistory = __webpack_require__(54);
+  
+  var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
+  
+  var _useQueries = __webpack_require__(55);
+  
+  var _useQueries2 = _interopRequireDefault(_useQueries);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var history = (0, _useQueries2.default)( false ? _createBrowserHistory2.default : _createMemoryHistory2.default)(); /**
+                                                                                                                                    * React Starter Kit (https://www.reactstarterkit.com/)
+                                                                                                                                    *
+                                                                                                                                    * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+                                                                                                                                    *
+                                                                                                                                    * This source code is licensed under the MIT license found in the
+                                                                                                                                    * LICENSE.txt file in the root directory of this source tree.
+                                                                                                                                    */
+  
+  exports.default = history;
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports) {
+
+  module.exports = require("history/lib/createBrowserHistory");
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports) {
+
+  module.exports = require("history/lib/createMemoryHistory");
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports) {
+
+  module.exports = require("history/lib/useQueries");
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
   exports.login = login;
   exports.logout = logout;
   exports.getIdToken = getIdToken;
@@ -2028,15 +2082,15 @@ module.exports =
   exports.isLoggedIn = isLoggedIn;
   exports.requireAuth = requireAuth;
   
-  var _jwtDecode = __webpack_require__(53);
+  var _jwtDecode = __webpack_require__(57);
   
   var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
   
-  var _auth0Js = __webpack_require__(54);
+  var _auth0Js = __webpack_require__(58);
   
   var _auth0Js2 = _interopRequireDefault(_auth0Js);
   
-  var _history = __webpack_require__(55);
+  var _history = __webpack_require__(52);
   
   var _history2 = _interopRequireDefault(_history);
   
@@ -2131,69 +2185,16 @@ module.exports =
   }
 
 /***/ }),
-/* 53 */
+/* 57 */
 /***/ (function(module, exports) {
 
   module.exports = require("jwt-decode");
 
 /***/ }),
-/* 54 */
-/***/ (function(module, exports) {
-
-  module.exports = require("auth0-js");
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _createBrowserHistory = __webpack_require__(56);
-  
-  var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
-  
-  var _createMemoryHistory = __webpack_require__(57);
-  
-  var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
-  
-  var _useQueries = __webpack_require__(58);
-  
-  var _useQueries2 = _interopRequireDefault(_useQueries);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var history = (0, _useQueries2.default)( false ? _createBrowserHistory2.default : _createMemoryHistory2.default)(); /**
-                                                                                                                                    * React Starter Kit (https://www.reactstarterkit.com/)
-                                                                                                                                    *
-                                                                                                                                    * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-                                                                                                                                    *
-                                                                                                                                    * This source code is licensed under the MIT license found in the
-                                                                                                                                    * LICENSE.txt file in the root directory of this source tree.
-                                                                                                                                    */
-  
-  exports.default = history;
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports) {
-
-  module.exports = require("history/lib/createBrowserHistory");
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports) {
-
-  module.exports = require("history/lib/createMemoryHistory");
-
-/***/ }),
 /* 58 */
 /***/ (function(module, exports) {
 
-  module.exports = require("history/lib/useQueries");
+  module.exports = require("auth0-js");
 
 /***/ }),
 /* 59 */
@@ -2229,13 +2230,13 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactBootstrap = __webpack_require__(67);
+  var _reactBootstrap = __webpack_require__(60);
   
-  var _history = __webpack_require__(55);
+  var _history = __webpack_require__(52);
   
   var _history2 = _interopRequireDefault(_history);
   
-  var _AuthService = __webpack_require__(52);
+  var _AuthService = __webpack_require__(56);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -2392,12 +2393,18 @@ module.exports =
 
 /***/ }),
 /* 60 */
+/***/ (function(module, exports) {
+
+  module.exports = require("react-bootstrap");
+
+/***/ }),
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "components/Header/logo.png?0f37c478e0acdd156766bfb8c2dd6dd6";
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -2410,7 +2417,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Callback = __webpack_require__(62);
+  var _Callback = __webpack_require__(63);
   
   var _Callback2 = _interopRequireDefault(_Callback);
   
@@ -2427,7 +2434,7 @@ module.exports =
   // import App from '../../components/App';
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -2460,11 +2467,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _loading = __webpack_require__(63);
+  var _loading = __webpack_require__(64);
   
   var _loading2 = _interopRequireDefault(_loading);
   
-  var _AuthService = __webpack_require__(52);
+  var _AuthService = __webpack_require__(56);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -2507,13 +2514,13 @@ module.exports =
   exports.default = Callback;
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports) {
 
   module.exports = "data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ibGRzLXNwaW5uZXIiIHdpZHRoPSIyMDBweCIgIGhlaWdodD0iMjAwcHgiICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiIHN0eWxlPSJiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDApIG5vbmUgcmVwZWF0IHNjcm9sbCAwJSAwJTsiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAgNTApIj4NCiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzE4NTBkZCI+DQogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC45MTY2NjY2NjY2NjY2NjY2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDMwIDUwIDUwKSI+DQogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMxODUwZGQiPg0KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuODMzMzMzMzMzMzMzMzMzNHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+DQogIDwvcmVjdD4NCjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSg2MCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjc1cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDUwIDUwKSI+DQogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMxODUwZGQiPg0KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuNjY2NjY2NjY2NjY2NjY2NnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+DQogIDwvcmVjdD4NCjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxMjAgNTAgNTApIj4NCiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzE4NTBkZCI+DQogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC41ODMzMzMzMzMzMzMzMzM0cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDE1MCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjVzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPg0KICA8L3JlY3Q+DQo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMTgwIDUwIDUwKSI+DQogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMxODUwZGQiPg0KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuNDE2NjY2NjY2NjY2NjY2N3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+DQogIDwvcmVjdD4NCjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgyMTAgNTAgNTApIj4NCiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzE4NTBkZCI+DQogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC4zMzMzMzMzMzMzMzMzMzMzcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDI0MCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjI1cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDI3MCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjE2NjY2NjY2NjY2NjY2NjY2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDMwMCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjA4MzMzMzMzMzMzMzMzMzMzcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4NCiAgPC9yZWN0Pg0KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MCA1MCkiPg0KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMTg1MGRkIj4NCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49IjBzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPg0KICA8L3JlY3Q+DQo8L2c+PC9zdmc+"
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -2534,7 +2541,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Dashboard = __webpack_require__(65);
+  var _Dashboard = __webpack_require__(66);
   
   var _Dashboard2 = _interopRequireDefault(_Dashboard);
   
@@ -2576,7 +2583,7 @@ module.exports =
   };
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -2609,7 +2616,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _propTypes = __webpack_require__(66);
+  var _propTypes = __webpack_require__(67);
   
   var _propTypes2 = _interopRequireDefault(_propTypes);
   
@@ -2617,7 +2624,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _reactBootstrap = __webpack_require__(67);
+  var _reactBootstrap = __webpack_require__(60);
   
   var _GeoLocation = __webpack_require__(68);
   
@@ -2627,13 +2634,13 @@ module.exports =
   
   var _Dashboard2 = _interopRequireDefault(_Dashboard);
   
-  var _history = __webpack_require__(55);
-  
-  var _history2 = _interopRequireDefault(_history);
-  
   var _StationsMap = __webpack_require__(72);
   
   var _StationsMap2 = _interopRequireDefault(_StationsMap);
+  
+  var _TwitterTimeline = __webpack_require__(74);
+  
+  var _TwitterTimeline2 = _interopRequireDefault(_TwitterTimeline);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -2740,192 +2747,10 @@ module.exports =
                     'span',
                     null,
                     _react2.default.createElement('i', { className: 'fa fa-bar-chart fa-fw' }),
-                    ' Prediction Chart History'
+                    ' Weather Forecast'
                   )
                 },
-                _react2.default.createElement(
-                  _reactBootstrap.ListGroup,
-                  null,
-                  _react2.default.createElement(
-                    _reactBootstrap.ListGroupItem,
-                    { href: '', onClick: function onClick(e) {
-                        e.preventDefault();
-                      } },
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'strong',
-                          null,
-                          'Prediction Chart 1'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'text-muted' },
-                          'Galway Bay, 09-11-16'
-                        ),
-                        ' '
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'pull-right text-muted small' },
-                      _react2.default.createElement(
-                        'em',
-                        null,
-                        '43 minutes ago'
-                      )
-                    )
-                  ),
-                  _react2.default.createElement(
-                    _reactBootstrap.ListGroupItem,
-                    { href: '', onClick: function onClick(e) {
-                        e.preventDefault();
-                      } },
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'strong',
-                          null,
-                          'Prediction Chart 2'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'text-muted' },
-                          'Kinsale Harbour, 12-11-16'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'pull-right text-muted small' },
-                      _react2.default.createElement(
-                        'em',
-                        null,
-                        '11:32 AM'
-                      )
-                    )
-                  ),
-                  _react2.default.createElement(
-                    _reactBootstrap.ListGroupItem,
-                    { href: '', onClick: function onClick(e) {
-                        e.preventDefault();
-                      } },
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'strong',
-                          null,
-                          'Prediction Chart 3'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'text-muted' },
-                          'Kinsale Harbour, 12-11-16'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'pull-right text-muted small' },
-                      _react2.default.createElement(
-                        'em',
-                        null,
-                        '11:13 AM'
-                      )
-                    )
-                  ),
-                  _react2.default.createElement(
-                    _reactBootstrap.ListGroupItem,
-                    { href: '', onClick: function onClick(e) {
-                        e.preventDefault();
-                      } },
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'strong',
-                          null,
-                          'Prediction Chart 4'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      null,
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'text-muted' },
-                          'Killybegs, 01-12-16'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'pull-right text-muted small' },
-                      _react2.default.createElement(
-                        'em',
-                        null,
-                        '10:57 AM'
-                      )
-                    )
-                  ),
-                  _react2.default.createElement(
-                    _reactBootstrap.ListGroupItem,
-                    null,
-                    _react2.default.createElement(
-                      'a',
-                      {
-                        href: '',
-                        onClick: function onClick(e) {
-                          e.preventDefault();_history2.default.push('/chartHistory');
-                        }
-                      },
-                      '\xA0View All Charts'
-                    )
-                  )
-                )
+                _react2.default.createElement('twitterTimeline', null)
               )
             )
           )
@@ -2947,16 +2772,10 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Dashboard2.default)(Dashboard);
 
 /***/ }),
-/* 66 */
-/***/ (function(module, exports) {
-
-  module.exports = require("prop-types");
-
-/***/ }),
 /* 67 */
 /***/ (function(module, exports) {
 
-  module.exports = require("react-bootstrap");
+  module.exports = require("prop-types");
 
 /***/ }),
 /* 68 */
@@ -2996,7 +2815,7 @@ module.exports =
   
   var _reactGeolocation2 = _interopRequireDefault(_reactGeolocation);
   
-  var _reactBootstrap = __webpack_require__(67);
+  var _reactBootstrap = __webpack_require__(60);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -3252,7 +3071,49 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Landing = __webpack_require__(75);
+  var _reactTwitterWidgets = __webpack_require__(75);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  function twitterTimeline() {
+    return _react2.default.createElement(_reactTwitterWidgets.Timeline, {
+      dataSource: {
+        sourceType: 'profile',
+        screenName: 'MetEireann'
+      },
+      options: {
+        username: 'MetEireann',
+        height: '400'
+      },
+      onLoad: function onLoad() {
+        return console.log('Timeline is loaded!');
+      }
+    });
+  }
+  
+  exports.default = twitterTimeline;
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports) {
+
+  module.exports = require("react-twitter-widgets");
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(13);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Landing = __webpack_require__(77);
   
   var _Landing2 = _interopRequireDefault(_Landing);
   
@@ -3278,7 +3139,7 @@ module.exports =
   // import App from '../../components/App';
 
 /***/ }),
-/* 75 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3311,9 +3172,9 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactBootstrap = __webpack_require__(67);
+  var _reactBootstrap = __webpack_require__(60);
   
-  var _Panel = __webpack_require__(76);
+  var _Panel = __webpack_require__(78);
   
   var _Panel2 = _interopRequireDefault(_Panel);
   
@@ -3321,13 +3182,13 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _AuthService = __webpack_require__(52);
+  var _AuthService = __webpack_require__(56);
   
-  var _Landing = __webpack_require__(77);
+  var _Landing = __webpack_require__(79);
   
   var _Landing2 = _interopRequireDefault(_Landing);
   
-  var _loginBackground = __webpack_require__(79);
+  var _loginBackground = __webpack_require__(81);
   
   var _loginBackground2 = _interopRequireDefault(_loginBackground);
   
@@ -3438,17 +3299,17 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Landing2.default)(Landing);
 
 /***/ }),
-/* 76 */
+/* 78 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-bootstrap/lib/Panel");
 
 /***/ }),
-/* 77 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(78);
+      var content = __webpack_require__(80);
       var insertCss = __webpack_require__(24);
   
       if (typeof content === 'string') {
@@ -3478,7 +3339,7 @@ module.exports =
     
 
 /***/ }),
-/* 78 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(23)();
@@ -3505,13 +3366,13 @@ module.exports =
   };
 
 /***/ }),
-/* 79 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "routes/landing/loginBackground.jpg?33084a126c418a141191803e8f6063e9";
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3524,7 +3385,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _upload = __webpack_require__(81);
+  var _upload = __webpack_require__(83);
   
   var _upload2 = _interopRequireDefault(_upload);
   
@@ -3539,7 +3400,7 @@ module.exports =
   };
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3548,7 +3409,7 @@ module.exports =
     value: true
   });
   
-  var _keys = __webpack_require__(82);
+  var _keys = __webpack_require__(84);
   
   var _keys2 = _interopRequireDefault(_keys);
   
@@ -3576,29 +3437,29 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _MuiThemeProvider = __webpack_require__(83);
+  var _MuiThemeProvider = __webpack_require__(85);
   
   var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
   
-  var _RaisedButton = __webpack_require__(84);
+  var _RaisedButton = __webpack_require__(86);
   
   var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
   
-  var _reactDropzone = __webpack_require__(85);
+  var _reactDropzone = __webpack_require__(87);
   
   var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
   
-  var _FontIcon = __webpack_require__(86);
+  var _FontIcon = __webpack_require__(88);
   
   var _FontIcon2 = _interopRequireDefault(_FontIcon);
   
-  var _colors = __webpack_require__(87);
+  var _colors = __webpack_require__(89);
   
-  var _reactBootstrap = __webpack_require__(67);
+  var _reactBootstrap = __webpack_require__(60);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var request = __webpack_require__(88);
+  var request = __webpack_require__(90);
   
   var apiBaseUrl = 'http://localhost:5000/api/tidalprediction/';
   var style = {
@@ -3771,49 +3632,49 @@ module.exports =
   exports.default = Upload;
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports) {
 
   module.exports = require("babel-runtime/core-js/object/keys");
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/styles/MuiThemeProvider");
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/RaisedButton");
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-dropzone");
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/FontIcon");
 
 /***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/styles/colors");
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports) {
 
   module.exports = require("superagent");
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3826,11 +3687,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _prediction = __webpack_require__(90);
+  var _prediction = __webpack_require__(92);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _Chart = __webpack_require__(91);
+  var _Chart = __webpack_require__(93);
   
   var _Chart2 = _interopRequireDefault(_Chart);
   
@@ -3850,7 +3711,7 @@ module.exports =
   };
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3863,7 +3724,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactBootstrap = __webpack_require__(67);
+  var _reactBootstrap = __webpack_require__(60);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -3894,7 +3755,7 @@ module.exports =
   exports.default = displayPrediction;
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3927,9 +3788,9 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactBootstrap = __webpack_require__(67);
+  var _reactBootstrap = __webpack_require__(60);
   
-  var _chart = __webpack_require__(92);
+  var _chart = __webpack_require__(94);
   
   var _chart2 = _interopRequireDefault(_chart);
   
@@ -3980,7 +3841,7 @@ module.exports =
   exports.default = chartView;
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3988,10 +3849,6 @@ module.exports =
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  
-  var _stringify = __webpack_require__(26);
-  
-  var _stringify2 = _interopRequireDefault(_stringify);
   
   var _getPrototypeOf = __webpack_require__(41);
   
@@ -4017,53 +3874,43 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _ramda = __webpack_require__(93);
+  var _ramda = __webpack_require__(95);
   
-  var _reactHighcharts = __webpack_require__(94);
+  var _reactHighcharts = __webpack_require__(96);
   
   var _reactHighcharts2 = _interopRequireDefault(_reactHighcharts);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var chartData = [];
-  // import { connect } from 'react-redux';
-  
   var chartView = function (_Component) {
     (0, _inherits3.default)(chartView, _Component);
   
-    function chartView(props) {
+    function chartView() {
+      var _ref;
+  
+      var _temp, _this, _ret;
+  
       (0, _classCallCheck3.default)(this, chartView);
   
-      var _this = (0, _possibleConstructorReturn3.default)(this, (chartView.__proto__ || (0, _getPrototypeOf2.default)(chartView)).call(this, props));
+      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
   
-      _this.state = {
-        chartData: chartData
-      };
-      return _this;
+      return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = chartView.__proto__ || (0, _getPrototypeOf2.default)(chartView)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+        dates: '',
+        ballyGlass: '',
+        ballyCotton: '',
+        aranmore: '',
+        arklow: '',
+        achillIsland: ''
+      }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
     }
-  
-    //   componentWillReceiveProps(nextProps) {
-    //     if (!isEmpty(nextProps.ModalSettingsState)) {
-    //         this.setState({ title: nextProps.ModalSettingsState.title }),
-    //         this.setState({ titleColor: nextProps.ModalSettingsState.colorSelectedTitle }),
-    //         this.setState({ titleStyle: nextProps.ModalSettingsState.selectedTitleStyle }),
-    //         this.setState({ titleSize: nextProps.ModalSettingsState.selectedTitleSize }),
-    //         this.setState({ subtitle: nextProps.ModalSettingsState.subtitle }),
-    //         this.setState({ subtitleColor: nextProps.ModalSettingsState.colorSelectedSubtitle }),
-    //         this.setState({ subtitleStyle: nextProps.ModalSettingsState.selectedSubtitleStyle }),
-    //         this.setState({ subtitleSize: nextProps.ModalSettingsState.selectedsubTitleSize }),
-    //         this.setState({ xAxis: nextProps.ModalSettingsState.xAxis }),
-    //         this.setState({ yAxis: nextProps.ModalSettingsState.yAxis }),
-    //         this.setState({ chartColor: nextProps.ModalSettingsState.colorSelectedChart }),
-    //         this.setState({ backgroundColor: nextProps.ModalSettingsState.colorSelectedBackground }),
-    //         this.setState({ chartType: nextProps.ModalSettingsState.selectedChartType })
-    //     }
-    //   }
-  
   
     (0, _createClass3.default)(chartView, [{
       key: 'componentDidMount',
       value: function componentDidMount() {
+        var _this2 = this;
+  
         fetch('http://localhost:5000/api/tidalprediction/', {
           method: 'GET',
           headers: {
@@ -4072,17 +3919,28 @@ module.exports =
         }).then(function (response) {
           return response.json();
         }).then(function (result) {
-          debugger;
-          var test = (0, _ramda.compose)(_ramda.of, (0, _ramda.groupBy)((0, _ramda.prop)('stationLocation')))(result);
-          console.log((0, _stringify2.default)(result));
-          chartData = result;
-          // console.log('chartData:', chartData);
-  
-          // [{
-          //   date: dd-mm-yyy,
-          //   name: "Arklow",
-          //   data: [1,2,23,3]
-          // }]
+          var dates = (0, _ramda.compose)(_ramda.uniq, (0, _ramda.map)((0, _ramda.prop)('date')))(result);
+          _this2.setState({ dates: dates });
+          var ballyGlass = (0, _ramda.compose)((0, _ramda.map)((0, _ramda.prop)('water_Level')), (0, _ramda.filter)(function (x) {
+            return (0, _ramda.equals)(x.stationLocation, 'Ballyglass');
+          }))(result);
+          _this2.setState({ ballyGlass: ballyGlass });
+          var ballyCotton = (0, _ramda.compose)((0, _ramda.map)((0, _ramda.prop)('water_Level')), (0, _ramda.filter)(function (x) {
+            return (0, _ramda.equals)(x.stationLocation, 'Ballycotton');
+          }))(result);
+          _this2.setState({ ballyCotton: ballyCotton });
+          var aranmore = (0, _ramda.compose)((0, _ramda.map)((0, _ramda.prop)('water_Level')), (0, _ramda.filter)(function (x) {
+            return (0, _ramda.equals)(x.stationLocation, 'Aranmore');
+          }))(result);
+          _this2.setState({ aranmore: aranmore });
+          var arklow = (0, _ramda.compose)((0, _ramda.map)((0, _ramda.prop)('water_Level')), (0, _ramda.filter)(function (x) {
+            return (0, _ramda.equals)(x.stationLocation, 'Arklow');
+          }))(result);
+          _this2.setState({ arklow: arklow });
+          var achillIsland = (0, _ramda.compose)((0, _ramda.map)((0, _ramda.prop)('water_Level')), (0, _ramda.filter)(function (x) {
+            return (0, _ramda.equals)(x.stationLocation, 'Achill_Island');
+          }))(result);
+          _this2.setState({ achillIsland: achillIsland });
         });
       }
     }, {
@@ -4096,7 +3954,7 @@ module.exports =
             text: 'Tidal Wave Predictions January 2018'
           },
           xAxis: {
-            categories: ['Achill Island', 'Aranmore', 'Arklow', 'Ballycotton', 'Ballyglass']
+            categories: this.state.dates
           },
           yAxis: {
             min: 0,
@@ -4111,28 +3969,21 @@ module.exports =
               }
             }
           },
-          legend: {
-            align: 'right',
-            x: -30,
-            verticalAlign: 'top',
-            y: 25,
-            floating: true,
-            backgroundColor: _reactHighcharts2.default.theme && _reactHighcharts2.default.theme.background2 || 'white',
-            borderColor: '#CCC',
-            borderWidth: 1,
-            shadow: false
-          },
-          plotOptions: {
-            column: {
-              stacking: 'normal',
-              dataLabels: {
-                enabled: true,
-                color: _reactHighcharts2.default.theme && _reactHighcharts2.default.theme.dataLabelsColor || 'white'
-              }
-            }
-          },
           series: [{
-            data: chartData
+            name: 'Aranmore',
+            data: this.state.aranmore
+          }, {
+            name: 'Achill Island',
+            data: this.state.achillIsland
+          }, {
+            name: 'Arklow',
+            data: this.state.arklow
+          }, {
+            name: 'Ballycotton',
+            data: this.state.ballyCotton
+          }, {
+            name: 'Ballyglass',
+            data: this.state.ballyGlass
           }]
         };
       }
@@ -4156,24 +4007,24 @@ module.exports =
   // }
   // export default connect(mapStateToProps, null)(columnView);
   
+  // import { connect } from 'react-redux';
+  
   
   exports.default = chartView;
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, exports) {
 
   module.exports = require("ramda");
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-highcharts");
 
 /***/ }),
-/* 95 */,
-/* 96 */,
 /* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4215,7 +4066,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactBootstrap = __webpack_require__(67);
+  var _reactBootstrap = __webpack_require__(60);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -4316,7 +4167,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactBootstrap = __webpack_require__(67);
+  var _reactBootstrap = __webpack_require__(60);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
