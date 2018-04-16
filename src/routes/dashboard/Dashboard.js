@@ -72,57 +72,31 @@ class Dashboard extends Component {
           <div className="col-lg-4">
             <Panel
               header={<span>
-                <i className="fa fa-bar-chart fa-fw" /> Prediction Chart History
+                <i className="fa fa-bar-chart fa-fw" /> Chart Demos
                 </span>}
             >
+              <p><span className="text-muted">
+                    Supplied by <a href="https://www.highcharts.com/demo/" target="_blank" rel="noopener noreferrer">Highcharts.com</a></span></p>
               <ListGroup>
-                <ListGroupItem href="" onClick={(e) => { e.preventDefault(); }}>
+                <ListGroupItem href="https://www.highcharts.com/demo/bar-basic" target="_blank" rel="noopener noreferrer">
                   <div>
-                    <p><strong>Prediction Chart 1</strong></p>
+                    <p><strong>Bar Chart</strong></p>
                   </div>
-                  <div>
-                    <p><span className="text-muted">
-                    Galway Bay, 09-11-16</span> </p>
-                  </div>
-                  <span className="pull-right text-muted small"><em>43 minutes ago</em></span>
                 </ListGroupItem>
-                <ListGroupItem href="" onClick={(e) => { e.preventDefault(); }}>
+                <ListGroupItem href="https://www.highcharts.com/demo/pie-basic" target="_blank" rel="noopener noreferrer">
                   <div>
-                    <p><strong>Prediction Chart 2</strong></p>
+                    <p><strong>Pie Chart</strong></p>
                   </div>
-                  <div>
-                    <p><span className="text-muted">
-                    Kinsale Harbour, 12-11-16</span></p>
-                  </div>
-                  <span className="pull-right text-muted small"><em>11:32 AM</em></span>
                 </ListGroupItem>
-                <ListGroupItem href="" onClick={(e) => { e.preventDefault(); }}>
+                <ListGroupItem href="https://www.highcharts.com/demo/scatter" target="_blank" rel="noopener noreferrer">
                   <div>
-                    <p><strong>Prediction Chart 3</strong></p>
+                    <p><strong>Scatter and Bubble Charts</strong></p>
                   </div>
-                  <div>
-                    <p><span className="text-muted">
-                    Kinsale Harbour, 12-11-16</span></p>
-                  </div>
-                  <span className="pull-right text-muted small"><em>11:13 AM</em></span>
                 </ListGroupItem>
-                <ListGroupItem href="" onClick={(e) => { e.preventDefault(); }}>
+                <ListGroupItem href="https://www.highcharts.com/demo/3d-column-interactive" target="_blank" rel="noopener noreferrer">
                   <div>
-                    <p><strong>Prediction Chart 4</strong></p>
+                    <p><strong>3D Chart</strong></p>
                   </div>
-                  <div>
-                    <p><span className="text-muted">
-                    Killybegs, 01-12-16</span></p>
-                  </div>
-                  <span className="pull-right text-muted small"><em>10:57 AM</em></span>
-                </ListGroupItem>
-                <ListGroupItem>
-                  <a
-                    href=""
-                    onClick={(e) => { e.preventDefault(); history.push('/chartHistory'); }}
-                  >
-                      &nbsp;View All Charts
-                    </a>
                 </ListGroupItem>
               </ListGroup>
             </Panel>
@@ -138,7 +112,7 @@ Dashboard.propTypes = {
   // news: PropTypes.arrayOf(PropTypes.shape({
   //   title: PropTypes.string.isRequired,
   //   link: PropTypes.string.isRequired,
-  //   contentSnippet: PropTypes.string,
+  //   contentSnippet: PropTypes.string,0
   // })).isRequired,
 };
 Dashboard.contextTypes = { setTitle: PropTypes.func.isRequired };

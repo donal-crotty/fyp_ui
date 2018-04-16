@@ -15,7 +15,8 @@ function toggleMenu() {
   }
 }
 const style = {
-  verticleAlign: 'middle',
+  marginRight: '10px',
+  marginTop: '7px',
 };
 
 function Header() {
@@ -48,8 +49,9 @@ function Header() {
               (isLoggedIn()) ? (<button
                 className="btn btn-danger log"
                 onClick={() => logout()}
-              >Log out </button>) :
-               (<button className="btn btn-info log" onClick={() => login()}>Log In</button>)
+              ><span className="glyphicon glyphicon-log-out" />&nbsp;Log out </button>) :
+               (<button className="btn btn-primary log" onClick={() => login()}>
+                 <span className="glyphicon glyphicon-log-in" />&nbsp;Log In</button>)
             }
           </li>
         </ul>

@@ -33,7 +33,7 @@ function clearAccessToken() {
 export function logout() {
   clearIdToken();
   clearAccessToken();
-  history.push('/landing');
+  history.push('');
 }
 
 export function getIdToken() {

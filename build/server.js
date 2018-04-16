@@ -128,7 +128,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(102);
+  var _assets = __webpack_require__(100);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -1454,27 +1454,27 @@ module.exports =
   
   var _dashboard2 = _interopRequireDefault(_dashboard);
   
-  var _landing = __webpack_require__(76);
+  var _landing = __webpack_require__(74);
   
   var _landing2 = _interopRequireDefault(_landing);
   
-  var _upload = __webpack_require__(82);
+  var _upload = __webpack_require__(80);
   
   var _upload2 = _interopRequireDefault(_upload);
   
-  var _prediction = __webpack_require__(91);
+  var _prediction = __webpack_require__(89);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _about = __webpack_require__(97);
+  var _about = __webpack_require__(95);
   
   var _about2 = _interopRequireDefault(_about);
   
-  var _chartHistory = __webpack_require__(99);
+  var _chartHistory = __webpack_require__(97);
   
   var _chartHistory2 = _interopRequireDefault(_chartHistory);
   
-  var _error = __webpack_require__(101);
+  var _error = __webpack_require__(99);
   
   var _error2 = _interopRequireDefault(_error);
   
@@ -1920,7 +1920,8 @@ module.exports =
     }
   }
   var style = {
-    verticleAlign: 'middle'
+    marginRight: '10px',
+    marginTop: '7px'
   };
   
   function Header() {
@@ -1981,13 +1982,15 @@ module.exports =
                   return (0, _AuthService.logout)();
                 }
               },
-              'Log out '
+              _react2.default.createElement('span', { className: 'glyphicon glyphicon-log-out' }),
+              '\xA0Log out '
             ) : _react2.default.createElement(
               'button',
-              { className: 'btn btn-info log', onClick: function onClick() {
+              { className: 'btn btn-primary log', onClick: function onClick() {
                   return (0, _AuthService.login)();
                 } },
-              'Log In'
+              _react2.default.createElement('span', { className: 'glyphicon glyphicon-log-in' }),
+              '\xA0Log In'
             )
           )
         ),
@@ -2127,7 +2130,7 @@ module.exports =
   function logout() {
     clearIdToken();
     clearAccessToken();
-    _history2.default.push('/landing');
+    _history2.default.push('');
   }
   
   function getIdToken() {
@@ -2634,13 +2637,13 @@ module.exports =
   
   var _Dashboard2 = _interopRequireDefault(_Dashboard);
   
+  var _history = __webpack_require__(52);
+  
+  var _history2 = _interopRequireDefault(_history);
+  
   var _StationsMap = __webpack_require__(72);
   
   var _StationsMap2 = _interopRequireDefault(_StationsMap);
-  
-  var _TwitterTimeline = __webpack_require__(74);
-  
-  var _TwitterTimeline2 = _interopRequireDefault(_TwitterTimeline);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -2747,10 +2750,95 @@ module.exports =
                     'span',
                     null,
                     _react2.default.createElement('i', { className: 'fa fa-bar-chart fa-fw' }),
-                    ' Weather Forecast'
+                    ' Chart Demos'
                   )
                 },
-                _react2.default.createElement('twitterTimeline', null)
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'text-muted' },
+                    'Supplied by ',
+                    _react2.default.createElement(
+                      'a',
+                      { href: 'https://www.highcharts.com/demo/', target: '_blank', rel: 'noopener noreferrer' },
+                      'Highcharts.com'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  _reactBootstrap.ListGroup,
+                  null,
+                  _react2.default.createElement(
+                    _reactBootstrap.ListGroupItem,
+                    { href: 'https://www.highcharts.com/demo/bar-basic', target: '_blank', rel: 'noopener noreferrer' },
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        _react2.default.createElement(
+                          'strong',
+                          null,
+                          'Bar Chart'
+                        )
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    _reactBootstrap.ListGroupItem,
+                    { href: 'https://www.highcharts.com/demo/pie-basic', target: '_blank', rel: 'noopener noreferrer' },
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        _react2.default.createElement(
+                          'strong',
+                          null,
+                          'Pie Chart'
+                        )
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    _reactBootstrap.ListGroupItem,
+                    { href: 'https://www.highcharts.com/demo/scatter', target: '_blank', rel: 'noopener noreferrer' },
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        _react2.default.createElement(
+                          'strong',
+                          null,
+                          'Scatter and Bubble Charts'
+                        )
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    _reactBootstrap.ListGroupItem,
+                    { href: 'https://www.highcharts.com/demo/3d-column-interactive', target: '_blank', rel: 'noopener noreferrer' },
+                    _react2.default.createElement(
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        _react2.default.createElement(
+                          'strong',
+                          null,
+                          '3D Chart'
+                        )
+                      )
+                    )
+                  )
+                )
               )
             )
           )
@@ -2764,7 +2852,7 @@ module.exports =
     // news: PropTypes.arrayOf(PropTypes.shape({
     //   title: PropTypes.string.isRequired,
     //   link: PropTypes.string.isRequired,
-    //   contentSnippet: PropTypes.string,
+    //   contentSnippet: PropTypes.string,0
     // })).isRequired,
   };
   Dashboard.contextTypes = { setTitle: _propTypes2.default.func.isRequired };
@@ -3071,49 +3159,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactTwitterWidgets = __webpack_require__(75);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  function twitterTimeline() {
-    return _react2.default.createElement(_reactTwitterWidgets.Timeline, {
-      dataSource: {
-        sourceType: 'profile',
-        screenName: 'MetEireann'
-      },
-      options: {
-        username: 'MetEireann',
-        height: '400'
-      },
-      onLoad: function onLoad() {
-        return console.log('Timeline is loaded!');
-      }
-    });
-  }
-  
-  exports.default = twitterTimeline;
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports) {
-
-  module.exports = require("react-twitter-widgets");
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(13);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _Landing = __webpack_require__(77);
+  var _Landing = __webpack_require__(75);
   
   var _Landing2 = _interopRequireDefault(_Landing);
   
@@ -3139,7 +3185,7 @@ module.exports =
   // import App from '../../components/App';
 
 /***/ }),
-/* 77 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3174,7 +3220,7 @@ module.exports =
   
   var _reactBootstrap = __webpack_require__(60);
   
-  var _Panel = __webpack_require__(78);
+  var _Panel = __webpack_require__(76);
   
   var _Panel2 = _interopRequireDefault(_Panel);
   
@@ -3184,11 +3230,11 @@ module.exports =
   
   var _AuthService = __webpack_require__(56);
   
-  var _Landing = __webpack_require__(79);
+  var _Landing = __webpack_require__(77);
   
   var _Landing2 = _interopRequireDefault(_Landing);
   
-  var _loginBackground = __webpack_require__(81);
+  var _loginBackground = __webpack_require__(79);
   
   var _loginBackground2 = _interopRequireDefault(_loginBackground);
   
@@ -3299,17 +3345,17 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Landing2.default)(Landing);
 
 /***/ }),
-/* 78 */
+/* 76 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-bootstrap/lib/Panel");
 
 /***/ }),
-/* 79 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(80);
+      var content = __webpack_require__(78);
       var insertCss = __webpack_require__(24);
   
       if (typeof content === 'string') {
@@ -3339,7 +3385,7 @@ module.exports =
     
 
 /***/ }),
-/* 80 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(23)();
@@ -3366,13 +3412,13 @@ module.exports =
   };
 
 /***/ }),
-/* 81 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "routes/landing/loginBackground.jpg?33084a126c418a141191803e8f6063e9";
 
 /***/ }),
-/* 82 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3385,7 +3431,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _upload = __webpack_require__(83);
+  var _upload = __webpack_require__(81);
   
   var _upload2 = _interopRequireDefault(_upload);
   
@@ -3400,7 +3446,7 @@ module.exports =
   };
 
 /***/ }),
-/* 83 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3409,7 +3455,7 @@ module.exports =
     value: true
   });
   
-  var _keys = __webpack_require__(84);
+  var _keys = __webpack_require__(82);
   
   var _keys2 = _interopRequireDefault(_keys);
   
@@ -3437,29 +3483,29 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _MuiThemeProvider = __webpack_require__(85);
+  var _MuiThemeProvider = __webpack_require__(83);
   
   var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
   
-  var _RaisedButton = __webpack_require__(86);
+  var _RaisedButton = __webpack_require__(84);
   
   var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
   
-  var _reactDropzone = __webpack_require__(87);
+  var _reactDropzone = __webpack_require__(85);
   
   var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
   
-  var _FontIcon = __webpack_require__(88);
+  var _FontIcon = __webpack_require__(86);
   
   var _FontIcon2 = _interopRequireDefault(_FontIcon);
   
-  var _colors = __webpack_require__(89);
+  var _colors = __webpack_require__(87);
   
   var _reactBootstrap = __webpack_require__(60);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var request = __webpack_require__(90);
+  var request = __webpack_require__(88);
   
   var apiBaseUrl = 'http://localhost:5000/api/tidalprediction/';
   var style = {
@@ -3632,49 +3678,49 @@ module.exports =
   exports.default = Upload;
 
 /***/ }),
-/* 84 */
+/* 82 */
 /***/ (function(module, exports) {
 
   module.exports = require("babel-runtime/core-js/object/keys");
 
 /***/ }),
-/* 85 */
+/* 83 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/styles/MuiThemeProvider");
 
 /***/ }),
-/* 86 */
+/* 84 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/RaisedButton");
 
 /***/ }),
-/* 87 */
+/* 85 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-dropzone");
 
 /***/ }),
-/* 88 */
+/* 86 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/FontIcon");
 
 /***/ }),
-/* 89 */
+/* 87 */
 /***/ (function(module, exports) {
 
   module.exports = require("material-ui/styles/colors");
 
 /***/ }),
-/* 90 */
+/* 88 */
 /***/ (function(module, exports) {
 
   module.exports = require("superagent");
 
 /***/ }),
-/* 91 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3687,11 +3733,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _prediction = __webpack_require__(92);
+  var _prediction = __webpack_require__(90);
   
   var _prediction2 = _interopRequireDefault(_prediction);
   
-  var _Chart = __webpack_require__(93);
+  var _Chart = __webpack_require__(91);
   
   var _Chart2 = _interopRequireDefault(_Chart);
   
@@ -3711,7 +3757,7 @@ module.exports =
   };
 
 /***/ }),
-/* 92 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3755,7 +3801,7 @@ module.exports =
   exports.default = displayPrediction;
 
 /***/ }),
-/* 93 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3790,7 +3836,7 @@ module.exports =
   
   var _reactBootstrap = __webpack_require__(60);
   
-  var _chart = __webpack_require__(94);
+  var _chart = __webpack_require__(92);
   
   var _chart2 = _interopRequireDefault(_chart);
   
@@ -3841,7 +3887,7 @@ module.exports =
   exports.default = chartView;
 
 /***/ }),
-/* 94 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3874,9 +3920,9 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _ramda = __webpack_require__(95);
+  var _ramda = __webpack_require__(93);
   
-  var _reactHighcharts = __webpack_require__(96);
+  var _reactHighcharts = __webpack_require__(94);
   
   var _reactHighcharts2 = _interopRequireDefault(_reactHighcharts);
   
@@ -4013,19 +4059,19 @@ module.exports =
   exports.default = chartView;
 
 /***/ }),
-/* 95 */
+/* 93 */
 /***/ (function(module, exports) {
 
   module.exports = require("ramda");
 
 /***/ }),
-/* 96 */
+/* 94 */
 /***/ (function(module, exports) {
 
   module.exports = require("react-highcharts");
 
 /***/ }),
-/* 97 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4038,7 +4084,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _about = __webpack_require__(98);
+  var _about = __webpack_require__(96);
   
   var _about2 = _interopRequireDefault(_about);
   
@@ -4053,7 +4099,7 @@ module.exports =
   };
 
 /***/ }),
-/* 98 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4126,7 +4172,7 @@ module.exports =
   exports.default = displayBlank;
 
 /***/ }),
-/* 99 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4139,7 +4185,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _chartHistory = __webpack_require__(100);
+  var _chartHistory = __webpack_require__(98);
   
   var _chartHistory2 = _interopRequireDefault(_chartHistory);
   
@@ -4154,7 +4200,7 @@ module.exports =
   };
 
 /***/ }),
-/* 100 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4464,7 +4510,7 @@ module.exports =
   exports.default = displayChartHistory;
 
 /***/ }),
-/* 101 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4513,7 +4559,7 @@ module.exports =
       */
 
 /***/ }),
-/* 102 */
+/* 100 */
 /***/ (function(module, exports) {
 
   module.exports = require("./assets");

@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { Alert } from 'react-bootstrap';
 import Panel from 'react-bootstrap/lib/Panel';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import { login, logout, isLoggedIn } from '../../utils/AuthService';
+import { logout, isLoggedIn } from '../../utils/AuthService';
 import s from './Landing.css';
 // import history from '../../core/history';
 
