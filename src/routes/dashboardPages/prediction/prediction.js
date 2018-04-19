@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { PageHeader } from 'react-bootstrap';
 
+
 const title = 'Predictions';
 
 function displayPrediction(props, context) {

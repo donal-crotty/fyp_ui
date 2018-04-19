@@ -442,8 +442,7 @@ module.exports =
         _react2.default.createElement('link', { rel: 'stylesheet', href: '/css/bootstrap-social.css' }),
         _react2.default.createElement('link', { rel: 'stylesheet', href: '/css/font-awesome.min.css' }),
         _react2.default.createElement('link', { rel: 'stylesheet', href: '/css/sb-admin.css' }),
-        _react2.default.createElement('style', { id: 'css', dangerouslySetInnerHTML: { __html: style } }),
-        _react2.default.createElement('script', { async: true, src: 'https://platform.twitter.com/widgets.js', charSet: 'utf-8' })
+        _react2.default.createElement('style', { id: 'css', dangerouslySetInnerHTML: { __html: style } })
       ),
       _react2.default.createElement(
         'body',
@@ -3834,8 +3833,6 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactBootstrap = __webpack_require__(60);
-  
   var _chart = __webpack_require__(92);
   
   var _chart2 = _interopRequireDefault(_chart);
@@ -3860,27 +3857,13 @@ module.exports =
         return _react2.default.createElement(
           'div',
           null,
-          _react2.default.createElement(
-            _reactBootstrap.Panel,
-            {
-              header: _react2.default.createElement(
-                'span',
-                null,
-                _react2.default.createElement('i', { className: 'fa fa-bar-chart-o fa-fw' }),
-                ' Tidal Wave Predictions'
-              )
-            },
-            _react2.default.createElement(
-              'div',
-              null,
-              _react2.default.createElement(_chart2.default, null)
-            )
-          )
+          _react2.default.createElement(_chart2.default, null)
         );
       }
     }]);
     return chartView;
   }(_react.Component);
+  
   // import ReactHighcharts from 'react-highcharts';
   
   
@@ -3922,12 +3905,15 @@ module.exports =
   
   var _ramda = __webpack_require__(93);
   
+  var _reactBootstrap = __webpack_require__(60);
+  
   var _reactHighcharts = __webpack_require__(94);
   
   var _reactHighcharts2 = _interopRequireDefault(_reactHighcharts);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
+  // import { connect } from 'react-redux';
   var chartView = function (_Component) {
     (0, _inherits3.default)(chartView, _Component);
   
@@ -3999,6 +3985,9 @@ module.exports =
           title: {
             text: 'Tidal Wave Predictions January 2018'
           },
+          subtitle: {
+            text: 'Column Chart'
+          },
           xAxis: {
             categories: this.state.dates
           },
@@ -4034,12 +4023,217 @@ module.exports =
         };
       }
     }, {
+      key: 'renderAreaChart',
+      value: function renderAreaChart() {
+        return {
+          chart: {
+            type: 'area'
+          },
+          title: {
+            text: 'Tidal Wave Predictions January 2018'
+          },
+          subtitle: {
+            text: 'Area Chart'
+          },
+          xAxis: {
+            categories: this.state.dates
+          },
+          yAxis: {
+            min: 0,
+            title: {
+              text: 'Tidal Wave Height (m)'
+            },
+            stackLabels: {
+              enabled: true,
+              style: {
+                fontWeight: 'bold',
+                color: _reactHighcharts2.default.theme && _reactHighcharts2.default.theme.textColor || 'gray'
+              }
+            }
+          },
+          series: [{
+            name: 'Aranmore',
+            data: this.state.aranmore
+          }, {
+            name: 'Achill Island',
+            data: this.state.achillIsland
+          }, {
+            name: 'Arklow',
+            data: this.state.arklow
+          }, {
+            name: 'Ballycotton',
+            data: this.state.ballyCotton
+          }, {
+            name: 'Ballyglass',
+            data: this.state.ballyGlass
+          }]
+        };
+      }
+    }, {
+      key: 'renderSplineComparisonChart',
+      value: function renderSplineComparisonChart() {
+        return {
+          chart: {
+            type: 'spline',
+            scrollablePlotArea: {
+              minWidth: 600,
+              scrollPositionX: 1
+            }
+          },
+          title: {
+            text: 'Tidal Wave Predictions January 2018'
+          },
+          subtitle: {
+            text: 'Spline Chart'
+          },
+          xAxis: {
+            categories: this.state.dates
+          },
+          yAxis: {
+            min: 0,
+            title: {
+              text: 'Tidal Wave Height (m)'
+            },
+            minorGridLineWidth: 0,
+            gridLineWidth: 0,
+            alternateGridColor: null,
+            plotBands: [{ // Low Tidal Wave
+              from: -0.5,
+              to: 0.6,
+              color: 'rgba(235, 244, 179, 0.1)',
+              label: {
+                text: 'Low Tide',
+                style: {
+                  color: '#606060'
+                }
+              }
+            }, { // Medium Tidal Wave
+              from: 0.6,
+              to: 3.5,
+              color: 'rgba(68, 170, 213, 0.1)',
+              label: {
+                text: 'Medium Tide',
+                style: {
+                  color: '#606060'
+                }
+              }
+            }, { // High Tidal Wave
+              from: 3.5,
+              to: 10.0,
+              color: 'rgba(49, 230, 58, 0.1)',
+              label: {
+                text: 'High Tide',
+                style: {
+                  color: '#606060'
+                }
+              }
+            }]
+          },
+          plotOptions: {
+            spline: {
+              lineWidth: 4,
+              states: {
+                hover: {
+                  lineWidth: 5
+                }
+              },
+              marker: {
+                enabled: false
+              }
+            }
+          },
+          series: [{
+            name: 'Aranmore',
+            data: this.state.aranmore
+          }, {
+            name: 'Achill Island',
+            data: this.state.achillIsland
+          }, {
+            name: 'Arklow',
+            data: this.state.arklow
+          }, {
+            name: 'Ballycotton',
+            data: this.state.ballyCotton
+          }, {
+            name: 'Ballyglass',
+            data: this.state.ballyGlass
+          }]
+        };
+      }
+    }, {
       key: 'render',
       value: function render() {
         return _react2.default.createElement(
           'div',
           null,
-          _react2.default.createElement(_reactHighcharts2.default, { config: this.renderChart() })
+          _react2.default.createElement(
+            'div',
+            { className: 'row' },
+            _react2.default.createElement(
+              'div',
+              { className: 'col-lg-12' },
+              _react2.default.createElement(
+                _reactBootstrap.Panel,
+                {
+                  header: _react2.default.createElement(
+                    'span',
+                    null,
+                    _react2.default.createElement('i', { className: 'fa fa-line-chart fa-fw' }),
+                    ' Tidal Wave Height Indicator'
+                  )
+                },
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(_reactHighcharts2.default, { config: this.renderSplineComparisonChart() })
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'row' },
+            _react2.default.createElement(
+              'div',
+              { className: 'col-lg-6' },
+              _react2.default.createElement(
+                _reactBootstrap.Panel,
+                {
+                  header: _react2.default.createElement(
+                    'span',
+                    null,
+                    _react2.default.createElement('i', { className: 'fa fa-area-chart fa-fw' }),
+                    ' Tidal Wave Predictions Area Chart'
+                  )
+                },
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(_reactHighcharts2.default, { config: this.renderAreaChart() })
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'col-lg-6' },
+              _react2.default.createElement(
+                _reactBootstrap.Panel,
+                {
+                  header: _react2.default.createElement(
+                    'span',
+                    null,
+                    _react2.default.createElement('i', { className: 'fa fa-bar-chart-o fa-fw' }),
+                    ' Tidal Wave Predictions Column Chart'
+                  )
+                },
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(_reactHighcharts2.default, { config: this.renderChart() })
+                )
+              )
+            )
+          )
         );
       }
     }]);
@@ -4052,8 +4246,6 @@ module.exports =
   //   };
   // }
   // export default connect(mapStateToProps, null)(columnView);
-  
-  // import { connect } from 'react-redux';
   
   
   exports.default = chartView;

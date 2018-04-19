@@ -16,7 +16,6 @@ function Html({ title, description, style, script, children }) {
         <link rel="stylesheet" href="/css/font-awesome.min.css" />
         <link rel="stylesheet" href="/css/sb-admin.css" />
         <style id="css" dangerouslySetInnerHTML={{ __html: style }} />
-        <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8" />
       </head>
       <body>
         <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
