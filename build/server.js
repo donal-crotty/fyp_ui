@@ -4099,7 +4099,7 @@ module.exports =
             alternateGridColor: null,
             plotBands: [{ // Low Tidal Wave
               from: -0.5,
-              to: 0.6,
+              to: 1.6,
               color: 'rgba(235, 244, 179, 0.1)',
               label: {
                 text: 'Low Tide',
@@ -4108,8 +4108,8 @@ module.exports =
                 }
               }
             }, { // Medium Tidal Wave
-              from: 0.6,
-              to: 3.5,
+              from: 1.6,
+              to: 3.25,
               color: 'rgba(68, 170, 213, 0.1)',
               label: {
                 text: 'Medium Tide',
@@ -4118,7 +4118,7 @@ module.exports =
                 }
               }
             }, { // High Tidal Wave
-              from: 3.5,
+              from: 3.25,
               to: 10.0,
               color: 'rgba(49, 230, 58, 0.1)',
               label: {
