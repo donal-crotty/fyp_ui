@@ -1,5 +1,5 @@
-## UI For Tidal Wave Prediction Tool Final Year Project
-# This project incorporates ReactJS, HighchartsJS, Firebase and is developed to interact and pull data from a MySQL DB using the C# backend in 'fyp_backend' repo.
+# UI For Tidal Wave Prediction Tool Final Year Project
+## This project incorporates ReactJS, HighchartsJS, Firebase and is developed to interact and pull data from a MySQL DB using the C# backend in 'fyp_backend' repo.
 
 
 ## Installation
