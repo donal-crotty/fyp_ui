@@ -30,7 +30,7 @@
     "highcharts-exporting": "^0.1.7",
     "history": "3.0.0",
     "isomorphic-style-loader": "1.0.0",
-    "jquery": "^3.1.1",
+    "jquery": "^3.5.0",
     "jsonwebtoken": "7.1.9",
     "jwks-rsa": "^1.2.1",
     "jwt-decode": "^2.2.0",
